@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Relocation | Moveroo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Logo Styling */
+        .logo img {
+            max-height: 30px;
+            width: auto;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .services-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 60px auto 100px;
+            align-items: stretch;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #f0f0f0;
+            padding: 24px 18px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 520px;
+            height: auto;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 100%;
+        }
+        .card-top {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 350px;
+        }
+        .card-icon {
+            font-size: 64px;
+            margin: 0 auto 18px auto;
+            color: #C71585;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: icon-bounce 1.4s infinite alternate;
+        }
+        .card-icon.box { color: #ff9800; animation-name: icon-bounce; }
+        .card-icon.briefcase { color: #2196f3; animation-name: icon-pulse; }
+        .card-icon.fragile { color: #e91e63; animation-name: icon-wiggle; }
+        @keyframes icon-bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-12px); }
+        }
+        @keyframes icon-pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.18); }
+        }
+        @keyframes icon-wiggle {
+            0% { transform: rotate(-8deg); }
+            100% { transform: rotate(8deg); }
+        }
+        .card-title {
+            margin: 0 0 10px;
+            text-align: center;
+            width: 100%;
+            font-size: 18px;
+        }
+        .card-subtitle {
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+            width: 100%;
+            font-size: 14px;
+            color: #555;
+        }
+        .card-text {
+            margin: 0;
+            font-size: 15px;
+            text-align: center;
+            width: 100%;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .card-button {
+            background: #ffe400;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
+            width: fit-content;
+            align-self: center;
+            transition: background 0.3s ease;
+        }
+        .card-button:hover {
+            background: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#" class="quote-btn">Get a Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 80px 0 20px; margin: 0 auto; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 60px 0 30px; display: flex; justify-content: left: ;;">
+            <a href="index.html#services" class="back-button" style="color: #eab308; text-decoration: none; display: inline-flex; align-items: center; font-size: 14px; margin: 10px 0; padding: 8px 20px; border: 1px solid #e2e2e200; border-radius: 20px; transition: all 0.3s ease; background-color: rgba(143, 127, 137, 0.4);">
+                <span class="arrow-icon" style="margin-right: 8px;">←</span> Back to Services
+            </a>
+        </div>
+    </div>
+    <div style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 40px 0; margin: 0 auto; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="position: relative; z-index: 1; background-color: transparent; padding: 0; margin: 0;">
+    <main class="container" style="margin-top:0;max-width:1200px;">
+        <h1 style="color: #f8fafc; font-size: 2.5rem; margin-bottom: 15px; position: relative; display: inline-block;">
+            <span style="position: relative; z-index: 1;">Professional Packing Labour Services</span>
+            
+        </h1>
+        <p style="color: #cbd5e1; font-size: 1.2rem; margin-bottom: 25px;">Expert Labour for Packing, Loading, and Safe Handling</p>
+        <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px;">Need strong, skilled, and trustworthy hands for your move? Our <strong style="color: #eab308;">Packing Labour Services</strong> team provides the muscle and expertise to pack, lift, load, and arrange your belongings with maximum care and efficiency.<br><br>
+        From <strong style="color: #eab308;">household moves</strong> to <strong style="color: #eab308;">office relocations</strong> and <strong style="color: #eab308;">industrial shifting</strong>, our labour force is trained to handle everything—no matter the size, weight, or fragility. We do the heavy lifting, so you don't have to!</p>
+        
+        <div class="pm-flex-row" style="margin: 40px 0; display: flex; gap: 40px; align-items: flex-start; background: #1e293b; padding: 30px; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+            <div style="flex: 1.2;">
+                <h3 style="color: #f8fafc; margin-bottom: 20px; font-size: 1.5rem; position: relative; padding-bottom: 10px;">
+                    <span style="position: relative; z-index: 1;">Why Choose Our Packing Labour?</span>
+                    <span style="position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: #eab308;"></span>
+                </h3>
+                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #334155;">
+                        <span style="color: #eab308; margin-right: 12px; font-size: 1.2rem;">•</span>
+                        <span style="color: #e2e8f0;">Trained, experienced, and uniformed labourers</span>
+                    </li>
+                    <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #334155;">
+                        <span style="color: #eab308; margin-right: 12px; font-size: 1.2rem;">•</span>
+                        <span style="color: #e2e8f0;">Careful packing, lifting, and loading</span>
+                    </li>
+                    <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #334155;">
+                        <span style="color: #eab308; margin-right: 12px; font-size: 1.2rem;">•</span>
+                        <span style="color: #e2e8f0;">Material handling for all item types</span>
+                    </li>
+                    <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #334155;">
+                        <span style="color: #eab308; margin-right: 12px; font-size: 1.2rem;">•</span>
+                        <span style="color: #e2e8f0;">Disassembly & reassembly if required</span>
+                    </li>
+                    <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #334155;">
+                        <span style="color: #eab308; margin-right: 12px; font-size: 1.2rem;">•</span>
+                        <span style="color: #e2e8f0;">Loading/unloading assistance</span>
+                    </li>
+                    <li style="padding: 12px 0; display: flex; align-items: flex-start; font-weight: 500;">
+                        <span style="color: #4ade80; margin-right: 12px; font-size: 1.2rem;">•</span>
+                        <span style="color: #4ade80;">Fast, efficient, and affordable service</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="pm-image-col" style="flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.2); position: relative; background: #0f172a; min-height: 100%;">
+                <img src="assets/packing.jpg" alt="Professional Packing Labour" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: transform 0.5s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(0deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.3) 100%);"></div>
+            </div>
+        </div>
+
+        <style>
+        @media (max-width: 768px) {
+            .pm-flex-row {
+                flex-direction: column !important;
+                gap: 25px !important;
+                padding: 20px !important;
+            }
+            .pm-image-col {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 0;
+                height: 250px !important;
+            }
+            .pm-image-col img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover;
+            }
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            .services-cards-container {
+                margin: 40px auto 60px !important;
+            }
+            .service-card {
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* Hover Effects */
+        .pm-image-col:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Focus States */
+        a:focus, button:focus {
+            outline: 2px solid #eab308;
+            outline-offset: 2px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .service-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+        </style>
+        <div class="services-cards-container">
+            <!-- Card 1 -->
+            <div class="service-card">
+                <div class="card-content">
+                    <div class="card-top">
+                        <span class="card-icon box"><i class="fa-solid fa-box-open"></i></span>
+                        <h3 class="card-title">Household Packing Labour</h3>
+                        <span class="card-subtitle">[ Home Shifting Experts ]</span>
+                        <p class="card-text">Our packing labourers wrap, box, and secure all your home items—furniture, appliances, kitchenware, and more—ensuring safe handling and efficient loading for your move.</p>
+                    </div>
+                    <button class="card-button quote-btn">GET QUOTE</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card">
+                <div class="card-content">
+                    <div class="card-top">
+                        <span class="card-icon briefcase"><i class="fa-solid fa-briefcase"></i></span>
+                        <h3 class="card-title">Office & Commercial Packing Labour</h3>
+                        <span class="card-subtitle">[ Workspaces & Equipment ]</span>
+                        <p class="card-text">Our team carefully dismantles, packs, and arranges office furniture, IT equipment, and files—making your business move smooth and stress-free.</p>
+                    </div>
+                    <button class="card-button quote-btn">GET QUOTE</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card">
+                <div class="card-content">
+                    <div class="card-top">
+                        <span class="card-icon fragile"><i class="fa-solid fa-cube"></i></span>
+                        <h3 class="card-title">Fragile & Special Item Packing</h3>
+                        <span class="card-subtitle">[ Glass, Antiques, Valuables ]</span>
+                        <p class="card-text">We provide extra care for fragile, high-value, or odd-shaped items—using the right materials and techniques for maximum protection during handling and transit.</p>
+                    </div>
+                    <button class="card-button quote-btn">GET QUOTE</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Packing & Labour Services Section -->
+    <section class="packing-guide" style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 60px 0; margin-top: 40px; border-top: 1px solid #334155;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <h2 style="color: #f8fafc; font-size: 2.2rem; margin-bottom: 15px; position: relative; display: inline-block;">
+                    <span style="position: relative; z-index: 1;">
+                        Packing & Labour Services in India
+                    </span>
+                </h2>
+                <p style="color: #cbd5e1; font-size: 1.1rem; max-width: 800px; margin: 15px auto 0; line-height: 1.7;">
+                    Professional packing and labour services for homes and businesses across India. Our expert team ensures your belongings are handled with the utmost care and efficiency.
+                </p>
+            <div class="intro-section" style="padding: 40px; border-bottom: 1px solid #ffffff;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #ffffff; margin-bottom: 20px;">
+                        Relocating your home or office is more than just transporting goods—it's about ensuring everything you own is packed, handled, and moved with precision and safety. At Moveroo, we understand that every item holds value—be it your fragile crockery, treasured furniture, or everyday essentials.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #ffffff; font-weight: 500;">
+                        With our professional packing and skilled labour services, your move becomes efficient, worry-free, and damage-proof.
+                    </p>
+                </div>
+
+                <div class="why-expert-section" style="display: flex; flex-wrap: nowrap; gap: 40px; align-items: stretch; margin: 40px 0; min-height: 400px;">
+                    <div class="text-content" style="flex: 1; min-width: 300px; padding: 40px; background: rgba(30, 41, 59, 0.9); border-radius: 12px; border: 1px solid #334155; display: flex; flex-direction: column; justify-content: center;">
+                        <div>
+                            <h3 style="color: #ffffff; font-size: 1.8rem; margin-bottom: 25px; position: relative; padding-bottom: 15px;">
+                                <span style="position: relative; z-index: 1;">Why Packing Needs Expert Hands</span>
+                                <span style="position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background: #ffe400; border-radius: 2px;"></span>
+                            </h3>
+                            <p style="color: #e2e8f0; line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem;">
+                                Packing isn't just about wrapping things in boxes. From selecting the right material to ensuring each item is secured and labelled, expert packing reduces the risk of damage during transit—especially on long-distance or multi-floor moves.
+                            </p>
+                            <p style="color: #ffffff; line-height: 1.8; font-weight: 500; font-size: 1.1rem;">
+                                That's where we come in—providing you with high-quality materials, trained manpower, and full-service packing solutions designed to protect your valuables.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="image-content" style="flex: 1; min-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <img src="assets/Hand.jpg" alt="Expert Packing Services" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                </div>
+
+                <div class="services-included" style="padding: 50px 40px; background: #f9fbfe;">
+                    <h3 style="color: #1a4b8c; font-size: 1.8rem; text-align: center; margin-bottom: 30px;">What's Included in Our Packing & Labour Services?</h3>
+                    <p style="text-align: center; color: #2a5d9f; font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px; line-height: 1.7;">
+                        Just like pet relocation involves documents, vaccines, and emotional preparation—packing a house or office requires proper planning, tools, and execution. Moveroo takes care of it all:
+                    </p>
+                    
+                    <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+                        <div class="feature-item" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #1a4b8c;">
+                            <h4 style="color: #1a4b8c; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center;">
+                                <i class="fas fa-box" style="margin-right: 10px; color: #1a4b8c;"></i>
+                                Full/Partial Packing
+                            </h4>
+                            <p style="color: #555; margin: 0; line-height: 1.6;">Customized packing solutions based on your specific needs and budget.</p>
+                        </div>
+                        
+                        <div class="feature-item" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #1a4b8c;">
+                            <h4 style="color: #1a4b8c; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center;">
+                                <i class="fas fa-shield-alt" style="margin-right: 10px; color: #1a4b8c;"></i>
+                                Premium Materials
+                            </h4>
+                            <p style="color: #555; margin: 0; line-height: 1.6;">Industry-standard packing materials including bubble wrap, stretch film, and cartons.</p>
+                        </div>
+                        
+                        <div class="feature-item" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #1a4b8c;">
+                            <h4 style="color: #1a4b8c; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center;">
+                                <i class="fas fa-gem" style="margin-right: 10px; color: #1a4b8c;"></i>
+                                Fragile Item Care
+                            </h4>
+                            <p style="color: #555; margin: 0; line-height: 1.6;">Specialized packing for glass, electronics, antiques, and other delicate items.</p>
+                        </div>
+                        
+                        <div class="feature-item" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #1a4b8c;">
+                            <h4 style="color: #1a4b8c; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center;">
+                                <i class="fas fa-couch" style="margin-right: 10px; color: #1a4b8c;"></i>
+                                Furniture Services
+                            </h4>
+                            <p style="color: #555; margin: 0; line-height: 1.6;">Professional dismantling and reassembly of all types of furniture.</p>
+                        </div>
+                        
+                        <div class="feature-item" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #1a4b8c;">
+                            <h4 style="color: #1a4b8c; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center;">
+                                <i class="fas fa-people-carry" style="margin-right: 10px; color: #1a4b8c;"></i>
+                                Trained Loaders
+                            </h4>
+                            <p style="color: #555; margin: 0; line-height: 1.6;">Skilled personnel for safe and efficient loading and unloading.</p>
+                        </div>
+                        
+                        <div class="feature-item" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #1a4b8c;">
+                            <h4 style="color: #1a4b8c; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center;">
+                                <i class="fas fa-tags" style="margin-right: 10px; color: #1a4b8c;"></i>
+                                Smart Organization
+                            </h4>
+                            <p style="color: #555; margin: 0; line-height: 1.6;">Inventory labeling and systematic sorting for easy unpacking and setup.</p>
+                        </div>
+                    </div>
+                    
+                    <p style="text-align: center; color: #1a4b8c; font-weight: 600; margin-top: 40px; font-size: 1.1rem;">
+                        Our goal? A damage-free, stress-free, and fast relocation experience.
+                    </p>
+                </div>
+
+                <div class="materials-section" style="padding: 50px 40px; background: white;">
+                    <div style="max-width: 1000px; margin: 0 auto;">
+                        <h3 style="color: #1a4b8c; font-size: 1.8rem; text-align: center; margin-bottom: 40px; position: relative;">
+                            <span style="position: relative; display: inline-block; padding-bottom: 15px;">
+                                Materials We Use
+                                <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: #ffe400;"></span>
+                            </span>
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px;">
+                            <div class="material-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                                <div style="background: #f0f6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-box" style="color: #1a4b8c; font-size: 1.2rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #1a4b8c;">5-ply/7-ply Cartons</h4>
+                                    <p style="margin: 0; color: #555; font-size: 0.95rem;">Heavy-duty boxes for maximum protection</p>
+                                </div>
+                            </div>
+                            
+                            <div class="material-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                                <div style="background: #f0f6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-bezier-curve" style="color: #1a4b8c; font-size: 1.2rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #1a4b8c;">Bubble Wrap & Foam</h4>
+                                    <p style="margin: 0; color: #555; font-size: 0.95rem;">For cushioning fragile items</p>
+                                </div>
+                            </div>
+                            
+                            <div class="material-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                                <div style="background: #f0f6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-tape" style="color: #1a4b8c; font-size: 1.2rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #1a4b8c;">Shrink Wrap</h4>
+                                    <p style="margin: 0; color: #555; font-size: 0.95rem;">Waterproof protection for all items</p>
+                                </div>
+                            </div>
+                            
+                            <div class="material-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                                <div style="background: #f0f6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-shield-alt" style="color: #1a4b8c; font-size: 1.2rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #1a4b8c;">Corner Protectors</h4>
+                                    <p style="margin: 0; color: #555; font-size: 0.95rem;">For furniture and delicate edges</p>
+                                </div>
+                            </div>
+                            
+                            <div class="material-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                                <div style="background: #f0f6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-tshirt" style="color: #1a4b8c; font-size: 1.2rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #1a4b8c;">Wardrobe Boxes</h4>
+                                    <p style="margin: 0; color: #555; font-size: 0.95rem;">For hanging clothes and garments</p>
+                                </div>
+                            </div>
+                            
+                            <div class="material-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                                <div style="background: #f0f6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-recycle" style="color: #1a4b8c; font-size: 1.2rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #1a4b8c;">Plastic Crates</h4>
+                                    <p style="margin: 0; color: #555; font-size: 0.95rem;">Eco-friendly reusable containers</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: #f8f9ff; border-left: 4px solid #1a4b8c; padding: 20px; margin-top: 40px; border-radius: 0 8px 8px 0;">
+                            <p style="margin: 0; color: #1a4b8c; font-weight: 500; font-style: italic;">
+                                <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                                Need special packaging for paintings, electronics, or heavy equipment? We've got you covered with customized solutions for all your unique items.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 60px 20px; text-align: center; color: #f8fafc; margin-top: 50px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid #334155; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/pattern.png') repeat; opacity: 0.05; pointer-events: none;"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <h3 style="font-size: 2rem; margin-bottom: 20px; color: #f8fafc; position: relative; display: inline-block;">
+                            <span style="position: relative; z-index: 1;">Ready to Experience Stress-Free Moving?</span>
+                
+                        </h3>
+                        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #cbd5e1; line-height: 1.7;">
+                            Get a free, no-obligation quote for our professional packing and labour services today. Our team is ready to make your move seamless and stress-free.
+                        </p>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <a href="process.html" class="cta-button" style="display: inline-block; background: #eab308; color: #0f172a; font-weight: 600; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); border: 2px solid #eab308;">
+                                The Moveroo Process
+                            </a>
+                            <a href="tel:+919876543210" class="cta-button secondary" style="display: inline-flex; align-items: center; background: transparent; color: #eab308; font-weight: 600; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid #eab308;">
+                                <i class="fas fa-phone-alt" style="margin-right: 8px;"></i>
+                                Call Us Now
+                            </a>
+                        </div>
+                        <p style="margin: 25px 0 0; font-size: 0.95rem; color: #94a3b8;">
+                            <i class="fas fa-shield-alt" style="margin-right: 8px; color: #4ade80;"></i>
+                            100% Secure | No Hidden Charges | Free Consultation
+                        </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    <style>
+        @media (max-width: 768px) {
+            .why-expert-section {
+                flex-direction: column-reverse;
+            }
+            .image-content {
+                min-height: 250px !important;
+            }
+            .features-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .material-item {
+                margin-bottom: 15px;
+            }
+            .cta-section h2 {
+                font-size: 1.6rem !important;
+            }
+            .cta-button {
+                padding: 12px 25px !important;
+                font-size: 1rem !important;
+            }
+        }
+    </style>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="js/quote-popup.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moveroo. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:64px;height:64px;">
+    <span style="position:absolute; right: 75px; top: 50%; transform: translateY(-50%); background: #25d366; color: white; padding: 8px 16px; border-radius: 50px; font-weight: 600; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transition: all 0.3s ease; pointer-events: none;">Chat with us</span>
+</a>
+<style>
+#whatsapp-float {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 99999;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    width: 80px;
+    height: 80px;
+}
+#whatsapp-float:hover {
+    box-shadow: 0 12px 28px rgba(37,211,102,0.3);
+    transform: scale(1.1) translateY(-5px);
+    background: #128C7E;
+}
+#whatsapp-float:hover span {
+    opacity: 1;
+    right: 85px;
+}
+#whatsapp-float img {
+    display: block;
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Relocation | Moveroo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Logo Styling */
+        .logo img {
+            max-height: 30px;
+            width: auto;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .services-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 60px auto 100px;
+            align-items: stretch;
+        }
+        
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #e0e0e0;
+            padding: 24px 18px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 520px;
+            height: auto;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 100%;
+        }
+        
+        .card-top {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 350px;
+        }
+        
+        .card-icon {
+            font-size: 64px;
+            margin: 0 auto 18px auto;
+            color: #8B008B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: icon-bounce 1.4s infinite alternate;
+        }
+        
+        .card-title {
+            margin: 0 0 10px;
+            text-align: center;
+            width: 100%;
+            font-size: 18px;
+            color: #444;
+        }
+        
+        .card-subtitle {
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+            width: 100%;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .card-text {
+            margin: 0;
+            font-size: 15px;
+            text-align: center;
+            width: 100%;
+            line-height: 1.5;
+            color: #666;
+            flex-grow: 1;
+        }
+        
+        .card-button {
+            background: #FFD700;
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
+            width: fit-content;
+            align-self: center;
+            transition: background 0.3s ease;
+        }
+        
+        .card-button:hover {
+            background: #FFD100;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 576px) {
+            .services-cards-container {
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .service-card {
+                width: calc(50% - 20px);
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .services-cards-container {
+                gap: 20px;
+            }
+            
+            .service-card {
+                width: calc(33.333% - 14px);
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .services-cards-container {
+                padding: 0 10px;
+            }
+            
+            .service-card {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.1rem;
+            }
+            
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div style="background: linear-gradient(120deg, #483D8B 0%, #6A5ACD 100%); padding: 80px 0 20px; margin: 0 auto; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 60px 0 30px; display: flex; justify-content: left;">
+            <a href="index.html#services" class="back-button" style="color: #FFD700; text-decoration: none; display: inline-flex; align-items: center; font-size: 14px; margin: 10px 0; padding: 8px 20px; border: 1px solid #e2e2e200; border-radius: 20px; transition: all 0.3s ease; background-color: rgba(143, 127, 137, 0.4);">
+                <span class="arrow-icon" style="margin-right: 8px;">←</span> Back to Services
+            </a>
+        </div>
+    </div>
+    <div style="background: linear-gradient(120deg, #483D8B 0%, #6A5ACD 100%); padding: 40px 0; margin: 0 auto; width: 100%;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+            <div style="position: relative; z-index: 1; background-color: transparent; padding: 0; margin: 0;">
+                <main class="container" style="margin-top:0;max-width:1000px;">
+                    <h1 style="color: #e6d00d; font-size: 2.5rem; margin-bottom: 15px; position: relative; display: inline-block;">
+                        <span style="position: relative; z-index: 1;">Professional Pet Relocation Services</span>
+                    </h1>
+                    <p style="color: #e0e0ff; font-size: 1.2rem; margin-bottom: 25px;">Safe and Comfortable Pet Transport Solutions</p>
+                    <p style="color: #e0e0ff; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px;">
+                        Need to move your beloved pet to a new city or country? Our <strong style="color: #FFD700;">Pet Relocation Services</strong> ensure your furry friend travels safely and comfortably. From health certificates to travel crates and expert handling, we manage every aspect of your pet's journey.
+                    </p>
+                    
+                    <div style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+                        <h2 style="color: #ffffff; font-size: 2rem; margin-bottom: 30px; text-align: center;">
+                            Our Services
+                        </h2>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px;">
+                            <!-- Card 1 -->
+                            <div style="background: #fff; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.10); padding: 28px 18px; display: flex; flex-direction: column; align-items: flex-start; min-height: 260px;">
+                                <h3 style="color: #8B008B; font-size: 1.18rem; font-weight: bold; margin: 0 0 12px 0;">IATA-Approved Crates</h3>
+                                <p style="color: #444; font-size: 1rem; margin: 0; line-height: 1.6;">Custom travel crates designed for maximum safety and comfort during transit, ensuring your pet's security throughout the journey.</p>
+                            </div>
+                            <!-- Card 2 -->
+                            <div style="background: #fff; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.10); padding: 28px 18px; display: flex; flex-direction: column; align-items: flex-start; min-height: 260px;">
+                                <h3 style="color: #8B008B; font-size: 1.18rem; font-weight: bold; margin: 0 0 12px 0;">Pet Relocation</h3>
+                                <p style="color: #444; font-size: 1rem; margin: 0; line-height: 1.6;">Comprehensive domestic and international pet relocation services tailored to your pet's safety and comfort. From travel documentation and airline coordination to customs clearance, our IATA-certified agents and trained handlers ensure a stress-free, end-to-end experience.</p>
+                            </div>
+                            <!-- Card 3 -->
+                            <div style="background: #fff; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.10); padding: 28px 18px; display: flex; flex-direction: column; align-items: flex-start; min-height: 260px;">
+                                <h3 style="color: #8B008B; font-size: 1.18rem; font-weight: bold; margin: 0 0 12px 0;">Pet Microchipping</h3>
+                                <p style="color: #444; font-size: 1rem; margin: 0; line-height: 1.6;">Ensure your pet’s global identity and safety with ISO-compliant microchipping. In collaboration with certified veterinarians, we provide quick and reliable microchipping services accepted by international authorities for seamless pet travel.</p>
+                            </div>
+                            <!-- Card 4 -->
+                            <div style="background: #fff; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.10); padding: 28px 18px; display: flex; flex-direction: column; align-items: flex-start; min-height: 260px;">
+                                <h3 style="color: #8B008B; font-size: 1.18rem; font-weight: bold; margin: 0 0 12px 0;">Rabies Titer Test</h3>
+                                <p style="color: #444; font-size: 1rem; margin: 0; line-height: 1.6;">We coordinate internationally recognized rabies antibody (RNATT) testing for countries with strict import regulations. Our partnerships with approved veterinary labs ensure your pet meets all health compliance standards for global entry.</p>
+                            </div>
+                        </div>
+                </main>
+            </div>
+            <!-- Why Choose Moveroo Section -->
+            <div style="max-width: 1100px; margin: 40px auto 0 auto; padding: 0; background: #fffbe7; border: 2px solid #FFD700; border-radius: 14px; box-shadow: 0 4px 18px rgba(255,215,0,0.08); display: flex; align-items: stretch; flex-wrap: wrap;">
+                <div style="flex: 1 1 380px; padding: 36px 32px 36px 36px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 320px;">
+                    <h2 style="font-size: 1.7rem; color: #8B008B; font-weight: bold; margin-bottom: 18px; text-align: left;">Why Choose Moveroo?</h2>
+                    <p style="font-size: 1.08rem; color: #222; font-weight: bold; margin-bottom: 18px; text-align: left;">Managing this entire process alone can be time-consuming and stressful. With Moveroo, you get a partner who:</p>
+                    <ul style="font-size: 1.08rem; color: #222; font-weight: bold; margin-bottom: 18px; max-width: 600px; margin-left: 0; margin-right: 0;">
+                        <li>Arranges vet appointments and certifications</li>
+                        <li>Handles NOC and AQCS documentation</li>
+                        <li>Books flights with the right airline</li>
+                        <li>Provides IATA-compliant travel crates</li>
+                        <li>Manages airport and customs clearance</li>
+                        <li>Offers end-to-end relocation support</li>
+                    </ul>
+                    <p style="font-size: 1.08rem; color: #8B008B; font-weight: bold; text-align: left; margin-bottom: 0;">We care for your pets as if they were our own.</p>
+                </div>
+                <div style="flex: 1 1 480px; min-width: 320px; display: flex; align-items: center; justify-content: center; background: none; border-radius: 0 12px 12px 0; overflow: hidden;">
+                    <img src="assets/cat.jpg" alt="Happy pet relocation" style="width: 100%; max-width: 520px; min-height: 320px; height: 100%; border-radius: 0 12px 12px 0; display: block; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+
+        <style>
+        @media (max-width: 600px) {
+          .pm-flex-row {
+            flex-direction: column !important;
+            gap: 18px !important;
+          }
+          .pm-image-col {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-bottom: 12px;
+          }
+          .pm-image-col img {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+          }
+        }
+        </style>
+
+        <div class="services-cards-container">
+            <!-- Card 1 -->
+            <div class="service-card" style="border: 2px solid #FFD700; box-shadow: 0 8px 32px rgba(255,215,0,0.10); background: #fffbe7;">
+                <div class="card-content">
+                    <div class="card-top">
+                        <img src="assets/dog.jpg" alt="Pet Relocation by Train" class="card-image" />
+                        <div style="margin-top: 10px; margin-bottom: 8px;">
+                            <span style="display: block; color: #8B008B; font-size: 1.18rem; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 2px;"><b>Domestic Relocation</b></span>
+                        </div>
+                        <p class="card-text" style="color: #775700; font-size: 1.05rem; margin-top: 8px;">"Relocating with your pet? We ensure a seamless, stress-free move with expert care and comfort for your furry companion. Trust our specialized pet relocation services to make every transition safe, smooth, and worry-free."</p>
+                    </div>
+                    <button class="card-button quote-btn">GET QUOTE</button>
+                </div>
+            </div>
+
+            
+            <!-- Card 3 -->
+           <div class="service-card" style="border: 2px solid #FFD700; box-shadow: 0 8px 32px rgba(255,215,0,0.10); background: #fffbe7;">
+                <div class="card-content">
+                    <div class="card-top">
+                        <img src="assets/air.jpg" alt="Pet Relocation by Train" class="card-image" />
+                        <div style="margin-top: 10px; margin-bottom: 8px;">
+                            <span style="display: block; color: #8B008B; font-size: 1.18rem; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 2px;"><b>International Relocation</b></span>
+                        </div>
+                        <p class="card-text" style="color: #775700; font-size: 1.05rem; margin-top: 8px;">"Moving abroad with your pet? Our international pet relocation service handles everything—from documentation to doorstep delivery—ensuring your companion travels safely, comfortably, and in full compliance with global regulations. Trust us to make borders feel seamless."</p>
+                    </div>
+                    <button class="card-button quote-btn">GET QUOTE</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px auto; max-width: 1200px; padding: 0 20px;">
+            <h2 style="color: #ffffff; font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Pet Relocation in India: Your Complete Guide to a Safe and Stress-Free Journey</h2>
+            <p style="font-size: 1.1rem; color: #ffffff; text-align: center; margin-bottom: 2rem; font-style: italic;">Moving Your Pet with Moveroo – Because They're Family Too</p>
+            
+            <div style="background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #775700;">Relocating your home is a big change—but moving with your beloved pet? That's a responsibility we understand deeply. Whether it's a dog, cat, rabbit, or another furry (or feathered) friend, Moveroo ensures that your pet's journey is safe, comfortable, and fully compliant with all legal and health regulations.</p>
+            </div>
+        </div>
+
+        <section style="margin: 40px auto; max-width: 1000px; padding: 0 20px; color: #ad1c1c; line-height: 1.7;">
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Why Pet Relocation Needs Extra Care</h3>
+            <p style="color: #ffffff;">Transporting your pet isn't just about booking a ticket and packing a crate. From obtaining the right permissions to ensuring your pet is healthy for the journey, the relocation process involves important legal and medical preparations—especially when moving across Indian states or to another country.</p>
+            <p style="color: #ffffff;">That's where we step in, making the process hassle-free for pet parents by managing the paperwork, logistics, and emotional comfort of your pet.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">What Documents Do You Need for Pet Relocation in India?</h3>
+            <p style="color: #ffffff;">To legally and safely relocate your pet, you'll need to arrange the following:</p>
+            <ul style="margin: 0 0 1.5rem 20px; padding: 0;">
+                <li style="margin-bottom: 8px; color: #ffffff;">Updated vaccination certificates (Rabies, DHPPi, FVRCP, etc.)</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">A health fitness certificate from a certified veterinarian</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Microchip registration (mandatory for most international travel)</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Pet Travel NOC (No Objection Certificate) from the Animal Quarantine and Certification Service (AQCS)</li>
+                <li style="color: #ffffff;">Import/export permits (for international relocation)</li>
+            </ul>
+            <p style="color: #ffffff;">Moveroo assists you through each step, ensuring you have both digital and printed copies of all necessary documents ready for inspections.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Understanding the Pet Travel NOC in India</h3>
+            <p style="color: #ffffff;">The Pet Travel NOC is one of the most essential documents for pet relocation. Issued by AQCS, this certificate confirms your pet is fit to travel and has cleared all health checks.</p>
+            <p style="color: #ffffff;">At Moveroo, we can handle the NOC application process on your behalf, saving you from the hassle of multiple appointments and follow-ups.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Pet-Friendly Airlines in India: What Are Your Options?</h3>
+            <p style="color: #ffffff;">Different airlines have different pet policies. Some of the popular pet-friendly airlines in India include:</p>
+            <ul style="margin: 0 0 1.5rem 20px; padding: 0;">
+                <li style="margin-bottom: 8px; color: #ffffff;"><strong style="color: #ffca1b;">Air India</strong> – Allows pets in-cabin (for small pets) and cargo.</li>
+                <li style="margin-bottom: 8px; color: #ffffff;"><strong style="color: #ffca1b;">Vistara</strong> – Permits small pets in-cabin on select routes.</li>
+                <li style="color: #ffffff;"><strong style="color: #ffca1b;">SpiceJet</strong> – Offers pet relocation in cargo.</li>
+            </ul>
+            <p style="color: #ffffff;">We'll help you choose the right airline, ensuring your pet's comfort, safety, and compliance with weight and crate size regulations.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Preparing Your Pet: Health Checks and Vaccines</h3>
+            <p style="color: #ffffff;">Before your pet travels, they must undergo a complete health checkup. Key requirements include:</p>
+            <ul style="margin: 0 0 1.5rem 20px; padding: 0;">
+                <li style="margin-bottom: 8px; color: #ffffff;">Rabies vaccine (at least 30 days before departure)</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Core vaccinations</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Deworming (within 7 days of travel)</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">A "fit-to-fly" certificate</li>
+                <li style="color: #ffffff;">Microchipping for international travel</li>
+            </ul>
+            <p style="color: #ffffff;">Our team helps coordinate these vet visits and ensures your pet meets the travel health standards.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Breed-Specific Travel Restrictions to Keep in Mind</h3>
+            <p style="color: #ffffff;">Certain breeds, especially brachycephalic (snub-nosed) dogs like Pugs, Bulldogs, and Shih Tzus, may face travel restrictions due to breathing concerns. Some countries and airlines also limit transport of specific dog breeds considered aggressive or high-risk.</p>
+            <p style="color: #ffffff;">Moveroo will help you navigate these breed-specific travel rules and find the safest travel options.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Will My Pet Be Quarantined?</h3>
+            <p style="color: #ffffff;">If you're moving your pet internationally, some countries and airports require an animal quarantine process during entry or exit. Our team ensures your documentation is in order to avoid unnecessary delays and reduce the chances of extended quarantine stays.</p>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Keeping Your Pet Emotionally Comfortable During Relocation</h3>
+            <p style="color: #ffffff;">Beyond logistics, your pet's emotional well-being matters too. Here's how we help prepare your pet for the move:</p>
+            <ul style="margin: 0 0 1.5rem 20px; padding: 0;">
+                <li style="margin-bottom: 8px; color: #ffffff;">Recommend gradual crate training before the journey</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Suggest practice rides to mimic travel</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Encourage keeping familiar toys and blankets during transit</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Advise sticking to regular feeding and bathroom schedules</li>
+            </ul>
+            <p style="color: #ffffff;">The goal? A calm, secure, and happy pet during travel.</p>
+            
+            <div style="margin: 2rem 0; text-align: center;">
+                <img src="assets/pet.jpg" alt="Happy pet during travel" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2.5rem 0;">
+                <!-- Left Column -->
+                <div>
+                    <h3 style="color: #ffca1b; margin: 0 0 1rem; font-size: 1.4rem;">Domestic vs. International Pet Relocation</h3>
+                    <p style="color: #ffffff;">Relocating your pet within India is usually simpler, while international moves require more paperwork and coordination. In both cases, we handle:</p>
+                    <ul style="margin: 1rem 0 1rem 1.25rem; padding: 0;">
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Airline-compliant travel crates</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Veterinary checks and certificates</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Travel NOCs</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Coordination with pet-friendly airlines</li>
+                    </ul>
+                    <p style="color: #ffffff;">For international relocation, we also manage customs documentation, destination country import rules, and post-arrival requirements.</p>
+                </div>
+
+                <!-- Right Column -->
+                <div>
+                    <h3 style="color: #ffca1b; margin: 0 0 1rem; font-size: 1.4rem;">Why Choose Moveroo?</h3>
+                    <p style="color: #ffffff;">Managing this entire process alone can be time-consuming and stressful. With Moveroo, you get a partner who:</p>
+                    <ul style="margin: 1rem 0 1rem 1.25rem; padding: 0;">
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Arranges vet appointments and certifications</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Handles NOC and AQCS documentation</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Books flights with the right airline</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Provides IATA-compliant travel crates</li>
+                        <li style="margin-bottom: 0.5rem; color: #ffffff;">Manages airport and customs clearance</li>
+                        <li style="color: #ffffff;">Offers end-to-end relocation support</li>
+                    </ul>
+                    <p style="color: #ffffff;">We care for your pets as if they were our own.</p>
+                </div>
+            </div>
+            
+            <!-- Responsive adjustment for mobile -->
+            <style>
+                @media (max-width: 768px) {
+                    .two-column-layout {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+
+            <h3 style="color: #ffca1b; margin: 2.5rem 0 1rem; font-size: 1.4rem;">Pet Relocation Costs in India</h3>
+            <p style="color: #ffffff;">Pet relocation costs vary depending on the:</p>
+            <ul style="margin: 0 0 1.5rem 20px; padding: 0;">
+                <li style="margin-bottom: 8px; color: #ffffff;">Destination (domestic or international)</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Pet's size and breed</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Mode of travel (cabin or cargo)</li>
+                <li style="margin-bottom: 8px; color: #ffffff;">Documentation and quarantine requirements</li>
+                <li style="color: #ffffff;">Crate and handling services</li>
+            </ul>
+            
+            <h4 style="color: #8fbfff; margin: 1.5rem 0 1rem; font-size: 1.2rem;">Average Cost of Pet Relocation in India</h4>
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <div style="display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 1rem; padding-bottom: 1rem; -webkit-overflow-scrolling: touch; -ms-overflow-style: -ms-autohiding-scrollbar; scrollbar-width: none;">
+                    <div style="flex: 0 0 220px; background: white; padding: 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <h5 style="color: #2a5d9f; margin: 0 0 0.75rem 0; font-size: 1.1rem;">By Road</h5>
+                        <p style="font-size: 1.25rem; color: #28a745; font-weight: 600; margin: 0 0 0.5rem 0; line-height: 1.3;">₹20,000 - ₹50,000</p>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0;">Door-to-door service with climate control</p>
+                    </div>
+                    <div style="flex: 0 0 220px; background: white; padding: 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <h5 style="color: #2a5d9f; margin: 0 0 0.75rem 0; font-size: 1.1rem;">By Train</h5>
+                        <p style="font-size: 1.25rem; color: #28a745; font-weight: 600; margin: 0 0 0.5rem 0; line-height: 1.3;">₹14,000 - ₹35,000</p>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0;">With dedicated pet compartments</p>
+                    </div>
+                    <div style="flex: 0 0 220px; background: white; padding: 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <h5 style="color: #2a5d9f; margin: 0 0 0.75rem 0; font-size: 1.1rem;">By Air (Domestic)</h5>
+                        <p style="font-size: 1.25rem; color: #28a745; font-weight: 600; margin: 0 0 0.5rem 0; line-height: 1.3;">₹20,000 - ₹60,000</p>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0;">In-cabin or cargo options available</p>
+                    </div>
+                    <div style="flex: 0 0 220px; background: white; padding: 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <h5 style="color: #2a5d9f; margin: 0 0 0.75rem 0; font-size: 1.1rem;">International</h5>
+                        <p style="font-size: 1.25rem; color: #28a745; font-weight: 600; margin: 0 0 0.5rem 0; line-height: 1.3;">₹1.5L - ₹4L</p>
+                        <p style="font-size: 0.9rem; color: #ffffff; margin: 0;">Including documentation, flights, and quarantine</p>
+                    </div>
+                </div>
+                <p style="font-size: 1.2rem; color: #c70000; margin: 1.5rem 0 0 0; text-align: center; font-style: italic;">
+                    *Prices are approximate and may vary based on pet size, route, and specific requirements.
+                </p>
+            </div>
+            
+            <p style="color: #fff;">For a personalised quote, reach out to the Moveroo team. We'll break down all the costs upfront—no surprises, just clear, honest guidance.</p>
+
+            <div style="margin: 3rem 0; padding: 1.5rem; background: #faf8f8; border-left: 4px solid #ffffff; border-radius: 4px;">
+                <h4 style="color: #2a5d9f; margin: 0 0 1rem; font-size: 1.2rem;">Quick Checklist: Pet Relocation in India</h4>
+                <ul style="list-style-type: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 8px;">
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Microchip your pet (if needed)</span>
+                    </li>
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Complete all vaccinations</span>
+                    </li>
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Obtain a fit-to-fly certificate</span>
+                    </li>
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Apply for the Pet Travel NOC</span>
+                    </li>
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Select a pet-friendly airline</span>
+                    </li>
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Arrange an airline-approved crate</span>
+                    </li>
+                    <li style="padding: 5px 0; display: flex; align-items: center;">
+                        <span style="color: #28a745; font-weight: bold; margin-right: 10px;">✓</span>
+                        <span>Keep copies of all documents ready</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin: 4rem 0; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 8px;">
+                <h3 style="color: #C71585; margin: 0 0 1.2rem; font-size: 1.6rem;">Because Your Pet Deserves the Best Journey</h3>
+                <p style="font-size: 1.1rem; margin: 0; color: #444;">At Moveroo, we believe that your pets aren't cargo—they're family. With our expertise in pet relocation across India and beyond, we ensure your furry companion gets the same care, attention, and love they're used to at home.</p>
+            </div>
+        </section>
+    </main>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="max-width: 800px; margin: 40px auto; padding: 20px; background: #fff8f8; border-left: 4px solid #ff6b6b; border-radius: 4px;">
+        <h3 style="color: #d32f2f; margin-bottom: 15px;">Important Notice</h3>
+        <p style="color: #555; line-height: 1.6; margin: 0;">
+            <strong>Disclaimer:</strong> Moveroo is not involved in the sale or purchase of pets. We provide pet relocation services only. 
+            If you encounter any individual or organization claiming to represent Moveroo for pet sales, please report it immediately to 
+            <a href="managingdirector@saranitysolutions.com" style="color: #2a5d9f; text-decoration: underline;">managingdirector@saranitysolutions.com</a>. We take such matters seriously and appreciate your cooperation in helping us maintain ethical business practices.
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="js/quote-popup.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moveroo. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
+</a>
+<style>
+#whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 99999;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+#whatsapp-float:hover {
+    box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+    transform: scale(1.08);
+    background: #1ebe57;
+}
+#whatsapp-float img {
+    display: block;
+}
+</style>
+</body>
+</html>

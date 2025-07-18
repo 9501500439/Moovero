@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office/Workspace Packing and Moving | Moveroo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f8e5ff; /* Slightly darker magenta background */
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Logo Styling */
+        .logo img {
+            max-height: 30px;
+            width: auto;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .services-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 60px auto 100px;
+            align-items: stretch;
+        }
+        .service-card {
+            background: #f8e5ff; /* Slightly darker magenta background */ /* Light magenta background */ /* Keep cards white for contrast */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #f0f0f0;
+            padding: 24px 18px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 520px;
+            height: auto;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 100%;
+        }
+        .card-top {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 350px;
+        }
+        .card-image {
+            width: 180px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        .card-title {
+            margin: 0 0 10px;
+            text-align: center;
+            width: 100%;
+            font-size: 18px;
+        }
+        .card-subtitle {
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+            width: 100%;
+            font-size: 14px;
+            color: #555;
+        }
+        .card-text {
+            margin: 0;
+            font-size: 15px;
+            text-align: center;
+            width: 100%;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .card-button {
+            background: #ffe400;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
+            width: fit-content;
+            align-self: center;
+            transition: background 0.3s ease;
+        }
+        .card-button:hover {
+            background: #ffd700;
+        }
+    @media (max-width: 600px) {
+        .services-cards-container {
+            flex-direction: column;
+            gap: 18px;
+            margin: 30px auto 40px;
+            padding: 0 8px;
+        }
+        .service-card {
+            max-width: 100%;
+            min-height: unset;
+            padding: 16px 8px;
+        }
+        .card-top {
+            min-height: unset;
+            margin-bottom: 12px;
+        }
+        .card-title {
+            font-size: 1.1rem;
+        }
+        .card-subtitle {
+            font-size: 0.98rem;
+        }
+        .card-text {
+            font-size: 0.98rem;
+        }
+        .card-button {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="household.html#quote" class="quote-btn">Get a Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+        </div>
+    </div>
+   
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <!-- Main Heading Card -->
+            <div class="card" style="background: #f8e5ff; /* Slightly darker magenta background */ border-radius: 12px; padding: 40px; margin: 30px 0; box-shadow: 0 5px 25px rgba(0,0,0,0.05);">
+                <a href="index.html#services" class="back-button" style="display: inline-flex; align-items: center; color: #6c757d; text-decoration: none; margin-bottom: 20px; font-weight: 500;">
+                    <span style="margin-right: 8px;">←</span> Back to Services
+                </a>
+                <h1 style="color: #8B008B; margin: 0 0 20px 0; font-size: 2.2rem; line-height: 1.3;">Household Packing and Moving</h1>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #495057; margin: 0 0 30px 0;">The complete process of safely packing, transporting, and unpacking household items when shifting from one home to another. Our professional team ensures a stress-free moving experience with attention to every detail.</p>
+            </div>
+
+            <!-- Features Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+                <!-- Features Card -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-left: 4px solid #8B008B;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: #f9e6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-home" style="font-size: 1.5rem; color: #8B008B;"></i>
+                        </div>
+                        <h3 style="margin: 0; color: #8B008B; font-size: 1.4rem;">Your Home, Our Care</h3>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #f0f0f0;">
+                            <span style="color: #ffd700; margin-right: 12px; font-size: 1.2rem;">•</span>
+                            <span>Fragile-safe wrapping (glassware, electronics, décor)</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #f0f0f0;">
+                            <span style="color: #ffd700; margin-right: 12px; font-size: 1.2rem;">•</span>
+                            <span>Furniture dismantle & reassembly</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start; border-bottom: 1px solid #f0f0f0;">
+                            <span style="color: #ffd700; margin-right: 12px; font-size: 1.2rem;">•</span>
+                            <span>Organized labeling & tracking</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
+                            <span style="color: #ffd700; margin-right: 12px; font-size: 1.2rem;">•</span>
+                            <span>Full unpacking & setup service</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Image Card -->
+                <div class="image-card" style="border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); height: 100%;">
+                    <div style="position: relative; padding-top: 66.67%;">
+                        <img src="assets/house.jpg" alt="Professional moving services" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 25px; background: white;">
+                        <h3 style="margin: 0 0 15px 0; color: #8B008B; font-size: 1.3rem;">Why Choose Us?</h3>
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <span style="color: #28a745; margin-right: 10px; font-size: 1.2rem;">✓</span>
+                            <span>Experienced Professionals</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <span style="color: #28a745; margin-right: 10px; font-size: 1.2rem;">✓</span>
+                            <span>Fully Insured Services</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <span style="color: #28a745; margin-right: 10px; font-size: 1.2rem;">✓</span>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eco-Friendly Card -->
+                <div class="eco-card" style="background: linear-gradient(135deg, #f9e6ff, #f0ccff); border-radius: 12px; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="background: #8B008B; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-leaf" style="color: white; font-size: 1.5rem;"></i>
+                    </div>
+                    <h3 style="color: #8B008B; margin: 0 0 15px 0; font-size: 1.4rem;">Eco-Friendly Packing</h3>
+                    <p style="color: #4B0082; margin: 0; line-height: 1.6;">We're committed to sustainability with our eco-friendly packing options that protect both your belongings and the environment.</p>
+                    <ul style="list-style: none; padding: 0; margin: 20px 0 0 0;">
+                        <li style="padding: 5px 0; display: flex; align-items: center;">
+                            <span style="color: #8B008B; margin-right: 8px;">✓</span>
+                            <span>Biodegradable packing materials</span>
+                        </li>
+                        <li style="padding: 5px 0; display: flex; align-items: center;">
+                            <span style="color: #8B008B; margin-right: 8px;">✓</span>
+                            <span>Reusable moving boxes</span>
+                        </li>
+                        <li style="padding: 5px 0; display: flex; align-items: center;">
+                            <span style="color: #8B008B; margin-right: 8px;">✓</span>
+                            <span>Eco-conscious disposal</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin: 28px 0 0 0;">
+                    <a href="#contact" class="card-button quote-btn">GET A QUOTE</a>
+            </div>
+                </div>
+        </div>
+        </div>
+    </div>
+
+    <style>
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 15px;
+        }
+        
+        /* Single column layout for all sections */
+        .pm-flex-row, 
+        .features-grid,
+        .pricing-container > div {
+            flex-direction: column;
+        }
+        
+        /* Card adjustments */
+        .card {
+            margin: 15px 0 !important;
+            padding: 20px 15px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        /* Read More functionality */
+        .read-more-content {
+            display: none;
+        }
+        
+        .read-more-content.expanded {
+            display: block;
+        }
+        
+        .read-more-btn {
+            color: #8B008B;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        .read-more-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
+        
+        /* Table adjustments */
+        .pricing-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Hide decorative elements on mobile */
+        .desktop-only {
+            display: none;
+        }
+        
+        /* Adjust font sizes */
+        h1 { font-size: 1.8rem !important; }
+        h2 { font-size: 1.5rem !important; }
+        h3 { font-size: 1.3rem !important; }
+        p, li { font-size: 1rem !important; }
+    }
+    
+    @media (max-width: 600px) {
+      .pm-flex-row {
+        flex-direction: column !important;
+        gap: 18px !important;
+      }
+      .pm-image-col {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 12px;
+      }
+      .pm-image-col img {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+      }
+    }
+    </style>
+    </div>
+
+   
+
+    <script src="script.js"></script>
+    <script src="js/quote-popup.js"></script>
+    <script>
+        // Sticky header functionality
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                // Scrolling up
+                header.classList.remove('hidden');
+                header.classList.add('visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+
+    <!-- Why Choose Us -->
+    <div class="card" id="services" style="background: #f9f5ff; border-radius: 12px; padding: 40px 20px; margin: 30px auto; box-shadow: 0 5px 25px rgba(0,0,0,0.05); max-width: 100%;">
+        <div style="width: 100%; max-width: 1000px; margin: 0 auto; text-align: center; padding: 0 15px;">
+            <h2 style="color: #6A0DAD; margin: 0 0 15px 0; font-size: 2rem; line-height: 1.3; font-weight: 700; position: relative; display: inline-block;">
+                <span style="position: relative; z-index: 1;">Why Choose Professional Relocation Services?</span>
+                <span style="position: absolute; bottom: 5px; left: 0; width: 100%; height: 8px; background: rgba(106, 13, 173, 0.2); z-index: 0; border-radius: 4px;"></span>
+            </h2>
+            <div class="read-more-wrapper">
+                <p style="font-size: 1.1rem; color: #555; margin: 20px auto; line-height: 1.7; max-width: 800px;">
+                    Moving your office or home is a significant undertaking that requires careful planning and execution. Professional relocation services ensure a smooth transition, minimize downtime, and protect your valuable assets.
+                    <span class="read-more-content" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0d0f0;">
+                        Our team of experts handles every aspect of your move, from packing and transportation to setup at your new location. We use high-quality materials and proven techniques to ensure your belongings arrive safely. With our professional services, you can focus on your business or family while we take care of the logistics.
+                    </span>
+                </p>
+                <button class="read-more-btn" onclick="toggleReadMore(this)" style="background: #6A0DAD; color: white; border: none; padding: 10px 25px; border-radius: 30px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; margin: 0 auto; transition: all 0.3s ease;">
+                    <span>Read More</span>
+                    <i class="fas fa-chevron-down" style="margin-left: 8px; font-size: 0.9em; transition: transform 0.3s ease;"></i>
+                </button>
+            </div>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 0 auto 50px; max-width: 1200px; width: 100%; padding: 0 20px;">
+            <!-- Card 1 -->
+            <div style="background: white; border-radius: 12px; padding: 35px 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid #8B008B; transition: transform 0.3s ease; max-width: 350px; width: 100%;">
+                <div style="width: 70px; height: 70px; background: #f9e6ff; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; transition: all 0.3s ease;">
+                    <i class="fas fa-boxes" style="font-size: 2rem; color: #8B008B; transition: transform 0.3s ease;"></i>
+                </div>
+                <h3 style="color: #8B008B; text-align: center; margin: 0 0 15px 0; font-size: 1.4rem; font-weight: 600;">Expert Packing</h3>
+                <p style="color: #555; text-align: center; margin: 0; line-height: 1.7; font-size: 1.05rem; max-width: 300px; margin: 0 auto;">Careful dismantling, packing, and reinstallation by trained professionals who treat your belongings with the utmost care.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div style="background: white; border-radius: 12px; padding: 35px 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid #8B008B; transition: transform 0.3s ease; max-width: 350px; width: 100%;">
+                <div style="width: 70px; height: 70px; background: #f9e6ff; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; transition: all 0.3s ease;">
+                    <i class="fas fa-shield-alt" style="font-size: 2rem; color: #8B008B; transition: transform 0.3s ease;"></i>
+                </div>
+                <h3 style="color: #8B008B; text-align: center; margin: 0 0 15px 0; font-size: 1.4rem; font-weight: 600;">Safe Handling</h3>
+                <p style="color: #555; text-align: center; margin: 0; line-height: 1.7; font-size: 1.05rem; max-width: 300px; margin: 0 auto;">Safe loading/unloading with trained labor and proper equipment to ensure your items are protected throughout the move.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div style="background: white; border-radius: 12px; padding: 35px 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid #8B008B; transition: transform 0.3s ease; max-width: 350px; width: 100%;">
+                <div style="width: 70px; height: 70px; background: #f9e6ff; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; transition: all 0.3s ease;">
+                    <i class="fas fa-clock" style="font-size: 2rem; color: #8B008B; transition: transform 0.3s ease;"></i>
+                </div>
+                <h3 style="color: #8B008B; text-align: center; margin: 0 0 15px 0; font-size: 1.4rem; font-weight: 600;">On-Time Service</h3>
+                <p style="color: #555; text-align: center; margin: 0; line-height: 1.7; font-size: 1.05rem; max-width: 300px; margin: 0 auto;">Timely pickup and delivery with real-time tracking so you always know the status of your belongings.</p>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 0 auto; max-width: 900px; width: 100%; padding: 0 20px;">
+            <!-- Card 4 -->
+            <div style="background: white; border-radius: 12px; padding: 35px 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid #8B008B; transition: transform 0.3s ease; max-width: 350px; width: 100%;">
+                <div style="width: 70px; height: 70px; background: #f9e6ff; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; transition: all 0.3s ease;">
+                    <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #8B008B; transition: transform 0.3s ease;"></i>
+                </div>
+                <h3 style="color: #8B008B; text-align: center; margin: 0 0 15px 0; font-size: 1.4rem; font-weight: 600;">Live Tracking</h3>
+                <p style="color: #555; text-align: center; margin: 0; line-height: 1.7; font-size: 1.05rem; max-width: 300px; margin: 0 auto;">Real-time GPS tracking and updates so you're always informed about your shipment's location and status.</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div style="background: white; border-radius: 12px; padding: 35px 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid #8B008B; transition: transform 0.3s ease; max-width: 350px; width: 100%;">
+                <div style="width: 70px; height: 70px; background: #f9e6ff; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; transition: all 0.3s ease;">
+                    <i class="fas fa-rupee-sign" style="font-size: 2rem; color: #8B008B; transition: transform 0.3s ease;"></i>
+                </div>
+                <h3 style="color: #8B008B; text-align: center; margin: 0 0 15px 0; font-size: 1.4rem; font-weight: 600;">Transparent Pricing</h3>
+                <p style="color: #555; text-align: center; margin: 0; line-height: 1.7; font-size: 1.05rem; max-width: 300px; margin: 0 auto;">No hidden charges with fully transparent pricing and optional transit insurance for complete peace of mind.</p>
+            </div>
+        </div>
+
+        <p style="margin: 60px auto 0; font-style: italic; text-align: center; color: #8B008B; font-weight: 500; font-size: 1.25rem; max-width: 800px; width: 100%; padding: 0 20px; position: relative; font-family: 'Playfair Display', serif; line-height: 1.6;">
+            <span style="display: inline-block; position: relative;">
+                <span style="position: absolute; left: -30px; top: 50%; transform: translateY(-50%); color: #8B008B; font-size: 1.8rem;">"</span>
+                We don't just shift goods—we shift lives and businesses, responsibly.
+                <span style="position: absolute; right: -30px; bottom: 0; color: #8B008B; font-size: 1.8rem;">"</span>
+            </span>
+        </p>
+    </div>
+
+    <!-- Office/Workspace Moving Solutions -->
+    <div class="card" style="background: #f8e5ff; border-radius: 12px; padding: 50px 20px; margin: 30px auto; box-shadow: 0 5px 25px rgba(0,0,0,0.05); max-width: 1200px; width: 95%;">
+        <!-- Header Section -->
+        <div class="office-moving-header" style="text-align: center; margin-bottom: 50px;">
+            <h2 style="color: #6A0DAD; margin: 0 0 15px 0; font-size: 2.5rem; line-height: 1.2; font-weight: 700; position: relative; display: inline-block;">
+                <span style="position: relative; z-index: 1;">Office & Workspace Moving Solutions</span>
+                <span style="position: absolute; bottom: 5px; left: 0; width: 100%; height: 8px; background: rgba(106, 13, 173, 0.2); z-index: 0; border-radius: 4px;"></span>
+            </h2>
+            <p style="font-size: 1.2rem; color: #555; max-width: 800px; margin: 20px auto 0; line-height: 1.7;">
+                Minimize business disruption with our professional office relocation services designed for a seamless transition
+            </p>
+        </div>
+
+        <div class="office-moving-content" style="margin-bottom: 40px;">
+            <div class="office-intro" style="max-width: 800px; margin: 0 auto 40px; text-align: center;">
+                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin-bottom: 20px;">
+                    Our expert team works with you to plan, coordinate, and execute the move efficiently—so your business operations stay on track without disruption. We understand that every business has unique needs, which is why we offer customized moving solutions tailored to your specific requirements.
+                </p>
+                <button onclick="toggleReadMore(this)" class="read-more-btn" style="background: #6A0DAD; color: white; border: none; padding: 12px 30px; border-radius: 30px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; transition: all 0.3s ease; margin-top: 10px;">
+                    <span>Read More</span>
+                    <i class="fas fa-chevron-down" style="margin-left: 10px; font-size: 0.9em; transition: transform 0.3s ease;"></i>
+                </button>
+                <div class="read-more-content" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0d0f0;">
+                    <p style="font-size: 1.05rem; color: #555; line-height: 1.7; margin-bottom: 15px;">
+                        Our team is trained to handle all types of office environments, from small startups to large corporate offices, ensuring a seamless transition to your new workspace. We provide comprehensive project management to ensure every detail is handled with care.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Service 1 -->
+                <div class="service-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #8B5FEB;">
+                    <div style="width: 60px; height: 60px; background: #F0E5FF; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-couch" style="font-size: 1.8rem; color: #6A0DAD;"></i>
+                    </div>
+                    <h3 style="color: #333; margin: 0 0 15px 0; font-size: 1.3rem; text-align: center;">Furniture Moving</h3>
+                    <p style="color: #666; font-size: 1rem; line-height: 1.6; margin: 0; text-align: center;">
+                        Safe handling of all office furniture with care and precision, including disassembly and reassembly.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #6C5CE7;">
+                    <div style="width: 60px; height: 60px; background: #EDE8FF; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-laptop" style="font-size: 1.8rem; color: #5D4EFF;"></i>
+                    </div>
+                    <h3 style="color: #333; margin: 0 0 15px 0; font-size: 1.3rem; text-align: center;">IT Relocation</h3>
+                    <p style="color: #666; font-size: 1rem; line-height: 1.6; margin: 0; text-align: center;">
+                        Expert handling of computers, servers, and network equipment with proper data protection measures.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #00B894;">
+                    <div style="width: 60px; height: 60px; background: #E8F8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-file-alt" style="font-size: 1.8rem; color: #00B894;"></i>
+                    </div>
+                    <h3 style="color: #333; margin: 0 0 15px 0; font-size: 1.3rem; text-align: center;">Document Archiving</h3>
+                    <p style="color: #666; font-size: 1rem; line-height: 1.6; margin: 0; text-align: center;">
+                        Secure packing, transport, and organization of important documents and files.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #0984E3;">
+                    <div style="width: 60px; height: 60px; background: #E3F2FD; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-desktop" style="font-size: 1.8rem; color: #0984E3;"></i>
+                    </div>
+                    <h3 style="color: #333; margin: 0 0 15px 0; font-size: 1.3rem; text-align: center;">Workstation Setup</h3>
+                    <p style="color: #666; font-size: 1rem; line-height: 1.6; margin: 0; text-align: center;">
+                        Complete setup of workstations, including computer assembly, monitor setup, and cable management.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #6C5CE7;">
+                    <div style="width: 60px; height: 60px; background: #F0E6FF; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-moon" style="font-size: 1.8rem; color: #6C5CE7;"></i>
+                    </div>
+                    <h3 style="color: #333; margin: 0 0 15px 0; font-size: 1.3rem; text-align: center;">After-Hours Moving</h3>
+                    <p style="color: #666; font-size: 1rem; line-height: 1.6; margin: 0; text-align: center;">
+                        Minimize business disruption with our after-hours and weekend moving services.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card" style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #00B894;">
+                    <div style="width: 60px; height: 60px; background: #E8F8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-truck" style="font-size: 1.8rem; color: #00B894;"></i>
+                    </div>
+                    <h3 style="color: #333; margin: 0 0 15px 0; font-size: 1.3rem; text-align: center;">Complete Logistics</h3>
+                    <p style="color: #666; font-size: 1rem; line-height: 1.6; margin: 0; text-align: center;">
+                        End-to-end logistics and transportation solutions for a stress-free office move.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section" style="text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #6A0DAD 0%, #8B5FEB 100%); border-radius: 12px; color: white;">
+            <h3 style="font-size: 1.8rem; margin: 0 0 15px 0; color: white;">Ready to Move Your Office?</h3>
+            <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; line-height: 1.6; color: rgba(255,255,255,0.9);">
+                Let's discuss how we can make your office move smooth and efficient. Contact us today for a free consultation and quote.
+            </p>
+            <a href="#contact" style="display: inline-block; background: white; color: #6A0DAD; text-decoration: none; padding: 14px 35px; border-radius: 30px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; margin-top: 10px;">
+                Get Your Free Quote
+            </a>
+        </div>
+
+                            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                <div style="width: 24px; height: 24px; background: #f0d9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: #8B008B; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #444; font-size: 1.05rem;">Shift without shutting down</span>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                <div style="width: 24px; height: 24px; background: #f0d9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: #8B008B; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #444; font-size: 1.05rem;">IT assets & document-sensitive handling</span>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                <div style="width: 24px; height: 24px; background: #f0d9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: #8B008B; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #444; font-size: 1.05rem;">Coordination with your team</span>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                <div style="width: 24px; height: 24px; background: #f0d9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: #8B008B; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #444; font-size: 1.05rem;">Fast reinstallation at site</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const toggleBtn = document.getElementById('toggleMoreBtn');
+                            const moreServices = document.getElementById('moreServices');
+                            let isExpanded = false;
+                            
+                            toggleBtn.addEventListener('click', function() {
+                                isExpanded = !isExpanded;
+                                moreServices.style.display = isExpanded ? 'grid' : 'none';
+                                toggleBtn.innerHTML = isExpanded 
+                                    ? '<span>View Less</span><i class="fas fa-chevron-up"></i>'
+                                    : '<span>View More Services</span><i class="fas fa-chevron-down"></i>';
+                            });
+                            
+                            // Handle responsive behavior
+                            function handleResize() {
+                                if (window.innerWidth >= 768) {
+                                    moreServices.style.display = 'grid';
+                                    toggleBtn.style.display = 'none';
+                                } else {
+                                    moreServices.style.display = 'none';
+                                    toggleBtn.style.display = 'inline-flex';
+                                    toggleBtn.innerHTML = '<span>View More Services</span><i class="fas fa-chevron-down"></i>';
+                                    isExpanded = false;
+                                }
+                            }
+                            
+                            // Initial check
+                            handleResize();
+                            
+                            // Add resize listener
+                            window.addEventListener('resize', handleResize);
+                        });
+                    </script>
+
+    <!-- Household Relocation -->
+    <div class="card" style="background: #f8e5ff; border-radius: 12px; padding: 40px; margin: 30px 0; box-shadow: 0 5px 25px rgba(0,0,0,0.05);">
+        <h2 style="color: #8B008B; margin: 0 0 20px 0; font-size: 1.8rem; line-height: 1.3;">Household Relocation Services</h2>
+        <p style="font-size: 1.2rem; color: #4B0082; font-weight: 500; margin-bottom: 20px;">Home Shifting Made Easy – From 1RK to Villa</p>
+        <h3 style="color: #8B008B; margin: 30px 0 20px 0; font-size: 1.5rem;">Home Shifting Made Easy – From 1RK to Villa</h3>
+        <p>Moving your home can feel overwhelming—but not with Moveroo. Our trained crew handles everything from packing to unpacking, ensuring nothing is missed, misplaced, or mishandled.</p>
+        
+        <div class="features-grid">
+            <div>
+                <h3 style="color: #8B008B; margin: 20px 0 15px 0; font-size: 1.3rem;">What We Handle:</h3>
+                <ul>
+                    <li>Furniture, beds, wardrobes</li>
+                    <li>Appliances: fridge, AC, washing machines, etc.</li>
+                    <li>Kitchenware and utensils</li>
+                    <li>Electronics, TVs, computers, decor</li>
+                    <li>Clothes, books, toys, documents</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #8B008B; margin: 20px 0 15px 0; font-size: 1.3rem;">Packing Materials Used:</h3>
+                <ul>
+                    <li>5-ply/7-ply cartons</li>
+                    <li>Bubble wraps and foam sheets</li>
+                    <li>Shrink wrap, stretch film</li>
+                    <li>Edge guards for furniture</li>
+                    <li>Wardrobe and crockery boxes</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>Whether it's a local shift or intercity move, we tailor our service based on your home's size, access points (lift or stairs), and special requests.</p>
+    </div>
+
+    <!-- Office Relocation -->
+    <div class="card" style="background: #f8e5ff; /* Slightly darker magenta background */ border-radius: 12px; padding: 40px; margin: 30px 0; box-shadow: 0 5px 25px rgba(0,0,0,0.05);">
+        <h2 style="color: #8B008B; margin: 0 0 20px 0; font-size: 1.8rem; line-height: 1.3;">Office/Workspace Packing and Moving</h2>
+        <p>Moveroo offers specialized office/workspace relocation services designed to minimize downtime and ensure a smooth transition. We handle everything from packing office furniture, IT equipment, and documents to safe transportation and precise setup at the new location. Our expert team works with you to plan, coordinate, and execute the move efficiently—so your business operations stay on track without disruption. Whether it's a small office or a large corporate setup, Moveroo ensures a fast, secure, and organized move from start to finish.</p>
+        
+        <div class="office-move-container">
+            <div class="office-features">
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">•</span>
+                        <div>Shift without shutting down</div>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">•</span>
+                        <div>IT assets & document-sensitive handling</div>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">•</span>
+                        <div>Coordination with your team</div>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">•</span>
+                        <div>Fast reinstallation at site</div>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">•</span>
+                        <div>Goal: Zero downtime, full continuity</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="office-image">
+                <img src="assets/office1.jpg" alt="Professional office moving services" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="#contact" class="btn">GET A QUOTE</a>
+        </div>
+        
+        <p style="text-align: center; margin-top: 20px; font-weight: 600;">Professional office moving services</p>
+    </div>
+
+    <!-- Service Options -->
+    <div class="card" style="background: #f8e5ff; /* Slightly darker magenta background */ border-radius: 12px; padding: 40px; margin: 30px 0; box-shadow: 0 5px 25px rgba(0,0,0,0.05);">
+        <h2 style="color: #8B008B; margin: 0 0 20px 0; font-size: 1.8rem; line-height: 1.3;">Full-Service or Customized Options</h2>
+        <p>At Moveroo, we offer flexible service options:</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <div>Full-Service Packing & Moving</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <div>Only Labour + Vehicle Support</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <div>Fragile Item Handling</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <div>Dismantling & Reassembly</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <div>Unpacking & Rearrangement (on request)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="card" id="pricing" style="background: #fff; border-radius: 12px; padding: 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(139, 0, 139, 0.1); border: 1px solid rgba(139, 0, 139, 0.1);">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="color: #8B008B; margin: 0 0 15px 0; font-size: 2rem; line-height: 1.3; position: relative; display: inline-block;">
+                <span style="position: relative; z-index: 1;">Household & Office Relocation Cost in India</span>
+                <span style="position: absolute; bottom: 5px; left: 0; width: 100%; height: 8px; background: rgba(139, 0, 139, 0.1); z-index: 0; border-radius: 4px;"></span>
+            </h2>
+            <p style="color: #666; font-size: 1.1rem; margin: 15px auto 0; max-width: 700px;">
+                Prices vary based on move size, distance, floors, and service scope
+            </p>
+        </div>
+        
+        <div class="pricing-container" style="background: #fdf5ff; border-radius: 12px; padding: 5px; margin: 30px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+            <div style="overflow-x: auto; padding: 5px;">
+                <table style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 600px;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 18px 20px; text-align: left; background: #8B008B; color: white; font-weight: 600; border-radius: 8px 0 0 0; font-size: 1.05rem;">Move Type</th>
+                            <th style="padding: 18px 20px; text-align: center; background: #8B008B; color: white; font-weight: 600; font-size: 1.05rem;">Local</th>
+                            <th style="padding: 18px 20px; text-align: center; background: #8B008B; color: white; font-weight: 600; border-radius: 0 8px 0 0; font-size: 1.05rem;">Intercity (Avg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; font-weight: 500; background: white;">1RK / 1BHK</td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: white;">
+                                <span style="background: #f0e0ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹2,500 – ₹6,000</span>
+                            </td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: white;">
+                                <span style="background: #e8d5ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹6,000 – ₹12,000</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; font-weight: 500; background: #fcf9ff;">2BHK</td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: #fcf9ff;">
+                                <span style="background: #f0e0ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹4,500 – ₹8,000</span>
+                            </td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: #fcf9ff;">
+                                <span style="background: #e8d5ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹10,000 – ₹18,000</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; font-weight: 500; background: white;">3BHK / 4BHK</td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: white;">
+                                <span style="background: #f0e0ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹6,000 – ₹12,000</span>
+                            </td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: white;">
+                                <span style="background: #e8d5ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹15,000 – ₹25,000</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; font-weight: 500; background: #fcf9ff;">Small Office (5–10 seats)</td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: #fcf9ff;">
+                                <span style="background: #f0e0ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹5,000 – ₹10,000</span>
+                            </td>
+                            <td style="padding: 16px 20px; border-bottom: 1px solid #f0e0ff; text-align: center; background: #fcf9ff;">
+                                <span style="background: #e8d5ff; color: #8B008B; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; display: inline-block;">₹12,000 – ₹20,000</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 20px; font-weight: 600; background: white; border-radius: 0 0 0 8px;">Large Office / Setup</td>
+                            <td colspan="2" style="padding: 16px 20px; text-align: center; background: white; border-radius: 0 0 8px 0;">
+                                <span style="background: linear-gradient(135deg, #8B008B, #a020f0); color: white; padding: 8px 20px; border-radius: 30px; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center;">
+                                    <i class="fas fa-clipboard-list" style="margin-right: 8px;"></i> On-site assessment & Custom Quote
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div style="background: #f9f0ff; border-left: 4px solid #8B008B; padding: 15px 20px; border-radius: 0 8px 8px 0; margin-top: 30px; display: flex; align-items: center;">
+            <i class="fas fa-info-circle" style="color: #8B008B; font-size: 1.2rem; margin-right: 12px; flex-shrink: 0;"></i>
+            <p style="margin: 0; color: #555; font-size: 0.95rem; line-height: 1.5;">
+                <strong>All moves include:</strong> Loading, unloading, packing material, and transit insurance (optional).
+                <a href="#contact" style="color: #8B008B; text-decoration: none; font-weight: 600; margin-left: 10px; white-space: nowrap;">Get a free quote →</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Checklist & Why Choose Us - Side by Side -->
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 30px 0;">
+        <!-- Checklist Card -->
+        <div class="card" style="flex: 1; min-width: 300px; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid rgba(139, 0, 139, 0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                <div style="width: 50px; height: 50px; background: #f9e6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-clipboard-check" style="font-size: 1.5rem; color: #8B008B;"></i>
+                </div>
+                <h3 style="color: #8B008B; margin: 0; font-size: 1.5rem;">Quick Move Checklist</h3>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 12px 0; border-bottom: 1px solid #f0e0ff; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 12px; margin-top: 4px; font-size: 1.1rem;"></i>
+                    <span>Schedule your move 5–7 days in advance</span>
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #f0e0ff; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 12px; margin-top: 4px; font-size: 1.1rem;"></i>
+                    <span>Declutter & separate essentials</span>
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #f0e0ff; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 12px; margin-top: 4px; font-size: 1.1rem;"></i>
+                    <span>Notify society or office building</span>
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #f0e0ff; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 12px; margin-top: 4px; font-size: 1.1rem;"></i>
+                    <span>Back up all digital files (for offices)</span>
+                </li>
+                <li style="padding: 12px 0; display: flex; align-items: center; background: #fdf5ff; margin: 15px -15px -15px; padding: 15px; border-radius: 0 0 10px 10px;">
+                    <i class="fas fa-hand-holding-heart" style="color: #8B008B; margin-right: 12px; font-size: 1.3rem;"></i>
+                    <span style="font-weight: 600; color: #8B008B;">Let Moveroo take care of the rest!</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Why Choose Us Card -->
+        <div class="card" style="flex: 1; min-width: 300px; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid rgba(139, 0, 139, 0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                <div style="width: 50px; height: 50px; background: #f9e6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-star" style="font-size: 1.5rem; color: #8B008B;"></i>
+                </div>
+                <h3 style="color: #8B008B; margin: 0; font-size: 1.5rem;">Why Choose Moveroo?</h3>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;">
+                <div style="background: #fdf5ff; border-radius: 8px; padding: 15px; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 10px; margin-top: 3px; font-size: 1rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 3px;">Experienced Team</div>
+                        <div style="font-size: 0.9rem; color: #666;">Verified & professional staff</div>
+                    </div>
+                </div>
+                <div style="background: #fdf5ff; border-radius: 8px; padding: 15px; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 10px; margin-top: 3px; font-size: 1rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 3px;">Premium Materials</div>
+                        <div style="font-size: 0.9rem; color: #666;">Quality packing supplies</div>
+                    </div>
+                </div>
+                <div style="background: #fdf5ff; border-radius: 8px; padding: 15px; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 10px; margin-top: 3px; font-size: 1rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 3px;">Timely Service</div>
+                        <div style="font-size: 0.9rem; color: #666;">On-time delivery guarantee</div>
+                    </div>
+                </div>
+                <div style="background: #fdf5ff; border-radius: 8px; padding: 15px; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 10px; margin-top: 3px; font-size: 1rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 3px;">No Hidden Costs</div>
+                        <div style="font-size: 0.9rem; color: #666;">Transparent pricing</div>
+                    </div>
+                </div>
+                <div style="background: #fdf5ff; border-radius: 8px; padding: 15px; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 10px; margin-top: 3px; font-size: 1rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 3px;">Expert Coverage</div>
+                        <div style="font-size: 0.9rem; color: #666;">Local & commercial specialists</div>
+                    </div>
+                </div>
+                <div style="background: #fdf5ff; border-radius: 8px; padding: 15px; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="color: #8B008B; margin-right: 10px; margin-top: 3px; font-size: 1rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 3px;">Dedicated Support</div>
+                        <div style="font-size: 0.9rem; color: #666;">Personal move coordinators</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Read More functionality
+        function toggleReadMore(button) {
+            const wrapper = button.closest('.read-more-wrapper');
+            const content = wrapper.querySelector('.read-more-content');
+            const icon = button.querySelector('i');
+            
+            content.classList.toggle('expanded');
+            button.classList.toggle('expanded');
+            
+            if (content.classList.contains('expanded')) {
+                button.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+            } else {
+                button.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+            }
+        }
+        
+        // Initialize read more buttons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Limit paragraph height on mobile
+            const paragraphs = document.querySelectorAll('.read-more-wrapper p');
+            paragraphs.forEach(p => {
+                if (window.innerWidth <= 768) {
+                    p.style.overflow = 'hidden';
+                    p.style.display = '-webkit-box';
+                    p.style.WebkitLineClamp = '3';
+                    p.style.WebkitBoxOrient = 'vertical';
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const readMoreWrappers = document.querySelectorAll('.read-more-wrapper');
+            readMoreWrappers.forEach(wrapper => {
+                const content = wrapper.querySelector('.read-more-content');
+                const button = wrapper.querySelector('.read-more-btn');
+                
+                if (window.innerWidth > 768) {
+                    // Show all content on desktop
+                    content.style.display = 'inline';
+                    button.style.display = 'none';
+                } else {
+                    // On mobile, reset to default state
+                    content.style.display = 'none';
+                    button.style.display = 'inline-flex';
+                    button.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                    button.classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h3 style="color: #8B008B; margin: 30px 0 20px 0; font-size: 1.5rem;">Ready to Move Your Home or Office?</h3>
+        <p class="cta-subtitle">Get a quote now from Moveroo—Your Trusted Relocation Partner</p>
+        <a href="process.html#packing-moving" class="btn btn-lg">The Moveroo Process</a>
+    </section>
+
+    <style>
+        .office-move-container {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+            align-items: flex-start;
+        }
+        
+        .office-features {
+            flex: 1;
+        }
+        
+        .office-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .office-move-container {
+                flex-direction: column;
+            }
+            
+            .office-image {
+                margin-top: 20px;
+                width: 100%;
+            }
+        }
+        
+        .card {
+            background: #f8e5ff; /* Slightly darker magenta background */ /* Light magenta background */ /* Keep cards white for contrast */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-icon {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .cta-title {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .cta-subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #ffc107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-lg {
+            padding: 15px 40px;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+            
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+    </style>
+
+    <script src="script.js"></script>
+    <script src="js/quote-popup.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moveroo. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
+</a>
+<style>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <style>
+        #whatsapp-float {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 99999;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+#whatsapp-float:hover {
+    box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+    transform: scale(1.08);
+    background: #1ebe57;
+}
+#whatsapp-float img {
+    display: block;
+}
+</style>
+</body>
+</html>

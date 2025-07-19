@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moveroo | Professional Moving Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Logo Styling */
+        .logo img {
+            max-height: 30px;
+            width: auto;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Quote Form Styling */
+        .quote-header {
+            background: #0c9608;
+            color: #fff;
+            padding: 24px 20px 16px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .quote-header h2 {
+            margin: 0 0 8px;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .quote-form {
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 24px 20px;
+            margin: 0;
+        }
+        
+        .btn-red {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 14px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-red:hover,
+        .btn-red:focus {
+            background: #b71c1c;
+            box-shadow: 0 4px 16px rgba(211,47,47,0.13);
+        }
+        
+        @media (max-width: 600px) {
+            .quote-header {
+                padding: 16px 8px 10px;
+            }
+            .quote-form {
+                padding: 16px 8px 12px;
+            }
+        }
+    </style>
+    <style>
+    /* Quote Modal Styles */
+.quote-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+.quote-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  max-width: 700px;
+  min-width: 320px;
+  width: 96vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  padding: 0 0 10px 0;
+  animation: quoteModalIn 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.quote-form {
+  background: #fff;
+  border-radius: 0 0 18px 18px;
+  box-shadow: none;
+  padding: 18px 36px 18px 36px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.quote-form .form-group {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.quote-form input[type="text"],
+.quote-form input[type="email"],
+.quote-form input[type="tel"],
+.quote-form select {
+  padding: 10px 14px;
+  border: 1.5px solid #222;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  color: #111;
+  transition: border 0.2s, background 0.2s;
+}
+.quote-form input[type="text"]:focus,
+.quote-form input[type="email"]:focus,
+.quote-form input[type="tel"]:focus,
+.quote-form select:focus {
+  border: 2px solid #000;
+  background: #fafafa;
+}
+.quote-form select {
+  color: #111;
+  font-weight: 500;
+  background: #fff;
+}
+.quote-form .captcha-label {
+  color: #111;
+}
+.quote-form .captcha-code {
+  background: #f5f5f5;
+  color: #000;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  font-size: 1.1em;
+  margin-left: 4px;
+}
+.quote-form .terms-group {
+  font-size: 0.98rem;
+  align-items: center;
+  color: #222;
+}
+.quote-form .terms-group input[type="checkbox"] {
+  accent-color: #111;
+  margin-right: 6px;
+}
+.btn-red {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-red:hover,
+.btn-red:focus {
+  background: #000;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+.btn-block {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .quote-modal-content {
+    max-width: 99vw;
+    min-width: 0;
+  }
+  .quote-form {
+    flex-direction: column;
+    padding: 14px 8px 10px 8px;
+    gap: 12px;
+  }
+  .quote-form .form-group {
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .quote-modal-content {
+    max-width: 99vw;
+    padding: 0 0 8px 0;
+  }
+  .quote-form {
+    padding: 8px 2vw 8px 2vw;
+  }
+  .services-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .service-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    width: 95vw !important;
+    max-width: 500px;
+  }
+  .service-card .card-inner,
+  .service-card .card-front {
+    background: transparent !important;
+  }
+}
+@keyframes quoteModalIn {
+  from { transform: scale(0.95) translateY(30px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+.quote-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #d32f2f;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.quote-modal-close:hover {
+  color: #b71c1c;
+}
+@media (max-width: 600px) {
+  .quote-modal-content {
+    max-width: 99vw;
+    padding: 0 0 8px 0;
+  }
+}
+.service-card {
+  width: 260px;
+  height: 240px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.service-card .card-inner,
+.service-card .card-front {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.service-card .service-icon img {
+  max-width: 150px;
+  max-height: 150px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .service-desc-mobile {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3.2em;
+    position: relative;
+    transition: max-height 0.2s;
+  }
+  .service-desc-mobile.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    max-height: none;
+    overflow: visible;
+  }
+  .service-desc-mobile {
+    margin-bottom: 0 !important;
+  }
+  #desc-toggle {
+    margin-top: 2px;
+    display: inline-block;
+  }
+  .quote-modal-content {
+    max-width: 80vw !important;
+    min-width: 0 !important;
+    width: 80vw !important;
+    min-height: 340px !important;
+    padding: 0 0 1px 0 !important;
+  }
+  .quote-form {
+    padding: 2px 0.5vw 2px 0.5vw !important;
+    font-size: 0.82rem !important;
+    gap: 0 !important;
+  }
+  .quote-form input,
+  .quote-form select {
+    font-size: 0.82rem !important;
+    padding: 3px 5px !important;
+  }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function isMobile() {
+    return window.innerWidth <= 600;
+  }
+  var desc = document.getElementById('service-desc');
+  var toggle = document.getElementById('desc-toggle');
+  if (desc && toggle && isMobile()) {
+    toggle.style.display = 'inline';
+    var expanded = false;
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      expanded = !expanded;
+      if (expanded) {
+        desc.classList.add('expanded');
+        toggle.textContent = 'Show less';
+      } else {
+        desc.classList.remove('expanded');
+        toggle.textContent = 'Show more';
+      }
+    });
+  }
+});
+</script>
+<!-- Quote Modal (hidden by default) -->
+<div id="quote-modal" class="quote-modal-overlay" style="display:none;">
+    <div class="quote-modal-content">
+        <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">&times;</button>
+        <div class="quote-header">
+            <h2>Get a free moving quote</h2>
+            <p>Fill out the form below and our team will get in touch with you soon.</p>
+        </div>
+        <form id="quoteForm" class="quote-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" name="mobile" placeholder="Contact Mobile Number" required pattern="[0-9]{10,15}">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email ID" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="locationFrom" name="locationFrom" placeholder="Location From" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="locationTo" name="locationTo" placeholder="Location To" required>
+            </div>
+            <div class="form-group">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="local">Local Move</option>
+                    <option value="long-distance">Long Distance Move</option>
+                    <option value="senior">Senior Moving</option>
+                    <option value="commercial">Commercial Moving</option>
+                </select>
+            </div>
+            <div class="form-group captcha-group">
+                <label for="captcha" class="captcha-label">Enter the code: <span class="captcha-code">12344</span></label>
+                <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha" required pattern="12344">
+            </div>
+            <div class="form-group terms-group">
+                <label>
+                    <input type="checkbox" id="terms" name="terms" checked required>
+                    I agree to the <a href="terms.html" target="_blank">terms and conditions</a>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-red btn-block">Get My Free Quote</button>
+        </form>
+    </div>
+</div>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="about-page">
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="container">
+                <h1>Who We Are</h1>
+                <p class="subtitle">Your Trusted Relocation Partner</p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content">
+            <div class="container">
+                <div class="about-text">
+                    <p>Moveroo isn't just a logistics service — we're your trusted relocation partner. We combine advanced technology, human empathy, and meticulous execution to ensure every move is seamless, secure, and stress-free. Our mission is to transform the way people experience shifting — making it not just about moving boxes, but about starting new journeys with confidence.</p>
+                    
+                    <p>We believe that every move marks a new chapter, and we're honored to be part of that transition.</p>
+                    
+                    <blockquote>
+                        We're not in the business of boxes. We're in the business of beginnings.
+                    </blockquote>
+                    
+                    <p>Moveroo — A unit of Saranity Solutions Private Limited — was founded with a vision to simplify relocation with innovation, care, and efficiency. Backed by the trusted expertise of Saranity Solutions, Moveroo delivers not only reliable moving services but also a personalized touch that reflects our commitment to excellence in every step of your move.</p>
+                </div>
+
+                <!-- Values Section -->
+                <section class="values-section">
+                    <h2>Our Values</h2>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Efficiency</h3>
+                            <p>Streamlined processes for timely and effective moves</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Reliability</h3>
+                            <p>Consistent, dependable service you can trust</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Care</h3>
+                            <p>Handling your belongings as if they were our own</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>Using technology to enhance your moving experience</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pricing Section -->
+                <section class="pricing-section">
+                    <div class="featured-price-card">
+                        <div class="featured-title">Average Cost of Pet Relocation in India</div>
+                        <div class="featured-price">₹5,000 – ₹20,000</div>
+                    </div>
+                    <h2>Pricing</h2>
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <div class="pricing-icon"><i class="fas fa-motorcycle"></i></div>
+                            <div class="pricing-vertical">
+                                <div class="pricing-title">Bike/Scooter</div>
+                                <div class="pricing-mode">Open Carrier</div>
+                                <div class="pricing-cost">₹3,000 – ₹6,000</div>
+                            </div>
+                        </div>
+                        <div class="pricing-card">
+                            <div class="pricing-icon"><i class="fas fa-car-side"></i></div>
+                            <div class="pricing-vertical">
+                                <div class="pricing-title">Car (Sedan/Hatchback)</div>
+                                <div class="pricing-mode">Open Carrier</div>
+                                <div class="pricing-cost">₹6,000 – ₹12,000</div>
+                            </div>
+                        </div>
+                        <div class="pricing-card">
+                            <div class="pricing-icon"><i class="fas fa-car"></i></div>
+                            <div class="pricing-vertical">
+                                <div class="pricing-title">Car (Luxury/SUV)</div>
+                                <div class="pricing-mode">Enclosed Carrier</div>
+                                <div class="pricing-cost">₹10,000 – ₹25,000</div>
+                            </div>
+                        </div>
+                        <div class="pricing-card">
+                            <div class="pricing-icon"><i class="fas fa-dog"></i></div>
+                            <div class="pricing-vertical">
+                                <div class="pricing-title">Pet Van (Private Ride)</div>
+                                <div class="pricing-mode">AC/Non-AC Option</div>
+                                <div class="pricing-cost">₹5,000 – ₹20,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* About Page Styles */
+        .about-page {
+            padding-top: 80px;
+            background-color: #fff;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, #1a4b8c 0%, #0c2e5c 100%);
+            color: #fff;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .about-hero .subtitle {
+            font-size: 1.5rem;
+            color: #ffffff;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .about-content {
+            padding: 60px 0;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #1a4b8c;
+            border-left: 4px solid #ffd700;
+            padding: 20px 30px;
+            margin: 40px 0;
+            background-color: #f9fafc;
+        }
+
+        .values-section {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .values-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #1a4b8c;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .value-card {
+            background: #fff;
+            padding: 40px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: #1a4b8c;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            color: #1a4b8c;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .value-card p {
+            color: #666;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 60px 0 40px;
+            }
+
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-text {
+                padding: 0 20px;
+                margin-bottom: 50px;
+            }
+
+            blockquote {
+                font-size: 1.2rem;
+                padding: 15px 20px;
+                margin: 30px 0;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 20px;
+            }
+        }
+    </style>
+    <style>
+    /* Featured Price Card Styles */
+    .featured-price-card {
+        max-width: 420px;
+        margin: 0 auto 36px auto;
+        background: #fffbe7;
+        border: 2px solid #ffd700;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(255,215,0,0.08);
+        padding: 32px 18px 24px 18px;
+        text-align: center;
+    }
+    .featured-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1a4b8c;
+        margin-bottom: 12px;
+    }
+    .featured-price {
+        font-size: 2.1rem;
+        font-weight: 800;
+        color: #d32f2f;
+        background: #fff;
+        border-radius: 8px;
+        display: inline-block;
+        padding: 10px 32px;
+        box-shadow: 0 2px 8px rgba(211,47,47,0.07);
+    }
+    @media (max-width: 600px) {
+        .featured-price-card {
+            padding: 18px 6vw 14px 6vw;
+        }
+        .featured-title {
+            font-size: 1.05rem;
+        }
+        .featured-price {
+            font-size: 1.3rem;
+            padding: 7px 12px;
+        }
+    }
+    /* Pricing Section Styles */
+    .pricing-section {
+        text-align: center;
+        margin-top: 80px;
+    }
+    .pricing-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #1a4b8c;
+    }
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .pricing-card {
+        background: #fff;
+        padding: 40px 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 260px;
+    }
+    .pricing-card:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.13);
+    }
+    .pricing-icon {
+        font-size: 2.8rem;
+        color: #0c9608;
+        margin-bottom: 18px;
+    }
+    .pricing-card h3 {
+        display: none;
+    }
+    .pricing-vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 10px;
+    }
+    .pricing-title {
+        font-size: 1.15rem;
+        color: #1a4b8c;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+    .pricing-mode {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 2px;
+        font-weight: 500;
+    }
+    .pricing-cost {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: #d32f2f;
+        background: #f9fafc;
+        padding: 6px 16px;
+        border-radius: 6px;
+        margin-top: 2px;
+        display: inline-block;
+    }
+    @media (max-width: 768px) {
+        .pricing-section {
+            margin-top: 50px;
+        }
+        .pricing-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .pricing-grid {
+            grid-template-columns: 1fr;
+            gap: 18px;
+            padding: 0 20px;
+        }
+        .pricing-card {
+            padding: 28px 12px;
+            min-height: 120px;
+        }
+        .pricing-vertical {
+            font-size: 0.98rem;
+        }
+    }
+    </style>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
+    </a>
+    
+    <style>
+    #whatsapp-float {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 99999;
+        background: #25d366;
+        border-radius: 50%;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    #whatsapp-float:hover {
+        box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+        transform: scale(1.08);
+        background: #1ebe57;
+    }
+    #whatsapp-float img {
+        display: block;
+    }
+    </style>
+</body>
+</html>

@@ -160,7 +160,7 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="household.html#quote" class="quote-btn">Get a Quote</a></li>
+                    <li><a href="#get-quote" class="quote-btn">Get a Quote</a></li>
                 </ul>
             </nav>
         </div>
@@ -351,8 +351,7 @@
    
 
     <script src="script.js"></script>
-    <script src="js/quote-popup.js"></script>
-    <script>
+        <script>
         // Sticky header functionality
         const header = document.querySelector('.header');
         let lastScroll = 0;
@@ -1117,8 +1116,7 @@
     </style>
 
     <script src="script.js"></script>
-    <script src="js/quote-popup.js"></script>
-
+    
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
@@ -1130,39 +1128,87 @@
             </div>
         </div>
     </footer>
-    <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
-</a>
-<style>
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
 
+    <!-- Customer Details Form (Formsubmit) -->
+    <!-- Get a Free Quote Popup Modal -->
+    <div id="get-quote-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,0,50,0.35);z-index:99999;align-items:center;justify-content:center;">
+      <div style="background:linear-gradient(135deg,#fffbe7 60%,#f8e5ff 100%);padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:340px;max-width:98vw;border-radius:22px;box-shadow:0 8px 40px #8B008B22;position:relative;">
+        <button id="close-quote-modal" aria-label="Close" style="position:absolute;top:18px;right:22px;background:none;border:none;font-size:2rem;color:#8B008B;cursor:pointer;z-index:2;">&times;</button>
+        <h2 style="color:#8B008B;font-size:2.2rem;font-weight:700;margin:38px 0 10px 0;letter-spacing:1px;text-align:center;">Get a Free Quote</h2>
+        <p style="color:#555;font-size:1.1rem;margin-bottom:32px;text-align:center;">Fill the form and our team will contact you soon.</p>
+        <form id="quoteForm" action="https://formsubmit.co/jhravindra@gmail.com" method="POST" style="width:100%;max-width:420px;display:flex;flex-direction:column;gap:18px;background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(139,0,139,0.07);padding:32px 28px;margin:0 auto;align-items:center;">
+          <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:13px 16px;border:1.5px solid #8B008B;border-radius:7px;font-size:1.08rem;outline:none;text-align:center;">
+          <input type="tel" name="mobile" placeholder="Contact Mobile Number" required pattern="[0-9]{10,15}" style="width:100%;padding:13px 16px;border:1.5px solid #8B008B;border-radius:7px;font-size:1.08rem;outline:none;text-align:center;">
+          <input type="email" name="email" id="email" placeholder="Email ID" required style="width:100%;padding:13px 16px;border:1.5px solid #8B008B;border-radius:7px;font-size:1.08rem;outline:none;text-align:center;">
+          <input type="text" name="locationFrom" placeholder="From" required style="width:100%;padding:13px 16px;border:1.5px solid #8B008B;border-radius:7px;font-size:1.08rem;outline:none;text-align:center;">
+          <input type="text" name="locationTo" placeholder="To" required style="width:100%;padding:13px 16px;border:1.5px solid #8B008B;border-radius:7px;font-size:1.08rem;outline:none;text-align:center;">
+          <select name="service" required style="width:100%;padding:13px 16px;border:1.5px solid #8B008B;border-radius:7px;font-size:1.08rem;outline:none;color:#333;text-align:center;">
+            <option value="" disabled selected>Select Service</option>
+            <option value="local">Local Move</option>
+            <option value="long-distance">Long Distance Move</option>
+            <option value="senior">Senior Moving</option>
+            <option value="commercial">Commercial Moving</option>
+          </select>
+          <input type="hidden" name="_replyto" id="replyto-field">
+          <button type="submit" style="width:100%;background:linear-gradient(90deg,#8B008B,#ffd700);color:#fff;padding:15px 0;border:none;border-radius:7px;font-size:1.15rem;font-weight:700;cursor:pointer;box-shadow:0 2px 8px #8B008B22;letter-spacing:0.5px;transition:background 0.2s;">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Open modal on any .quote-btn click
+      document.querySelectorAll('.quote-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('get-quote-modal').style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      // Close modal
+      document.getElementById('close-quote-modal').onclick = function() {
+        document.getElementById('get-quote-modal').style.display = 'none';
+        document.body.style.overflow = '';
+      };
+      // Close on overlay click
+      document.getElementById('get-quote-modal').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      };
+      // Set reply-to
+      document.getElementById('quoteForm').addEventListener('submit', function() {
+        document.getElementById('replyto-field').value = document.getElementById('email').value;
+      });
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
+    </a>
     <style>
-        #whatsapp-float {
-            position: fixed;
-            right: 24px;
-            bottom: 24px;
-            z-index: 99999;
-    background: #25d366;
-    border-radius: 50%;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-}
-#whatsapp-float:hover {
-    box-shadow: 0 8px 32px rgba(37,211,102,0.25);
-    transform: scale(1.08);
-    background: #1ebe57;
-}
-#whatsapp-float img {
-    display: block;
-}
-</style>
+    #whatsapp-float {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 99999;
+        background: #25d366;
+        border-radius: 50%;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    #whatsapp-float:hover {
+        box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+        transform: scale(1.08);
+        background: #1ebe57;
+    }
+    #whatsapp-float img {
+        display: block;
+    }
+    </style>
+<script src="js/quote-popup.js"></script>
 </body>
 </html>

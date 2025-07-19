@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2>Get a free moving quote</h2>
             <p>Fill out the form below and our team will get in touch with you soon.</p>
         </div>
-        <form id="quoteForm" class="quote-form">
+        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/jhravindra@gmail.com" method="POST">
             <div class="form-group">
                 <input type="text" id="name" name="name" placeholder="Name" required>
             </div>
@@ -391,8 +391,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     I agree to the <a href="terms.html" target="_blank">terms and conditions</a>
                 </label>
             </div>
+            <input type="hidden" name="_replyto" id="replyto-field">
+            <input type="hidden" name="_next" value="#success-popup">
             <button type="submit" class="btn btn-red btn-block">Get My Free Quote</button>
         </form>
+        <div id="success-popup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:99999;justify-content:center;align-items:center;">
+            <div style="background:#fff;padding:32px 28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:350px;">
+                <h2 style="color:#0c9608;margin-bottom:12px;">Successfully received your request!</h2>
+                <p style="color:#333;">Thank you for contacting us. We will get in touch with you soon.</p>
+                <button onclick="document.getElementById('success-popup').style.display='none'" style="margin-top:18px;padding:10px 28px;background:#0c9608;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Close</button>
+            </div>
+        </div>
+        <script>
+        document.getElementById('quoteForm').addEventListener('submit', function() {
+            document.getElementById('replyto-field').value = document.getElementById('email').value;
+        });
+        window.addEventListener('DOMContentLoaded', function() {
+            if(window.location.hash === '#success-popup') {
+                document.getElementById('success-popup').style.display = 'flex';
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+        });
+        </script>
     </div>
 </div>
 </head>
@@ -412,6 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#payment" class="payment-btn">Payment</a></li>
                     <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
                 </ul>
                 <div class="hamburger">
@@ -430,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="elementor-element elementor-element-850ab1f e-con-full e-flex e-con e-child animated fadeIn">
                     <div class="elementor-background-video-container">
                         <video class="elementor-background-video-hosted" autoplay muted playsinline loop 
-                            src="https://youmoveme.com/wp-content/uploads/2024/12/YouMoveMe_Website_Square.mp4"></video>
+                            src="assets/Moveroo.mp4"></video>
                     </div>
 
                 </div>
@@ -458,13 +479,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 .services-grid {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
-                    gap: 10px;
-                    margin: 15px -3px;
-                    width: calc(100% + 6px);
+                    gap: 12px;
+                    margin: 15px 0;
+                    width: 100%;
                 }
                 @media (max-width: 1024px) {
                   .services-grid {
-                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-columns: 1fr 1fr;
                   }
                 }
                 @media (max-width: 600px) {
@@ -480,11 +501,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
                     border: none;
                     position: relative;
-                    height: 100%;
-                    display: block;
+                    width: 100%;
+                    min-width: 0;
+                    max-width: 100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
                     text-decoration: none;
                     color: #2c3e50;
-                    margin: 3px;
+                    margin: 0;
+                    font-size: 0.95em;
+                    padding: 0;
+                }
+                .service-card .card-content {
+                    padding: 8px 6px 10px 6px;
+                }
+                .service-card .icon-container {
+                    width: 60px;
+                    height: 60px;
+                    margin: 0 auto 12px;
+                }
+                .service-card h3 {
+                    font-size: 1.1rem;
+                }
+                .service-card p {
+                    font-size: 0.97rem;
                 }
                 .service-card:hover {
                     box-shadow: 0 12px 35px rgba(0,0,0,0.15);
@@ -567,6 +608,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 /* Service Card Styles */
                 .service-card:nth-child(1) {
                     border-top: 4px solid #4CAF50;
+                    background: linear-gradient(135deg, #eafff3 60%, #c6ffe0 100%);
+                    box-shadow: 0 6px 24px rgba(76, 175, 80, 0.10);
                 }
                 .service-card:nth-child(1) .icon-container {
                     background: rgba(76, 175, 80, 0.1);
@@ -584,6 +627,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 .service-card:nth-child(2) {
                     border-top: 4px solid #3498db;
+                    background: linear-gradient(135deg, #eaf6ff 60%, #cbeaff 100%);
+                    box-shadow: 0 6px 24px rgba(52, 152, 219, 0.10);
                 }
                 .service-card:nth-child(2) .icon-container {
                     background: rgba(52, 152, 219, 0.1);
@@ -601,6 +646,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 .service-card:nth-child(3) {
                     border-top: 4px solid #e67e22;
+                    background: linear-gradient(135deg, #fff3e6 60%, #ffe0b3 100%);
+                    box-shadow: 0 6px 24px rgba(230, 126, 34, 0.10);
                 }
                 .service-card:nth-child(3) .icon-container {
                     background: rgba(230, 126, 34, 0.1);
@@ -618,6 +665,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 .service-card:nth-child(4) {
                     border-top: 4px solid #9b59b6;
+                    background: linear-gradient(135deg, #f3e6ff 60%, #e0b3ff 100%);
+                    box-shadow: 0 6px 24px rgba(155, 89, 182, 0.10);
                 }
                 .service-card:nth-child(4) .icon-container {
                     background: rgba(155, 89, 182, 0.1);
@@ -691,152 +740,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </a>
             </div>
-
             
-            <!-- Delivery Section -->
-            <div class="delivery-card">
-                <div class="responsive-container">
-                <style>
-                .service-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-                }
-                .service-card a:hover i {
-                    transform: translateX(5px);
-                }
-                @keyframes gradientBG {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-                .delivery-card {
-                    position: relative;
-                    overflow: hidden;
-                    border-radius: 15px;
-                    padding: 3px;
-                    background: linear-gradient(45deg, #C71585, #ff6b6b, #ffa502, #ff6b6b, #C71585);
-                    background-size: 300% 300%;
-                    animation: gradientBG 8s ease infinite;
-                    box-shadow: 0 10px 30px rgba(199, 21, 133, 0.3);
-                    transition: all 0.5s ease;
-                    margin: 30px auto 0;
-                    max-width: 1000px;
-                    width: 90%;
-                }
-                .delivery-card:hover {
-                    transform: translateY(-5px) scale(1.01);
-                    box-shadow: 0 15px 40px rgba(199, 21, 133, 0.4);
-                }
-                .responsive-container {
-                    display: grid;
-                    grid-template-columns: 1.2fr 1fr;
-                    gap: 20px;
-                    align-items: center;
-                    background: #fff;
-                    border-radius: 12px;
-                    padding: 0;
-                    position: relative;
-                    overflow: hidden;
-                    margin: 0 auto;
-                    width: 100%;
-                }
-                    .text-container {
-                        padding: 30px 25px;
-                        height: 100%;
-                        position: relative;
-                        z-index: 2;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                    }
-                    .text-container h3 {
-                        font-size: 1.8rem;
-                        margin-bottom: 20px;
-                        color: #333;
-                        position: relative;
-                        display: inline-block;
-                    }
-                    .text-container h3:after {
-                        content: '';
-                        position: absolute;
-                        bottom: -10px;
-                        left: 0;
-                        width: 50px;
-                        height: 3px;
-                        background: linear-gradient(90deg, #C71585, #ff6b6b);
-                        border-radius: 3px;
-                    }
-                    .text-container p {
-                        color: #555;
-                        line-height: 1.7;
-                        margin-bottom: 15px;
-                    }
-                    .image-container {
-                        max-width: 280px;
-                        margin: 0 auto;
-                        position: relative;
-                        padding: 15px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100%;
-                    }
-                    .image-container:before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
-                        border-radius: 50%;
-                        transform: scale(0.9);
-                        z-index: 1;
-                        transition: all 0.5s ease;
-                    }
-                    .image-container:hover:before {
-                        transform: scale(1.1);
-                    }
-                    .image-container img {
-                        position: relative;
-                        z-index: 2;
-                        transition: all 0.5s ease;
-                    }
-                    .image-container:hover img {
-                        transform: scale(1.05) rotate(2deg);
-                    }
-                    .image-container img {
-                        max-width: 100%;
-                        height: auto;
-                        display: block;
-                    }
-                    @media (max-width: 768px) {
-                        .responsive-container {
-                            grid-template-columns: 1fr;
-                            gap: 20px;
-                        }
-                        .image-container {
-                            max-width: 250px;
-                            margin: 0 auto 15px;
-                        }
-                    }
-                </style>
-                <!-- Left Column - Text -->
-                <div class="text-container" style="order: 1;">
-                    <h3 style="color: #C71585; margin-top: 0;">Coming Soon—<strong>Hyperlocal & Inter-City Delivery</strong></h3>
-                    <p style="margin-bottom: 15px; line-height: 1.1;">We're expanding: same-day micro-deliveries locally and intercity.</p>
-                    <p style="font-weight: 500; margin: 0; color: #333;">> <strong>Hyperlocal reach.</strong> <strong>Nationwide network.</strong></p>
-                </div>
-                
-                <!-- Right Column - Image -->
-                <div class="image-container" style="order: 2;">
-                    <img src="assets/hyper.png" alt="Hyperlocal Delivery">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modes of Transport Section -->
+            <!-- Modes of Transport Section -->
     <section id="transport-modes" class="transport-modes dynamic-dark-modes">
         <style>
         .dynamic-dark-modes {
@@ -859,23 +764,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         .modes-cards {
             display: flex;
+            flex-direction: row;
+            gap: 18px;
+            width: 100%;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 32px;
         }
         .mode-card {
             background: #fff;
             border-radius: 18px;
-            box-shadow: 0 8px 32px #23294622;
-            padding: 38px 32px 32px 32px;
-            min-width: 300px;
-            max-width: 340px;
-            flex: 1 1 300px;
+            box-shadow: 0 4px 16px #23294622;
+            padding: 16px 14px 10px 14px;
+            width: 300px;
+            max-width: 95vw;
+            min-width: 180px;
             color: #232946;
             border: 2px solid #f0f0f0;
             position: relative;
             transition: border 0.3s, box-shadow 0.3s, transform 0.3s;
             overflow: hidden;
+            margin: 0 auto;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        @media (max-width: 900px) {
+            .modes-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .mode-card {
+                width: 98vw;
+                max-width: 99vw;
+            }
         }
         .mode-card:hover {
             border: 2px solid #232946;
@@ -883,12 +805,12 @@ document.addEventListener('DOMContentLoaded', function() {
             transform: translateY(-8px) scale(1.03);
         }
         .mode-icon {
-            font-size: 2.8rem;
-            margin-bottom: 18px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffe400;
+            color: #0c9608;
             text-shadow: none;
         }
         .mode-card h3 {
@@ -932,34 +854,85 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="modes-cards">
                 <!-- Road Transport Card -->
                 <div class="mode-card">
-                    <div class="mode-icon">🚛</div>
-                    <h3>Road Transport <span style="color:#fff;font-size:0.9em;font-weight:normal;">| ₹16–22/km</span></h3>
-                    <ul>
-                        <li><span>•</span><span>AC vehicles</span></li>
-                        <li><span>•</span><span>Pet-ready transport</span></li>
-                        <li><span>•</span><span>GPS‑tracked vehicles</span></li>
+                    <div class="mode-icon"><i class="fas fa-shower"></i></div>
+                    <div style="margin-bottom: 8px;">
+                      <span style="font-size:1.18rem; font-weight:700; color:#232946;">Road Transport <span style="color:#0c9608; font-size:1rem; font-weight:600;">| ₹16–22/km</span></span>
+                    </div>
+                    <ul style="margin-bottom:0;">
+                      <li><b>•</b> AC vehicles</li>
+                      <li><b>•</b> Pet-ready transport</li>
+                      <li><b>•</b> GPS‑tracked vehicles</li>
                     </ul>
                 </div>
                 <!-- Rail Cargo Card -->
                 <div class="mode-card">
-                    <div class="mode-icon">🚆</div>
-                    <h3>Rail Cargo</h3>
-                    <ul>
-                        <li><span>•</span><span>Economical long-haul for two-wheelers, pets</span></li>
-                        <li><span>•</span><span>Handling + station coordination included</span></li>
+                    <div class="mode-icon"><i class="fas fa-shower"></i></div>
+                    <div style="margin-bottom: 8px;">
+                      <span style="font-size:1.18rem; font-weight:700; color:#232946;">Rail Cargo</span>
+                    </div>
+                    <ul style="margin-bottom:0;">
+                      <li><b>•</b> Economical long-haul for two-wheelers, pets</li>
+                      <li><b>•</b> Handling + station coordination included</li>
                     </ul>
                 </div>
                 <!-- Air Logistics Card -->
                 <div class="mode-card">
-                    <div class="mode-icon">✈️</div>
-                    <h3>Air Logistics</h3>
-                    <ul>
-                        <li><span>•</span><span>IATA-certified pet relocation</span></li>
-                        <li><span>•</span><span>Airport-to-door domestic & international service</span></li>
+                    <div class="mode-icon"><i class="fas fa-shower"></i></div>
+                    <div style="margin-bottom: 8px;">
+                      <span style="font-size:1.18rem; font-weight:700; color:#232946;">Air Logistics</span>
+                    </div>
+                    <ul style="margin-bottom:0;">
+                      <li><b>•</b> IATA-certified pet relocation</li>
+                      <li><b>•</b> Airport-to-door domestic & international service</li>
                     </ul>
                 </div>
             </div>
         </div>
+    </section>
+            
+    </section>
+
+    <!-- Coming Soon & Available Cities Section (Two Cards) -->
+    <section class="coming-available-section" style="background: #f7f7f9; border-top: 1.5px solid #e0e0e0; padding: 36px 0 18px 0;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: stretch; justify-content: center;">
+          <!-- Left Card: Coming Soon -->
+          <div class="delivery-card" style="margin:0; box-shadow: 0 6px 24px rgba(199,21,133,0.08);">
+            <div class="responsive-container" style="background:#fff; border-radius:12px; display:grid; grid-template-columns:1fr 1fr; align-items:center;">
+              <div class="text-container" style="padding:30px 18px;">
+                <h3 style="color: #C71585; margin-top: 0; font-size:1.6rem;">Coming to your city soon</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #444;">We're expanding our <strong>relocation services</strong> to more cities across India. Stay tuned as we bring trusted moving and pet relocation solutions to your doorstep.</p>
+                <p style="font-weight: 500; margin: 0; color: #232946;">Your city could be next!</p>
+              </div>
+              <div class="image-container" style="padding:15px; display:flex; align-items:center; justify-content:center;">
+                <img src="assets/hyper.png" alt="Relocation Coming Soon" style="max-width:220px; width:100%; height:auto; border-radius:10px;">
+              </div>
+            </div>
+          </div>
+          <!-- Right Card: Available in Major Cities -->
+          <div class="available-cities-card" style="background:#fff; border-radius:12px; box-shadow: 0 6px 24px rgba(199,21,133,0.08); padding:30px 18px; display:flex; flex-direction:column; justify-content:center; min-width:260px;">
+            <h3 style="color:#0c9608; font-size:1.3rem; margin-bottom:12px; font-weight:700;">We're Available in Major Cities</h3>
+            <p style="color:#444; font-size:1.08em; margin-bottom:10px;">Check if we serve your city</p>
+            <form id="city-search-form" class="search-form" style="margin-bottom:12px;">
+              <div class="search-box" style="display:flex; align-items:center; gap:6px;">
+                <i class="fas fa-search" style="color:#888;"></i>
+                <input type="text" id="city-search" placeholder="Enter your city name..." required style="flex:1; padding:8px 10px; border:1px solid #ccc; border-radius:5px;">
+                <button type="submit" class="search-btn" style="background:#0c9608; color:#fff; border:none; border-radius:5px; padding:8px 16px; font-weight:600; cursor:pointer;">Search</button>
+              </div>
+            </form>
+            <div class="popular-cities" style="margin-top:8px;">
+              <span style="color:#888; font-size:0.98em;">Popular Cities: </span>
+              <a href="#" class="city-tag" data-city="Chandigarh" style="color:#0c9608; margin-right:6px;">Chandigarh</a>
+              <a href="#" class="city-tag" data-city="Mohali" style="color:#0c9608; margin-right:6px;">Mohali</a>
+              <a href="#" class="city-tag" data-city="Ludhiana" style="color:#0c9608; margin-right:6px;">Ludhiana</a>
+              <a href="#" class="city-tag" data-city="Jalandhar" style="color:#0c9608; margin-right:6px;">Jalandhar</a>
+              <a href="#" class="city-tag" data-city="Baddi" style="color:#0c9608; margin-right:6px;">Baddi</a>
+              <a href="#" class="city-tag" data-city="Kharar" style="color:#0c9608; margin-right:6px;">Kharar</a>
+              <a href="#" class="city-tag" data-city="Panchkula" style="color:#0c9608;">Panchkula</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Why Choose Us Section -->
@@ -1001,99 +974,250 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-    <!-- City Search Section -->
-    <section class="city-search">
-        <div class="container">
-            <div class="city-search-content">
-                <h2>We're Available in Major Cities</h2>
-                <p>Check if we serve your city</p>
-                <div class="search-container">
-                    <form id="city-search-form" class="search-form">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="city-search" placeholder="Enter your city name..." required>
-                            <button type="submit" class="search-btn">Search</button>
-                        </div>
-                    </form>
-                    <div class="popular-cities">
-                        <span>Popular Cities: </span>
-                        <a href="#" class="city-tag" data-city="Chandigarh">Chandigarh</a>
-                        <a href="#" class="city-tag" data-city="Mohali">Mohali</a>
-                        <a href="#" class="city-tag" data-city="Ludhiana">Ludhiana</a>
-                        <a href="#" class="city-tag" data-city="Jalandhar">Jalandhar</a>
-                        <a href="#" class="city-tag" data-city="Baddi">Baddi</a>
-                        <a href="#" class="city-tag" data-city="Kharar">Kharar</a>
-                        <a href="#" class="city-tag" data-city="Panchkula">Panchkula</a>
-                    </div>
-                </div>
+    <!-- Work With Us Section (Modernized) -->
+    <section id="work-with-us" class="work-with-us-modern">
+      <style>
+        .work-with-us-modern {
+          padding: 56px 0 40px 0;
+          background: #f7f7f7;
+        }
+        .work-with-us-modern .work-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 36px;
+          align-items: stretch;
+          justify-content: space-between;
+        }
+        .work-with-us-modern .work-card {
+          background: #fff;
+          border-radius: 16px;
+          box-shadow: 0 2px 16px rgba(60,60,60,0.07);
+          border: 1px solid #ececec;
+          padding: 32px 26px 22px 26px;
+          flex: 1 1 320px;
+          min-width: 270px;
+          max-width: 520px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          margin: 0 auto;
+        }
+        .work-with-us-modern .work-card h3 {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 1.28em;
+          color: #111;
+          margin: 0 0 12px 0;
+          font-weight: 800;
+          letter-spacing: 0.2px;
+        }
+        .work-with-us-modern .work-card .icon {
+          font-size: 1.5em;
+          color: #444;
+        }
+        .work-with-us-modern .work-card .icon-partner {
+          color: #444;
+        }
+        .work-with-us-modern .work-card p,
+        .work-with-us-modern .work-card ul,
+        .work-with-us-modern .work-card li,
+        .work-with-us-modern .work-card div {
+          color: #222;
+        }
+        .work-with-us-modern .work-card ul {
+          margin: 8px 0 12px 22px;
+          font-size: 1.08em;
+        }
+        .work-with-us-modern .work-card li {
+          margin-bottom: 4px;
+        }
+        .work-with-us-modern .cta-btn {
+          display: inline-block;
+          margin-top: 10px;
+          background: #ededed;
+          color: #111;
+          font-weight: 700;
+          padding: 12px 28px;
+          border-radius: 30px;
+          text-decoration: none;
+          font-size: 1.08em;
+          box-shadow: 0 2px 8px rgba(60,60,60,0.07);
+          border: 1px solid #e0e0e0;
+          transition: background 0.2s, box-shadow 0.2s, transform 0.2s, color 0.2s;
+        }
+        .work-with-us-modern .cta-btn:hover {
+          background: #e0e0e0;
+          color: #111;
+          transform: translateY(-2px) scale(1.03);
+          box-shadow: 0 6px 18px rgba(60,60,60,0.10);
+        }
+        .work-with-us-modern .work-card .email-hint {
+          font-size: 0.98em;
+          color: #555;
+          margin-top: 2px;
+        }
+        @media (max-width: 900px) {
+          .work-with-us-modern .work-grid {
+            flex-direction: column;
+            gap: 28px;
+          }
+          .work-with-us-modern .work-card {
+            max-width: 98vw;
+            min-width: 0;
+            padding: 28px 10px 20px 10px;
+          }
+        }
+      </style>
+      <div class="container">
+        <h2 class="section-title" style="color:#444; margin-bottom: 28px;">Work With Us</h2>
+        <div class="work-grid">
+          <div class="work-card">
+            <h3><span class="icon">🤝</span> Join Our Team</h3>
+            <p style="font-size: 1.08em; margin-bottom: 10px;">At Moveroo, we’re more than just a relocation brand — we’re a movement driven by empathy, reliability, and innovation. As a division of Saranity Solutions Private Limited, our mission is to simplify moving experiences for families and their furry companions across India and beyond.</p>
+            <ul>
+              <li>Making a difference in people’s lives and the lives of their pets</li>
+              <li>Working in a fast-paced, customer-centric environment</li>
+              <li>Being part of a purpose-driven team that values compassion, agility, and trust</li>
+            </ul>
+            <div style="font-size: 1.05em; margin-bottom: 6px; font-weight: 600;">We’re Hiring For:</div>
+            <ul>
+              <li>Pet Travel & Relocation Executives</li>
+              <li>Operations & Logistics Coordinators</li>
+              <li>Ground Handling & Partner Management</li>
+              <li>Customer Experience Specialists</li>
+            </ul>
+            <a class="cta-btn" href="mailto:managingdirector@saranitysolutions.com?subject=Application%20%E2%80%93%20[Role]">Send Resume</a>
+            <div class="email-hint">Subject: <b>Application – [Role]</b></div>
+          </div>
+          <div class="work-card">
+            <h3><span class="icon icon-partner">🌍</span> Partner With Us</h3>
+            <p style="font-size: 1.08em; margin-bottom: 10px;">Whether you’re a vet clinic, pet boarding facility, freight forwarder, airline cargo handler, or custom clearance expert, we’re always looking to grow our trusted partner network.</p>
+            <p style="font-size: 1.08em; margin-bottom: 12px;">If you share our commitment to safety, transparency, and ethical relocation — let’s grow together.</p>
+            <a class="cta-btn" href="mailto:managingdirector@saranitysolutions.com?subject=Partner%20Inquiry">Become a Partner</a>
+            <div style="display:flex; align-items:flex-end; justify-content:center; padding:0; width:100%; margin-top:1.5cm;">
+              <img src="assets/partner.jpg" alt="Partner With Us" style="width:100%; height:auto; border-radius:0 0 10px 10px; box-shadow:0 2px 12px rgba(0,0,0,0.07); object-fit:cover;">
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section (Redesigned) -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Customers Say</h2>
-            <div class="testimonials-slider-simple">
+            <div class="testimonials-slider-modern">
                 <button class="testimonial-nav-btn" id="testimonial-prev-btn" aria-label="Previous testimonial">&#8592;</button>
-                <div class="testimonial-cards-wrapper">
-                    <div class="testimonial-card-simple">
-                        <blockquote class="testimonial-quote">“This was my first time relocating, and I'm so glad I chose this team. They arrived on time, packed everything carefully, and delivered all my belongings safely. The entire process was hassle-free. Highly recommended!”</blockquote>
-                        <div class="testimonial-author-simple">Pooja Sharma <span>Delhi</span></div>
+                <div class="testimonial-cards-wrapper-modern">
+                    <div class="testimonial-card-modern">
+                        <div class="testimonial-content testimonial-content-full">
+                            <blockquote class="testimonial-quote">“This was my first time relocating, and I'm so glad I chose this team. They arrived on time, packed everything carefully, and delivered all my belongings safely.”</blockquote>
+                            <div class="testimonial-rating">
+                                <span>★★★★★</span>
+                            </div>
+                            <div class="testimonial-author-modern">Pooja Sharma <span>Delhi</span></div>
+                        </div>
                     </div>
-                    <div class="testimonial-card-simple">
-                        <blockquote class="testimonial-quote">“I was shifting my office and worried about delicate electronics. But their team handled everything with great care. The packing was neat, and nothing got damaged. Very professional and helpful staff!”</blockquote>
-                        <div class="testimonial-author-simple">Rajeev Mehta <span>Gurgaon</span></div>
+                    <div class="testimonial-card-modern">
+                        <div class="testimonial-content testimonial-content-full">
+                            <blockquote class="testimonial-quote">“I was shifting my office and worried about delicate electronics. But their team handled everything with great care. The packing was neat, and nothing got damaged.”</blockquote>
+                            <div class="testimonial-rating">
+                                <span>★★★★★</span>
+                            </div>
+                            <div class="testimonial-author-modern">Rajeev Mehta <span>Gurgaon</span></div>
+                        </div>
                     </div>
-                    <div class="testimonial-card-simple">
-                        <blockquote class="testimonial-quote">“I moved my 2BHK apartment from Bangalore to Pune, and the entire experience was smooth. High-quality packing materials, timely delivery, and a polite team made it a stress-free move.”</blockquote>
-                        <div class="testimonial-author-simple">Swati Singh <span>Bangalore</span></div>
+                    <div class="testimonial-card-modern">
+                        <div class="testimonial-content testimonial-content-full">
+                            <blockquote class="testimonial-quote">“I moved my 2BHK apartment from Bangalore to Pune, and the entire experience was smooth. High-quality packing materials, timely delivery.”</blockquote>
+                            <div class="testimonial-rating">
+                                <span>★★★★★</span>
+                            </div>
+                            <div class="testimonial-author-modern">Swati Singh <span>Bangalore</span></div>
+                        </div>
                     </div>
-                    <div class="testimonial-card-simple">
-                        <blockquote class="testimonial-quote">“Their service was far better than others I've tried, and the pricing was very reasonable. The team managed packing, loading, and unloading with complete professionalism. Totally worth it!”</blockquote>
-                        <div class="testimonial-author-simple">Deepak Agarwal <span>Noida</span></div>
+                    <div class="testimonial-card-modern">
+                        <div class="testimonial-content testimonial-content-full">
+                            <blockquote class="testimonial-quote">“Their service was far better than others I've tried, and the pricing was very reasonable. The team managed packing, loading, and unloading with complete professionalism.”</blockquote>
+                            <div class="testimonial-rating">
+                                <span>★★★★★</span>
+                            </div>
+                            <div class="testimonial-author-modern">Deepak Agarwal <span>Noida</span></div>
+                        </div>
                     </div>
                 </div>
                 <button class="testimonial-nav-btn" id="testimonial-next-btn" aria-label="Next testimonial">&#8594;</button>
             </div>
+            <div class="testimonial-dots" id="testimonial-dots"></div>
             <style>
-            .testimonials-slider-simple {
+            .testimonials-slider-modern {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 gap: 0;
                 margin-top: 40px;
             }
-            .testimonial-cards-wrapper {
+            .testimonial-cards-wrapper-modern {
                 display: flex;
                 overflow: hidden;
                 width: 100%;
-                max-width: 800px;
+                max-width: 900px;
             }
-            .testimonial-card-simple {
-                background: #fff;
+            .testimonial-card-modern {
+                background: linear-gradient(135deg, #f8fafc 60%, #e3e6f3 100%);
                 border-radius: 18px;
-                box-shadow: none;
-                border: 1.5px solid #ccc;
-                padding: 38px 32px 38px 32px;
+                box-shadow: 0 6px 32px rgba(199,21,133,0.08);
+                border: 1.5px solid #e0e0e0;
+                padding: 32px 24px 28px 24px;
                 display: flex;
                 flex-direction: row;
-                align-items: stretch;
+                align-items: center;
                 min-width: 0;
                 width: 100%;
-                max-width: 600px;
-                margin: 0 18px;
+                max-width: 350px;
+                margin: 0 16px;
                 position: relative;
-                transition: box-shadow 0.2s, border 0.2s;
+                transition: box-shadow 0.2s, border 0.2s, transform 0.2s;
                 flex-shrink: 0;
                 height: auto;
+            }
+            .testimonial-card-modern:hover {
+                box-shadow: 0 12px 40px rgba(199,21,133,0.18);
+                transform: translateY(-6px) scale(1.03);
+                border-color: #C71585;
+            }
+            .testimonial-avatar {
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: 22px;
+                border: 3px solid #C71585;
+                flex-shrink: 0;
+                background: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .testimonial-avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .testimonial-content {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                align-items: center;
+                text-align: center;
             }
             .testimonial-quote {
                 font-size: 1.08rem;
                 color: #232946;
                 font-weight: 500;
-                margin: 0 0 0 0;
-                line-height: 1.5;
+                margin: 0 0 10px 0;
+                line-height: 1.6;
                 border: none;
                 padding-left: 0;
                 font-style: italic;
@@ -1101,18 +1225,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 border-radius: 0;
                 padding-top: 0;
                 padding-bottom: 0;
-                flex: 1 1 auto;
+                text-align: center;
             }
-            .testimonial-author-simple {
+            .testimonial-rating {
+                color: #FFC107;
+                font-size: 1.2rem;
+                margin-bottom: 7px;
+                text-align: center;
+            }
+            .testimonial-author-modern {
                 font-weight: bold;
-                color: #232946;
-                font-size: 1.02rem;
-                margin-left: 18px;
+                color: #C71585;
+                font-size: 1.08rem;
                 letter-spacing: 0.2px;
-                min-width: 120px;
-                text-align: right;
+                margin-top: 2px;
+                text-align: center;
             }
-            .testimonial-author-simple span {
+            .testimonial-author-modern span {
                 color: #888;
                 font-weight: 500;
                 font-size: 0.98em;
@@ -1120,66 +1249,99 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             .testimonial-nav-btn {
                 background: #fff;
-                border: 1.5px solid #bbb;
-                color: #232946;
+                border: 2px solid #C71585;
+                color: #C71585;
                 font-size: 2rem;
                 border-radius: 50%;
-                width: 44px;
-                height: 44px;
+                width: 48px;
+                height: 48px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                margin: 0 10px;
-                transition: background 0.2s, border 0.2s;
+                margin: 0 14px;
+                transition: background 0.2s, border 0.2s, color 0.2s;
+                box-shadow: 0 2px 8px rgba(199,21,133,0.08);
             }
             .testimonial-nav-btn:hover {
-                background: #f0f0f0;
-                color: #C71585;
-                border: 1.5px solid #C71585;
+                background: #C71585;
+                color: #fff;
+                border: 2px solid #C71585;
+            }
+            .testimonial-dots {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 18px;
+                gap: 8px;
+            }
+            .testimonial-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #e0e0e0;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .testimonial-dot.active {
+                background: #C71585;
+                transform: scale(1.2);
             }
             @media (max-width: 900px) {
-                .testimonial-cards-wrapper {
+                .testimonial-cards-wrapper-modern {
                     max-width: 98vw;
                 }
-                .testimonial-card-simple {
+                .testimonial-card-modern {
                     min-width: 95vw;
                     max-width: 99vw;
                     flex-direction: column;
                     height: auto;
                     align-items: flex-start;
+                    padding: 24px 10px 20px 10px;
                 }
-                .testimonial-author-simple {
-                    margin-left: 0;
-                    margin-top: 10px;
-                    text-align: left;
+                .testimonial-avatar {
+                    margin-right: 0;
+                    margin-bottom: 12px;
                 }
             }
             </style>
             <script>
             (function() {
-                const wrapper = document.querySelector('.testimonial-cards-wrapper');
-                const cards = wrapper.querySelectorAll('.testimonial-card-simple');
+                const wrapper = document.querySelector('.testimonial-cards-wrapper-modern');
+                const cards = wrapper.querySelectorAll('.testimonial-card-modern');
                 const prevBtn = document.getElementById('testimonial-prev-btn');
                 const nextBtn = document.getElementById('testimonial-next-btn');
+                const dotsContainer = document.getElementById('testimonial-dots');
+                const cardsToShow = 3;
                 let current = 0;
-                function showCards() {
+                function showCards(idx) {
                     cards.forEach((card, i) => {
-                        card.style.display = (i === current || i === current + 1) ? 'flex' : 'none';
+                        card.style.display = (i >= idx && i < idx + cardsToShow) ? 'flex' : 'none';
                     });
+                    // Dots
+                    if (dotsContainer) {
+                        dotsContainer.innerHTML = '';
+                        const totalDots = Math.max(1, cards.length - cardsToShow + 1);
+                        for (let i = 0; i < totalDots; i++) {
+                            const dot = document.createElement('div');
+                            dot.className = 'testimonial-dot' + (i === idx ? ' active' : '');
+                            dot.addEventListener('click', () => {
+                                current = i;
+                                showCards(current);
+                            });
+                            dotsContainer.appendChild(dot);
+                        }
+                    }
                 }
                 prevBtn.addEventListener('click', function() {
-                    current = (current - 1 + cards.length) % cards.length;
-                    if (current === cards.length - 1) current = cards.length - 2;
-                    if (current < 0) current = 0;
-                    showCards();
+                    current = (current - 1 + (cards.length - cardsToShow + 1)) % (cards.length - cardsToShow + 1);
+                    showCards(current);
                 });
                 nextBtn.addEventListener('click', function() {
-                    current = (current + 1) % cards.length;
-                    if (current > cards.length - 2) current = 0;
-                    showCards();
+                    current = (current + 1) % (cards.length - cardsToShow + 1);
+                    showCards(current);
                 });
-                showCards();
+                showCards(current);
             })();
             </script>
         </div>
@@ -1188,87 +1350,343 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     <!-- Connect With Us Section -->
-    <section id="contact" class="connect-section">
-        <div class="container">
-            <div class="connect-header">
-                <h2>Connect with us</h2>
-                <p>We will be glad to assist you in regards to your moving and storage needs.</p>
-            </div>
-            <div class="connect-cards">
-                <div class="connect-card">
-                    <div class="card-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="card-content">
-                        <h3>Branch Manager</h3>
-                        <h2>+91 8872-998866</h2>
-                    </div>
-                </div>
-                <div class="connect-card">
-                    <div class="card-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="card-content">
-                        <h3>C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur</h3>
-                    </div>
-                </div>
-                <div class="connect-card">
-                    <div class="card-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="card-content">
-                        <h3>Centralized Booking Office</h3>
-                        <h2>enquiry@moveroo.in</h2>
-                    </div>
-                </div>
-            </div>
+    <section id="contact" class="connect-section-modern">
+      <style>
+        .connect-section-modern {
+          background: linear-gradient(135deg, #f7faff 60%, #eaf6ff 100%);
+          padding: 54px 0 38px 0;
+        }
+        .connect-section-modern .connect-header {
+          text-align: center;
+          margin-bottom: 32px;
+        }
+        .connect-section-modern .connect-header h2 {
+          font-size: 2.1rem;
+          color: #0c9608;
+          font-weight: 700;
+          margin-bottom: 8px;
+        }
+        .connect-section-modern .connect-header p {
+          color: #444;
+          font-size: 1.13em;
+        }
+        .connect-section-modern .connect-cards {
+          display: flex;
+          gap: 28px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .connect-section-modern .connect-card {
+          background: #fff;
+          border-radius: 18px;
+          box-shadow: 0 4px 24px rgba(12,150,8,0.07);
+          padding: 28px 24px 22px 24px;
+          min-width: 220px;
+          max-width: 320px;
+          flex: 1 1 220px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          text-align: center;
+          transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .connect-section-modern .connect-card:hover {
+          box-shadow: 0 8px 32px rgba(12,150,8,0.13);
+          transform: translateY(-4px) scale(1.03);
+        }
+        .connect-section-modern .card-icon {
+          font-size: 2.5rem;
+          color: #0c9608;
+          margin-bottom: 14px;
+        }
+        .connect-section-modern .card-content h3 {
+          font-size: 1.18rem;
+          color: #232946;
+          margin-bottom: 6px;
+          font-weight: 700;
+        }
+        .connect-section-modern .card-content h2 {
+          font-size: 1.13rem;
+          color: #C71585;
+          margin: 0;
+          font-weight: 600;
+          word-break: break-all;
+        }
+        @media (max-width: 900px) {
+          .connect-section-modern .connect-cards {
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+          }
+          .connect-section-modern .connect-card {
+            max-width: 98vw;
+            min-width: 0;
+            padding: 20px 10px 16px 10px;
+          }
+        }
+      </style>
+      <div class="container">
+        <div class="connect-header">
+          <h2>Connect with us</h2>
+          <p>We will be glad to assist you in regards to your moving and storage needs.</p>
         </div>
+        <div class="connect-cards">
+          <div class="connect-card">
+            <div class="card-icon"><i class="fas fa-user"></i></div>
+            <div class="card-content">
+              <h3>Branch Manager</h3>
+              <h2>+91 8872-998866</h2>
+            </div>
+          </div>
+          <div class="connect-card">
+            <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="card-content">
+              <h3>C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur</h3>
+            </div>
+          </div>
+          <div class="connect-card">
+            <div class="card-icon"><i class="fas fa-envelope"></i></div>
+            <div class="card-content">
+              <h3>Centralized Booking Office</h3>
+              <h2>enquiry@moveroo.in</h2>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3>Moveroo</h3>
-                    <p>Making your move easy and stress-free with professional moving services you can trust.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-newsletter">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe to our newsletter for moving tips and special offers.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
+       <!-- Footer (Redesigned) -->
+    <footer class="footer-modern">
+      <style>
+        .footer-modern {
+          background: #181c24;
+          border-top: 1.5px solid #232946;
+          color: #e0e0e0;
+          font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .footer-modern .footer-main {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 36px;
+          justify-content: space-between;
+          align-items: flex-start;
+          padding: 44px 0 18px 0;
+        }
+        .footer-modern .footer-col {
+          flex: 1 1 220px;
+          min-width: 220px;
+          max-width: 340px;
+        }
+        .footer-modern .footer-about h3 {
+          color: #7be495;
+          font-size: 1.3em;
+          margin-bottom: 8px;
+          font-weight: 700;
+        }
+        .footer-modern .footer-about p {
+          color: #e0e0e0;
+          font-size: 1.05em;
+          margin-bottom: 14px;
+        }
+        .footer-modern .social-links {
+          display: flex;
+          gap: 12px;
+          margin-top: 8px;
+        }
+        .footer-modern .social-links a {
+          color: #b0b8c1;
+          font-size: 1.2em;
+          transition: color 0.2s;
+        }
+        .footer-modern .social-links a:hover {
+          color: #7be495;
+        }
+        .footer-modern .footer-links h4,
+        .footer-modern .footer-newsletter h4 {
+          color: #fff;
+          font-size: 1.13em;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+        .footer-modern .footer-links ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .footer-modern .footer-links li {
+          margin-bottom: 7px;
+        }
+        .footer-modern .footer-links a {
+          color: #b0b8c1;
+          text-decoration: none;
+          font-size: 1.04em;
+          transition: color 0.2s;
+        }
+        .footer-modern .footer-links a:hover {
+          color: #7be495;
+        }
+        .footer-modern .footer-newsletter p {
+          color: #e0e0e0;
+          font-size: 1.01em;
+          margin-bottom: 10px;
+        }
+        .footer-modern .newsletter-form {
+          display: flex;
+          gap: 6px;
+        }
+        .footer-modern .newsletter-form input[type="email"] {
+          padding: 8px 12px;
+          border: 1px solid #444;
+          background: #232946;
+          color: #fff;
+          border-radius: 5px;
+          font-size: 1em;
+          flex: 1;
+        }
+        .footer-modern .newsletter-form button {
+          background: #7be495;
+          color: #181c24;
+          border: none;
+          border-radius: 5px;
+          padding: 8px 14px;
+          font-size: 1.1em;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .footer-modern .newsletter-form button:hover {
+          background: #5fd68b;
+        }
+        .footer-modern .footer-pay-legal {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 24px;
+          border-top: 1px solid #232946;
+          padding-top: 18px;
+          margin-top: 10px;
+        }
+        .footer-modern .footer-legal {
+          font-size: 0.99em;
+          color: #b0b8c1;
+          margin-bottom: 8px;
+        }
+        .footer-modern .footer-legal a {
+          color: #b0b8c1;
+          text-decoration: none;
+          margin-right: 8px;
+        }
+        .footer-modern .footer-legal a:hover {
+          color: #7be495;
+        }
+        .footer-modern .legal-info {
+          font-size: 0.97em;
+          color: #b0b8c1;
+          margin-bottom: 12px;
+        }
+        .footer-modern .footer-payment {
+          min-width: 200px;
+          text-align: right;
+        }
+        .footer-modern .footer-payment-title {
+          font-size: 1.05em;
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+        .footer-modern .footer-payment-icons {
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+          align-items: center;
+        }
+        .footer-modern .footer-payment-icons img {
+          height: 28px;
+          filter: brightness(0.95) contrast(1.1);
+        }
+        .footer-modern .footer-payment-note {
+          font-size: 0.97em;
+          color: #b0b8c1;
+          margin-top: 4px;
+        }
+        .footer-modern .footer-copyright {
+          text-align: center;
+          color: #b0b8c1;
+          font-size: 1em;
+          margin: 22px 0 8px 0;
+          border-top: 1px solid #232946;
+          padding-top: 12px;
+        }
+        @media (max-width: 900px) {
+          .footer-modern .footer-main,
+          .footer-modern .footer-pay-legal {
+            flex-direction: column;
+            gap: 18px;
+          }
+          .footer-modern .footer-payment {
+            text-align: left;
+          }
+        }
+      </style>
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-col footer-about">
+            <h3>Moveroo</h3>
+            <p>Making your move easy and stress-free with professional moving services you can trust.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Moveroo. All Rights Reserved.</p>
-                <div class="footer-legal">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms and Conditions</a>
-                </div>
-            </div>
+          </div>
+          <div class="footer-col footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter for moving tips and special offers.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your Email">
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
         </div>
+        <div class="footer-pay-legal">
+          <div style="flex: 2; min-width: 220px;">
+            <div class="footer-legal">
+              <a href="privacy.html">Privacy Policy</a>|
+              <a href="terms.html">Terms and Conditions</a>|
+              <a href="#legal-info">Legal Information</a>
+            </div>
+            <div class="legal-info" id="legal-info">
+              <strong>Legal Information:</strong> Moveroo is a division of Saranity Solutions Private Limited. All services are subject to applicable laws and regulations. For legal queries, contact <a href="mailto:legal@saranitysolutions.com" style="color:#bfa100; font-weight:600;">legal@saranitysolutions.com</a>.
+            </div>
+          </div>
+          <div class="footer-payment">
+            <div class="footer-payment-title">Payment Options</div>
+            <div class="footer-payment-icons">
+              <img src="https://img.icons8.com/color/36/000000/visa.png" alt="Visa" title="Visa">
+              <img src="https://img.icons8.com/color/36/000000/mastercard-logo.png" alt="Mastercard" title="Mastercard">
+              <img src="https://img.icons8.com/color/36/000000/upi.png" alt="UPI" title="UPI">
+              <img src="https://img.icons8.com/color/36/000000/google-pay-india.png" alt="Google Pay" title="Google Pay">
+              <img src="https://img.icons8.com/color/36/000000/paytm.png" alt="Paytm" title="Paytm">
+            </div>
+            <div class="footer-payment-note">We accept all major cards, UPI, and digital wallets.</div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          &copy; 2025 Moveroo. All Rights Reserved.
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
@@ -1340,8 +1758,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     </script>
-    <script src="js/quote-popup.js"></script>
-    
+        
     <!-- Modern Popup Container -->
     <div id="simple-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(4px);">
         <div style="background: white; padding: 35px; border-radius: 12px; max-width: 380px; text-align: center; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
@@ -1561,5 +1978,6 @@ document.addEventListener('DOMContentLoaded', function() {
     display: block;
 }
 </style>
+<script src="js/quote-popup.js"></script>
 </body>
 </html>

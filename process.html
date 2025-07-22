@@ -203,27 +203,160 @@
             .step-number {
                 margin-bottom: 15px;
             }
+            
+            /* Make process cards stack vertically on mobile */
+            [style*="grid-template-columns: repeat(3, 1fr)"],
+            #packing-labour > div[style*="grid-template-columns"],
+            #packing-moving > div[style*="grid-template-columns"],
+            #pet-relocation > div[style*="grid-template-columns"],
+            #vehicle-relocation > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+                padding: 0 15px !important;
+            }
+            
+            /* Adjust spacing for process sections */
+            #packing-moving, #pet-relocation, #vehicle-relocation, #packing-labour {
+                padding: 30px 0 !important;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* Adjust heading sizes on mobile */
+            h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 20px !important;
+                padding: 0 15px !important;
+                text-align: center !important;
+            }
+            
+            /* Adjust card padding on mobile */
+            [style*="padding: 24px 20px"],
+            #packing-labour [style*="padding: 24px 20px"],
+            #value-added-services [style*="padding: 30px"] {
+                padding: 20px 15px !important;
+                margin: 0 10px !important;
+            }
+            
+            /* Adjust step number size on mobile */
+            [style*="width: 44px; height: 44px"] {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1.1rem !important;
+            }
+            
+            /* Adjust card content spacing */
+            [style*="margin-bottom: 15px"] {
+                margin-bottom: 10px !important;
+            }
+            
+            /* Adjust font sizes for better mobile readability */
+            p, .step-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                padding: 0 5px !important;
+            }
+            
+            /* Fix value-added services section */
+            #value-added-services {
+                padding: 30px 0 !important;
+                margin: 30px 0 0 !important;
+            }
+            
+            #value-added-services h2 {
+                font-size: 1.8rem !important;
+                white-space: normal !important;
+                width: 90% !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                text-align: center !important;
+                padding: 0 15px !important;
+            }
+            
+            #value-added-services p {
+                padding: 0 15px !important;
+            }
+            
+            /* Fix service buttons */
+            .service-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px !important;
+            }
+            
+            .service-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 5px 0 !important;
+                justify-content: center !important;
+            }
         }
     </style>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: absolute;
+        left: -8px;
+        right: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+</style>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: absolute;
+        left: 280px;
+        right: auto;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+</style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
+                <!-- Logo -->
                 <div class="logo">
                     <a href="index.html">
                         <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
                     </a>
                 </div>
+
+                <!-- Desktop Navigation -->
                 <ul class="nav-links">
                     <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
+                    <!-- Services Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="packing-moving.html">Packing & Moving</a></li>
+                            <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                            <li><a href="pet.html">Pet Relocation</a></li>
+                            <li><a href="packing-labour.html">Packing Labour</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                    <!-- Get Quote Button -->
+                    <li>
+                        <a href="#quote" class="quote-btn">
+                            Get a Quote
+                        </a>
+                    </li>
                 </ul>
+
+                <!-- Mobile Menu Toggle -->
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -232,7 +365,9 @@
             </nav>
         </div>
     </header>
-    <!-- Process Hero Section -->
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+        <!-- Process Hero Section -->
     <section class="process-hero">
         <div class="container">
             <h1 class="process-title">The Moveroo Way</h1>
@@ -317,6 +452,98 @@
                     <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Pay only when you're completely satisfied with our service.<br><span style='color:#C71585;font-weight:500;'>Rate your experience</span></p>
                 </div>
             </div>
+            
+            <!-- Value-Added Services Section -->
+            <div id="value-added-services" style="background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%); margin: 60px 0 0; padding: 60px 0; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h2 style="text-align: center; color: #2a5d9f; font-size: 2.2rem; margin-bottom: 40px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        🛠️ VALUE-ADDED SERVICES – Custom Workflow
+                    </h2>
+                    <p style="text-align: center; font-size: 1.2rem; color: #555; max-width: 900px; margin: 0 auto 50px; line-height: 1.6;">
+                        Enhance your move with services beyond the standard checklist.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                        <!-- Packing Services -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #2a5d9f; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-box" style="margin-right: 12px; color: #2a5d9f;"></i>
+                                Packing Services
+                            </h3>
+                            <div style="border-left: 3px solid #2a5d9f; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Premium packing materials
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Fragile item handling
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Custom crating
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Debris removal
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Moving Day Support -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #2a5d9f; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-calendar-day" style="margin-right: 12px; color: #2a5d9f;"></i>
+                                Moving Day Support
+                            </h3>
+                            <div style="border-left: 3px solid #2a5d9f; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Furniture disassembly
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Appliance servicing
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Loading/unloading
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Debris removal
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Post-Move Services -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #2a5d9f; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-home" style="margin-right: 12px; color: #2a5d9f;"></i>
+                                Post-Move Services
+                            </h3>
+                            <div style="border-left: 3px solid #2a5d9f; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Unpacking service
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Furniture assembly
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Box removal
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Home organization
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Pet Relocation Process -->
@@ -399,6 +626,98 @@
             <div style="margin-top: 30px; text-align: center; color: #666; font-style: italic;">
                 <p>Note: We recommend starting the pet relocation process at least one month before your desired moving date to ensure all health and travel requirements can be properly addressed.</p>
             </div>
+            
+            <!-- Value-Added Services Section -->
+            <div id="value-added-services" style="background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%); margin: 60px 0 0; padding: 60px 0; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h2 style="text-align: center; color: #2a5d9f; font-size: 2.2rem; margin-bottom: 40px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        🛠️ VALUE-ADDED SERVICES – Custom Workflow
+                    </h2>
+                    <p style="text-align: center; font-size: 1.2rem; color: #555; max-width: 900px; margin: 0 auto 50px; line-height: 1.6;">
+                        Enhance your pet's relocation with specialized services.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                        <!-- Pet Travel Documentation -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #C71585; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-file-alt" style="margin-right: 12px; color: #C71585;"></i>
+                                Travel Documentation
+                            </h3>
+                            <div style="border-left: 3px solid #C71585; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Health certificate processing
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Import/export permits
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Microchipping
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Vaccination coordination
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Pet Travel Comfort -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #C71585; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-paw" style="margin-right: 12px; color: #C71585;"></i>
+                                Travel Comfort
+                            </h3>
+                            <div style="border-left: 3px solid #C71585; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    IATA-approved travel crates
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    In-cabin travel arrangements
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Pet-friendly hotel bookings
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Comfort stops for road trips
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Pet Relocation Support -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #C71585; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-hands-helping" style="margin-right: 12px; color: #C71585;"></i>
+                                Relocation Support
+                            </h3>
+                            <div style="border-left: 3px solid #C71585; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Door-to-door pet taxi
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Quarantine assistance
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Pet settling-in services
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    24/7 emergency support
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Vehicle Relocation Process -->
@@ -449,6 +768,92 @@
                         <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #2a5d9f;">Delivery, Inspection & Feedback</h4>
                     </div>
                     <p style="color: #555; line-height: 1.6; margin: 0;">On arrival, we inspect the vehicle with you, hand over documents, and close the loop with your feedback.</p>
+                </div>
+            </div>
+            
+            <!-- Value-Added Services Section -->
+            <div id="value-added-services" style="background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%); margin: 60px 0 0; padding: 60px 0; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                        <!-- Vehicle Preparation -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #2a5d9f; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-car" style="margin-right: 12px; color: #2a5d9f;"></i>
+                                Vehicle Preparation
+                            </h3>
+                            <div style="border-left: 3px solid #2a5d9f; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Pre-shipment inspection
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Fluid level check
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Battery disconnection
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Personal item removal
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Transport Options -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #2a5d9f; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-truck-loading" style="margin-right: 12px; color: #2a5d9f;"></i>
+                                Transport Options
+                            </h3>
+                            <div style="border-left: 3px solid #2a5d9f; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Open carrier
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Enclosed transport
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Door-to-door delivery
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Terminal-to-terminal
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Documentation & Support -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #2a5d9f; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-file-alt" style="margin-right: 12px; color: #2a5d9f;"></i>
+                                Documentation & Support
+                            </h3>
+                            <div style="border-left: 3px solid #2a5d9f; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Title & registration
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Insurance coordination
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    Customs clearance
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #2a5d9f;">→</span>
+                                    24/7 tracking
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -510,9 +915,100 @@
                     </div>
                     <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Need to shift furniture again or missed something? We’re just one call away – even after the move.</p>
                 </div>
+            <!-- Value-Added Services Section -->
+            <div id="value-added-services" style="background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%); margin: 60px 0 0; padding: 60px 0; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h2 style="text-align: center; color: #C71585; font-size: 2.2rem; margin-bottom: 40px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        🛠️ VALUE-ADDED SERVICES – Custom Workflow
+                    </h2>
+                    <p style="text-align: center; font-size: 1.2rem; color: #555; max-width: 900px; margin: 0 auto 50px; line-height: 1.6;">
+                        Additional services to make your moving day easier.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                        <!-- Packing Services -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #C71585; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-box-open" style="margin-right: 12px; color: #C71585;"></i>
+                                Packing Services
+                            </h3>
+                            <div style="border-left: 3px solid #C71585; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Full home packing
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Room-by-room packing
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Fragile item packing
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Specialty item crating
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Moving Day Support -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #C71585; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-people-carry" style="margin-right: 12px; color: #C71585;"></i>
+                                Moving Day Support
+                            </h3>
+                            <div style="border-left: 3px solid #C71585; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Furniture disassembly
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Appliance disconnection
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Loading/unloading
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Debris removal
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Post-Move Services -->
+                        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="color: #C71585; margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-home" style="margin-right: 12px; color: #C71585;"></i>
+                                Post-Move Services
+                            </h3>
+                            <div style="border-left: 3px solid #C71585; padding-left: 15px; margin-left: 8px;">
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Unpacking service
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Furniture assembly
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Box removal
+                                </p>
+                                <p style="margin: 12px 0; position: relative; padding-left: 15px; color: #444;">
+                                    <span style="position: absolute; left: -10px; color: #C71585;">→</span>
+                                    Home organization
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-        <!-- Value-Added Services Section -->
+        <!-- Main Value-Added Services Section (kept for backward compatibility) -->
         <div id="value-added-services" style="background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%); margin: 60px 0; padding: 60px 0; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
             <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
                 <h2 style="text-align: center; color: #2a5d9f; font-size: 2.2rem; margin-bottom: 40px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">

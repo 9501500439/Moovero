@@ -1,0 +1,127 @@
+<!-- Header Section -->
+<header class="header">
+    <div class="container">
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="packing-moving.html">Packing & Moving</a></li>
+                        <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                        <li><a href="pet.html">Pet Relocation</a></li>
+                        <li><a href="packing-labour.html">Packing Labour</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="process.html">Process</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                
+                <!-- Get Quote Button -->
+                <li>
+                    <a href="#quote" class="quote-btn" style="display:inline-block;padding:10px 24px;background:#FFD700;color:#000;border-radius:24px;font-weight:600;font-size:1.08rem;text-decoration:none;box-shadow:0 2px 8px rgba(255,215,0,0.2);transition:all 0.3s ease;">Get a Quote</a>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Menu Overlay -->
+<div class="menu-overlay"></div>
+
+<!-- Include JavaScript -->
+<script>
+    // Mobile Navigation Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.menu-overlay');
+        const body = document.body;
+        
+        // Toggle mobile menu
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            body.classList.toggle('menu-open', navLinks.classList.contains('active'));
+        }
+
+        // Toggle menu when clicking hamburger
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+        }
+
+        // Close menu when clicking overlay
+        if (overlay) {
+            overlay.addEventListener('click', function() {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        }
+
+        // Close menu when clicking on a nav link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 991) {
+                    toggleMenu();
+                }
+                
+                // Smooth scroll for anchor links
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (window.innerWidth > 991) {
+                    // Reset mobile menu on desktop
+                    if (navLinks.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                }
+            }, 250);
+        });
+    });
+</script>

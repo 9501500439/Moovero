@@ -120,30 +120,123 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="process.html">Process</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#" class="quote-btn">Get a Quote</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<!-- Fixed Get Quote Button Top Right -->
+<a href="#" class="quote-btn top-action-btn" id="fixed-quote-btn">Get a Quote</a>
+<style>
+.top-action-btn {
+  position: fixed;
+  z-index: 10000;
+  background: #FFD700;
+  color: #000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.98rem;
+  padding: 7px 18px;
+  border-radius: 18px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.13);
+  transition: background 0.2s, box-shadow 0.2s;
+  height: 36px;
+}
+.top-action-btn:hover {
+  background: #FFD100;
+}
+#fixed-quote-btn { right: 32px; top: 24px; }
+.back-button.top-action-btn { left: 32px; top: 24px; }
+@media (max-width: 600px) {
+  .top-action-btn { font-size: 0.92rem; padding: 6px 12px; border-radius: 14px; height: 32px; }
+  #fixed-quote-btn { right: 12px; top: 12px; }
+  .back-button.top-action-btn { left: 12px; top: 12px; }
+}
+</style>
+<!-- Header has been removed as per request -->
+
+<!-- Include JavaScript -->
+<script>
+    // Mobile Navigation Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.menu-overlay');
+        const body = document.body;
+        
+        // Toggle mobile menu
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            body.classList.toggle('menu-open', navLinks.classList.contains('active'));
+        }
+
+        // Toggle menu when clicking hamburger
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+        }
+
+        // Close menu when clicking overlay
+        if (overlay) {
+            overlay.addEventListener('click', function() {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        }
+
+        // Close menu when clicking on a nav link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 991) {
+                    toggleMenu();
+                }
+                
+                // Smooth scroll for anchor links
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (window.innerWidth > 991) {
+                    // Reset mobile menu on desktop
+                    if (navLinks.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                }
+            }, 250);
+        });
+    });
+</script>
+
+    
     <div style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 80px 0 20px; margin: 0 auto; width: 100%;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 60px 0 30px; display: flex; justify-content: left: ;;">
-            <a href="index.html#services" class="back-button" style="color: #eab308; text-decoration: none; display: inline-flex; align-items: center; font-size: 14px; margin: 10px 0; padding: 8px 20px; border: 1px solid #e2e2e200; border-radius: 20px; transition: all 0.3s ease; background-color: rgba(143, 127, 137, 0.4);">
-                <span class="arrow-icon" style="margin-right: 8px;">←</span> Back to Services
-            </a>
+            <a href="index.html#services" class="back-button top-action-btn"><span class="arrow-icon" style="margin-right: 8px;">←</span> Back</a>
         </div>
     </div>
     <div style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 40px 0; margin: 0 auto; width: 100%;">

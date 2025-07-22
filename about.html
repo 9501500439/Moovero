@@ -10,10 +10,12 @@
     <style>
         /* Logo Styling */
         .logo img {
-            max-height: 30px;
+            max-height: 70px;
+            min-height: 50px;
             width: auto;
             border-radius: 0;
             transition: all 0.3s ease;
+            padding: 6px 0;
         }
 
         /* Quote Form Styling */
@@ -368,10 +370,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="form-group">
                 <select id="service" name="service" required>
                     <option value="" disabled selected>Select Service</option>
-                    <option value="local">Local Move</option>
-                    <option value="long-distance">Long Distance Move</option>
-                    <option value="senior">Senior Moving</option>
-                    <option value="commercial">Commercial Moving</option>
+                    <option value="packing-moving">Packing & Moving</option>
+                    <option value="vehicle-relocation">Vehicle Relocation</option>
+                    <option value="pet-relocation">Pet Relocation</option>
+                    <option value="packing-labour">Packing Labour</option>
                 </select>
             </div>
             <div class="form-group captcha-group">
@@ -394,19 +396,38 @@ document.addEventListener('DOMContentLoaded', function() {
     <header class="header">
         <div class="container">
             <nav class="navbar">
+                <!-- Logo -->
                 <div class="logo">
                     <a href="index.html">
                         <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
                     </a>
                 </div>
+                <!-- Desktop Navigation -->
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="index.html#home">Home</a></li>
+                    <!-- Services Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="packing-moving.html">Packing & Moving</a></li>
+                            <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                            <li><a href="pet.html">Pet Relocation</a></li>
+                            <li><a href="packing-labour.html">Packing Labour</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <!-- Get Quote Button -->
+                    <li>
+                        <a href="#quote" class="quote-btn">
+                            Get a Quote
+                        </a>
+                    </li>
                 </ul>
+                <!-- Mobile Menu Toggle -->
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -415,7 +436,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </nav>
         </div>
     </header>
-
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
     <main class="about-page">
         <!-- Hero Section -->
         <section class="about-hero">
@@ -818,5 +840,6 @@ document.addEventListener('DOMContentLoaded', function() {
         display: block;
     }
     </style>
+<script src="script.js"></script>
 </body>
 </html>

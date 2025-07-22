@@ -10,10 +10,19 @@
     <style>
         /* Logo Styling */
         .logo img {
-            max-height: 30px;
+            max-height: 70px;
+            min-height: 50px;
             width: auto;
             border-radius: 0;
             transition: all 0.3s ease;
+            padding: 6px 0;
+        }
+        .logo {
+            min-height: 40px;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            padding: 0px 0;
         }
 
         /* Quote Form Styling */
@@ -70,10 +79,20 @@
         }
     </style>
     <style>
+    @media (max-width: 600px) {
+      .navbar {
+        justify-content: flex-end !important;
+      }
+      .logo {
+        margin-right: auto !important;
+      }
+    }
+    </style>
+    <style>
     .header, .navbar {
-        min-height: 40px !important;
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
+        min-height: 10px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
     </style>
     <style>
@@ -324,6 +343,27 @@
   }
 }
 </style>
+<style>
+/* Mobile/desktop toggle for Join Our Team and Partner With Us cards */
+.join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+  display: none;
+}
+.join-team-toggle .join-team-details, .partner-toggle .partner-details {
+  display: block;
+}
+@media (max-width: 600px) {
+  .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+    display: inline-block;
+  }
+  .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+    display: none;
+  }
+  .join-team-toggle.mobile-active .join-team-details,
+  .partner-toggle.mobile-active .partner-details {
+    display: block !important;
+  }
+}
+</style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   function isMobile() {
@@ -356,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2>Get a free moving quote</h2>
             <p>Fill out the form below and our team will get in touch with you soon.</p>
         </div>
-        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/jhravindra@gmail.com" method="POST">
+        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/moveroo.in@gmail.com" method="POST">
             <div class="form-group">
                 <input type="text" id="name" name="name" placeholder="Name" required>
             </div>
@@ -375,10 +415,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="form-group">
                 <select id="service" name="service" required>
                     <option value="" disabled selected>Select Service</option>
-                    <option value="local">Local Move</option>
-                    <option value="long-distance">Long Distance Move</option>
-                    <option value="senior">Senior Moving</option>
-                    <option value="commercial">Commercial Moving</option>
+                    <option value="packing-moving">Packing & Moving</option>
+                    <option value="vehicle-relocation">Vehicle Relocation</option>
+                    <option value="pet-relocation">Pet Relocation</option>
+                    <option value="packing-labour">Packing Labour</option>
                 </select>
             </div>
             <div class="form-group captcha-group">
@@ -415,26 +455,56 @@ document.addEventListener('DOMContentLoaded', function() {
         </script>
     </div>
 </div>
+<style>
+.header {
+    min-height: 90px !important;
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+}
+</style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
+                <!-- Logo -->
                 <div class="logo">
                     <a href="index.html">
                         <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
                     </a>
                 </div>
+
+                <!-- Desktop Navigation -->
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="index.html#home">Home</a></li>
+                    
+                    <!-- Services Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="packing-moving.html">Packing & Moving</a></li>
+                            <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                            <li><a href="pet.html">Pet Relocation</a></li>
+                            <li><a href="packing-labour.html">Packing Labour</a></li>
+                        </ul>
+                    </li>
+                    
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#payment" class="payment-btn">Payment</a></li>
-                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    
+                    <!-- Get Quote Button -->
+                    <li>
+                        <a href="#quote" class="quote-btn">
+                            Get a Quote
+                        </a>
+                    </li>
                 </ul>
+
+                <!-- Mobile Menu Toggle -->
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -443,6 +513,9 @@ document.addEventListener('DOMContentLoaded', function() {
             </nav>
         </div>
     </header>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
 
     <!-- Hero Section with Video on Left -->
     <section class="hero">
@@ -746,45 +819,46 @@ document.addEventListener('DOMContentLoaded', function() {
         <style>
         .dynamic-dark-modes {
             background: #fff;
-            padding: 60px 0;
+            padding: 24px 0 18px 0;
         }
         .dynamic-dark-modes .section-title {
             color: #232946;
-            letter-spacing: 2px;
-            font-size: 2.2rem;
+            letter-spacing: 1px;
+            font-size: 1.3rem;
             text-shadow: none;
+            margin-bottom: 8px;
         }
         .dynamic-dark-modes .modes-desc {
             text-align: center;
-            font-size: 1.25rem;
+            font-size: 0.98rem;
             color: #232946;
-            max-width: 800px;
-            margin: 0 auto 50px;
+            max-width: 600px;
+            margin: 0 auto 18px;
             opacity: 1;
         }
         .modes-cards {
             display: flex;
             flex-direction: row;
-            gap: 18px;
+            gap: 10px;
             width: 100%;
             justify-content: center;
             flex-wrap: wrap;
         }
         .mode-card {
             background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 16px #23294622;
-            padding: 16px 14px 10px 14px;
-            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #23294611;
+            padding: 10px 8px 6px 8px;
+            width: 180px;
             max-width: 95vw;
-            min-width: 180px;
+            min-width: 120px;
             color: #232946;
-            border: 2px solid #f0f0f0;
+            border: 1px solid #f0f0f0;
             position: relative;
             transition: border 0.3s, box-shadow 0.3s, transform 0.3s;
             overflow: hidden;
             margin: 0 auto;
-            min-height: 180px;
+            min-height: 90px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -795,18 +869,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 align-items: center;
             }
             .mode-card {
-                width: 98vw;
+                width: 95vw;
                 max-width: 99vw;
             }
         }
         .mode-card:hover {
-            border: 2px solid #232946;
-            box-shadow: 0 12px 40px #23294644;
-            transform: translateY(-8px) scale(1.03);
+            border: 1.5px solid #232946;
+            box-shadow: 0 6px 18px #23294622;
+            transform: translateY(-4px) scale(1.01);
         }
         .mode-icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -815,10 +889,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         .mode-card h3 {
             color: #232946;
-            margin: 0 0 18px 0;
-            font-size: 1.3rem;
+            margin: 0 0 8px 0;
+            font-size: 1.02rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         .mode-card ul {
             list-style: none;
@@ -826,17 +900,77 @@ document.addEventListener('DOMContentLoaded', function() {
             margin: 0;
         }
         .mode-card li {
-            padding: 7px 0;
+            padding: 3px 0;
             display: flex;
             align-items: center;
-            font-size: 1.05rem;
+            font-size: 0.92rem;
+        }
+        .mode-card li b {
+            font-size: 1.1em;
+            margin-right: 6px;
         }
         .mode-card li span:first-child {
             color: #232946;
-            margin-right: 16px;
-            font-size: 2em;
+            margin-right: 8px;
+            font-size: 1.2em;
             font-weight: bold;
             line-height: 1;
+        }
+        @media (max-width: 600px) {
+            .dynamic-dark-modes {
+                padding: 10px 0 6px 0;
+            }
+            .modes-cards {
+                gap: 6px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .mode-card {
+                width: 100%;
+                max-width: 340px;
+                min-width: 0;
+                padding: 7px 6px 7px 6px;
+                font-size: 0.92rem;
+                background: #e8f5e9 !important;
+                border: 2px solid #0c9608 !important;
+                box-shadow: 0 1px 4px #0c960811 !important;
+                box-sizing: border-box;
+                margin: 0 auto 8px auto;
+                overflow: hidden;
+                border-radius: 18px !important;
+                cursor: pointer;
+                transition: background 0.18s, box-shadow 0.18s, border 0.18s;
+                display: flex;
+                align-items: center;
+            }
+            .mode-card:active, .mode-card:focus {
+                background: #c8e6c9 !important;
+                box-shadow: 0 4px 16px #0c960844 !important;
+                border-color: #0c9608 !important;
+            }
+            .mode-card:hover {
+                background: #c8e6c9 !important;
+                box-shadow: 0 4px 16px #0c960844 !important;
+                border-color: #0c9608 !important;
+            }
+            .mode-icon {
+                margin-right: 10px;
+            }
+            .mode-card > div, .mode-card ul {
+                flex: 1 1 auto;
+            }
+            .mode-card h3, .mode-card span {
+                font-size: 0.98rem !important;
+            }
+            .mode-icon {
+                font-size: 1.1rem;
+                margin-bottom: 2px;
+            }
+            .mode-card li {
+                font-size: 0.85rem;
+                padding: 2px 0;
+            }
         }
         @media (max-width: 1024px) {
             .modes-cards {
@@ -892,46 +1026,155 @@ document.addEventListener('DOMContentLoaded', function() {
             
     </section>
 
-    <!-- Coming Soon & Available Cities Section (Two Cards) -->
-    <section class="coming-available-section" style="background: #f7f7f9; border-top: 1.5px solid #e0e0e0; padding: 36px 0 18px 0;">
+    <!-- Coming Soon & Available Cities Section (Collapsible Buttons) -->
+    <section class="coming-available-section">
       <div class="container">
-        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: stretch; justify-content: center;">
-          <!-- Left Card: Coming Soon -->
-          <div class="delivery-card" style="margin:0; box-shadow: 0 6px 24px rgba(199,21,133,0.08);">
-            <div class="responsive-container" style="background:#fff; border-radius:12px; display:grid; grid-template-columns:1fr 1fr; align-items:center;">
-              <div class="text-container" style="padding:30px 18px;">
-                <h3 style="color: #C71585; margin-top: 0; font-size:1.6rem;">Coming to your city soon</h3>
-                <p style="margin-bottom: 15px; line-height: 1.7; color: #444;">We're expanding our <strong>relocation services</strong> to more cities across India. Stay tuned as we bring trusted moving and pet relocation solutions to your doorstep.</p>
-                <p style="font-weight: 500; margin: 0; color: #232946;">Your city could be next!</p>
-              </div>
-              <div class="image-container" style="padding:15px; display:flex; align-items:center; justify-content:center;">
-                <img src="assets/hyper.png" alt="Relocation Coming Soon" style="max-width:220px; width:100%; height:auto; border-radius:10px;">
+        <div class="collapsible-container">
+          <!-- Coming Soon Button -->
+          <div class="collapsible-wrapper">
+            <button 
+              class="toggle-section-btn" 
+              data-target="coming-soon-content" 
+              aria-expanded="false" 
+              aria-controls="coming-soon-content"
+            >
+              <h3>Coming to your city soon</h3>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            
+            <!-- Coming Soon Content -->
+            <div 
+              id="coming-soon-content" 
+              class="collapsible-content" 
+              role="region"
+              aria-labelledby="coming-soon-heading"
+            >
+              <div class="responsive-container">
+                <div class="text-container">
+                  <p class="city-description">
+                    We're expanding our <strong>relocation services</strong> to more cities across India. Stay tuned as we bring trusted moving and pet relocation solutions to your doorstep.
+                  </p>
+                  <p class="city-next">
+                    Your city could be next!
+                  </p>
+                </div>
+                <div class="image-container">
+                  <img 
+                    src="assets/hyper.png" 
+                    alt="Relocation Coming Soon" 
+                    class="city-image"
+                    loading="lazy"
+                  >
+                </div>
               </div>
             </div>
           </div>
-          <!-- Right Card: Available in Major Cities -->
-          <div class="available-cities-card" style="background:#fff; border-radius:12px; box-shadow: 0 6px 24px rgba(199,21,133,0.08); padding:30px 18px; display:flex; flex-direction:column; justify-content:center; min-width:260px;">
-            <h3 style="color:#0c9608; font-size:1.3rem; margin-bottom:12px; font-weight:700;">We're Available in Major Cities</h3>
-            <p style="color:#444; font-size:1.08em; margin-bottom:10px;">Check if we serve your city</p>
-            <form id="city-search-form" class="search-form" style="margin-bottom:12px;">
-              <div class="search-box" style="display:flex; align-items:center; gap:6px;">
-                <i class="fas fa-search" style="color:#888;"></i>
-                <input type="text" id="city-search" placeholder="Enter your city name..." required style="flex:1; padding:8px 10px; border:1px solid #ccc; border-radius:5px;">
-                <button type="submit" class="search-btn" style="background:#0c9608; color:#fff; border:none; border-radius:5px; padding:8px 16px; font-weight:600; cursor:pointer;">Search</button>
+
+          <!-- Available Cities Button -->
+          <div class="collapsible-wrapper city-button-wrapper">
+            <button 
+              class="toggle-section-btn available-cities-btn" 
+              data-target="available-cities-content" 
+              aria-expanded="false" 
+              aria-controls="available-cities-content"
+            >
+              <h3>We're Available in Major Cities</h3>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            
+            <!-- Available Cities Content -->
+            <div 
+              id="available-cities-content" 
+              class="collapsible-content" 
+              role="region"
+              aria-labelledby="available-cities-heading"
+            >
+              <div class="city-search-container">
+                <p class="city-search-text">Check if we serve your city</p>
+                <form id="city-search-form" class="search-form">
+                  <div class="search-box">
+                    <label for="city-search" class="sr-only">Search city</label>
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input 
+                      type="text" 
+                      id="city-search" 
+                      placeholder="Enter your city name..." 
+                      required 
+                      aria-label="Enter your city name"
+                    >
+                    <button type="submit" class="search-btn">
+                      Search
+                    </button>
+                  </div>
+                </form>
+                <div class="popular-cities" style="margin-top:15px;">
+                  <p style="color:#666; font-size:0.98em; margin-bottom:10px;">
+                    Popular Cities:
+                  </p>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Chandigarh" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Chandigarh
+                    </button>
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Mohali" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Mohali
+                    </button>
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Ludhiana" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Ludhiana
+                    </button>
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Jalandhar" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Jalandhar
+                    </button>
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Baddi" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Baddi
+                    </button>
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Kharar" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Kharar
+                    </button>
+                    <button 
+                      type="button" 
+                      class="city-tag" 
+                      data-city="Panchkula" 
+                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                    >
+                      Panchkula
+                    </button>
+                  </div>
+                </div>
               </div>
-            </form>
-            <div class="popular-cities" style="margin-top:8px;">
-              <span style="color:#888; font-size:0.98em;">Popular Cities: </span>
-              <a href="#" class="city-tag" data-city="Chandigarh" style="color:#0c9608; margin-right:6px;">Chandigarh</a>
-              <a href="#" class="city-tag" data-city="Mohali" style="color:#0c9608; margin-right:6px;">Mohali</a>
-              <a href="#" class="city-tag" data-city="Ludhiana" style="color:#0c9608; margin-right:6px;">Ludhiana</a>
-              <a href="#" class="city-tag" data-city="Jalandhar" style="color:#0c9608; margin-right:6px;">Jalandhar</a>
-              <a href="#" class="city-tag" data-city="Baddi" style="color:#0c9608; margin-right:6px;">Baddi</a>
-              <a href="#" class="city-tag" data-city="Kharar" style="color:#0c9608; margin-right:6px;">Kharar</a>
-              <a href="#" class="city-tag" data-city="Panchkula" style="color:#0c9608;">Panchkula</a>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
 
@@ -1102,355 +1345,434 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
     </section>
-
-    <!-- Testimonials Section (Redesigned) -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Customers Say</h2>
-            <div class="testimonials-slider-modern">
-                <button class="testimonial-nav-btn" id="testimonial-prev-btn" aria-label="Previous testimonial">&#8592;</button>
-                <div class="testimonial-cards-wrapper-modern">
-                    <div class="testimonial-card-modern">
-                        <div class="testimonial-content testimonial-content-full">
-                            <blockquote class="testimonial-quote">“This was my first time relocating, and I'm so glad I chose this team. They arrived on time, packed everything carefully, and delivered all my belongings safely.”</blockquote>
-                            <div class="testimonial-rating">
-                                <span>★★★★★</span>
-                            </div>
-                            <div class="testimonial-author-modern">Pooja Sharma <span>Delhi</span></div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card-modern">
-                        <div class="testimonial-content testimonial-content-full">
-                            <blockquote class="testimonial-quote">“I was shifting my office and worried about delicate electronics. But their team handled everything with great care. The packing was neat, and nothing got damaged.”</blockquote>
-                            <div class="testimonial-rating">
-                                <span>★★★★★</span>
-                            </div>
-                            <div class="testimonial-author-modern">Rajeev Mehta <span>Gurgaon</span></div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card-modern">
-                        <div class="testimonial-content testimonial-content-full">
-                            <blockquote class="testimonial-quote">“I moved my 2BHK apartment from Bangalore to Pune, and the entire experience was smooth. High-quality packing materials, timely delivery.”</blockquote>
-                            <div class="testimonial-rating">
-                                <span>★★★★★</span>
-                            </div>
-                            <div class="testimonial-author-modern">Swati Singh <span>Bangalore</span></div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card-modern">
-                        <div class="testimonial-content testimonial-content-full">
-                            <blockquote class="testimonial-quote">“Their service was far better than others I've tried, and the pricing was very reasonable. The team managed packing, loading, and unloading with complete professionalism.”</blockquote>
-                            <div class="testimonial-rating">
-                                <span>★★★★★</span>
-                            </div>
-                            <div class="testimonial-author-modern">Deepak Agarwal <span>Noida</span></div>
-                        </div>
-                    </div>
-                </div>
-                <button class="testimonial-nav-btn" id="testimonial-next-btn" aria-label="Next testimonial">&#8594;</button>
             </div>
-            <div class="testimonial-dots" id="testimonial-dots"></div>
-            <style>
-            .testimonials-slider-modern {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0;
-                margin-top: 40px;
-            }
-            .testimonial-cards-wrapper-modern {
-                display: flex;
-                overflow: hidden;
-                width: 100%;
-                max-width: 900px;
-            }
-            .testimonial-card-modern {
-                background: linear-gradient(135deg, #f8fafc 60%, #e3e6f3 100%);
-                border-radius: 18px;
-                box-shadow: 0 6px 32px rgba(199,21,133,0.08);
-                border: 1.5px solid #e0e0e0;
-                padding: 32px 24px 28px 24px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                min-width: 0;
-                width: 100%;
-                max-width: 350px;
-                margin: 0 16px;
-                position: relative;
-                transition: box-shadow 0.2s, border 0.2s, transform 0.2s;
-                flex-shrink: 0;
-                height: auto;
-            }
-            .testimonial-card-modern:hover {
-                box-shadow: 0 12px 40px rgba(199,21,133,0.18);
-                transform: translateY(-6px) scale(1.03);
-                border-color: #C71585;
-            }
-            .testimonial-avatar {
-                width: 64px;
-                height: 64px;
-                border-radius: 50%;
-                overflow: hidden;
-                margin-right: 22px;
-                border: 3px solid #C71585;
-                flex-shrink: 0;
-                background: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .testimonial-avatar img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            .testimonial-content {
-                display: flex;
-                flex-direction: column;
-                flex: 1 1 auto;
-                align-items: center;
-                text-align: center;
-            }
-            .testimonial-quote {
-                font-size: 1.08rem;
-                color: #232946;
-                font-weight: 500;
-                margin: 0 0 10px 0;
-                line-height: 1.6;
-                border: none;
-                padding-left: 0;
-                font-style: italic;
-                background: none;
-                border-radius: 0;
-                padding-top: 0;
-                padding-bottom: 0;
-                text-align: center;
-            }
-            .testimonial-rating {
-                color: #FFC107;
-                font-size: 1.2rem;
-                margin-bottom: 7px;
-                text-align: center;
-            }
-            .testimonial-author-modern {
-                font-weight: bold;
-                color: #C71585;
-                font-size: 1.08rem;
-                letter-spacing: 0.2px;
-                margin-top: 2px;
-                text-align: center;
-            }
-            .testimonial-author-modern span {
-                color: #888;
-                font-weight: 500;
-                font-size: 0.98em;
-                margin-left: 8px;
-            }
-            .testimonial-nav-btn {
-                background: #fff;
-                border: 2px solid #C71585;
-                color: #C71585;
-                font-size: 2rem;
-                border-radius: 50%;
-                width: 48px;
-                height: 48px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                margin: 0 14px;
-                transition: background 0.2s, border 0.2s, color 0.2s;
-                box-shadow: 0 2px 8px rgba(199,21,133,0.08);
-            }
-            .testimonial-nav-btn:hover {
-                background: #C71585;
-                color: #fff;
-                border: 2px solid #C71585;
-            }
-            .testimonial-dots {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: 18px;
-                gap: 8px;
-            }
-            .testimonial-dot {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                background: #e0e0e0;
-                cursor: pointer;
-                transition: background 0.2s, transform 0.2s;
-            }
-            .testimonial-dot.active {
-                background: #C71585;
-                transform: scale(1.2);
-            }
-            @media (max-width: 900px) {
-                .testimonial-cards-wrapper-modern {
-                    max-width: 98vw;
-                }
-                .testimonial-card-modern {
-                    min-width: 95vw;
-                    max-width: 99vw;
-                    flex-direction: column;
-                    height: auto;
-                    align-items: flex-start;
-                    padding: 24px 10px 20px 10px;
-                }
-                .testimonial-avatar {
-                    margin-right: 0;
-                    margin-bottom: 12px;
-                }
-            }
-            </style>
-            <script>
-            (function() {
-                const wrapper = document.querySelector('.testimonial-cards-wrapper-modern');
-                const cards = wrapper.querySelectorAll('.testimonial-card-modern');
-                const prevBtn = document.getElementById('testimonial-prev-btn');
-                const nextBtn = document.getElementById('testimonial-next-btn');
-                const dotsContainer = document.getElementById('testimonial-dots');
-                const cardsToShow = 3;
-                let current = 0;
-                function showCards(idx) {
-                    cards.forEach((card, i) => {
-                        card.style.display = (i >= idx && i < idx + cardsToShow) ? 'flex' : 'none';
-                    });
-                    // Dots
-                    if (dotsContainer) {
-                        dotsContainer.innerHTML = '';
-                        const totalDots = Math.max(1, cards.length - cardsToShow + 1);
-                        for (let i = 0; i < totalDots; i++) {
-                            const dot = document.createElement('div');
-                            dot.className = 'testimonial-dot' + (i === idx ? ' active' : '');
-                            dot.addEventListener('click', () => {
-                                current = i;
-                                showCards(current);
-                            });
-                            dotsContainer.appendChild(dot);
-                        }
-                    }
-                }
-                prevBtn.addEventListener('click', function() {
-                    current = (current - 1 + (cards.length - cardsToShow + 1)) % (cards.length - cardsToShow + 1);
-                    showCards(current);
-                });
-                nextBtn.addEventListener('click', function() {
-                    current = (current + 1) % (cards.length - cardsToShow + 1);
-                    showCards(current);
-                });
-                showCards(current);
-            })();
-            </script>
-        </div>
     </section>
 
 
 
-    <!-- Connect With Us Section -->
+    <!-- Connect With Us Section (Redesigned) -->
     <section id="contact" class="connect-section-modern">
       <style>
         .connect-section-modern {
           background: linear-gradient(135deg, #f7faff 60%, #eaf6ff 100%);
           padding: 54px 0 38px 0;
         }
-        .connect-section-modern .connect-header {
-          text-align: center;
-          margin-bottom: 32px;
-        }
-        .connect-section-modern .connect-header h2 {
-          font-size: 2.1rem;
-          color: #0c9608;
-          font-weight: 700;
-          margin-bottom: 8px;
-        }
-        .connect-section-modern .connect-header p {
-          color: #444;
-          font-size: 1.13em;
-        }
-        .connect-section-modern .connect-cards {
+        .connect-section-modern .connect-container {
           display: flex;
-          gap: 28px;
-          justify-content: center;
+          gap: 48px;
+          max-width: 1100px;
+          margin: 0 auto;
+          background: none;
           flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
         }
-        .connect-section-modern .connect-card {
+        .connect-section-modern .connect-info {
+          flex: 1 1 320px;
           background: #fff;
           border-radius: 18px;
-          box-shadow: 0 4px 24px rgba(12,150,8,0.07);
-          padding: 28px 24px 22px 24px;
-          min-width: 220px;
-          max-width: 320px;
-          flex: 1 1 220px;
+          box-shadow: 0 8px 32px rgba(30,30,60,0.22);
+          padding: 22px 20px 18px 20px;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-          text-align: center;
-          transition: box-shadow 0.2s, transform 0.2s;
+          justify-content: center;
+          min-width: 260px;
+          max-width: 420px;
+          min-height: 340px;
+          transition: box-shadow 0.35s cubic-bezier(.4,1.4,.6,1), transform 0.35s cubic-bezier(.4,1.4,.6,1);
         }
-        .connect-section-modern .connect-card:hover {
-          box-shadow: 0 8px 32px rgba(12,150,8,0.13);
-          transform: translateY(-4px) scale(1.03);
+        .connect-section-modern .connect-info:hover {
+          box-shadow: 0 16px 48px 8px rgba(30,30,60,0.32);
+          transform: translateY(-4px) scale(1.025);
         }
-        .connect-section-modern .card-icon {
-          font-size: 2.5rem;
+        .connect-section-modern .connect-info h3 {
           color: #0c9608;
-          margin-bottom: 14px;
-        }
-        .connect-section-modern .card-content h3 {
-          font-size: 1.18rem;
-          color: #232946;
-          margin-bottom: 6px;
+          font-size: 1.5rem;
+          margin-bottom: 18px;
           font-weight: 700;
         }
-        .connect-section-modern .card-content h2 {
-          font-size: 1.13rem;
+        .connect-section-modern .info-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          margin-bottom: 22px;
+        }
+        .connect-section-modern .info-item:last-child {
+          margin-bottom: 0;
+        }
+        .connect-section-modern .info-icon {
+          font-size: 2.1rem;
           color: #C71585;
-          margin: 0;
+          min-width: 38px;
+        }
+        .connect-section-modern .info-details {
+          display: flex;
+          flex-direction: column;
+        }
+        .connect-section-modern .info-title {
+          font-size: 1.08rem;
+          color: #232946;
           font-weight: 600;
+          margin-bottom: 2px;
+        }
+        .connect-section-modern .info-value {
+          font-size: 1.08rem;
+          color: #444;
+          font-weight: 500;
           word-break: break-all;
         }
+        .connect-section-modern .connect-form {
+          flex: 1 1 320px;
+          background: #fff;
+          border-radius: 18px;
+          box-shadow: 0 8px 32px rgba(30,30,60,0.22);
+          padding: 22px 20px 18px 20px;
+          display: flex;
+          flex-direction: column;
+          min-width: 260px;
+          max-width: 420px;
+          min-height: 340px;
+          justify-content: center;
+          transition: box-shadow 0.35s cubic-bezier(.4,1.4,.6,1), transform 0.35s cubic-bezier(.4,1.4,.6,1);
+        }
+        .connect-section-modern .connect-form:hover {
+          box-shadow: 0 16px 48px 8px rgba(30,30,60,0.32);
+          transform: translateY(-4px) scale(1.025);
+        }
+        .connect-section-modern .connect-form form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .connect-section-modern .connect-form input,
+        .connect-section-modern .connect-form textarea {
+          padding: 8px 10px;
+          font-size: 0.98rem;
+        }
+        .connect-section-modern .connect-form h3 {
+          margin-bottom: 10px;
+        }
+        .connect-section-modern .connect-form h3 {
+          color: #C71585;
+          font-size: 1.5rem;
+          margin-bottom: 18px;
+          font-weight: 700;
+        }
+        .connect-section-modern .connect-form form {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+        .connect-section-modern .connect-form input,
+        .connect-section-modern .connect-form textarea {
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 6px;
+          font-size: 1rem;
+          outline: none;
+          background: #f7faff;
+          color: #232946;
+          resize: none;
+        }
+        .connect-section-modern .connect-form input:focus,
+        .connect-section-modern .connect-form textarea:focus {
+          border: 2px solid #C71585;
+          background: #fff;
+        }
+        .connect-section-modern .connect-form button {
+          background: #0c9608;
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          padding: 14px 0;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(12,150,8,0.08);
+          transition: background 0.2s, box-shadow 0.2s;
+        }
+        .connect-section-modern .connect-form button:hover {
+          background: #C71585;
+        }
         @media (max-width: 900px) {
-          .connect-section-modern .connect-cards {
+          .connect-section-modern .connect-container {
             flex-direction: column;
+            gap: 28px;
             align-items: center;
-            gap: 18px;
           }
-          .connect-section-modern .connect-card {
+          .connect-section-modern .connect-info {
             max-width: 98vw;
             min-width: 0;
-            padding: 20px 10px 16px 10px;
+            padding: 24px 10px 20px 10px;
+          }
+          .connect-section-modern .connect-form {
+            width: 100vw;
+            max-width: 100vw;
+            min-width: 0;
+            border-radius: 0;
+            padding: 18px 0 16px 0;
+          }
+        }
+        @media (max-width: 600px) {
+          .connect-section-modern .connect-info,
+          .connect-section-modern .connect-form {
+            width: 100%;
+            max-width: 420px;
+            min-width: 0;
+            border-radius: 12px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px 16px 10px 16px !important;
+            box-sizing: border-box;
+          }
+          .connect-section-modern .connect-container {
+            padding-left: 8px;
+            padding-right: 8px;
           }
         }
       </style>
       <div class="container">
-        <div class="connect-header">
-          <h2>Connect with us</h2>
-          <p>We will be glad to assist you in regards to your moving and storage needs.</p>
+        <div class="connect-header" style="text-align:center; margin-bottom:38px;">
+          <h2 style="font-size:2.1rem; color:#0c9608; font-weight:700; margin-bottom:8px;">Connect with us</h2>
+          <p style="color:#444; font-size:1.13em;">We will be glad to assist you in regards to your moving and storage needs.</p>
         </div>
-        <div class="connect-cards">
-          <div class="connect-card">
-            <div class="card-icon"><i class="fas fa-user"></i></div>
-            <div class="card-content">
-              <h3>Branch Manager</h3>
-              <h2>+91 8872-998866</h2>
+        <div class="connect-container">
+          <div class="connect-info">
+                        <div class="info-item">
+              <span class="info-icon"><i class="fas fa-phone"></i></span>
+              <div class="info-details">
+                <span class="info-title">Mobile</span>
+                <a class="info-value" href="tel:8872998866" style="color:#444; text-decoration:none;">
+                  8872998866
+                </a>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><i class="fas fa-map-marker-alt"></i></span>
+              <div class="info-details">
+                <span class="info-title">Address</span>
+                <a class="info-value" href="https://www.google.com/maps/search/?api=1&query=C-1113+GVT+Orvis+Grand,+Old+Ambala+Road,+Zirakpur" target="_blank" style="color:#444; text-decoration:none;">
+                  C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur
+                </a>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><i class="fas fa-envelope"></i></span>
+              <div class="info-details">
+                <span class="info-title">Email</span>
+                <a class="info-value" href="mailto:moveroo.in@gmail.com" style="color:#444; text-decoration:none;">
+                  moveroo.in@gmail.com
+                </a>
+              </div>
             </div>
           </div>
-          <div class="connect-card">
-            <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="card-content">
-              <h3>C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur</h3>
+          <div class="connect-form">
+                        <div id="successPopup" class="popup-overlay" style="display: none;">
+              <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <div class="popup-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Request Submitted Successfully!</h3>
+                <p>Thank you for contacting us. Our representative will get back to you shortly.</p>
+                <button class="popup-close-btn">OK</button>
+              </div>
             </div>
-          </div>
-          <div class="connect-card">
-            <div class="card-icon"><i class="fas fa-envelope"></i></div>
-            <div class="card-content">
-              <h3>Centralized Booking Office</h3>
-              <h2>enquiry@moveroo.in</h2>
-            </div>
+            
+            <form id="contactForm" action="https://formsubmit.co/moveroo.in@gmail.com" method="POST">
+              <!-- Honeypot -->
+              <input type="text" name="_honey" style="display:none">
+              
+              <!-- Disable Captcha -->
+              <input type="hidden" name="_captcha" value="false">
+              
+              <!-- Custom Subject -->
+              <input type="hidden" name="_subject" value="New Quote Request from Website">
+              
+              <!-- Redirect after submit -->
+              <input type="hidden" name="_next" value="">
+              
+              <input type="text" name="name" placeholder="Your Name" required>
+              <input type="email" name="email" placeholder="Your Email" required>
+              <input type="tel" name="phone" placeholder="Your Phone" required>
+              <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+              <button type="submit" id="submitBtn">Get a Quote</button>
+              <div id="formStatus" style="display: none; margin-top: 10px; padding: 10px; border-radius: 4px;"></div>
+            </form>
+            
+            <script>
+              document.getElementById('contactForm').addEventListener('submit', function(e) {
+                const submitBtn = document.getElementById('submitBtn');
+                const formStatus = document.getElementById('formStatus');
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                formStatus.style.display = 'none';
+                
+                // Form will submit to FormSubmit
+                // Show success popup after a short delay to allow form submission
+                setTimeout(() => {
+                  this.reset();
+                  showPopup();
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = 'Get a Quote';
+                }, 1000);
+              });
+            </script>
+            
+            <style>
+              .popup-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+              }
+              
+              .popup-overlay.active {
+                opacity: 1;
+                visibility: visible;
+              }
+              
+              .popup-content {
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+                transform: scale(0.9);
+                transition: transform 0.3s ease;
+              }
+              
+              .popup-overlay.active .popup-content {
+                transform: scale(1);
+              }
+              
+              .popup-icon {
+                font-size: 60px;
+                color: #4CAF50;
+                margin-bottom: 15px;
+              }
+              
+              .popup-content h3 {
+                margin: 10px 0;
+                color: #333;
+                font-size: 22px;
+              }
+              
+              .popup-content p {
+                color: #666;
+                margin-bottom: 20px;
+                line-height: 1.5;
+              }
+              
+              .popup-close-btn, .close-popup {
+                background: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 25px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+                transition: background 0.3s;
+              }
+              
+              .popup-close-btn:hover, .close-popup:hover {
+                background: #45a049;
+              }
+              
+              .close-popup {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 5px 10px;
+                font-size: 20px;
+                line-height: 1;
+                border-radius: 50%;
+              }
+            </style>
+            
+            <script>
+              const form = document.getElementById('contactForm');
+              const formStatus = document.getElementById('formStatus');
+              const submitBtn = document.getElementById('submitBtn');
+              const successPopup = document.getElementById('successPopup');
+              
+              // Show popup function
+              function showPopup() {
+                successPopup.style.display = 'flex';
+                setTimeout(() => {
+                  successPopup.classList.add('active');
+                }, 10);
+              }
+              
+              // Close popup function
+              function closePopup() {
+                successPopup.classList.remove('active');
+                setTimeout(() => {
+                  successPopup.style.display = 'none';
+                }, 300);
+              }
+              
+              // Close popup when clicking outside content
+              successPopup.addEventListener('click', (e) => {
+                if (e.target === successPopup) {
+                  closePopup();
+                }
+              });
+              
+              // Close popup when clicking close button or OK button
+              document.querySelector('.popup-close-btn')?.addEventListener('click', closePopup);
+              document.querySelector('.close-popup')?.addEventListener('click', closePopup);
+              
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                formStatus.style.display = 'none';
+                
+                try {
+                  const formData = new FormData(form);
+                  const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                      'Accept': 'application/json'
+                    }
+                  });
+                  
+                  if (response.ok) {
+                    form.reset();
+                    showPopup();
+                  } else {
+                    throw new Error('Form submission failed');
+                  }
+                } catch (error) {
+                  formStatus.textContent = 'Oops! There was a problem sending your message. Please try again later.';
+                  formStatus.style.backgroundColor = '#f8d7da';
+                  formStatus.style.color = '#721c24';
+                } finally {
+                  formStatus.style.display = 'block';
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = 'Send Message';
+                  
+                  // Scroll to show the status message
+                  formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+              });
+            </script>
           </div>
         </div>
       </div>
@@ -1635,19 +1957,19 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>Moveroo</h3>
             <p>Making your move easy and stress-free with professional moving services you can trust.</p>
             <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/share/1ETK5wQwfT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/teammoveroo?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/moveroo.in?igsh=Y3VxNmx0aTUyYXho" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/moveroo-in/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
           <div class="footer-col footer-links">
             <h4>Quick Links</h4>
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="#services">Services</a></li>
+              <li><a href="services.html">Services</a></li>
               <li><a href="#about">About Us</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="process.html">Process</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>

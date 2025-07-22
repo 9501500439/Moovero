@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISS - Integrated Security Solutions | Moveroo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
         /* Magenta Color Scheme */
         :root {
@@ -62,6 +62,51 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
+            position: relative;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            padding: 8px 20px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f5f5f5;
         }
 
         .nav-links li {
@@ -343,11 +388,19 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="packing-moving.html">Packing & Moving</a></li>
+                            <li><a href="vehicle-relocation.html">Vehicle Relocation</a></li>
+                            <li><a href="pet-relocation.html">Pet Relocation</a></li>
+                            <li><a href="packing-labour.html">Packing Labour</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                    <li><a href="#quote" class="quote-btn" style="display:inline-block;padding:10px 24px;background:#FFD700;color:#000;border-radius:24px;font-weight:600;font-size:1.08rem;text-decoration:none;box-shadow:0 2px 8px rgba(255,215,0,0.2);transition:all 0.3s ease;">Get a Quote</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -357,6 +410,11 @@
             </nav>
         </div>
     </header>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Include JavaScript -->
+    <script src="script.js"></script>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -524,5 +582,6 @@
             transform: scale(1.1);
         }
     </style>
+    <script src="script.js"></script>
 </body>
 </html>

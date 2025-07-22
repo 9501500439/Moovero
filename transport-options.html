@@ -1,0 +1,147 @@
+<!-- Transport Options Section -->
+<section id="transport-options" class="transport-options-section">
+  <h2 class="transport-title">Transport Options</h2>
+  <div class="transport-options-grid">
+    <!-- Open Carriers -->
+    <div class="transport-card">
+      <div class="transport-icon" aria-hidden="true">🚛</div>
+      <h3 class="transport-card-title">Open Carriers</h3>
+      <ul class="transport-features">
+        <li>Cost-effective and faster</li>
+        <li>Suitable for regular cars and bikes</li>
+        <li>Available for most metro and Tier-2 cities</li>
+      </ul>
+    </div>
+    <!-- Enclosed Containers -->
+    <div class="transport-card">
+      <div class="transport-icon" aria-hidden="true">🚚</div>
+      <h3 class="transport-card-title">Enclosed Containers</h3>
+      <ul class="transport-features">
+        <li>Fully covered, all-weather protection</li>
+        <li>Recommended for luxury, vintage, or expensive vehicles</li>
+        <li>Available with GPS tracking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+.transport-options-section {
+  background: #f8f9fa;
+  padding: 44px 0 32px 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.transport-title {
+  text-align: center;
+  color: #8B008B;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+}
+.transport-options-grid {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.transport-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(139,0,139,0.07);
+  border: 1.5px solid #f0e6ff;
+  padding: 32px 24px 24px 24px;
+  flex: 1 1 320px;
+  min-width: 240px;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.transport-card:hover {
+  box-shadow: 0 8px 32px rgba(139,0,139,0.13);
+  transform: translateY(-4px) scale(1.02);
+}
+.transport-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: #8B008B;
+  background: #f3eaff;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px #8B008B11;
+}
+.transport-card-title {
+  font-size: 1.25rem;
+  color: #232946;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.transport-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #444;
+  font-size: 1.05rem;
+  text-align: left;
+}
+.transport-features li {
+  margin-bottom: 10px;
+  padding-left: 0.5em;
+  position: relative;
+}
+.transport-features li:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 900px) {
+  .transport-options-grid {
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+  .transport-card {
+    max-width: 98vw;
+    min-width: 0;
+    width: 100%;
+    padding: 24px 10px 18px 10px;
+  }
+}
+@media (max-width: 600px) {
+  .transport-options-section {
+    padding: 24px 0 16px 0;
+  }
+  .transport-title {
+    font-size: 1.25rem;
+    margin-bottom: 18px;
+  }
+  .transport-card {
+    padding: 16px 6px 12px 6px;
+    border-radius: 10px;
+  }
+  .transport-icon {
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  .transport-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+  .transport-features {
+    font-size: 0.98rem;
+  }
+}
+</style>

@@ -177,10 +177,10 @@ body.menu-open {
 }
 
 .quote-btn {
-    background: #FFD700;
+    background: #ffffff;
     color: #000000;
-    border: 2px solid #FFD700;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+    border: 2px solid #9e9e9e;
+    box-shadow: 0 2px 8px rgb(255, 255, 255);
 }
 
 .payment-btn:hover, .quote-btn:hover {

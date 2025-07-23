@@ -46,13 +46,158 @@
             transition: all 0.3s ease;
             padding: 6px 0;
         }
-        
+        .logo {
+            min-height: 40px;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            padding: 0px 0;
+        }
+        /* Header and Navbar Styles */
+        .header, .navbar {
+            min-height: 10px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .header {
+            min-height: 120px !important;
+            padding: 32px 0 !important;
+            position: relative;
+            background: #000 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        /* Mobile menu toggle button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: auto;
+            z-index: 1002;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            color: #cccccc;
+        }
+        /* Mobile menu styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgb(211, 208, 208);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            padding: 70px 20px 30px;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-nav ul li {
+            margin: 10px 0;
+        }
+        .mobile-nav ul li a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav ul li a:hover {
+            background: #f5f5f5;
+        }
+        /* Hide desktop nav on mobile */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .logo {
+                margin-right: auto !important;
+            }
+        }
+        /* Desktop styles */
+        @media (min-width: 993px) {
+            .mobile-menu-btn,
+            .mobile-nav {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+        }
+    </style>
+    <style>
+    @media (max-width: 600px) {
+      .navbar {
+        justify-content: flex-end !important;
+      }
+      .logo {
+        margin-right: auto !important;
+      }
+    }
+    </style>
+    <style>
+    .header, .navbar {
+        min-height: 10px !important;
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+    </style>
+    <style>
+    /* Mobile/desktop toggle for Join Our Team and Partner With Us cards */
+    .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+      display: none;
+    }
+    .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+        display: inline-block;
+      }
+      .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+        display: none;
+      }
+      .join-team-toggle.mobile-active .join-team-details,
+      .partner-toggle.mobile-active .partner-details {
+        display: block !important;
+      }
+    }
+    </style>
+    <style>
         /* Process Page Specific Styles */
         .process-hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 120px 0 60px;
             text-align: center;
-            margin-top: 80px; /* Add space below fixed header */
+              margin-top: 0;
         }
         
         .process-container {
@@ -148,6 +293,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        @media (max-width: 600px) {
+            .payment-section h2 {
+                text-align: left !important;
+                justify-content: flex-start !important;
+                display: block !important;
+            }
         }
         
         .payment-details {
@@ -337,7 +489,7 @@
                     <li><a href="index.html#home">Home</a></li>
                     <!-- Services Dropdown -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
+                        <a href="#services" class="dropdown-toggle" onclick="event.preventDefault(); document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });">
                             Services <i class="fas fa-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -358,17 +510,62 @@
                     </li>
                 </ul>
 
-                <!-- Mobile Menu Toggle -->
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <!-- Mobile Menu Toggle Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
-    <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay"></div>
+    
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-btn" id="closeMobileMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#" class="quote-btn">Get a Quote</a></li>
+        </ul>
+    </nav>
+    
+    <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const body = document.body;
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+    });
+    </script>
         <!-- Process Hero Section -->
     <section class="process-hero">
         <div class="container">
@@ -717,11 +914,17 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                        <!-- Pet Relocation Note -->
+            <div style="background: #e8f5e9; border: 1px solid #c8e6c9; border-left: 4px solid #4caf50; padding: 16px 20px; border-radius: 8px; margin: 40px auto 0; max-width: 800px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                <div style="font-size: 1.3rem;">🐾</div>
+                <div>
+                    <p style="margin: 0; color: #1b5e20; font-weight: 500;">
+                        <strong>Important for Pet Owners:</strong> For Pet Relocation, plan at least one month prior to your desired moving date to ensure all necessary arrangements can be made.
+                    </p>
                 </div>
             </div>
         </div>
-
+        
         <!-- Vehicle Relocation Process -->
         <div id="vehicle-relocation" style="background: linear-gradient(120deg, #f7fafc 0%, #e3eafc 100%); margin-top: 40px; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 48px 0 48px 0; box-shadow: 0 4px 24px #b0b8d855; border: 1px solid rgba(0,0,0,0.08);">
             <h3 style="color: #2a5d9f; text-align: center; margin-bottom: 18px; font-size: 1.7rem; letter-spacing: 1px; text-shadow: 0 2px 8px #b0b8d855;">
@@ -868,55 +1071,38 @@
                 <i class="fas fa-box-open" style="margin-left: 10px; color: #C71585;"></i>
             </h3>
             <p style="text-align: center; color: #232946; font-size: 1.13rem; font-weight: 500; margin-bottom: 32px; text-shadow: 0 1px 6px #b0b8d822;">Experience professional packing and unpacking services to make your move smoother.</p>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; padding: 0 18px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 950px; margin: 0 auto;">
                 <!-- Step 1 -->
-                <div style="background: linear-gradient(120deg, #e0e7ff 0%, #e3eafc 100%); padding: 24px 20px 20px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px; color: #C71585;">
-                        <div style="background: #6c63ff; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.25rem; box-shadow: 0 2px 8px #6c63ff33;">1</div>
-                        <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #C71585;">Initial Consultation</h4>
-                    </div>
-                    <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">We assess your packing needs, timeline, and any special requirements for fragile items.</p>
+                <div style="background: white; border-radius: 10px; padding: 28px 20px 22px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="step-number" style="background: #ffe400; color: #232946; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; margin-bottom: 12px; box-shadow: 0 2px 8px #ffe40033;">1</div>
+                    <div class="step-title" style="font-size: 1.18rem; font-weight: 700; color: #C71585; margin: 0 0 10px 0;">Initial Consultation</div>
+                    <div class="step-desc" style="color: #232946; font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 500;">We assess your packing needs, timeline, and any special requirements for fragile items.</div>
                 </div>
                 <!-- Step 2 -->
-                <div style="background: linear-gradient(120deg, #e0ffe4 0%, #e3eafc 100%); padding: 24px 20px 20px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px; color: #C71585;">
-                        <div style="background: #43e97b; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.25rem; box-shadow: 0 2px 8px #43e97b33;">2</div>
-                        <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #C71585;">Material Planning & Allocation</h4>
-                    </div>
-                    <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Based on assessment, we pre-allocate bubble wraps, crates, tapes, labels, wardrobe boxes, and more.</p>
+                <div style="background: white; border-radius: 10px; padding: 28px 20px 22px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="step-number" style="background: #43e97b; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; margin-bottom: 12px; box-shadow: 0 2px 8px #43e97b33;">2</div>
+                    <div class="step-title" style="font-size: 1.18rem; font-weight: 700; color: #C71585; margin: 0 0 10px 0;">Material Planning & Allocation</div>
+                    <div class="step-desc" style="color: #232946; font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 500;">Based on assessment, we pre-allocate bubble wraps, crates, tapes, labels, wardrobe boxes, and more.</div>
                 </div>
                 <!-- Step 3 -->
-                <div style="background: linear-gradient(120deg, #e0f7fa 0%, #e3eafc 100%); padding: 24px 20px 20px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px; color: #C71585;">
-                        <div style="background: #00c6ff; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.25rem; box-shadow: 0 2px 8px #00c6ff33;">3</div>
-                        <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #C71585;">Packing Day</h4>
-                    </div>
-                    <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Our team arrives with all materials and packs your items with care, labeling each box by room.</p>
+                <div style="background: white; border-radius: 10px; padding: 28px 20px 22px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="step-number" style="background: #00c6ff; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; margin-bottom: 12px; box-shadow: 0 2px 8px #00c6ff33;">3</div>
+                    <div class="step-title" style="font-size: 1.18rem; font-weight: 700; color: #C71585; margin: 0 0 10px 0;">Packing Day</div>
+                    <div class="step-desc" style="color: #232946; font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 500;">Our team arrives with all materials and packs your items with care, labeling each box by room.</div>
                 </div>
                 <!-- Step 4 -->
-                <div style="background: linear-gradient(120deg, #e0e7ff 0%, #e3eafc 100%); padding: 24px 20px 20px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px; color: #C71585;">
-                        <div style="background: #6c63ff; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.25rem; box-shadow: 0 2px 8px #6c63ff33;">4</div>
-                        <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #C71585;">Professional Packing by Category</h4>
-                    </div>
-                    <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Delicate kitchenware, electronics, artwork, and furniture – each is packed by a specialized crew.</p>
+                <div style="background: white; border-radius: 10px; padding: 28px 20px 22px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="step-number" style="background: #ff6a00; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; margin-bottom: 12px; box-shadow: 0 2px 8px #ff6a0033;">4</div>
+                    <div class="step-title" style="font-size: 1.18rem; font-weight: 700; color: #C71585; margin: 0 0 10px 0;">Professional Packing by Category</div>
+                    <div class="step-desc" style="color: #232946; font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 500;">Delicate kitchenware, electronics, artwork, and furniture – each is packed by a specialized crew.</div>
                 </div>
                 <!-- Step 5 -->
-                <div style="background: linear-gradient(120deg, #e0ffe4 0%, #e3eafc 100%); padding: 24px 20px 20px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px; color: #C71585;">
-                        <div style="background: #43e97b; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.25rem; box-shadow: 0 2px 8px #43e97b33;">5</div>
-                        <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #C71585;">Itemized Labeling & Inventory</h4>
-                    </div>
-                    <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Every box is labeled, barcoded (if needed), and digitally listed for zero confusion.</p>
+                <div style="background: white; border-radius: 10px; padding: 28px 20px 22px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="step-number" style="background: #ffd200; color: #232946; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; margin-bottom: 12px; box-shadow: 0 2px 8px #ffd20033;">5</div>
+                    <div class="step-title" style="font-size: 1.18rem; font-weight: 700; color: #C71585; margin: 0 0 10px 0;">Itemized Labeling & Inventory</div>
+                    <div class="step-desc" style="color: #232946; font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 500;">Every box is labeled, barcoded (if needed), and digitally listed for zero confusion.</div>
                 </div>
-                <!-- Step 6 -->
-                <div style="background: linear-gradient(120deg, #fbe0ff 0%, #e3eafc 100%); padding: 24px 20px 20px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px; color: #C71585;">
-                        <div style="background: #b91d73; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.25rem; box-shadow: 0 2px 8px #f953c633;">6</div>
-                        <h4 style="margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.5px; color: #C71585;">Waste Removal & Final Check</h4>
-                    </div>
-                    <p style="color: #232946; line-height: 1.6; margin: 0; font-weight: 500;">Need to shift furniture again or missed something? We’re just one call away – even after the move.</p>
-                </div>
+            </div>
             <!-- Value-Added Services Section -->
             <div id="value-added-services" style="background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%); margin: 60px 0 0; padding: 60px 0; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
                 <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
@@ -1130,20 +1316,11 @@
                 <p>For any payment-related queries, please contact our customer support team at +91 8872998866 or email us at info@moveroo.com</p>
             </div>
         </div>    
-            <!-- Pet Relocation Note -->
-            <div style="background: #e8f5e9; border: 1px solid #c8e6c9; border-left: 4px solid #4caf50; padding: 16px 20px; border-radius: 8px; margin: 40px auto 0; max-width: 800px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                <div style="font-size: 1.3rem;">🐾</div>
-                <div>
-                    <p style="margin: 0; color: #1b5e20; font-weight: 500;">
-                        <strong>Important for Pet Owners:</strong> For Pet Relocation, plan at least one month prior to your desired moving date to ensure all necessary arrangements can be made.
-                    </p>
-                </div>
-            </div>
-        </div>
+            
     </section>
 
     <!-- Footer Section -->
-    <footer class="footer">
+    <footer class="footer" style="padding-top: 8px; padding-bottom: 8px;">
         <div class="container">
             <div class="footer-bottom">
                 <p>&copy; 2025 Moveroo. All Rights Reserved.</p>

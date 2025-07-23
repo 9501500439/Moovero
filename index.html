@@ -27,8 +27,8 @@
 
         /* Quote Form Styling */
         .quote-header {
-            background: #0c9608;
-            color: #fff;
+            background: #f3f3f3;
+            color: #232323;
             padding: 24px 20px 16px;
             border-radius: 8px 8px 0 0;
             text-align: center;
@@ -40,6 +40,7 @@
             font-size: 2rem;
             font-weight: 700;
             letter-spacing: 0.5px;
+            color: #232323;
         }
         
         .quote-form {
@@ -393,24 +394,18 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="quote-modal-content">
         <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">&times;</button>
         <div class="quote-header">
-            <h2>Get a free moving quote</h2>
-            <p>Fill out the form below and our team will get in touch with you soon.</p>
+            <h2>Get a Free Quote</h2>
+            <p>Fill the form and our team will contact you soon.</p>
         </div>
-        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/moveroo.in@gmail.com" method="POST">
+        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/jhravindra@gmail.com" method="POST">
             <div class="form-group">
                 <input type="text" id="name" name="name" placeholder="Name" required>
             </div>
             <div class="form-group">
-                <input type="tel" id="mobile" name="mobile" placeholder="Contact Mobile Number" required pattern="[0-9]{10,15}">
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile No" required pattern="[0-9]{10,15}">
             </div>
             <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Email ID" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="locationFrom" name="locationFrom" placeholder="Location From" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="locationTo" name="locationTo" placeholder="Location To" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
                 <select id="service" name="service" required>
@@ -421,25 +416,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <option value="packing-labour">Packing Labour</option>
                 </select>
             </div>
-            <div class="form-group captcha-group">
-                <label for="captcha" class="captcha-label">Enter the code: <span class="captcha-code">12344</span></label>
-                <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha" required pattern="12344">
-            </div>
-            <div class="form-group terms-group">
-                <label>
-                    <input type="checkbox" id="terms" name="terms" checked required>
-                    I agree to the <a href="terms.html" target="_blank">terms and conditions</a>
-                </label>
-            </div>
-            <input type="hidden" name="_replyto" id="replyto-field">
-            <input type="hidden" name="_next" value="#success-popup">
-            <button type="submit" class="btn btn-red btn-block">Get My Free Quote</button>
+            <button type="submit" class="btn btn-gray btn-block" style="background: #888; color: #fff;">Submit</button>
         </form>
         <div id="success-popup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:99999;justify-content:center;align-items:center;">
             <div style="background:#fff;padding:32px 28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:350px;">
-                <h2 style="color:#0c9608;margin-bottom:12px;">Successfully received your request!</h2>
-                <p style="color:#333;">Thank you for contacting us. We will get in touch with you soon.</p>
-                <button onclick="document.getElementById('success-popup').style.display='none'" style="margin-top:18px;padding:10px 28px;background:#0c9608;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Close</button>
+                <h2 style="color:#888;margin-bottom:12px;">Thank you!</h2>
+                <p style="color:#333;">Thank you! Your request has been accepted. Our expert team will get in touch with you shortly.</p>
+                <button onclick="document.getElementById('success-popup').style.display='none'" style="margin-top:18px;padding:10px 28px;background:#888;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Close</button>
             </div>
         </div>
         <script>
@@ -456,10 +439,113 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 <style>
+/* Mobile Navigation Styles */
 .header {
     min-height: 70px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    padding: 10px 0 !important;
+    position: relative;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #ffffff; /* White color for the icon */
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    z-index: 1002;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    color: #cccccc; /* Slightly darker on hover */
+}
+
+/* Mobile menu styles */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgb(211, 208, 208);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1001;
+    padding: 70px 20px 30px;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav ul li {
+    margin: 10px 0;
+}
+
+.mobile-nav ul li a {
+    display: block;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav ul li a:hover {
+    background: #f5f5f5;
+}
+
+/* Hide desktop nav on mobile */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .logo {
+        display: left;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 993px) {
+    .mobile-menu-btn,
+    .mobile-nav {
+        display: none;
+    }
+    
+    .nav-links {
+        display: flex;
+    }
 }
 </style>
 </head>
@@ -498,24 +584,68 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <!-- Get Quote Button -->
                     <li>
-                        <a href="#quote" class="quote-btn">
+                        <a href="#" class="quote-btn">
                             Get a Quote
                         </a>
                     </li>
                 </ul>
 
-                <!-- Mobile Menu Toggle -->
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <!-- Mobile Menu Toggle Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
     
-    <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay"></div>
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-btn" id="closeMobileMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#" class="quote-btn">Get a Quote</a></li>
+        </ul>
+    </nav>
+    
+    <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const body = document.body;
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+    });
+    </script>
 
     <!-- Hero Section with Video on Left -->
     <section class="hero">
@@ -533,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h1>Moveroo. Where Moving Becomes Effortless.</h1>
                 <p>From boxes to beloved pets, furniture to fuel tanks — we don’t just move things, we move lives. Welcome to Moveroo — India’s next-gen relocation companion.</p>
                 <div class="hero-buttons">
-                    <a href="#quote" class="btn btn-secondary shiny-btn quote-btn">Get a Quote</a>
+                    <a href="#" class="btn btn-secondary shiny-btn quote-btn">Get a Free Quote</a>
                     <a href="tel:+91 8872998866" class="btn btn-secondary shiny-btn"><i class="fas fa-phone"></i> Call Us Now</a>
                 </div>
             </div>
@@ -1026,61 +1156,178 @@ document.addEventListener('DOMContentLoaded', function() {
             
     </section>
 
-    <!-- Coming Soon & Available Cities Section (Collapsible Buttons) -->
-    <section class="coming-available-section">
-      <div class="container">
-        <div class="collapsible-container">
-          <!-- Coming Soon Button -->
-          <div class="collapsible-wrapper">
-            <button 
-              class="toggle-section-btn" 
-              data-target="coming-soon-content" 
-              aria-expanded="false" 
-              aria-controls="coming-soon-content"
-            >
-              <h3>Coming to your city soon</h3>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            
-            <!-- Coming Soon Content -->
-            <div 
-              id="coming-soon-content" 
-              class="collapsible-content" 
-              role="region"
-              aria-labelledby="coming-soon-heading"
-            >
-              <div class="responsive-container">
-                <div class="text-container">
-                  <p class="city-description">
-                    We're expanding our <strong>relocation services</strong> to more cities across India. Stay tuned as we bring trusted moving and pet relocation solutions to your doorstep.
-                  </p>
-                  <p class="city-next">
-                    Your city could be next!
-                  </p>
+    <!-- Delivery Section -->
+            <div class="delivery-card">
+                <div class="responsive-container">
+                <style>
+                .service-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                }
+                .service-card a:hover i {
+                    transform: translateX(5px);
+                }
+                @keyframes gradientBG {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .delivery-card {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 15px;
+                    padding: 3px;
+                    background: linear-gradient(45deg, #C71585, #ff6b6b, #ffa502, #ff6b6b, #C71585);
+                    background-size: 300% 300%;
+                    animation: gradientBG 8s ease infinite;
+                    box-shadow: 0 10px 30px rgba(199, 21, 133, 0.3);
+                    transition: all 0.5s ease;
+                    margin: 30px auto 0;
+                    max-width: 1000px;
+                    width: 90%;
+                }
+                .delivery-card:hover {
+                    transform: translateY(-5px) scale(1.01);
+                    box-shadow: 0 15px 40px rgba(199, 21, 133, 0.4);
+                }
+                .responsive-container {
+                    display: grid;
+                    grid-template-columns: 1.2fr 1fr;
+                    gap: 20px;
+                    align-items: center;
+                    background: #fff;
+                    border-radius: 12px;
+                    padding: 0;
+                    position: relative;
+                    overflow: hidden;
+                    margin: 0 auto;
+                    width: 100%;
+                }
+                    .text-container {
+                        padding: 30px 25px;
+                        height: 100%;
+                        position: relative;
+                        z-index: 2;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    .text-container h3 {
+                        font-size: 1.8rem;
+                        margin-bottom: 20px;
+                        color: #333;
+                        position: relative;
+                        display: inline-block;
+                    }
+                    .text-container h3:after {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        left: 0;
+                        width: 50px;
+                        height: 3px;
+                        background: linear-gradient(90deg, #C71585, #ff6b6b);
+                        border-radius: 3px;
+                    }
+                    .text-container p {
+                        color: #555;
+                        line-height: 1.7;
+                        margin-bottom: 15px;
+                    }
+                    .image-container {
+                        max-width: 280px;
+                        margin: 0 auto;
+                        position: relative;
+                        padding: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                    }
+                    .image-container:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+                        border-radius: 50%;
+                        transform: scale(0.9);
+                        z-index: 1;
+                        transition: all 0.5s ease;
+                    }
+                    .image-container:hover:before {
+                        transform: scale(1.1);
+                    }
+                    .image-container img {
+                        position: relative;
+                        z-index: 2;
+                        transition: all 0.5s ease;
+                    }
+                    .image-container:hover img {
+                        transform: scale(1.05) rotate(2deg);
+                    }
+                    .image-container img {
+                        max-width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                    @media (max-width: 768px) {
+                        .responsive-container {
+                            grid-template-columns: 1fr;
+                            gap: 20px;
+                        }
+                        .image-container {
+                            max-width: 250px;
+                            margin: 0 auto 15px;
+                        }
+                    }
+                </style>
+                <!-- Left Column - Text -->
+                <div class="text-container" style="order: 1;">
+                    <h3 style="color: #C71585; margin-top: 0;">Coming Soon—<strong>Hyperlocal & Inter-City Delivery</strong></h3>
+                    <p style="margin-bottom: 15px; line-height: 1.1;">We're expanding: same-day micro-deliveries locally and intercity.</p>
+                    <p style="font-weight: 500; margin: 0; color: #333;">> <strong>Hyperlocal reach.</strong> <strong>Nationwide network.</strong></p>
                 </div>
-                <div class="image-container">
-                  <img 
-                    src="assets/hyper.png" 
-                    alt="Relocation Coming Soon" 
-                    class="city-image"
-                    loading="lazy"
-                  >
+                
+                <!-- Right Column - Image -->
+                <div class="image-container" style="order: 2;">
+                    <img src="assets/hyper.png" alt="Hyperlocal Delivery">
                 </div>
-              </div>
             </div>
-          </div>
-
-          <!-- Available Cities Button -->
-          <div class="collapsible-wrapper city-button-wrapper">
-            <button 
-              class="toggle-section-btn available-cities-btn" 
-              data-target="available-cities-content" 
-              aria-expanded="false" 
-              aria-controls="available-cities-content"
-            >
-              <h3>We're Available in Major Cities</h3>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </button>
+        </div>
+    </section>
+           <!-- City Search Section -->
+    <section class="city-search">
+        <div class="container">
+            <div class="city-search-content">
+                <h2>We're Serving Across Top Cities</h2>
+                <p>Check if we serve your city</p>
+                <div class="search-container">
+                    <form id="city-search-form" class="search-form">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="city-search" placeholder="Enter your city name..." required>
+                            <button type="submit" class="search-btn">Search</button>
+                        </div>
+                    </form>
+                    <div class="popular-cities" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;">
+                        <span style="flex: 0 0 100%; text-align: center; margin-bottom: 8px; font-size: 0.95rem; color: #555;">Popular Cities: </span>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+                            <a href="#" class="city-tag" data-city="Chandigarh">Chandigarh</a>
+                            <a href="#" class="city-tag" data-city="Mohali">Mohali</a>
+                            <a href="#" class="city-tag" data-city="Ludhiana">Ludhiana</a>
+                            <a href="#" class="city-tag" data-city="Jalandhar">Jalandhar</a>
+                            <a href="#" class="city-tag" data-city="Baddi">Baddi</a>
+                            <a href="#" class="city-tag" data-city="Kharar">Kharar</a>
+                            <a href="#" class="city-tag" data-city="Panchkula">Panchkula</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
             
             <!-- Available Cities Content -->
             <div 
@@ -1116,7 +1363,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Chandigarh" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#000000; color:#ffffff; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Chandigarh
                     </button>
@@ -1124,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Mohali" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#ffffff; color:#000000; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Mohali
                     </button>
@@ -1132,7 +1379,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Ludhiana" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#ffffff; color:#000000; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Ludhiana
                     </button>
@@ -1140,7 +1387,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Jalandhar" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#ffffff; color:#000000; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Jalandhar
                     </button>
@@ -1148,7 +1395,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Baddi" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#ffffff; color:#000000; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Baddi
                     </button>
@@ -1156,7 +1403,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Kharar" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#ffffff; color:#000000; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Kharar
                     </button>
@@ -1164,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       type="button" 
                       class="city-tag" 
                       data-city="Panchkula" 
-                      style="background:#e8f5e9; color:#0c9608; border:1px solid #b9e6b9; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
+                      style="background:#ffffff; color:#000000; border:1px solid #000000; border-radius:15px; padding:5px 12px; font-size:0.9rem; cursor:pointer; transition: all 0.2s;"
                     >
                       Panchkula
                     </button>
@@ -1212,11 +1459,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>High-grade materials. Labeled, layered, insured.</p>
                         </div>
                     </li>
-                </ul>
             </div>
-        </div>
     </section>
-
     <!-- Work With Us Section (Modernized) -->
     <section id="work-with-us" class="work-with-us-modern">
       <style>
@@ -1561,7 +1805,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="info-details">
                 <span class="info-title">Email</span>
                 <a class="info-value" href="mailto:moveroo.in@gmail.com" style="color:#444; text-decoration:none;">
-                  moveroo.in@gmail.com
+                  enquiry@moveroo.in
                 </a>
               </div>
             </div>
@@ -1579,7 +1823,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
             </div>
             
-            <form id="contactForm" action="https://formsubmit.co/moveroo.in@gmail.com" method="POST">
+            <form id="contactForm" action="https://formsubmit.co/enquiry@moveroo.in" method="POST">
               <!-- Honeypot -->
               <input type="text" name="_honey" style="display:none">
               
@@ -1594,10 +1838,9 @@ document.addEventListener('DOMContentLoaded', function() {
               
               <input type="text" name="name" placeholder="Your Name" required>
               <input type="email" name="email" placeholder="Your Email" required>
-              <input type="tel" name="phone" placeholder="Your Phone" required>
               <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-              <button type="submit" id="submitBtn">Get a Quote</button>
-              <div id="formStatus" style="display: none; margin-top: 10px; padding: 10px; border-radius: 4px;"></div>
+              <button type="submit" id="submitBtn">Contact us</button>
+              <div id="formStatus" style="display: none; margin-top: 5px; padding: 5px; border-radius: 3px;"></div>
             </form>
             
             <script>
@@ -1766,7 +2009,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } finally {
                   formStatus.style.display = 'block';
                   submitBtn.disabled = false;
-                  submitBtn.textContent = 'Send Message';
+                  submitBtn.textContent = 'Submit';
                   
                   // Scroll to show the status message
                   formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -2107,9 +2350,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // List of available cities
         const availableCities = [
-            'delhi', 'new delhi', 'mumbai', 'bangalore', 'hyderabad', 'chennai',
-            'kolkata', 'pune', 'ahmedabad', 'jaipur', 'surat', 'lucknow', 'kanpur',
-            'nagpur', 'indore', 'thane', 'bhopal', 'visakhapatnam', 'patna', 'vadodara'
+            'Chandigarh', 'Mohali', 'Ludhiana', 'Jalandhar', 'Baddi', 'Kharar',
+            'Panchkula', 'Derabassi'
         ];
         
         // Show popup function
@@ -2301,5 +2543,36 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
 <script src="js/quote-popup.js"></script>
+<script>
+// Open the quote modal on any .quote-btn click
+function openQuoteModal(e) {
+  e.preventDefault();
+  var modal = document.getElementById('quote-modal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeQuoteModal() {
+  var modal = document.getElementById('quote-modal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.quote-btn').forEach(function(btn) {
+    btn.addEventListener('click', openQuoteModal);
+  });
+  var closeBtn = document.getElementById('quote-modal-close');
+  if (closeBtn) closeBtn.onclick = closeQuoteModal;
+  var modal = document.getElementById('quote-modal');
+  if (modal) {
+    modal.onclick = function(e) {
+      if (e.target === modal) closeQuoteModal();
+    };
+  }
+});
+</script>
 </body>
 </html>

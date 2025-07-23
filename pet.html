@@ -214,18 +214,16 @@
                 <h1 style="font-size: 3.5rem; margin: 0 0 20px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 2px; text-align: left;">
                     Pet Relocation
                 </h1>
-                <p style="font-size: 1.8rem; margin: 0 0 30px 0; font-weight: 300; line-height: 1.4; text-align: left; max-width: 800px;">
+                <p style="font-size: 1.8rem; margin: 0 0 30px 0; font-weight: 300; color: #e6e6e6; line-height: 1.4; text-align: left; max-width: 800px;">
                     We understand that your pet is family. Let us handle their journey with care and professionalism.
                 </p>
-                <div style="margin-top: 20px; text-align: left;">
-                    <a href="#contact" style="background: #ffd700; color: #000; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; display: inline-block; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">
-                        Get Started
-                    </a>
-                </div>
+               
             </div>
         </div>
     </section>
-
+    <div style="text-align:center; margin: 32px 0 24px 0;">
+        
+    </div>
     <style>
 .top-action-btn {
   position: fixed !important;
@@ -256,7 +254,206 @@
 }
 </style>
 <a href="index.html#services" class="back-button top-action-btn"><span class="arrow-icon" style="margin-right: 8px;">←</span> Back</a>
-<a href="#" class="quote-btn top-action-btn" id="fixed-quote-btn">Get a Quote</a>
+<a href="#" class="btn btn-secondary shiny-btn quote-btn top-action-btn" id="fixed-quote-btn">Get a Free Quote</a>
+
+<!-- Quote Modal (hidden by default) -->
+<style>
+/* Quote Modal Styles from index.html */
+.quote-header {
+  background: #f3f3f3;
+  color: #232323;
+  padding: 24px 20px 16px;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+  margin: 0;
+}
+.quote-header h2 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #232323;
+}
+
+.quote-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+.quote-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  max-width: 700px;
+  min-width: 320px;
+  width: 96vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  padding: 0 0 10px 0;
+  animation: quoteModalIn 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.quote-form {
+  background: #fff;
+  border-radius: 0 0 18px 18px;
+  box-shadow: none;
+  padding: 18px 36px 18px 36px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.quote-form .form-group {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.quote-form input[type="text"],
+.quote-form input[type="email"],
+.quote-form input[type="tel"],
+.quote-form select {
+  padding: 10px 14px;
+  border: 1.5px solid #222;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  color: #111;
+  transition: border 0.2s, background 0.2s;
+}
+.quote-form input[type="text"]:focus,
+.quote-form input[type="email"]:focus,
+.quote-form input[type="tel"]:focus,
+.quote-form select:focus {
+  border: 2px solid #000;
+  background: #fafafa;
+}
+.quote-form select {
+  color: #111;
+  font-weight: 500;
+  background: #fff;
+}
+.btn-red {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-red:hover,
+.btn-red:focus {
+  background: #000;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+.btn-block {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .quote-modal-content {
+    max-width: 99vw;
+    min-width: 0;
+  }
+  .quote-form {
+    flex-direction: column;
+    padding: 14px 8px 10px 8px;
+    gap: 12px;
+  }
+  .quote-form .form-group {
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .quote-modal-content {
+    max-width: 99vw;
+    padding: 0 0 8px 0;
+  }
+  .quote-form {
+    padding: 8px 2vw 8px 2vw;
+  }
+}
+@keyframes quoteModalIn {
+  from { transform: scale(0.95) translateY(30px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+.quote-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #d32f2f;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.quote-modal-close:hover {
+  color: #b71c1c;
+}
+</style>
+<div id="quote-modal" class="quote-modal-overlay" style="display:none;">
+    <div class="quote-modal-content">
+        <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">&times;</button>
+        <div class="quote-header">
+            <h2>Get a Free Quote</h2>
+            <p>Fill the form and our team will contact you soon.</p>
+        </div>
+        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/jhravindra@gmail.com" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile No" required pattern="[0-9]{10,15}">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="packing-moving">Packing & Moving</option>
+                    <option value="vehicle-relocation">Vehicle Relocation</option>
+                    <option value="pet-relocation">Pet Relocation</option>
+                    <option value="packing-labour">Packing Labour</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-red btn-block">Submit</button>
+        </form>
+        <div id="success-popup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:99999;justify-content:center;align-items:center;">
+            <div style="background:#fff;padding:32px 28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:350px;">
+                <h2 style="color:#888;margin-bottom:12px;">Thank you!</h2>
+                <p style="color:#333;">Thank you! Your request has been accepted. Our expert team will get in touch with you shortly.</p>
+                <button onclick="document.getElementById('success-popup').style.display='none'" style="margin-top:18px;padding:10px 28px;background:#888;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Close</button>
+            </div>
+        </div>
+        <script>
+        document.getElementById('quoteForm').addEventListener('submit', function() {
+            document.getElementById('replyto-field').value = document.getElementById('email').value;
+        });
+        window.addEventListener('DOMContentLoaded', function() {
+            if(window.location.hash === '#success-popup') {
+                document.getElementById('success-popup').style.display = 'flex';
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+        });
+        </script>
+    </div>
+</div>
 
 <!-- Menu Overlay -->
 <div class="menu-overlay"></div>
@@ -949,6 +1146,73 @@
         </div>
     </div>
 </footer>
+
+<!-- Get a Free Quote Modal (Unified) -->
+<div id="quote-modal" class="quote-modal-overlay" style="display:none;">
+    <div class="quote-modal-content">
+        <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">&times;</button>
+        <div class="quote-header">
+            <h2>Get a Free Quote</h2>
+            <p>Fill the form and our team will contact you soon.</p>
+        </div>
+        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/jhravindra@gmail.com" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile No" required pattern="[0-9]{10,15}">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="packing-moving">Packing & Moving</option>
+                    <option value="vehicle-relocation">Vehicle Relocation</option>
+                    <option value="pet-relocation">Pet Relocation</option>
+                    <option value="packing-labour">Packing Labour</option>
+                </select>
+            </div>
+            <input type="hidden" name="_replyto" id="replyto-field">
+            <button type="submit" class="btn btn-gray btn-block" style="background: #888; color: #fff;">Submit</button>
+        </form>
+        <div id="success-popup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:99999;justify-content:center;align-items:center;">
+            <div style="background:#fff;padding:32px 28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:350px;">
+                <h2 style="color:#888;margin-bottom:12px;">Thank you!</h2>
+                <p style="color:#333;">Thank you! Your request has been accepted. Our expert team will get in touch with you shortly.</p>
+                <button onclick="document.getElementById('success-popup').style.display='none'" style="margin-top:18px;padding:10px 28px;background:#888;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Close</button>
+            </div>
+        </div>
+        <script>
+        // Open modal on any .quote-btn click (like index.html)
+        document.querySelectorAll('.quote-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('quote-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        // Close modal
+        document.getElementById('quote-modal-close').onclick = function() {
+            document.getElementById('quote-modal').style.display = 'none';
+            document.body.style.overflow = '';
+        };
+        // Close on overlay click
+        document.getElementById('quote-modal').onclick = function(e) {
+            if(e.target === this) {
+                this.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        };
+        // Set reply-to
+        document.getElementById('quoteForm').addEventListener('submit', function() {
+            document.getElementById('replyto-field').value = document.getElementById('email').value;
+        });
+        </script>
+    </div>
+</div>
+
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">

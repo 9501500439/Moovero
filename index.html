@@ -457,9 +457,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <style>
 .header {
-    min-height: 90px !important;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
+    min-height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 </style>
 </head>
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <!-- Services Dropdown -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
+                        <a href="#services" class="dropdown-toggle" onclick="event.preventDefault(); document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });">
                             Services <i class="fas fa-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>From boxes to beloved pets, furniture to fuel tanks — we don’t just move things, we move lives. Welcome to Moveroo — India’s next-gen relocation companion.</p>
                 <div class="hero-buttons">
                     <a href="#quote" class="btn btn-secondary shiny-btn quote-btn">Get a Quote</a>
-                    <a href="tel:+1234567890" class="btn btn-secondary shiny-btn"><i class="fas fa-phone"></i> Call Us Now</a>
+                    <a href="tel:+91 8872998866" class="btn btn-secondary shiny-btn"><i class="fas fa-phone"></i> Call Us Now</a>
                 </div>
             </div>
         </div>
@@ -1967,7 +1967,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="services.html">Services</a></li>
+              <li><a href="#services">Services</a></li>
               <li><a href="#about">About Us</a></li>
               <li><a href="process.html">Process</a></li>
               <li><a href="#contact">Contact</a></li>

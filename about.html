@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Function to show only the selected process section
+        function showProcessSection(sectionId) {
+            // Hide all process sections first
+            const sections = ['packing-moving', 'pet-relocation', 'vehicle-relocation', 'packing-labour'];
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) section.style.display = 'none';
+            });
+            
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+                // Scroll to the selected section
+                selectedSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize by showing the first section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all sections except the first one
+            const sections = ['packing-moving', 'pet-relocation', 'vehicle-relocation', 'packing-labour'];
+            sections.forEach((id, index) => {
+                const section = document.getElementById(id);
+                if (section) section.style.display = index === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moveroo | Professional Moving Services</title>
+    <title>Process - Moveroo | The Moveroo Way</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -17,379 +46,431 @@
             transition: all 0.3s ease;
             padding: 6px 0;
         }
-
-        /* Quote Form Styling */
-        .quote-header {
-            background: #0c9608;
-            color: #fff;
-            padding: 24px 20px 16px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-            margin: 0;
+        .logo {
+            min-height: 40px;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            padding: 0px 0;
         }
-        
-        .quote-header h2 {
-            margin: 0 0 8px;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        /* Header and Navbar Styles */
+        .header, .navbar {
+            min-height: 10px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
         }
-        
-        .quote-form {
-            background: #fff;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            padding: 24px 20px;
-            margin: 0;
+        .header {
+            min-height: 120px !important;
+            padding: 32px 0 !important;
+            position: fixed;
+            background: #000 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
-        
-        .btn-red {
-            background: #d32f2f;
-            color: #fff;
+        /* Mobile menu toggle button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
             border: none;
-            border-radius: 5px;
-            padding: 14px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 28px;
+            color: #ffffff;
             cursor: pointer;
-            width: 100%;
-            transition: background 0.2s, box-shadow 0.2s;
+            padding: 8px;
+            margin-left: auto;
+            z-index: 1002;
+            transition: color 0.3s ease;
         }
-        
-        .btn-red:hover,
-        .btn-red:focus {
-            background: #b71c1c;
-            box-shadow: 0 4px 16px rgba(211,47,47,0.13);
+        .mobile-menu-btn:hover {
+            color: #cccccc;
         }
-        
-        @media (max-width: 600px) {
-            .quote-header {
-                padding: 16px 8px 10px;
+        /* Mobile menu styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgb(211, 208, 208);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            padding: 70px 20px 30px;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-nav ul li {
+            margin: 10px 0;
+        }
+        .mobile-nav ul li a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav ul li a:hover {
+            background: #f5f5f5;
+        }
+        /* Hide desktop nav on mobile */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
             }
-            .quote-form {
-                padding: 16px 8px 12px;
+            .mobile-menu-btn {
+                display: block;
+            }
+            .logo {
+                margin-right: auto !important;
+            }
+        }
+        /* Desktop styles */
+        @media (min-width: 993px) {
+            .mobile-menu-btn,
+            .mobile-nav {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
             }
         }
     </style>
     <style>
-    /* Quote Modal Styles */
-.quote-modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s;
-}
-.quote-modal-content {
-  background: #fff;
-  border-radius: 18px;
-  max-width: 700px;
-  min-width: 320px;
-  width: 96vw;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  position: relative;
-  padding: 0 0 10px 0;
-  animation: quoteModalIn 0.25s;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.quote-form {
-  background: #fff;
-  border-radius: 0 0 18px 18px;
-  box-shadow: none;
-  padding: 18px 36px 18px 36px;
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.quote-form .form-group {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.quote-form input[type="text"],
-.quote-form input[type="email"],
-.quote-form input[type="tel"],
-.quote-form select {
-  padding: 10px 14px;
-  border: 1.5px solid #222;
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-  background: #fff;
-  color: #111;
-  transition: border 0.2s, background 0.2s;
-}
-.quote-form input[type="text"]:focus,
-.quote-form input[type="email"]:focus,
-.quote-form input[type="tel"]:focus,
-.quote-form select:focus {
-  border: 2px solid #000;
-  background: #fafafa;
-}
-.quote-form select {
-  color: #111;
-  font-weight: 500;
-  background: #fff;
-}
-.quote-form .captcha-label {
-  color: #111;
-}
-.quote-form .captcha-code {
-  background: #f5f5f5;
-  color: #000;
-  font-weight: bold;
-  padding: 2px 10px;
-  border-radius: 4px;
-  letter-spacing: 2px;
-  font-size: 1.1em;
-  margin-left: 4px;
-}
-.quote-form .terms-group {
-  font-size: 0.98rem;
-  align-items: center;
-  color: #222;
-}
-.quote-form .terms-group input[type="checkbox"] {
-  accent-color: #111;
-  margin-right: 6px;
-}
-.btn-red {
-  background: #111;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 14px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s, box-shadow 0.2s;
-}
-.btn-red:hover,
-.btn-red:focus {
-  background: #000;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-}
-.btn-block {
-  width: 100%;
-  display: block;
-  margin-top: 8px;
-}
-@media (max-width: 900px) {
-  .quote-modal-content {
-    max-width: 99vw;
-    min-width: 0;
-  }
-  .quote-form {
-    flex-direction: column;
-    padding: 14px 8px 10px 8px;
-    gap: 12px;
-  }
-  .quote-form .form-group {
-    max-width: 100%;
-  }
-}
-@media (max-width: 600px) {
-  .quote-modal-content {
-    max-width: 99vw;
-    padding: 0 0 8px 0;
-  }
-  .quote-form {
-    padding: 8px 2vw 8px 2vw;
-  }
-  .services-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-  .service-card {
-    background: transparent !important;
-    box-shadow: none !important;
-    width: 95vw !important;
-    max-width: 500px;
-  }
-  .service-card .card-inner,
-  .service-card .card-front {
-    background: transparent !important;
-  }
-}
-@keyframes quoteModalIn {
-  from { transform: scale(0.95) translateY(30px); opacity: 0; }
-  to { transform: scale(1) translateY(0); opacity: 1; }
-}
-.quote-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #d32f2f;
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.2s;
-}
-.quote-modal-close:hover {
-  color: #b71c1c;
-}
-@media (max-width: 600px) {
-  .quote-modal-content {
-    max-width: 99vw;
-    padding: 0 0 8px 0;
-  }
-}
-.service-card {
-  width: 260px;
-  height: 240px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-.service-card .card-inner,
-.service-card .card-front {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-.service-card .service-icon img {
-  max-width: 150px;
-  max-height: 150px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 600px) {
-  .service-desc-mobile {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 3.2em;
-    position: relative;
-    transition: max-height 0.2s;
-  }
-  .service-desc-mobile.expanded {
-    display: block;
-    -webkit-line-clamp: unset;
-    max-height: none;
-    overflow: visible;
-  }
-  .service-desc-mobile {
-    margin-bottom: 0 !important;
-  }
-  #desc-toggle {
-    margin-top: 2px;
-    display: inline-block;
-  }
-  .quote-modal-content {
-    max-width: 80vw !important;
-    min-width: 0 !important;
-    width: 80vw !important;
-    min-height: 340px !important;
-    padding: 0 0 1px 0 !important;
-  }
-  .quote-form {
-    padding: 2px 0.5vw 2px 0.5vw !important;
-    font-size: 0.82rem !important;
-    gap: 0 !important;
-  }
-  .quote-form input,
-  .quote-form select {
-    font-size: 0.82rem !important;
-    padding: 3px 5px !important;
-  }
+    @media (max-width: 600px) {
+      .navbar {
+        justify-content: flex-end !important;
+      }
+      .logo {
+        margin-right: auto !important;
+      }
+    }
+    </style>
+    <style>
+    .header, .navbar {
+        min-height: 10px !important;
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+    </style>
+    <style>
+    /* Mobile/desktop toggle for Join Our Team and Partner With Us cards */
+    .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+      display: none;
+    }
+    .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+        display: inline-block;
+      }
+      .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+        display: none;
+      }
+      .join-team-toggle.mobile-active .join-team-details,
+      .partner-toggle.mobile-active .partner-details {
+        display: block !important;
+      }
+    }
+    </style>
+    <style>
+        /* Process Page Specific Styles */
+        .process-hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 10px 0 60px;
+            text-align: center;
+              margin-top: 0;
+        }
+        
+        .process-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .process-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 50px;
+            position: fixed;
+            display: inline-block;
+        }
+        
+        .process-title::after {
+            content: '';
+            position: fixed;
+            width: 60px;
+            height: 4px;
+            background: #28a745;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #28a745;
+            min-width: 60px;
+        }
+        
+        .step-content h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .step-highlight {
+            display: inline-block;
+            background: #e8f5e9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #28a745;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        .payment-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .payment-section h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        @media (max-width: 600px) {
+            .payment-section h2 {
+                text-align: left !important;
+                justify-content: flex-start !important;
+                display: block !important;
+            }
+        }
+        
+        .payment-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .payment-card h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .payment-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .payment-card li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        .note-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin-top: 30px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .note-box p {
+            margin: 0;
+            color: #5d4037;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .step-number {
+                margin-bottom: 15px;
+            }
+            
+            /* Make process cards stack vertically on mobile */
+            [style*="grid-template-columns: repeat(3, 1fr)"],
+            #packing-labour > div[style*="grid-template-columns"],
+            #packing-moving > div[style*="grid-template-columns"],
+            #pet-relocation > div[style*="grid-template-columns"],
+            #vehicle-relocation > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+                padding: 0 15px !important;
+            }
+            
+            /* Adjust spacing for process sections */
+            #packing-moving, #pet-relocation, #vehicle-relocation, #packing-labour {
+                padding: 30px 0 !important;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* Adjust heading sizes on mobile */
+            h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 20px !important;
+                padding: 0 15px !important;
+                text-align: center !important;
+            }
+            
+            /* Adjust card padding on mobile */
+            [style*="padding: 24px 20px"],
+            #packing-labour [style*="padding: 24px 20px"],
+            #value-added-services [style*="padding: 30px"] {
+                padding: 20px 15px !important;
+                margin: 0 10px !important;
+            }
+            
+            /* Adjust step number size on mobile */
+            [style*="width: 44px; height: 44px"] {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1.1rem !important;
+            }
+            
+            /* Adjust card content spacing */
+            [style*="margin-bottom: 15px"] {
+                margin-bottom: 10px !important;
+            }
+            
+            /* Adjust font sizes for better mobile readability */
+            p, .step-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                padding: 0 5px !important;
+            }
+            
+            /* Fix value-added services section */
+            #value-added-services {
+                padding: 30px 0 !important;
+                margin: 30px 0 0 !important;
+            }
+            
+            #value-added-services h2 {
+                font-size: 1.8rem !important;
+                white-space: normal !important;
+                width: 90% !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                text-align: center !important;
+                padding: 0 15px !important;
+            }
+            
+            #value-added-services p {
+                padding: 0 15px !important;
+            }
+            
+            /* Fix service buttons */
+            .service-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px !important;
+            }
+            
+            .service-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 5px 0 !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: fixed;
+        left: -8px;
+        right: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 }
 </style>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  function isMobile() {
-    return window.innerWidth <= 600;
-  }
-  var desc = document.getElementById('service-desc');
-  var toggle = document.getElementById('desc-toggle');
-  if (desc && toggle && isMobile()) {
-    toggle.style.display = 'inline';
-    var expanded = false;
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      expanded = !expanded;
-      if (expanded) {
-        desc.classList.add('expanded');
-        toggle.textContent = 'Show less';
-      } else {
-        desc.classList.remove('expanded');
-        toggle.textContent = 'Show more';
-      }
-    });
-  }
-});
-</script>
-<!-- Quote Modal (hidden by default) -->
-<div id="quote-modal" class="quote-modal-overlay" style="display:none;">
-    <div class="quote-modal-content">
-        <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">&times;</button>
-        <div class="quote-header">
-            <h2>Get a free moving quote</h2>
-            <p>Fill out the form below and our team will get in touch with you soon.</p>
-        </div>
-        <form id="quoteForm" class="quote-form">
-            <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Name" required>
-            </div>
-            <div class="form-group">
-                <input type="tel" id="mobile" name="mobile" placeholder="Contact Mobile Number" required pattern="[0-9]{10,15}">
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Email ID" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="locationFrom" name="locationFrom" placeholder="Location From" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="locationTo" name="locationTo" placeholder="Location To" required>
-            </div>
-            <div class="form-group">
-                <select id="service" name="service" required>
-                    <option value="" disabled selected>Select Service</option>
-                    <option value="packing-moving">Packing & Moving</option>
-                    <option value="vehicle-relocation">Vehicle Relocation</option>
-                    <option value="pet-relocation">Pet Relocation</option>
-                    <option value="packing-labour">Packing Labour</option>
-                </select>
-            </div>
-            <div class="form-group captcha-group">
-                <label for="captcha" class="captcha-label">Enter the code: <span class="captcha-code">12344</span></label>
-                <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha" required pattern="12344">
-            </div>
-            <div class="form-group terms-group">
-                <label>
-                    <input type="checkbox" id="terms" name="terms" checked required>
-                    I agree to the <a href="terms.html" target="_blank">terms and conditions</a>
-                </label>
-            </div>
-            <button type="submit" class="btn btn-red btn-block">Get My Free Quote</button>
-        </form>
-    </div>
-</div>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: fixed;
+        left: 280px;
+        right: auto;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+</style>
 </head>
 <body>
     <!-- Header Section -->
@@ -402,12 +483,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
                     </a>
                 </div>
+
                 <!-- Desktop Navigation -->
                 <ul class="nav-links">
                     <li><a href="index.html#home">Home</a></li>
                     <!-- Services Dropdown -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
+                        <a href="#services" class="dropdown-toggle" onclick="event.preventDefault(); document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });">
                             Services <i class="fas fa-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -427,419 +509,477 @@ document.addEventListener('DOMContentLoaded', function() {
                         </a>
                     </li>
                 </ul>
-                <!-- Mobile Menu Toggle -->
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
-    <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay"></div>
-    <main class="about-page">
-        <!-- Hero Section -->
-        <section class="about-hero">
-            <div class="container">
-                <h1>Who We Are</h1>
-                <p class="subtitle">Your Trusted Relocation Partner</p>
-            </div>
-        </section>
-
-        <!-- About Content -->
-        <section class="about-content">
-            <div class="container">
-                <div class="about-text">
-                    <p>Moveroo isn't just a logistics service — we're your trusted relocation partner. We combine advanced technology, human empathy, and meticulous execution to ensure every move is seamless, secure, and stress-free. Our mission is to transform the way people experience shifting — making it not just about moving boxes, but about starting new journeys with confidence.</p>
-                    
-                    <p>We believe that every move marks a new chapter, and we're honored to be part of that transition.</p>
-                    
-                    <blockquote>
-                        We're not in the business of boxes. We're in the business of beginnings.
-                    </blockquote>
-                    
-                    <p>Moveroo — A unit of Saranity Solutions Private Limited — was founded with a vision to simplify relocation with innovation, care, and efficiency. Backed by the trusted expertise of Saranity Solutions, Moveroo delivers not only reliable moving services but also a personalized touch that reflects our commitment to excellence in every step of your move.</p>
-                </div>
-
-                <!-- Values Section -->
-                <section class="values-section">
-                    <h2>Our Values</h2>
-                    <div class="values-grid">
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h3>Efficiency</h3>
-                            <p>Streamlined processes for timely and effective moves</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3>Reliability</h3>
-                            <p>Consistent, dependable service you can trust</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <h3>Care</h3>
-                            <p>Handling your belongings as if they were our own</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h3>Innovation</h3>
-                            <p>Using technology to enhance your moving experience</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Pricing Section -->
-                <section class="pricing-section">
-                    <div class="featured-price-card">
-                        <div class="featured-title">Average Cost of Pet Relocation in India</div>
-                        <div class="featured-price">₹5,000 – ₹20,000</div>
-                    </div>
-                    <h2>Pricing</h2>
-                    <div class="pricing-grid">
-                        <div class="pricing-card">
-                            <div class="pricing-icon"><i class="fas fa-motorcycle"></i></div>
-                            <div class="pricing-vertical">
-                                <div class="pricing-title">Bike/Scooter</div>
-                                <div class="pricing-mode">Open Carrier</div>
-                                <div class="pricing-cost">₹3,000 – ₹6,000</div>
-                            </div>
-                        </div>
-                        <div class="pricing-card">
-                            <div class="pricing-icon"><i class="fas fa-car-side"></i></div>
-                            <div class="pricing-vertical">
-                                <div class="pricing-title">Car (Sedan/Hatchback)</div>
-                                <div class="pricing-mode">Open Carrier</div>
-                                <div class="pricing-cost">₹6,000 – ₹12,000</div>
-                            </div>
-                        </div>
-                        <div class="pricing-card">
-                            <div class="pricing-icon"><i class="fas fa-car"></i></div>
-                            <div class="pricing-vertical">
-                                <div class="pricing-title">Car (Luxury/SUV)</div>
-                                <div class="pricing-mode">Enclosed Carrier</div>
-                                <div class="pricing-cost">₹10,000 – ₹25,000</div>
-                            </div>
-                        </div>
-                        <div class="pricing-card">
-                            <div class="pricing-icon"><i class="fas fa-dog"></i></div>
-                            <div class="pricing-vertical">
-                                <div class="pricing-title">Pet Van (Private Ride)</div>
-                                <div class="pricing-mode">AC/Non-AC Option</div>
-                                <div class="pricing-cost">₹5,000 – ₹20,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </section>
-    </main>
-
-    <style>
-        /* About Page Styles */
-        .about-page {
-            padding-top: 80px;
-            background-color: #fff;
+    
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-btn" id="closeMobileMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#" class="quote-btn">Get a Quote</a></li>
+        </ul>
+    </nav>
+    
+    <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const body = document.body;
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
-
-        .about-hero {
-            background: linear-gradient(135deg, #1a4b8c 0%, #0c2e5c 100%);
-            color: #fff;
-            padding: 80px 0 60px;
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+    });
+    </script>
+        <!-- Process Hero Section -->
+        <main class="about-page">
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <h1>Who We Are</h1>
+                    <p class="subtitle">Your Trusted Relocation Partner</p>
+                </div>
+            </section>
+    
+            <!-- About Content -->
+            <section class="about-content">
+                <div class="container">
+                    <div class="about-text">
+                        <p>Moveroo isn't just a logistics service — we're your trusted relocation partner. We combine advanced technology, human empathy, and meticulous execution to ensure every move is seamless, secure, and stress-free. Our mission is to transform the way people experience shifting — making it not just about moving boxes, but about starting new journeys with confidence.</p>
+                        
+                        <p>We believe that every move marks a new chapter, and we're honored to be part of that transition.</p>
+                        
+                        <blockquote>
+                            We're not in the business of boxes. We're in the business of beginnings.
+                        </blockquote>
+                        
+                        <p>Moveroo — A unit of Saranity Solutions Private Limited — was founded with a vision to simplify relocation with innovation, care, and efficiency. Backed by the trusted expertise of Saranity Solutions, Moveroo delivers not only reliable moving services but also a personalized touch that reflects our commitment to excellence in every step of your move.</p>
+                    </div>
+    
+                    <!-- Values Section -->
+                    <section class="values-section">
+                        <h2>Our Values</h2>
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3>Efficiency</h3>
+                                <p>Streamlined processes for timely and effective moves</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Reliability</h3>
+                                <p>Consistent, dependable service you can trust</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h3>Care</h3>
+                                <p>Handling your belongings as if they were our own</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3>Innovation</h3>
+                                <p>Using technology to enhance your moving experience</p>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!-- Pricing Section -->
+                    <section class="pricing-section">
+                        <div class="featured-price-card">
+                            <div class="featured-title">Average Cost of Pet Relocation in India</div>
+                            <div class="featured-price">₹5,000 – ₹20,000</div>
+                        </div>
+                        <h2>Pricing</h2>
+                        <div class="pricing-grid">
+                            <div class="pricing-card">
+                                <div class="pricing-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="pricing-vertical">
+                                    <div class="pricing-title">Bike/Scooter</div>
+                                    <div class="pricing-mode">Open Carrier</div>
+                                    <div class="pricing-cost">₹3,000 – ₹6,000</div>
+                                </div>
+                            </div>
+                            <div class="pricing-card">
+                                <div class="pricing-icon"><i class="fas fa-car-side"></i></div>
+                                <div class="pricing-vertical">
+                                    <div class="pricing-title">Car (Sedan/Hatchback)</div>
+                                    <div class="pricing-mode">Open Carrier</div>
+                                    <div class="pricing-cost">₹6,000 – ₹12,000</div>
+                                </div>
+                            </div>
+                            <div class="pricing-card">
+                                <div class="pricing-icon"><i class="fas fa-car"></i></div>
+                                <div class="pricing-vertical">
+                                    <div class="pricing-title">Car (Luxury/SUV)</div>
+                                    <div class="pricing-mode">Enclosed Carrier</div>
+                                    <div class="pricing-cost">₹10,000 – ₹25,000</div>
+                                </div>
+                            </div>
+                            <div class="pricing-card">
+                                <div class="pricing-icon"><i class="fas fa-dog"></i></div>
+                                <div class="pricing-vertical">
+                                    <div class="pricing-title">Pet Van (Private Ride)</div>
+                                    <div class="pricing-mode">AC/Non-AC Option</div>
+                                    <div class="pricing-cost">₹5,000 – ₹20,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    
+        <style>
+            /* About Page Styles */
+            .about-page {
+                padding-top: 100px;
+                background-color: #fff;
+            }
+            
+            .about-hero {
+                background: linear-gradient(135deg, #1a4b8c 0%, #0c2e5c 100%);
+                color: #fff;
+                padding: 100px 0 80px;
+                margin-top: 0;
+                text-align: center;
+                position: relative;
+                z-index: 1;
+            }
+            
+            /* Add some space between header and hero */
+            header {
+                position: relative;
+                z-index: 100;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+    
+            .about-hero h1 {
+                font-size: 3rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+    
+            .about-hero .subtitle {
+                font-size: 1.5rem;
+                color: #ffffff;
+                opacity: 0.9;
+                margin-bottom: 0;
+            }
+    
+            .about-content {
+                padding: 60px 0;
+            }
+    
+            .about-text {
+                max-width: 800px;
+                margin: 0 auto 80px;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #ffffff;
+            }
+    
+            .about-text p {
+                margin-bottom: 1.5rem;
+            }
+    
+            blockquote {
+                font-style: italic;
+                font-size: 1.5rem;
+                color: #1a4b8c;
+                border-left: 4px solid #ffd700;
+                padding: 20px 30px;
+                margin: 40px 0;
+                background-color: #f9fafc;
+            }
+    
+            .values-section {
+                text-align: center;
+                margin-top: 80px;
+            }
+    
+            .values-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 50px;
+                color: #1a4b8c;
+            }
+    
+            .values-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                margin-top: 30px;
+            }
+    
+            .value-card {
+                background: #fff;
+                padding: 40px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            .value-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+    
+            .value-icon {
+                font-size: 2.5rem;
+                color: #1a4b8c;
+                margin-bottom: 20px;
+            }
+    
+            .value-card h3 {
+                color: #1a4b8c;
+                margin-bottom: 15px;
+                font-size: 1.5rem;
+            }
+    
+            .value-card p {
+                color: #666;
+                margin: 0;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+    
+            @media (max-width: 768px) {
+                .about-hero {
+                    padding: 60px 0 40px;
+                }
+    
+                .about-hero h1 {
+                    font-size: 2.2rem;
+                }
+    
+                .about-hero .subtitle {
+                    font-size: 1.2rem;
+                }
+    
+                .about-text {
+                    padding: 0 20px;
+                    margin-bottom: 50px;
+                }
+    
+                blockquote {
+                    font-size: 1.2rem;
+                    padding: 15px 20px;
+                    margin: 30px 0;
+                }
+    
+                .values-grid {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 0 20px;
+                }
+            }
+        </style>
+        <style>
+        /* Featured Price Card Styles */
+        .featured-price-card {
+            max-width: 420px;
+            margin: 0 auto 36px auto;
+            background: #fffbe7;
+            border: 2px solid #ffd700;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(255,215,0,0.08);
+            padding: 32px 18px 24px 18px;
             text-align: center;
         }
-
-        .about-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
+        .featured-title {
+            font-size: 1.25rem;
             font-weight: 700;
-        }
-
-        .about-hero .subtitle {
-            font-size: 1.5rem;
-            color: #ffffff;
-            opacity: 0.9;
-            margin-bottom: 0;
-        }
-
-        .about-content {
-            padding: 60px 0;
-        }
-
-        .about-text {
-            max-width: 800px;
-            margin: 0 auto 80px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ffffff;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        blockquote {
-            font-style: italic;
-            font-size: 1.5rem;
             color: #1a4b8c;
-            border-left: 4px solid #ffd700;
-            padding: 20px 30px;
-            margin: 40px 0;
-            background-color: #f9fafc;
+            margin-bottom: 12px;
         }
-
-        .values-section {
+        .featured-price {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #d32f2f;
+            background: #fff;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 10px 32px;
+            box-shadow: 0 2px 8px rgba(211,47,47,0.07);
+        }
+        @media (max-width: 600px) {
+            .featured-price-card {
+                padding: 18px 6vw 14px 6vw;
+            }
+            .featured-title {
+                font-size: 1.05rem;
+            }
+            .featured-price {
+                font-size: 1.3rem;
+                padding: 7px 12px;
+            }
+        }
+        /* Pricing Section Styles */
+        .pricing-section {
             text-align: center;
             margin-top: 80px;
         }
-
-        .values-section h2 {
+        .pricing-section h2 {
             font-size: 2.5rem;
             margin-bottom: 50px;
             color: #1a4b8c;
         }
-
-        .values-grid {
+        .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 30px;
+            margin-bottom: 30px;
         }
-
-        .value-card {
+        .pricing-card {
             background: #fff;
             padding: 40px 25px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 260px;
         }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .pricing-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.13);
         }
-
-        .value-icon {
-            font-size: 2.5rem;
-            color: #1a4b8c;
-            margin-bottom: 20px;
+        .pricing-icon {
+            font-size: 2.8rem;
+            color: #0c9608;
+            margin-bottom: 18px;
         }
-
-        .value-card h3 {
-            color: #1a4b8c;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .value-card p {
-            color: #666;
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .about-hero {
-                padding: 60px 0 40px;
-            }
-
-            .about-hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .about-hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .about-text {
-                padding: 0 20px;
-                margin-bottom: 50px;
-            }
-
-            blockquote {
-                font-size: 1.2rem;
-                padding: 15px 20px;
-                margin: 30px 0;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 0 20px;
-            }
-        }
-    </style>
-    <style>
-    /* Featured Price Card Styles */
-    .featured-price-card {
-        max-width: 420px;
-        margin: 0 auto 36px auto;
-        background: #fffbe7;
-        border: 2px solid #ffd700;
-        border-radius: 14px;
-        box-shadow: 0 4px 18px rgba(255,215,0,0.08);
-        padding: 32px 18px 24px 18px;
-        text-align: center;
-    }
-    .featured-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #1a4b8c;
-        margin-bottom: 12px;
-    }
-    .featured-price {
-        font-size: 2.1rem;
-        font-weight: 800;
-        color: #d32f2f;
-        background: #fff;
-        border-radius: 8px;
-        display: inline-block;
-        padding: 10px 32px;
-        box-shadow: 0 2px 8px rgba(211,47,47,0.07);
-    }
-    @media (max-width: 600px) {
-        .featured-price-card {
-            padding: 18px 6vw 14px 6vw;
-        }
-        .featured-title {
-            font-size: 1.05rem;
-        }
-        .featured-price {
-            font-size: 1.3rem;
-            padding: 7px 12px;
-        }
-    }
-    /* Pricing Section Styles */
-    .pricing-section {
-        text-align: center;
-        margin-top: 80px;
-    }
-    .pricing-section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 50px;
-        color: #1a4b8c;
-    }
-    .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    .pricing-card {
-        background: #fff;
-        padding: 40px 25px;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 260px;
-    }
-    .pricing-card:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.13);
-    }
-    .pricing-icon {
-        font-size: 2.8rem;
-        color: #0c9608;
-        margin-bottom: 18px;
-    }
-    .pricing-card h3 {
-        display: none;
-    }
-    .pricing-vertical {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        margin-top: 10px;
-    }
-    .pricing-title {
-        font-size: 1.15rem;
-        color: #1a4b8c;
-        font-weight: 700;
-        margin-bottom: 2px;
-    }
-    .pricing-mode {
-        color: #666;
-        font-size: 1rem;
-        margin-bottom: 2px;
-        font-weight: 500;
-    }
-    .pricing-cost {
-        font-size: 1.18rem;
-        font-weight: 700;
-        color: #d32f2f;
-        background: #f9fafc;
-        padding: 6px 16px;
-        border-radius: 6px;
-        margin-top: 2px;
-        display: inline-block;
-    }
-    @media (max-width: 768px) {
-        .pricing-section {
-            margin-top: 50px;
-        }
-        .pricing-section h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-        .pricing-grid {
-            grid-template-columns: 1fr;
-            gap: 18px;
-            padding: 0 20px;
-        }
-        .pricing-card {
-            padding: 28px 12px;
-            min-height: 120px;
+        .pricing-card h3 {
+            display: none;
         }
         .pricing-vertical {
-            font-size: 0.98rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 10px;
         }
-    }
-    </style>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
-    </a>
+        .pricing-title {
+            font-size: 1.15rem;
+            color: #1a4b8c;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .pricing-mode {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+        .pricing-cost {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: #d32f2f;
+            background: #f9fafc;
+            padding: 6px 16px;
+            border-radius: 6px;
+            margin-top: 2px;
+            display: inline-block;
+        }
+        @media (max-width: 768px) {
+            .pricing-section {
+                margin-top: 50px;
+            }
+            .pricing-section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 0 20px;
+            }
+            .pricing-card {
+                padding: 28px 12px;
+                min-height: 120px;
+            }
+            .pricing-vertical {
+                font-size: 0.98rem;
+            }
+        }
+        </style>
     
-    <style>
-    #whatsapp-float {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        z-index: 99999;
-        background: #25d366;
-        border-radius: 50%;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-        padding: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: box-shadow 0.2s, transform 0.2s;
-    }
-    #whatsapp-float:hover {
-        box-shadow: 0 8px 32px rgba(37,211,102,0.25);
-        transform: scale(1.08);
-        background: #1ebe57;
-    }
-    #whatsapp-float img {
-        display: block;
-    }
-    </style>
-<script src="script.js"></script>
-</body>
-</html>
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
+        </a>
+        
+        <style>
+        #whatsapp-float {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 99999;
+            background: #25d366;
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        #whatsapp-float:hover {
+            box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+            transform: scale(1.08);
+            background: #1ebe57;
+        }
+        #whatsapp-float img {
+            display: block;
+        }
+        </style>
+    <script src="script.js"></script>
+    </body>
+    </html>

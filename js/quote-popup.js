@@ -69,7 +69,7 @@
       var formData = new FormData(form);
       
       // Send form data to FormSubmit
-      fetch('https://formsubmit.co/ajax/jhravindra@gmail.com', {
+      fetch('https://formsubmit.co/ajax/enquiry@moveroo.in', {
         method: 'POST',
         body: formData
       })

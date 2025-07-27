@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Option | Moveroo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      color: #232323;
+    }
+    .payment-section {
+      max-width: 600px;
+      margin: 60px auto 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #23232322;
+      padding: 40px 24px 32px 24px;
+      text-align: center;
+    }
+    .payment-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #111;
+      margin-bottom: 18px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 12px #bbb;
+      position: relative;
+    }
+    .payment-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #232323;
+      margin: 14px auto 0 auto;
+      border-radius: 2px;
+    }
+    .payment-icons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+      margin: 28px 0 18px 0;
+      flex-wrap: wrap;
+    }
+    .payment-icons img {
+      height: 70px;
+      filter: brightness(0.95) contrast(1.1);
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #23232322;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .payment-icons img:hover {
+      box-shadow: 0 6px 24px #23232344;
+      transform: scale(1.08);
+    }
+    .payment-note {
+      font-size: 1.08em;
+      color: #232323;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.55);
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.2s;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 28px 28px 28px;
+      max-width: 370px;
+      width: 92vw;
+      box-shadow: 0 8px 32px #23232333;
+      text-align: center;
+      position: relative;
+      animation: modalIn 0.2s;
+    }
+    @keyframes modalIn {
+      from { transform: scale(0.95) translateY(30px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #232323;
+      cursor: pointer;
+      z-index: 2;
+      transition: color 0.2s;
+    }
+    .modal-close:hover {
+      color: #b71c1c;
+    }
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #232323;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .modal-details {
+      color: #232323;
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .qr-img {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 12px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #23232322;
+      background: #fff;
+      object-fit: contain;
+      border: 1.5px solid #e0e0e0;
+    }
+    .bank-card {
+      background: #232323;
+      color: #fff;
+      border-radius: 12px;
+      padding: 22px 18px 18px 18px;
+      margin: 0 auto 10px auto;
+      box-shadow: 0 2px 12px #23232333;
+      text-align: left;
+      font-size: 1.08rem;
+      max-width: 320px;
+    }
+    .bank-card .label {
+      color: #e0e0e0;
+      font-size: 0.98em;
+      font-weight: 600;
+      margin-bottom: 2px;
+      display: block;
+    }
+    .bank-card .value {
+      color: #fff;
+      font-size: 1.13em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .bank-card .divider {
+      border-bottom: 1px solid #444;
+      margin: 10px 0;
+    }
+    @media (max-width: 900px) {
+      .payment-section {
+        padding: 18px 2vw 18px 2vw;
+      }
+      .payment-title {
+        font-size: 1.5rem;
+      }
+      .payment-icons {
+        gap: 10px;
+      }
+      .payment-icons img {
+        height: 44px;
+        padding: 7px 10px;
+      }
+      .modal-content {
+        padding: 12px 2vw 12px 2vw;
+      }
+      .qr-img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+    @media (max-width: 600px) {
+      .payment-section {
+        padding: 10px 2vw 10px 2vw;
+      }
+      .payment-title {
+        font-size: 1.1rem;
+      }
+      .payment-icons {
+        gap: 6px;
+      }
+      .payment-icons img {
+        height: 32px;
+        padding: 4px 6px;
+        margin: 2px 0;
+      }
+      .modal-content {
+        padding: 8px 2vw 8px 2vw;
+      }
+      .qr-img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-section" id="main-payment-section" style="position:relative;">
+    <button class="modal-close" id="main-close" style="position:absolute; top:14px; right:18px; background:none; border:none; font-size:2rem; color:#232323; cursor:pointer; z-index:2; transition:color 0.2s;">&times;</button>
+    <div class="payment-title">Payment Options</div>
+    <div class="payment-icons">
+      <img src="https://img.icons8.com/color/36/000000/visa.png" alt="Visa" title="Visa" id="icon-visa">
+      <img src="https://img.icons8.com/color/36/000000/mastercard-logo.png" alt="Mastercard" title="Mastercard" id="icon-mastercard">
+      <img src="https://img.icons8.com/color/36/000000/upi.png" alt="UPI" title="UPI" id="icon-upi">
+      <img src="https://img.icons8.com/color/36/000000/google-pay-india.png" alt="Google Pay" title="Google Pay" id="icon-gpay">
+      <img src="https://img.icons8.com/color/36/000000/paytm.png" alt="Paytm" title="Paytm" id="icon-paytm">
+    </div>
+    <div class="payment-note">We accept all major cards, UPI, and digital wallets.</div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div class="modal" id="payment-modal">
+    <div class="modal-content" id="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    // Main card close button
+    document.addEventListener('DOMContentLoaded', function() {
+      var mainClose = document.getElementById('main-close');
+      var mainSection = document.getElementById('main-payment-section');
+      if (mainClose && mainSection) {
+        mainClose.onclick = function() {
+          window.location.href = 'index.html';
+        };
+      }
+    });
+    // Example QR code and bank details (replace with your real data)
+    const QR_UPI = 'https://i.imgur.com/4QFQy1j.png'; // Example QR
+    const QR_GPAY = 'https://i.imgur.com/4QFQy1j.png';
+    const QR_PAYTM = 'https://i.imgur.com/4QFQy1j.png';
+    const BANK_DETAILS = {
+      name: 'Saranity Solutions Private Limited',
+      account: '2502252677572047',
+      ifsc: 'AUBL0002479',
+      bank: 'AU SMALL FINANCE BANK',
+      type: 'Current Account',
+      micr: '160765008',
+      branchCode: '002479',
+      branch: 'Zirakpur',
+      upi: ''
+    };
+
+    function showModal(contentHtml) {
+      document.getElementById('modal-body').innerHTML = contentHtml;
+      document.getElementById('payment-modal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('payment-modal').classList.remove('active');
+    }
+    document.getElementById('modal-close').onclick = closeModal;
+    document.getElementById('payment-modal').onclick = function(e) {
+      if (e.target === this) closeModal();
+    };
+
+    document.getElementById('icon-visa').onclick = function() {
+      showModal(`
+        <div class="modal-title">Visa Card Payment</div>
+        <div class="bank-card">
+          <span class="label">Account Name</span>
+          <span class="value">${BANK_DETAILS.name}</span>
+          <span class="label">Account Number</span>
+          <span class="value">${BANK_DETAILS.account}</span>
+          <span class="label">IFSC Code</span>
+          <span class="value">${BANK_DETAILS.ifsc}</span>
+          <span class="label">Bank</span>
+          <span class="value">${BANK_DETAILS.bank}</span>
+          <span class="divider"></span>
+          <span class="label">Type</span>
+          <span class="value">${BANK_DETAILS.type}</span>
+        </div>
+        <div class="modal-details">Use your Visa card to pay via net banking or at your bank branch.</div>
+      `);
+    };
+    document.getElementById('icon-mastercard').onclick = function() {
+      showModal(`
+        <div class="modal-title">Mastercard Payment</div>
+        <div class="bank-card">
+          <span class="label">Account Name</span>
+          <span class="value">${BANK_DETAILS.name}</span>
+          <span class="label">Account Number</span>
+          <span class="value">${BANK_DETAILS.account}</span>
+          <span class="label">IFSC Code</span>
+          <span class="value">${BANK_DETAILS.ifsc}</span>
+          <span class="label">Bank</span>
+          <span class="value">${BANK_DETAILS.bank}</span>
+          <span class="divider"></span>
+          <span class="label">Type</span>
+          <span class="value">${BANK_DETAILS.type}</span>
+        </div>
+        <div class="modal-details">Use your Mastercard to pay via net banking or at your bank branch.</div>
+      `);
+    };
+    document.getElementById('icon-upi').onclick = function() {
+      showModal(`
+        <div class="modal-title">UPI Payment</div>
+        <img src="${QR_UPI}" alt="UPI QR Code" class="qr-img">
+        <div class="modal-details">Scan this QR code with any UPI app or use UPI ID:<br><b>${BANK_DETAILS.upi}</b></div>
+      `);
+    };
+    document.getElementById('icon-gpay').onclick = function() {
+      showModal(`
+        <div class="modal-title">Google Pay</div>
+        <img src="${QR_GPAY}" alt="Google Pay QR Code" class="qr-img">
+        <div class="modal-details">Scan this QR code with Google Pay or use UPI ID:<br><b>${BANK_DETAILS.upi}</b></div>
+      `);
+    };
+    document.getElementById('icon-paytm').onclick = function() {
+      showModal(`
+        <div class="modal-title">Paytm</div>
+        <img src="${QR_PAYTM}" alt="Paytm QR Code" class="qr-img">
+        <div class="modal-details">Scan this QR code with Paytm or use UPI ID:<br><b>${BANK_DETAILS.upi}</b></div>
+      `);
+    };
+  </script>
+</body>
+</html>

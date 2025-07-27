@@ -2244,7 +2244,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const city = this.querySelector('input[type="text"]').value.trim();
                 if (city) {
-                    const isAvailable = availableCities.includes(city.toLowerCase());
+                    const isAvailable = availableCities.map(c => c.toLowerCase()).includes(city.toLowerCase());
                     showPopup(city, isAvailable);
                 }
                 return false;
@@ -2256,7 +2256,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tag.addEventListener('click', function(e) {
                 e.preventDefault();
                 const city = this.getAttribute('data-city');
-                const isAvailable = availableCities.includes(city.toLowerCase());
+                const isAvailable = availableCities.map(c => c.toLowerCase()).includes(city.toLowerCase());
                 showPopup(city, isAvailable);
             });
         });

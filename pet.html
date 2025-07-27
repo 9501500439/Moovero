@@ -51,9 +51,12 @@
                 font-size: 0.92rem;
             }
             .card-image {
-                width: 90px !important;
-                height: 70px !important;
+                width: 100% !important;
+                height: auto !important;
+                max-width: 100%;
                 margin-bottom: 8px !important;
+                object-fit: cover;
+                border-radius: 12px;
             }
         }
         
@@ -62,13 +65,13 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 300px;
+            max-width: 400px;
             border: 1px solid #e0e0e0;
             padding: 24px 18px;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-height: 420px;
+            min-height: 540px;
             height: auto;
         }
         
@@ -128,10 +131,8 @@
             line-height: 1.5;
             color: #666;
             flex-grow: 1;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
+            overflow: visible;
+            display: block;
             position: relative;
         }
         .card-text.expanded {
@@ -182,12 +183,12 @@
             .services-cards-container {
                 grid-template-columns: 1fr;
                 gap: 14px;
-                padding: 0 6px;
+                padding:px;
             }
             .service-card {
                 max-width: 100%;
                 min-height: 0;
-                padding: 14px 8px;
+                padding: 0px 8px;
             }
             .card-title {
                 font-size: 1.08rem;
@@ -200,17 +201,18 @@
             }
         }
     body {
-      background: #23223a;
+      background: #23223a; height: 200px;
       color: #fff;
     }
 </style>
 </head>
 <body>
+    <a href="#" class="quote-btn top-action-btn" id="fixed-quote-btn">Get a Quote</a>
     <!-- Hero Section -->
     <section class="hero-section" style="position: relative; width: 100%;">
         <img src="assets/cat.jpg" alt="Pet Relocation" style="width: 100%; height: auto; display: block;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4);">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 40px; color: white; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <div style="max-width: 1000px; margin: 0 auto; padding: px; color: white; height: 100%; display: flex; flex-direction: column; justify-content: center;">
                 <h1 style="font-size: 3.5rem; margin: 0 0 20px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 2px; text-align: left;">
                     Pet Relocation
                 </h1>
@@ -221,8 +223,7 @@
             </div>
         </div>
     </section>
-    <div style="text-align:center; margin: 32px 0 24px 0;">
-        
+           
     </div>
     <style>
 .top-action-btn {
@@ -559,7 +560,6 @@
                     </div>
                     <p class="card-text" style="color: #775700; font-size: 1.05rem; margin-top: 8px;">"Relocating with your pet? We ensure a seamless, stress-free move with expert care and comfort for your furry companion. Trust our specialized pet relocation services to make every transition safe, smooth, and worry-free."</p>
                 </div>
-                <a href="packing-labour.html" class="card-button" style="text-decoration: none;">VIEW PACKING SERVICES</a>
             </div>
         </div>
 
@@ -573,7 +573,6 @@
                     </div>
                     <p class="card-text" style="color: #775700; font-size: 1.05rem; margin-top: 8px;">"Moving abroad with your pet? Our international pet relocation service handles everything—from documentation to doorstep delivery—ensuring your companion travels safely, comfortably, and in full compliance with global regulations. Trust us to make borders feel seamless."</p>
                 </div>
-                <a href="packing-labour.html" class="card-button" style="text-decoration: none;">VIEW PACKING SERVICES</a>
             </div>
         </div>
     </div>
@@ -584,8 +583,7 @@
 
     <!-- Header Section -->
     
-    <div style="background: linear-gradient(120deg, #483D8B 0%, #6A5ACD 100%); padding: 80px 0 20px; margin: 0 auto; width: 100%;">
-    
+       
     </div>
     
 
@@ -609,40 +607,64 @@
     </style>
 
     <!-- Why Choose Moveroo Section (Mobile Responsive) -->
-           <div class="why-choose-moveroo-section">
-            <h2 class="why-choose-moveroo-title" style="text-align:center; margin-bottom: 0.5em;">Why Choose Moveroo?</h2>
-            <p class="why-choose-moveroo-lead" style="text-align:center; max-width: 700px; margin: 0 auto 2em auto; font-size:1.15rem;"><b>Managing this entire process alone can be time-consuming and stressful. With Moveroo, you get a partner who:</b></p>
-            <div class="why-choose-moveroo-2col" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px; max-width: 900px; margin: 0 auto;">
-                <div class="why-choose-moveroo-image" style="flex:1 1 280px; min-width:220px; max-width:380px; height: 260px; border-radius: 18px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: none;">
-                    <img src="assets/dog.jpeg" alt="Dog" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px; display: block;" />
+           <div class="why-choose-relocation-section" style="background: linear-gradient(135deg, #23223a 0%, #2d2d44 100%); padding: 48px 0 56px 0; margin: 0;">
+            <div style="max-width: 900px; margin: 0 auto; padding: 0 12px;">
+                <h2 style="text-align:center; margin-bottom: 0.5em; color: #FFD700; font-size: 2.1rem;">Why Choose Professional Relocation Services?</h2>
+                <div style="text-align:center; max-width: 700px; margin: 0 auto 2em auto; font-size:1.15rem; color:#fff;">
+                    <span id="relocation-intro-short">Moving your office or home is a significant undertaking that requires careful planning and execution. Professional relocation services ensure a smooth transition, minimize downtime, and protect your valuable assets.</span>
+                    <span id="relocation-intro-more" style="display:none;"> <br>Our team of experts handles every aspect of your move, from packing and transportation to setup at your new location. We use high-quality materials and proven techniques to ensure your belongings arrive safely. With our professional services, you can focus on your business or family while we take care of the logistics.</span>
+                    <button id="relocation-readmore-btn" style="background: #FFD700; color: #23223a; border: none; border-radius: 18px; padding: 7px 18px; font-weight: 600; margin-top: 12px; cursor: pointer;">Read More</button>
                 </div>
-                <div class="why-choose-moveroo-content" style="flex:2 1 340px; min-width:220px; max-width:480px; background: none; border: none; box-shadow: none; border-radius: 0; padding: 0 0 0 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
-                    <ul class="why-choose-moveroo-list plain-list" style="font-size:1.13rem; color:#fff; font-weight:400; margin-bottom:28px; width:100%; max-width:480px; margin-left:0; margin-right:0; padding-left:22px; list-style:disc;">
-                        <li>Arranges vet appointments and certifications</li>
-                        <li>Handles NOC and AQCS documentation</li>
-                        <li>Books flights with the right airline</li>
-                        <li>Provides IATA-compliant travel crates</li>
-                        <li>Manages airport and customs clearance</li>
-                        <li>Offers end-to-end relocation support</li>
-                    </ul>
-                    <p class="why-choose-moveroo-note" style="font-size:1.15rem; color:#FFD700; font-weight:600; text-align:left; margin-bottom:0;">We care for your pets as if they were our own.</p>
+                <div class="relocation-benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 32px;">
+                    <div class="relocation-benefit-card" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(255,215,0,0.08); padding: 28px 18px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                        <span style="font-size: 2.2rem; color: #8B008B; margin-bottom: 12px;"><i class="fas fa-box-open"></i></span>
+                        <h3 style="font-size: 1.15rem; color: #23223a; margin-bottom: 10px;">Expert Packing</h3>
+                        <p style="font-size: 1rem; color: #444; margin: 0;">Careful dismantling, packing, and reinstallation by trained professionals who treat your belongings with the utmost care.</p>
+                    </div>
+                    <div class="relocation-benefit-card" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(255,215,0,0.08); padding: 28px 18px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                        <span style="font-size: 2.2rem; color: #2196f3; margin-bottom: 12px;"><i class="fas fa-shield-alt"></i></span>
+                        <h3 style="font-size: 1.15rem; color: #23223a; margin-bottom: 10px;">Safe Handling</h3>
+                        <p style="font-size: 1rem; color: #444; margin: 0;">Safe loading/unloading with trained labor and proper equipment to ensure your items are protected throughout the move.</p>
+                    </div>
+                    <div class="relocation-benefit-card" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(255,215,0,0.08); padding: 28px 18px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                        <span style="font-size: 2.2rem; color: #C71585; margin-bottom: 12px;"><i class="fas fa-clock"></i></span>
+                        <h3 style="font-size: 1.15rem; color: #23223a; margin-bottom: 10px;">On-Time Service</h3>
+                        <p style="font-size: 1rem; color: #444; margin: 0;">Timely pickup and delivery with real-time tracking so you always know the status of your belongings.</p>
+                    </div>
+                    <div class="relocation-benefit-card" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(255,215,0,0.08); padding: 28px 18px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                        <span style="font-size: 2.2rem; color: #00B894; margin-bottom: 12px;"><i class="fas fa-map-marker-alt"></i></span>
+                        <h3 style="font-size: 1.15rem; color: #23223a; margin-bottom: 10px;">Live Tracking</h3>
+                        <p style="font-size: 1rem; color: #444; margin: 0;">Real-time GPS tracking and updates so you're always informed about your shipment's location and status.</p>
+                    </div>
+                    <div class="relocation-benefit-card" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(255,215,0,0.08); padding: 28px 18px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                        <span style="font-size: 2.2rem; color: #FFD700; margin-bottom: 12px;"><i class="fas fa-rupee-sign"></i></span>
+                        <h3 style="font-size: 1.15rem; color: #23223a; margin-bottom: 10px;">Transparent Pricing</h3>
+                        <p style="font-size: 1rem; color: #444; margin: 0;">No hidden charges with fully transparent pricing and optional transit insurance for complete peace of mind.</p>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top: 2.5em; font-style: italic; color: #FFD700; font-size: 1.18rem; font-family: 'Playfair Display', serif;">
+                    <span>"We don't just shift goods—we shift lives and businesses, responsibly."</span>
                 </div>
             </div>
-            <style>
-            @media (max-width: 900px) {
-                .why-choose-moveroo-2col { flex-direction: column; gap: 18px; align-items: center; }
-                .why-choose-moveroo-image, .why-choose-moveroo-content { max-width: 98vw !important; min-width: 0 !important; }
-                .why-choose-moveroo-content { align-items: center !important; text-align: center !important; }
-                .why-choose-moveroo-list { margin-left: auto !important; margin-right: auto !important; text-align: left !important; }
-            }
-            @media (max-width: 600px) {
-                .why-choose-moveroo-2col { flex-direction: column; gap: 10px; align-items: center; }
-                .why-choose-moveroo-image { width: 100vw !important; height: 160px !important; border-radius: 0 !important; }
-                .why-choose-moveroo-image img { width: 100vw !important; height: 100% !important; border-radius: 0 !important; }
-                .why-choose-moveroo-content { padding: 0 4px !important; align-items: center !important; text-align: center !important; }
-                .why-choose-moveroo-list { padding-left: 18px !important; }
-            }
-            </style>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var btn = document.getElementById('relocation-readmore-btn');
+                var more = document.getElementById('relocation-intro-more');
+                var short = document.getElementById('relocation-intro-short');
+                if(btn) {
+                    btn.onclick = function() {
+                        if(more.style.display === 'none' || more.style.display === '') {
+                            more.style.display = 'inline';
+                            btn.textContent = 'Read Less';
+                        } else {
+                            more.style.display = 'none';
+                            btn.textContent = 'Read More';
+                        }
+                    };
+                }
+            });
+            </script>
           </div>
           <style>
           .why-choose-moveroo-section {

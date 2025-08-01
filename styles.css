@@ -91,7 +91,7 @@ body.menu-open {
 
 .dropdown-menu a {
     color: #333 !important;
-    padding: 8px 20px;
+    padding: 1px 2px;
     white-space: nowrap;
 }
 
@@ -2591,7 +2591,7 @@ margin-left: 0 !important;
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, #000, #555);
+    background: linear-gradient(135deg, #471737, #c590b1);
     color: #fff;
     text-align: center;
     padding: 100px 0;

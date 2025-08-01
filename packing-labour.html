@@ -1,6 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Function to show only the selected process section
+        function showProcessSection(sectionId) {
+            // Define all section and value-added block IDs
+            const sections = ['packing-moving', 'pet-relocation', 'vehicle-relocation', 'packing-labour'];
+            const valueAddedBlocks = ['value-added-packing', 'value-added-pet', 'value-added-vehicle', 'value-added-labour'];
+            
+            // First hide all sections
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) section.style.display = 'none';
+            });
+            
+            // Hide all value-added sections
+            valueAddedBlocks.forEach(id => {
+                const block = document.getElementById(id);
+                if (block) block.style.display = 'none';
+            });
+            
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+                
+                // Show the corresponding value-added block based on the selected section
+                const valueAddedId = getValueAddedBlockId(sectionId);
+                if (valueAddedId) {
+                    const valueAddedBlock = document.getElementById(valueAddedId);
+                    if (valueAddedBlock) {
+                        valueAddedBlock.style.display = 'block';
+                    }
+                }
+                
+                // Smooth scroll to the selected section
+                setTimeout(() => {
+                    selectedSection.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            }
+        }
+        
+        // Helper function to get the corresponding value-added block ID for a section
+        function getValueAddedBlockId(sectionId) {
+            const sectionToBlockMap = {
+                'packing-moving': 'value-added-packing',
+                'pet-relocation': 'value-added-pet',
+                'vehicle-relocation': 'value-added-vehicle',
+                'packing-labour': 'value-added-labour'
+            };
+            return sectionToBlockMap[sectionId] || null;
+        }
+
+        // Initialize by showing the first section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all sections except the first one
+            const sections = ['packing-moving', 'pet-relocation', 'vehicle-relocation', 'packing-labour'];
+            sections.forEach((id, index) => {
+                const section = document.getElementById(id);
+                if (section) section.style.display = index === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process - Moveroo | The Moveroo Way</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Logo Styling */
+        .logo img {
+            max-height: 70px;
+            min-height: 50px;
+            width: auto;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            padding: 6px 0;
+        }
+        .logo {
+            min-height: 40px;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            padding: 0px 0;
+        }
+        /* Header and Navbar Styles */
+        .header, .navbar {
+            min-height: 10px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .header {
+            min-height: 120px !important;
+            padding: 32px 0 !important;
+            position: fixed;
+            background: #000 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        /* Mobile menu toggle button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: auto;
+            z-index: 1002;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            color: #cccccc;
+        }
+        /* Mobile menu styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgb(211, 208, 208);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            padding: 70px 20px 30px;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-nav ul li {
+            margin: 10px 0;
+        }
+        .mobile-nav ul li a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav ul li a:hover {
+            background: #f5f5f5;
+        }
+        /* Hide desktop nav on mobile */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .logo {
+                margin-right: auto !important;
+            }
+        }
+        /* Desktop styles */
+        @media (min-width: 993px) {
+            .mobile-menu-btn,
+            .mobile-nav {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+        }
+    </style>
+    <style>
+    @media (max-width: 600px) {
+      .navbar {
+        justify-content: flex-end !important;
+      }
+      .logo {
+        margin-right: auto !important;
+      }
+    }
+    </style>
+    <style>
+    .header, .navbar {
+        min-height: 10px !important;
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+    </style>
+    <style>
+    /* Mobile/desktop toggle for Join Our Team and Partner With Us cards */
+    .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+      display: none;
+    }
+    .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+        display: inline-block;
+      }
+      .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+        display: none;
+      }
+      .join-team-toggle.mobile-active .join-team-details,
+      .partner-toggle.mobile-active .partner-details {
+        display: block !important;
+      }
+    }
+    </style>
+    <style>
+        /* Process Page Specific Styles */
+        .process-hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+              margin-top: 0;
+        }
+        
+        .process-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .process-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .process-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: #28a745;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #28a745;
+            min-width: 60px;
+        }
+        
+        .step-content h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .step-highlight {
+            display: inline-block;
+            background: #e8f5e9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #28a745;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .step-number {
+                margin-bottom: 15px;
+            }
+            
+            /* Make process cards stack vertically on mobile */
+            [style*="grid-template-columns: repeat(3, 1fr)"],
+            #packing-labour > div[style*="grid-template-columns"],
+            #packing-moving > div[style*="grid-template-columns"],
+            #pet-relocation > div[style*="grid-template-columns"],
+            #vehicle-relocation > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+                padding: 0 15px !important;
+            }
+            
+            /* Adjust spacing for process sections */
+            #packing-moving, #pet-relocation, #vehicle-relocation, #packing-labour {
+                padding: 30px 0 !important;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* Adjust heading sizes on mobile */
+            h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 20px !important;
+                padding: 0 15px !important;
+                text-align: center !important;
+            }
+            
+            /* Adjust card padding on mobile */
+            [style*="padding: 24px 20px"],
+            #packing-labour [style*="padding: 24px 20px"],
+            #value-added-services [style*="padding: 30px"] {
+                padding: 20px 15px !important;
+                margin: 0 10px !important;
+            }
+            
+            /* Adjust step number size on mobile */
+            [style*="width: 44px; height: 44px"] {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1.1rem !important;
+            }
+            
+            /* Adjust card content spacing */
+            [style*="margin-bottom: 15px"] {
+                margin-bottom: 10px !important;
+            }
+            
+            /* Adjust font sizes for better mobile readability */
+            p, .step-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                padding: 0 5px !important;
+            }
+            
+            /* Fix value-added services section */
+            #value-added-services {
+                padding: 30px 0 !important;
+                margin: 30px 0 0 !important;
+            }
+            
+            #value-added-services h2 {
+                font-size: 1.8rem !important;
+                white-space: normal !important;
+                width: 90% !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                text-align: center !important;
+                padding: 0 15px !important;
+            }
+            
+            #value-added-services p {
+                padding: 0 15px !important;
+            }
+            
+            /* Fix service buttons */
+            .service-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px !important;
+            }
+            
+            .service-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 5px 0 !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: absolute;
+        left: -8px;
+        right: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+</style>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: absolute;
+        left: 280px;
+        right: auto;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <!-- Services Dropdown -->
+                    <li class="dropdown">
+                        <a href="#services" class="dropdown-toggle" onclick="event.preventDefault(); document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="packing-moving.html">Packing & Moving</a></li>
+                            <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                            <li><a href="pet.html">Pet Relocation</a></li>
+                            <li><a href="packing-labour.html">Packing Labour</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <!-- Get Quote Button -->
+                    <li>
+                        <a href="#quote" class="quote-btn">
+                            Get a Quote
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-btn" id="closeMobileMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#" class="quote-btn">Get a Quote</a></li>
+        </ul>
+    </nav>
+    
+    <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const body = document.body;
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+    });
+    </script>
+        
+        </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" style="padding-top: 8px; padding-bottom: 8px;">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moveroo. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+        <script>
+        // Sticky header functionality
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                // Scrolling up
+                header.classList.remove('hidden');
+                header.classList.add('visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Relocation | Moveroo</title>
@@ -120,8 +707,7 @@
     </style>
 </head>
 <body>
-<!-- Fixed Get Quote Button Top Right -->
-<a href="#" class="quote-btn top-action-btn" id="fixed-quote-btn">Get a Quote</a>
+<!-- Fixed Get Quote Button Top Right removed -->
 <style>
 .top-action-btn {
   position: fixed;
@@ -152,92 +738,9 @@
 </style>
 <!-- Header has been removed as per request -->
 
-<!-- Include JavaScript -->
-<script>
-    // Mobile Navigation Toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const overlay = document.querySelector('.menu-overlay');
-        const body = document.body;
-        
-        // Toggle mobile menu
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            overlay.classList.toggle('active');
-            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-            body.classList.toggle('menu-open', navLinks.classList.contains('active'));
-        }
-
-        // Toggle menu when clicking hamburger
-        if (hamburger) {
-            hamburger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleMenu();
-            });
-        }
-
-        // Close menu when clicking overlay
-        if (overlay) {
-            overlay.addEventListener('click', function() {
-                if (navLinks.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        }
-
-        // Close menu when clicking on a nav link
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 991) {
-                    toggleMenu();
-                }
-                
-                // Smooth scroll for anchor links
-                const targetId = this.getAttribute('href');
-                if (targetId.startsWith('#')) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Close menu when pressing Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
-
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                if (window.innerWidth > 991) {
-                    // Reset mobile menu on desktop
-                    if (navLinks.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                }
-            }, 250);
-        });
-    });
-</script>
-
     
     <div style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 80px 0 20px; margin: 0 auto; width: 100%;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 60px 0 30px; display: flex; justify-content: left: ;;">
-            <a href="index.html#services" class="back-button top-action-btn"><span class="arrow-icon" style="margin-right: 8px;">←</span> Back</a>
-        </div>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 60px 0 30px; display: flex; justify-content: flex-start;"></div>
     </div>
     <div style="background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%); padding: 40px 0; margin: 0 auto; width: 100%;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
@@ -589,7 +1092,7 @@
                             <a href="process.html" class="cta-button" style="display: inline-block; background: #eab308; color: #0f172a; font-weight: 600; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); border: 2px solid #eab308;">
                                 The Moveroo Process
                             </a>
-                            <a href="tel:+919876543210" class="cta-button secondary" style="display: inline-flex; align-items: center; background: transparent; color: #eab308; font-weight: 600; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid #eab308;">
+                            <a href="tel:+918872998866" class="cta-button secondary" style="display: inline-flex; align-items: center; background: transparent; color: #eab308; font-weight: 600; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid #eab308;">
                                 <i class="fas fa-phone-alt" style="margin-right: 8px;"></i>
                                 Call Us Now
                             </a>
@@ -603,7 +1106,7 @@
                 </div>
             </div>
         </div>
-    <style>
+    <style type="text/css">
         @media (max-width: 768px) {
             .why-expert-section {
                 flex-direction: column-reverse;
@@ -630,7 +1133,125 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Main application script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Only run code if elements exist
+        const toggleButtons = document.querySelectorAll('.toggle-section-btn');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const closePopup = document.querySelector('.close-popup');
+        const citySearchInput = document.getElementById('city-search');
+        
+        // Initialize collapsible sections if they exist
+        if (toggleButtons.length > 0) {
+            initCollapsibleSections();
+        }
+        
+        // Mobile menu toggle if elements exist
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+        
+        // Close popup if it exists
+        if (closePopup) {
+            closePopup.addEventListener('click', function() {
+                const popup = document.getElementById('city-popup');
+                if (popup) popup.style.display = 'none';
+            });
+        }
+        
+        // Initialize other event listeners if elements exist
+        if (citySearchInput) {
+            citySearchInput.addEventListener('input', function() {
+                // Your city search logic here
+            });
+        }
+
+        // Fix for 404 image
+        const officeImage = document.querySelector('img[src*="office1.jpg"]');
+        if (officeImage) {
+            officeImage.src = 'assets/placeholder.jpg'; // Replace with a valid image path
+            officeImage.alt = officeImage.alt || 'Office space';
+        }
+
+        // Fix for null classList errors
+        const elementsNeedingClassList = document.querySelectorAll('.class-to-check');
+        elementsNeedingClassList.forEach(el => {
+            if (el && el.classList) {
+                // Add your class list operations here
+            }
+        });
+    });
+    
+    function initCollapsibleSections() {
+        const toggleButtons = document.querySelectorAll('.toggle-section-btn');
+        
+        toggleButtons.forEach(button => {
+            const targetId = button.getAttribute('data-target');
+            if (!targetId) return;
+            
+            const content = document.getElementById(targetId);
+            const icon = button.querySelector('i');
+            
+            if (!content || !icon) return;
+            
+            // Set initial state
+            content.style.maxHeight = '0';
+            content.style.overflow = 'hidden';
+            content.style.transition = 'max-height 0.3s ease-out, opacity 0.3s ease';
+            content.style.opacity = '0';
+            content.style.visibility = 'hidden';
+            
+            button.addEventListener('click', function() {
+                const isExpanding = content.style.maxHeight === '0px' || !content.style.maxHeight;
+                
+                if (isExpanding) {
+                    // Close other open sections
+                    toggleButtons.forEach(btn => {
+                        if (btn !== button) {
+                            const otherTargetId = btn.getAttribute('data-target');
+                            const otherContent = document.getElementById(otherTargetId);
+                            const otherIcon = btn.querySelector('i');
+                            
+                            if (otherContent && otherIcon) {
+                                otherContent.style.maxHeight = '0';
+                                otherContent.style.opacity = '0';
+                                otherContent.style.visibility = 'hidden';
+                                otherIcon.style.transform = 'rotate(0deg)';
+                                btn.style.borderBottomLeftRadius = '10px';
+                                btn.style.borderBottomRightRadius = '10px';
+                                btn.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                    
+                    // Expand the clicked section
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.opacity = '1';
+                    content.style.visibility = 'visible';
+                    icon.style.transform = 'rotate(180deg)';
+                    button.style.borderBottomLeftRadius = '0';
+                    button.style.borderBottomRightRadius = '0';
+                    button.setAttribute('aria-expanded', 'true');
+                } else {
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    content.style.visibility = 'hidden';
+                    icon.style.transform = 'rotate(0deg)';
+                    button.style.borderBottomLeftRadius = '10px';
+                    button.style.borderBottomRightRadius = '10px';
+                    button.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+    </script>
     
     <footer class="footer">
         <div class="container">
@@ -673,6 +1294,42 @@
 #whatsapp-float:hover span {
     opacity: 1;
     right: 85px;
+}
+#whatsapp-float img {
+    display: block;
+}
+</style>
+<!-- Only load quote-popup.js if the element exists -->
+<script>
+    if (document.getElementById('quote-popup')) {
+        const script = document.createElement('script');
+        script.src = 'js/quote-popup.js';
+        document.body.appendChild(script);
+    }
+</script>
+</body>
+</html>
+
+
+<style>
+#whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 99999;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+#whatsapp-float:hover {
+    box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+    transform: scale(1.08);
+    background: #1ebe57;
 }
 #whatsapp-float img {
     display: block;

@@ -1,9 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Function to show only the selected process section
+        function showProcessSection(sectionId) {
+            // Define all section and value-added block IDs
+            const sections = ['packing-moving', 'pet-relocation', 'vehicle-relocation', 'packing-labour'];
+            const valueAddedBlocks = ['value-added-packing', 'value-added-pet', 'value-added-vehicle', 'value-added-labour'];
+            
+            // First hide all sections
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) section.style.display = 'none';
+            });
+            
+            // Hide all value-added sections
+            valueAddedBlocks.forEach(id => {
+                const block = document.getElementById(id);
+                if (block) block.style.display = 'none';
+            });
+            
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+                
+                // Show the corresponding value-added block based on the selected section
+                const valueAddedId = getValueAddedBlockId(sectionId);
+                if (valueAddedId) {
+                    const valueAddedBlock = document.getElementById(valueAddedId);
+                    if (valueAddedBlock) {
+                        valueAddedBlock.style.display = 'block';
+                    }
+                }
+                
+                // Smooth scroll to the selected section
+                setTimeout(() => {
+                    selectedSection.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            }
+        }
+        
+        // Helper function to get the corresponding value-added block ID for a section
+        function getValueAddedBlockId(sectionId) {
+            const sectionToBlockMap = {
+                'packing-moving': 'value-added-packing',
+                'pet-relocation': 'value-added-pet',
+                'vehicle-relocation': 'value-added-vehicle',
+                'packing-labour': 'value-added-labour'
+            };
+            return sectionToBlockMap[sectionId] || null;
+        }
+
+        // Initialize by showing the first section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all sections except the first one
+            const sections = ['packing-moving', 'pet-relocation', 'vehicle-relocation', 'packing-labour'];
+            sections.forEach((id, index) => {
+                const section = document.getElementById(id);
+                if (section) section.style.display = index === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moveroo | Professional Moving Services</title>
+    <title>Process - Moveroo | The Moveroo Way</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -24,67 +85,107 @@
             align-items: center;
             padding: 0px 0;
         }
-
-        /* Quote Form Styling */
-        .quote-header {
-            background: #f3f3f3;
-            color: #232323;
-            padding: 24px 20px 16px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-            margin: 0;
+        /* Header and Navbar Styles */
+        .header, .navbar {
+            min-height: 10px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
         }
-        
-        .quote-header h2 {
-            margin: 0 0 8px;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #232323;
+        .header {
+            min-height: 120px !important;
+            padding: 32px 0 !important;
+            position: fixed;
+            background: #000 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
-        
-        .quote-form {
-            background: #fff;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            padding: 24px 20px;
-            margin: 0;
-        }
-        
-        .btn-red {
-            background: #d32f2f;
-            color: #fff;
+        /* Mobile menu toggle button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
             border: none;
-            border-radius: 5px;
-            padding: 14px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 28px;
+            color: #ffffff;
             cursor: pointer;
-            width: 100%;
-            transition: background 0.2s, box-shadow 0.2s;
+            padding: 8px;
+            margin-left: auto;
+            z-index: 1002;
+            transition: color 0.3s ease;
         }
-        
-        .btn-red:hover,
-        .btn-red:focus {
-            background: #b71c1c;
-            box-shadow: 0 4px 16px rgba(211,47,47,0.13);
+        .mobile-menu-btn:hover {
+            color: #cccccc;
         }
-        
-        @media (max-width: 600px) {
-            .quote-header {
-                padding: 16px 8px 10px;
+        /* Mobile menu styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgb(211, 208, 208);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            padding: 70px 20px 30px;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-nav ul li {
+            margin: 10px 0;
+        }
+        .mobile-nav ul li a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav ul li a:hover {
+            background: #f5f5f5;
+        }
+        /* Hide desktop nav on mobile */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
             }
-            .quote-form {
-                padding: 16px 8px 12px;
+            .mobile-menu-btn {
+                display: block;
+            }
+            .logo {
+                margin-right: auto !important;
+            }
+        }
+        /* Desktop styles */
+        @media (min-width: 993px) {
+            .mobile-menu-btn,
+            .mobile-nav {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
             }
         }
     </style>
     <style>
-    .city-tag:hover, .city-tag:focus {
-      background: #1a4b8c !important;
-      color: #fff !important;
-      font-weight: bold !important;
-    }
     @media (max-width: 600px) {
       .navbar {
         justify-content: flex-end !important;
@@ -97,413 +198,240 @@
     <style>
     .header, .navbar {
         min-height: 10px !important;
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
     }
     </style>
     <style>
-    /* Quote Modal Styles */
-.quote-modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s;
-}
-.quote-modal-content {
-  background: #fff;
-  border-radius: 18px;
-  max-width: 700px;
-  min-width: 320px;
-  width: 96vw;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  position: relative;
-  padding: 0 0 10px 0;
-  animation: quoteModalIn 0.25s;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.quote-form {
-  background: #fff;
-  border-radius: 0 0 18px 18px;
-  box-shadow: none;
-  padding: 18px 36px 18px 36px;
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.quote-form .form-group {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.quote-form input[type="text"],
-.quote-form input[type="email"],
-.quote-form input[type="tel"],
-.quote-form select {
-  padding: 10px 14px;
-  border: 1.5px solid #222;
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-  background: #fff;
-  color: #111;
-  transition: border 0.2s, background 0.2s;
-}
-.quote-form input[type="text"]:focus,
-.quote-form input[type="email"]:focus,
-.quote-form input[type="tel"]:focus,
-.quote-form select:focus {
-  border: 2px solid #000;
-  background: #fafafa;
-}
-.quote-form select {
-  color: #111;
-  font-weight: 500;
-  background: #fff;
-}
-.quote-form .captcha-label {
-  color: #111;
-}
-.quote-form .captcha-code {
-  background: #f5f5f5;
-  color: #000;
-  font-weight: bold;
-  padding: 2px 10px;
-  border-radius: 4px;
-  letter-spacing: 2px;
-  font-size: 1.1em;
-  margin-left: 4px;
-}
-.quote-form .terms-group {
-  font-size: 0.98rem;
-  align-items: center;
-  color: #222;
-}
-.quote-form .terms-group input[type="checkbox"] {
-  accent-color: #111;
-  margin-right: 6px;
-}
-.btn-red {
-  background: #111;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 14px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s, box-shadow 0.2s;
-}
-.btn-red:hover,
-.btn-red:focus {
-  background: #000;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-}
-.btn-block {
-  width: 100%;
-  display: block;
-  margin-top: 8px;
-}
-@media (max-width: 900px) {
-  .quote-modal-content {
-    max-width: 99vw;
-    min-width: 0;
-  }
-  .quote-form {
-    flex-direction: column;
-    padding: 14px 8px 10px 8px;
-    gap: 12px;
-  }
-  .quote-form .form-group {
-    max-width: 100%;
-  }
-}
-@media (max-width: 600px) {
-  .quote-modal-content {
-    max-width: 99vw;
-    padding: 0 0 8px 0;
-  }
-  .quote-form {
-    padding: 8px 2vw 8px 2vw;
-  }
-  .services-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-  .service-card {
-    background: transparent !important;
-    box-shadow: none !important;
-    width: 95vw !important;
-    max-width: 500px;
-  }
-  .service-card .card-inner,
-  .service-card .card-front {
-    background: transparent !important;
-  }
-}
-@keyframes quoteModalIn {
-  from { transform: scale(0.95) translateY(30px); opacity: 0; }
-  to { transform: scale(1) translateY(0); opacity: 1; }
-}
-.quote-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #d32f2f;
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.2s;
-}
-.quote-modal-close:hover {
-  color: #b71c1c;
-}
-@media (max-width: 600px) {
-  .quote-modal-content {
-    max-width: 99vw;
-    padding: 0 0 8px 0;
-  }
-}
-.service-card {
-  width: 260px;
-  height: 240px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-.service-card .card-inner,
-.service-card .card-front {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-.service-card .service-icon img {
-  max-width: 150px;
-  max-height: 150px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 600px) {
-  .service-desc-mobile {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 3.2em;
-    position: relative;
-    transition: max-height 0.2s;
-  }
-  .service-desc-mobile.expanded {
-    display: block;
-    -webkit-line-clamp: unset;
-    max-height: none;
-    overflow: visible;
-  }
-  .service-desc-mobile {
-    margin-bottom: 0 !important;
-  }
-  #desc-toggle {
-    margin-top: 2px;
-    display: inline-block;
-  }
-  .quote-modal-content {
-    max-width: 80vw !important;
-    min-width: 0 !important;
-    width: 80vw !important;
-    min-height: 340px !important;
-    padding: 0 0 1px 0 !important;
-  }
-  .quote-form {
-    padding: 2px 0.5vw 2px 0.5vw !important;
-    font-size: 0.82rem !important;
-    gap: 0 !important;
-  }
-  .quote-form input,
-  .quote-form select {
-    font-size: 0.82rem !important;
-    padding: 3px 5px !important;
-  }
-}
-</style>
-<style>
-/* Mobile/desktop toggle for Join Our Team and Partner With Us cards */
-.join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
-  display: none;
-}
-.join-team-toggle .join-team-details, .partner-toggle .partner-details {
-  display: block;
-}
-@media (max-width: 600px) {
-  .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
-    display: inline-block;
-  }
-  .join-team-toggle .join-team-details, .partner-toggle .partner-details {
-    display: none;
-  }
-  .join-team-toggle.mobile-active .join-team-details,
-  .partner-toggle.mobile-active .partner-details {
-    display: block !important;
-  }
-}
-</style>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  function isMobile() {
-    return window.innerWidth <= 600;
-  }
-  var desc = document.getElementById('service-desc');
-  var toggle = document.getElementById('desc-toggle');
-  if (desc && toggle && isMobile()) {
-    toggle.style.display = 'inline';
-    var expanded = false;
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      expanded = !expanded;
-      if (expanded) {
-        desc.classList.add('expanded');
-        toggle.textContent = 'Show less';
-      } else {
-        desc.classList.remove('expanded');
-        toggle.textContent = 'Show more';
+    /* Mobile/desktop toggle for Join Our Team and Partner With Us cards */
+    .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+      display: none;
+    }
+    .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .join-team-toggle .show-details-btn, .partner-toggle .show-details-btn {
+        display: inline-block;
       }
-    });
-  }
-});
-</script>
-
-    </div>
-</div>
+      .join-team-toggle .join-team-details, .partner-toggle .partner-details {
+        display: none;
+      }
+      .join-team-toggle.mobile-active .join-team-details,
+      .partner-toggle.mobile-active .partner-details {
+        display: block !important;
+      }
+    }
+    </style>
+    <style>
+        /* Process Page Specific Styles */
+        .process-hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+              margin-top: 0;
+        }
+        
+        .process-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .process-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .process-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: #28a745;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #28a745;
+            min-width: 60px;
+        }
+        
+        .step-content h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .step-highlight {
+            display: inline-block;
+            background: #e8f5e9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #28a745;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .step-number {
+                margin-bottom: 15px;
+            }
+            
+            /* Make process cards stack vertically on mobile */
+            [style*="grid-template-columns: repeat(3, 1fr)"],
+            #packing-labour > div[style*="grid-template-columns"],
+            #packing-moving > div[style*="grid-template-columns"],
+            #pet-relocation > div[style*="grid-template-columns"],
+            #vehicle-relocation > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+                padding: 0 15px !important;
+            }
+            
+            /* Adjust spacing for process sections */
+            #packing-moving, #pet-relocation, #vehicle-relocation, #packing-labour {
+                padding: 30px 0 !important;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* Adjust heading sizes on mobile */
+            h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 20px !important;
+                padding: 0 15px !important;
+                text-align: center !important;
+            }
+            
+            /* Adjust card padding on mobile */
+            [style*="padding: 24px 20px"],
+            #packing-labour [style*="padding: 24px 20px"],
+            #value-added-services [style*="padding: 30px"] {
+                padding: 20px 15px !important;
+                margin: 0 10px !important;
+            }
+            
+            /* Adjust step number size on mobile */
+            [style*="width: 44px; height: 44px"] {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1.1rem !important;
+            }
+            
+            /* Adjust card content spacing */
+            [style*="margin-bottom: 15px"] {
+                margin-bottom: 10px !important;
+            }
+            
+            /* Adjust font sizes for better mobile readability */
+            p, .step-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                padding: 0 5px !important;
+            }
+            
+            /* Fix value-added services section */
+            #value-added-services {
+                padding: 30px 0 !important;
+                margin: 30px 0 0 !important;
+            }
+            
+            #value-added-services h2 {
+                font-size: 1.8rem !important;
+                white-space: normal !important;
+                width: 90% !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                text-align: center !important;
+                padding: 0 15px !important;
+            }
+            
+            #value-added-services p {
+                padding: 0 15px !important;
+            }
+            
+            /* Fix service buttons */
+            .service-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px !important;
+            }
+            
+            .service-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 5px 0 !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
 <style>
-/* Mobile Navigation Styles */
-.header {
-    min-height: 70px !important;
-    padding: 10px 0 !important;
-    position: fixed;
-    background: rgb(0, 0, 0);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-/* Mobile menu toggle button */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 28px;
-    color: #ffffff; /* White color for the icon */
-    cursor: pointer;
-    padding: 8px;
-    margin-left: auto;
-    z-index: 1002;
-    transition: color 0.3s ease;
-}
-
-.mobile-menu-btn:hover {
-    color: #cccccc; /* Slightly darker on hover */
-}
-
-/* Mobile menu styles */
-.mobile-nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background: rgb(211, 208, 208);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    z-index: 1001;
-    padding: 70px 20px 30px;
-    transition: right 0.3s ease;
-    overflow-y: auto;
-}
-
-.mobile-nav.active {
-    right: 0;
-}
-
-.mobile-nav .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-nav ul li {
-    margin: 10px 0;
-}
-
-.mobile-nav ul li a {
-    display: block;
-    padding: 12px 15px;
-    color: #333;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.mobile-nav ul li a:hover {
-    background: #f5f5f5;
-}
-
-/* Hide desktop nav on mobile */
 @media (max-width: 992px) {
-    .nav-links {
-        display: none;
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
-    
-    .logo {
-        display: left;
+    .header .hamburger {
+        position: absolute;
+        left: -8px;
+        right: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
-
-/* Desktop styles */
-@media (min-width: 993px) {
-    .mobile-menu-btn,
-    .mobile-nav {
-        display: none;
-    }
-    
-    .nav-links {
-        display: flex;
+</style>
+<style>
+@media (max-width: 992px) {
+    .header .hamburger {
+        position: absolute;
+        left: 280px;
+        right: auto;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
 </style>
@@ -523,7 +451,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- Desktop Navigation -->
                 <ul class="nav-links">
                     <li><a href="index.html#home">Home</a></li>
-                    
                     <!-- Services Dropdown -->
                     <li class="dropdown">
                         <a href="#services" class="dropdown-toggle" onclick="event.preventDefault(); document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });">
@@ -536,14 +463,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><a href="packing-labour.html">Packing Labour</a></li>
                         </ul>
                     </li>
-                    
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    
+                    <li><a href="contact.html">Contact</a></li>
                     <!-- Get Quote Button -->
                     <li>
-                        <a href="#" class="quote-btn">
+                        <a href="#quote" class="quote-btn">
                             Get a Quote
                         </a>
                     </li>
@@ -564,13 +489,113 @@ document.addEventListener('DOMContentLoaded', function() {
         </button>
         <ul>
             <li><a href="index.html#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
+            <!-- Services Dropdown -->
+            <li class="mobile-dropdown">
+                <a href="#" class="dropdown-toggle" id="servicesDropdown">
+                    Services <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="mobile-dropdown-menu" style="display: none;">
+                    <div class="service-cards">
+                        <a href="packing-moving.html" class="service-card">
+                            <i class="fas fa-boxes"></i>
+                            <span>Packing & Moving</span>
+                        </a>
+                        <a href="vehicle.html" class="service-card">
+                            <i class="fas fa-truck-moving"></i>
+                            <span>Vehicle Relocation</span>
+                        </a>
+                        <a href="pet.html" class="service-card">
+                            <i class="fas fa-paw"></i>
+                            <span>Pet Relocation</span>
+                        </a>
+                        <a href="packing-labour.html" class="service-card">
+                            <i class="fas fa-people-carry"></i>
+                            <span>Packing Labour</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="process.html">Process</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="#" class="quote-btn">Get a Quote</a></li>
         </ul>
     </nav>
+
+    <style>
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+        }
+        
+        .mobile-dropdown .dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-dropdown .dropdown-toggle i {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown.active .dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-dropdown-menu {
+            padding: 10px 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin: 5px 0;
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10px;
+            background: white;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #28a745;
+        }
+        
+        .service-card span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 480px) {
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
     
     <script>
     // Mobile menu functionality
@@ -578,6 +603,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const closeMobileMenu = document.getElementById('closeMobileMenu');
         const mobileNav = document.getElementById('mobileNav');
+        const servicesDropdown = document.getElementById('servicesDropdown');
+        const dropdownMenu = document.querySelector('.mobile-dropdown-menu');
         const body = document.body;
         
         // Toggle mobile menu
@@ -593,19 +620,116 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+                // Close dropdown when closing mobile menu
+                document.querySelector('.mobile-dropdown').classList.remove('active');
+                dropdownMenu.style.display = 'none';
             }
+        }
+        
+        // Toggle services dropdown
+        if (servicesDropdown) {
+            servicesDropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdown = this.closest('.mobile-dropdown');
+                dropdown.classList.toggle('active');
+                const menu = dropdown.querySelector('.mobile-dropdown-menu');
+                menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+            });
         }
         
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         closeMobileMenu.addEventListener('click', toggleMobileMenu);
         
         // Close menu when clicking on nav links
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
+        document.querySelectorAll('.mobile-nav a:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', toggleMobileMenu);
         });
     });
     </script>
+        
+        </section>
 
+    
+
+    <script src="script.js"></script>
+        <script>
+        // Sticky header functionality
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                // Scrolling up
+                header.classList.remove('hidden');
+                header.classList.add('visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional moving and relocation services by Moveroo. We make your move easy and stress-free.">
+    <meta name="keywords" content="moving services, relocation, movers, packers, home shifting, office shifting">
+    <meta name="author" content="Moveroo">
+    <meta name="theme-color" content="#007bff">
+    
+    <title>Moveroo | Professional Moving Services</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"></noscript>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        section {
+            scroll-margin-top: 70px;
+        }
+    </style>
+</head>
+<body>
     <!-- Hero Section with Video on Left -->
     <section class="hero">
         <div class="container hero-container">
@@ -622,8 +746,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h1>Moveroo. Where Moving Becomes Effortless.</h1>
                 <p>From boxes to beloved pets, furniture to fuel tanks — we don’t just move things, we move lives. Welcome to Moveroo — India’s next-gen relocation companion.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-secondary shiny-btn quote-btn" style="background:#111; color:#fff; border:2px solid #111; transition:background 0.2s, color 0.2s;">Get Quote</a>
-                    <a href="tel:+91 8872998866" class="btn btn-secondary shiny-btn" style="background:#fff; color:#111; border:2px solid #111; transition:background 0.2s, color 0.2s;"><i class="fas fa-phone"></i> Call Us Now</a>
+                    <a href="#" class="btn btn-secondary shiny-btn quote-btn" style="background:#111; color:#fff; border:2px solid #111; transition:background 0.2s, color 0.2s;">Get a free Quote today</a>
+                    <a href="tel:+918872998866" class="btn btn-secondary shiny-btn" style="background:#fff; color:#111; border:2px solid #111; transition:background 0.2s, color 0.2s;"><i class="fas fa-phone"></i> Call Us Now</a>
                 </div>
             </div>
         </div>
@@ -633,8 +757,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">Our Potential Service</h2>
-            <p id="service-desc" class="service-desc-mobile" style="margin:18px 0 30px 0;font-size:1.15rem;text-align:left;">
-                At <strong>Moovero</strong>, we provide a wide range of professional moving and packing services designed to make your relocation smooth and hassle-free. Whether you're shifting your home, office, or vehicle, our trained team ensures careful packing, secure transportation, and timely delivery. From household shifting and office relocation to safe car and bike transportation, we handle every move with precision. We also offer expert packing and unpacking services using high-quality materials and provide secure storage solutions for your belongings whenever needed. With Moovero, enjoy a safe, reliable, and stress-free moving experience.
+            <p id="service-desc" class="service-desc-mobile" style="margin:18px 0 30px 0;font-size:1.15rem;text-align:justify;">
+                At <strong>Mooveroo</strong>, we provide a wide range of professional moving and packing services designed to make your relocation smooth and hassle-free. Whether you're shifting your home, office, or vehicle, our trained team ensures careful packing, secure transportation, and timely delivery. From household shifting and office relocation to safe car and bike transportation, we handle every move with precision. We also offer expert packing and unpacking services using high-quality materials and provide secure storage solutions for your belongings whenever needed. With Mooveroo, enjoy a safe, reliable, and stress-free moving experience.
             </p>
             
             <style>
@@ -928,29 +1052,33 @@ document.addEventListener('DOMContentLoaded', function() {
         .modes-cards {
             display: flex;
             flex-direction: row;
-            gap: 10px;
+            gap: 15px;
             width: 100%;
             justify-content: center;
             flex-wrap: wrap;
+            padding: 0 15px;
+            margin: 0 auto;
+            max-width: 1200px;
         }
         .mode-card {
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 2px 8px #23294611;
-            padding: 10px 8px 6px 8px;
+            padding: 15px 10px;
             width: 180px;
             max-width: 95vw;
-            min-width: 120px;
+            min-width: 140px;
             color: #232946;
             border: 1px solid #f0f0f0;
             position: relative;
             transition: border 0.3s, box-shadow 0.3s, transform 0.3s;
             overflow: hidden;
             margin: 0 auto;
-            min-height: 90px;
+            min-height: 120px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
         }
         @media (max-width: 900px) {
             .modes-cards {
@@ -958,8 +1086,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 align-items: center;
             }
             .mode-card {
-                width: 95vw;
-                max-width: 99vw;
+                width: 90%;
+                max-width: 400px;
+                margin: 0 auto 15px;
             }
         }
         .mode-card:hover {
@@ -968,25 +1097,36 @@ document.addEventListener('DOMContentLoaded', function() {
             transform: translateY(-4px) scale(1.01);
         }
         .mode-icon {
-            font-size: 1.3rem;
-            margin-bottom: 6px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0c9608;
+            color: #ff961d;
             text-shadow: none;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 248, 152, 0.568);
+            border-radius: 50%;
+            margin: 0 auto 12px;
         }
         .mode-card h3 {
             color: #232946;
-            margin: 0 0 8px 0;
-            font-size: 1.02rem;
+            margin: 0 0 12px 0;
+            font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: 0.5px;
+            text-align: center;
+            width: 100%;
         }
         .mode-card ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .mode-card li {
             padding: 3px 0;
@@ -1021,9 +1161,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 min-width: 0;
                 padding: 7px 6px 7px 6px;
                 font-size: 0.92rem;
-                background: #e8f5e9 !important;
-                border: 2px solid #0c9608 !important;
-                box-shadow: 0 1px 4px #0c960811 !important;
+                background: #fff !important;
+                border: 1px solid #f0f0f0 !important;
+                box-shadow: 0 1px 4px #23294611 !important;
                 box-sizing: border-box;
                 margin: 0 auto 8px auto;
                 overflow: hidden;
@@ -1031,17 +1171,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 cursor: pointer;
                 transition: background 0.18s, box-shadow 0.18s, border 0.18s;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
+                justify-content: center;
+            }
+            .mode-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 12px auto !important;
             }
             .mode-card:active, .mode-card:focus {
-                background: #c8e6c9 !important;
-                box-shadow: 0 4px 16px #0c960844 !important;
-                border-color: #0c9608 !important;
+                background: #fff !important;
+                box-shadow: 0 4px 16px #23294622 !important;
+                border-color: #232946 !important;
             }
             .mode-card:hover {
-                background: #c8e6c9 !important;
-                box-shadow: 0 4px 16px #0c960844 !important;
-                border-color: #0c9608 !important;
+                background: #fff !important;
+                box-shadow: 0 4px 16px #23294622 !important;
+                border-color: #232946 !important;
             }
             .mode-icon {
                 margin-right: 10px;
@@ -1051,10 +1199,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             .mode-card h3, .mode-card span {
                 font-size: 0.98rem !important;
-            }
-            .mode-icon {
-                font-size: 1.1rem;
-                margin-bottom: 2px;
             }
             .mode-card li {
                 font-size: 0.85rem;
@@ -1071,6 +1215,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         </style>
+        <style>
+        .modes-points li {
+            color: #0a2240 !important;
+            font-weight: normal !important;
+        }
+        </style>
         <div class="container">
             <h2 class="section-title">MODES OFFERED</h2>
             <p class="modes-desc">Pick your lane. We'll take you there.</p>
@@ -1079,12 +1229,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="mode-card">
                     <div class="mode-icon"><i class="fas fa-truck"></i></div>
                     <div style="margin-bottom: 8px;">
-                      <span style="font-size:1.18rem; font-weight:700; color:#232946;">Road Transport <span style="color:#0c9608; font-size:1rem; font-weight:600;">| ₹16–22/km</span></span>
+                      <span style="font-size:1.18rem; font-weight:700; color:#232946;">Road Transport</span>
                     </div>
-                    <ul style="margin-bottom:0;">
-                      <li><b>•</b> AC vehicles</li>
-                      <li><b>•</b> Pet-ready transport</li>
-                      <li><b>•</b> GPS‑tracked vehicles</li>
+                    <ul class="modes-points" style="margin-bottom:0;">
+                    <li>• AC vehicles</li>
+                    <li>• Pet-ready transport</li>
+                    <li>• GPS‑tracked vehicles</li>
                     </ul>
                 </div>
                 <!-- Rail Cargo Card -->
@@ -1093,9 +1243,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div style="margin-bottom: 8px;">
                       <span style="font-size:1.18rem; font-weight:700; color:#232946;">Rail Cargo</span>
                     </div>
-                    <ul style="margin-bottom:0;">
-                      <li><b>•</b> Economical long-haul for two-wheelers, pets</li>
-                      <li><b>•</b> Handling + station coordination included</li>
+                    <ul class="modes-points" style="margin-bottom:0;">
+                    <li>• Economical long-haul for two-wheelers, pets</li>
+                    <li>• Handling + station coordination included</li>
                     </ul>
                 </div>
                 <!-- Air Logistics Card -->
@@ -1104,9 +1254,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div style="margin-bottom: 8px;">
                       <span style="font-size:1.18rem; font-weight:700; color:#232946;">Air Logistics</span>
                     </div>
-                    <ul style="margin-bottom:0;">
-                      <li><b>•</b> IATA-certified pet relocation</li>
-                      <li><b>•</b> Airport-to-door domestic & international service</li>
+                    <ul class="modes-points" style="margin-bottom:0;">
+                    <li>• IATA-certified pet relocation</li>
+                    <li>• Airport-to-door domestic & international service</li>
                     </ul>
                 </div>
             </div>
@@ -1235,7 +1385,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     @media (max-width: 768px) {
                         .responsive-container {
                             grid-template-columns: 1fr;
-                            gap: 20px;
                         }
                         .image-container {
                             max-width: 250px;
@@ -1401,6 +1550,59 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="why-choose-us" class="why-choose-us">
         <div class="container">
             <h2 class="section-title">Brand Pillars</h2>
+            <style>
+            .points-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .points-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 28px 32px;
+                width: 100%;
+                max-width: 700px;
+                padding: 0;
+                margin: 0 auto;
+                list-style: none;
+            }
+            .point-item {
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 2px 12px rgba(30,30,60,0.10);
+                padding: 22px 18px 18px 18px;
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                min-width: 0;
+                transition: box-shadow 0.2s, transform 0.2s;
+            }
+            .point-item i {
+                font-size: 2.1rem;
+                color: #0a2240;
+                min-width: 38px;
+                margin-top: 2px;
+            }
+            .point-content h3 {
+                font-size: 1.18rem;
+                margin: 0 0 7px 0;
+                color: #232946;
+                font-weight: 700;
+            }
+            .point-content p {
+                color: #444;
+                font-size: 1.01rem;
+                margin: 0;
+            }
+            @media (max-width: 900px) {
+                .points-list {
+                    grid-template-columns: 1fr;
+                    gap: 18px;
+                }
+            }
+            </style>
             <div class="points-container">
                 <ul class="points-list">
                     <li class="point-item scroll-animate">
@@ -1431,6 +1633,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>High-grade materials. Labeled, layered, insured.</p>
                         </div>
                     </li>
+                </ul>
             </div>
     </section>
     <!-- Work With Us Section (Modernized) -->
@@ -1438,435 +1641,32 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
     </section>
 
-
-
-    <!-- Connect With Us Section (Redesigned) -->
-    <section id="contact" class="connect-section-modern">
-      <style>
-        .connect-section-modern {
-          background: linear-gradient(135deg, #f7faff 60%, #eaf6ff 100%);
-          padding: 54px 0 38px 0;
-        }
-        .connect-section-modern .connect-container {
-          display: flex;
-          gap: 48px;
-          max-width: 1100px;
-          margin: 0 auto;
-          background: none;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: center;
-        }
-        .connect-section-modern .connect-info {
-          flex: 1 1 320px;
-          background: #fff;
-          border-radius: 18px;
-          box-shadow: 0 8px 32px rgba(30,30,60,0.22);
-          padding: 22px 20px 18px 20px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          min-width: 260px;
-          max-width: 420px;
-          min-height: 340px;
-          transition: box-shadow 0.35s cubic-bezier(.4,1.4,.6,1), transform 0.35s cubic-bezier(.4,1.4,.6,1);
-        }
-        .connect-section-modern .connect-info:hover {
-          box-shadow: 0 16px 48px 8px rgba(30,30,60,0.32);
-          transform: translateY(-4px) scale(1.025);
-        }
-        .connect-section-modern .connect-info h3 {
-          color: #0c9608;
-          font-size: 1.5rem;
-          margin-bottom: 18px;
-          font-weight: 700;
-        }
-        .connect-section-modern .info-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          margin-bottom: 22px;
-        }
-        .connect-section-modern .info-item:last-child {
-          margin-bottom: 0;
-        }
-        .connect-section-modern .info-icon {
-          font-size: 2.1rem;
-          color: #C71585;
-          min-width: 38px;
-        }
-        .connect-section-modern .info-details {
-          display: flex;
-          flex-direction: column;
-        }
-        .connect-section-modern .info-title {
-          font-size: 1.08rem;
-          color: #232946;
-          font-weight: 600;
-          margin-bottom: 2px;
-        }
-        .connect-section-modern .info-value {
-          font-size: 1.08rem;
-          color: #444;
-          font-weight: 500;
-          word-break: break-all;
-        }
-        .connect-section-modern .connect-form {
-          flex: 1 1 320px;
-          background: #fff;
-          border-radius: 18px;
-          box-shadow: 0 8px 32px rgba(30,30,60,0.22);
-          padding: 22px 20px 18px 20px;
-          display: flex;
-          flex-direction: column;
-          min-width: 260px;
-          max-width: 420px;
-          min-height: 340px;
-          justify-content: center;
-          transition: box-shadow 0.35s cubic-bezier(.4,1.4,.6,1), transform 0.35s cubic-bezier(.4,1.4,.6,1);
-        }
-        .connect-section-modern .connect-form:hover {
-          box-shadow: 0 16px 48px 8px rgba(30,30,60,0.32);
-          transform: translateY(-4px) scale(1.025);
-        }
-        .connect-section-modern .connect-form form {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-        .connect-section-modern .connect-form input,
-        .connect-section-modern .connect-form textarea {
-          padding: 8px 10px;
-          font-size: 0.98rem;
-        }
-        .connect-section-modern .connect-form h3 {
-          margin-bottom: 10px;
-        }
-        .connect-section-modern .connect-form h3 {
-          color: #C71585;
-          font-size: 1.5rem;
-          margin-bottom: 18px;
-          font-weight: 700;
-        }
-        .connect-section-modern .connect-form form {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-        .connect-section-modern .connect-form input,
-        .connect-section-modern .connect-form textarea {
-          padding: 12px 14px;
-          border: 1.5px solid #e0e0e0;
-          border-radius: 6px;
-          font-size: 1rem;
-          outline: none;
-          background: #f7faff;
-          color: #232946;
-          resize: none;
-        }
-        .connect-section-modern .connect-form input:focus,
-        .connect-section-modern .connect-form textarea:focus {
-          border: 2px solid #C71585;
-          background: #fff;
-        }
-        .connect-section-modern .connect-form button {
-          background: #0c9608;
-          color: #fff;
-          border: none;
-          border-radius: 6px;
-          padding: 14px 0;
-          font-size: 1.1rem;
-          font-weight: 600;
-          cursor: pointer;
-          box-shadow: 0 2px 8px rgba(12,150,8,0.08);
-          transition: background 0.2s, box-shadow 0.2s;
-        }
-        .connect-section-modern .connect-form button:hover {
-          background: #C71585;
-        }
-        @media (max-width: 900px) {
-          .connect-section-modern .connect-container {
-            flex-direction: column;
-            gap: 28px;
-            align-items: center;
-          }
-          .connect-section-modern .connect-info {
-            max-width: 98vw;
-            min-width: 0;
-            padding: 24px 10px 20px 10px;
-          }
-          .connect-section-modern .connect-form {
-            width: 100vw;
-            max-width: 100vw;
-            min-width: 0;
-            border-radius: 0;
-            padding: 18px 0 16px 0;
-          }
-        }
-        @media (max-width: 600px) {
-          .connect-section-modern .connect-info,
-          .connect-section-modern .connect-form {
-            width: 100%;
-            max-width: 420px;
-            min-width: 0;
-            border-radius: 12px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 10px 16px 10px 16px !important;
-            box-sizing: border-box;
-          }
-          .connect-section-modern .connect-container {
-            padding-left: 8px;
-            padding-right: 8px;
-          }
-        }
-      </style>
+    <!-- Testimonials Section -->
+    <section class="testimonials" style="background:#f8f9fa; padding: 48px 0 32px 0;">
       <div class="container">
-        <div class="connect-header" style="text-align:center; margin-bottom:38px;">
-          <h2 style="font-size:2.1rem; color:#0c9608; font-weight:700; margin-bottom:8px;">Connect with us</h2>
-          <p style="color:#444; font-size:1.13em;">We will be glad to assist you in regards to your moving and storage needs.</p>
-        </div>
-        <div class="connect-container">
-          <div class="connect-info">
-                        <div class="info-item">
-              <span class="info-icon"><i class="fas fa-phone"></i></span>
-              <div class="info-details">
-                <span class="info-title">Mobile</span>
-                <a class="info-value" href="tel:8872998866" style="color:#444; text-decoration:none;">
-                  8872998866
-                </a>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon"><i class="fas fa-map-marker-alt"></i></span>
-              <div class="info-details">
-                <span class="info-title">Address</span>
-                <a class="info-value" href="https://www.google.com/maps/search/?api=1&query=C-1113+GVT+Orvis+Grand,+Old+Ambala+Road,+Zirakpur" target="_blank" style="color:#444; text-decoration:none;">
-                  C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur
-                </a>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon"><i class="fas fa-envelope"></i></span>
-              <div class="info-details">
-                <span class="info-title">Email</span>
-                <a class="info-value" href="mailto:moveroo.in@gmail.com" style="color:#444; text-decoration:none;">
-                  enquiry@moveroo.in
-                </a>
-              </div>
-            </div>
+        <h2 class="section-title" style="text-align:center; margin-bottom:32px;">What Our Customers Say</h2>
+        <div class="testimonials-grid" style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center;">
+          <div class="testimonial-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(30,30,60,0.08); padding:28px 22px; max-width:340px; flex:1 1 280px; min-width:220px;">
+            <div style="font-size:2.2rem; color:#8B008B; margin-bottom:10px;"><i class="fas fa-quote-left"></i></div>
+            <p style="color:#444; font-size:1.08rem; margin-bottom:18px;">Moveroo made my move so easy and stress-free! The team was professional and handled everything with care. Highly recommended.</p>
+            <div style="font-weight:600; color:#8B008B;">— Priya S., Chandigarh</div>
           </div>
-          <div class="connect-form">
-                        <div id="successPopup" class="popup-overlay" style="display: none;">
-              <div class="popup-content">
-                <span class="close-popup">&times;</span>
-                <div class="popup-icon">
-                  <i class="fas fa-check-circle"></i>
-                </div>
-                <h3>Request Submitted Successfully!</h3>
-                <p>Thank you for contacting us. Our representative will get back to you shortly.</p>
-                <button class="popup-close-btn">OK</button>
-              </div>
-            </div>
-            
-            <form id="contactForm" action="https://formsubmit.co/enquiry@moveroo.in" method="POST">
-              <!-- Honeypot -->
-              <input type="text" name="_honey" style="display:none">
-              
-              <!-- Disable Captcha -->
-              <input type="hidden" name="_captcha" value="false">
-              
-              <!-- Custom Subject -->
-              <input type="hidden" name="_subject" value="New Quote Request from Website">
-              
-              <!-- Redirect after submit -->
-              <input type="hidden" name="_next" value="">
-              
-              <input type="text" name="name" placeholder="Your Name" required>
-              <input type="email" name="email" placeholder="Your Email" required>
-              <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-              <button type="submit" id="submitBtn">Contact us</button>
-              <div id="formStatus" style="display: none; margin-top: 5px; padding: 5px; border-radius: 3px;"></div>
-            </form>
-            
-            <script>
-              document.getElementById('contactForm').addEventListener('submit', function(e) {
-                const submitBtn = document.getElementById('submitBtn');
-                const formStatus = document.getElementById('formStatus');
-                
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                formStatus.style.display = 'none';
-                
-                // Form will submit to FormSubmit
-                // Show success popup after a short delay to allow form submission
-                setTimeout(() => {
-                  this.reset();
-                  showPopup();
-                  submitBtn.disabled = false;
-                  submitBtn.textContent = 'Get a Quote';
-                }, 1000);
-              });
-            </script>
-            
-            <style>
-              .popup-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.7);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-              }
-              
-              .popup-overlay.active {
-                opacity: 1;
-                visibility: visible;
-              }
-              
-              .popup-content {
-                background: white;
-                padding: 30px;
-                border-radius: 10px;
-                text-align: center;
-                max-width: 400px;
-                width: 90%;
-                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-                transform: scale(0.9);
-                transition: transform 0.3s ease;
-              }
-              
-              .popup-overlay.active .popup-content {
-                transform: scale(1);
-              }
-              
-              .popup-icon {
-                font-size: 60px;
-                color: #4CAF50;
-                margin-bottom: 15px;
-              }
-              
-              .popup-content h3 {
-                margin: 10px 0;
-                color: #333;
-                font-size: 22px;
-              }
-              
-              .popup-content p {
-                color: #666;
-                margin-bottom: 20px;
-                line-height: 1.5;
-              }
-              
-              .popup-close-btn, .close-popup {
-                background: #4CAF50;
-                color: white;
-                border: none;
-                padding: 10px 25px;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 16px;
-                margin-top: 10px;
-                transition: background 0.3s;
-              }
-              
-              .popup-close-btn:hover, .close-popup:hover {
-                background: #45a049;
-              }
-              
-              .close-popup {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                padding: 5px 10px;
-                font-size: 20px;
-                line-height: 1;
-                border-radius: 50%;
-              }
-            </style>
-            
-            <script>
-              const form = document.getElementById('contactForm');
-              const formStatus = document.getElementById('formStatus');
-              const submitBtn = document.getElementById('submitBtn');
-              const successPopup = document.getElementById('successPopup');
-              
-              // Show popup function
-              function showPopup() {
-                successPopup.style.display = 'flex';
-                setTimeout(() => {
-                  successPopup.classList.add('active');
-                }, 10);
-              }
-              
-              // Close popup function
-              function closePopup() {
-                successPopup.classList.remove('active');
-                setTimeout(() => {
-                  successPopup.style.display = 'none';
-                }, 300);
-              }
-              
-              // Close popup when clicking outside content
-              successPopup.addEventListener('click', (e) => {
-                if (e.target === successPopup) {
-                  closePopup();
-                }
-              });
-              
-              // Close popup when clicking close button or OK button
-              document.querySelector('.popup-close-btn')?.addEventListener('click', closePopup);
-              document.querySelector('.close-popup')?.addEventListener('click', closePopup);
-              
-              form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                formStatus.style.display = 'none';
-                
-                try {
-                  const formData = new FormData(form);
-                  const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                      'Accept': 'application/json'
-                    }
-                  });
-                  
-                  if (response.ok) {
-                    form.reset();
-                    showPopup();
-                  } else {
-                    throw new Error('Form submission failed');
-                  }
-                } catch (error) {
-                  formStatus.textContent = 'Oops! There was a problem sending your message. Please try again later.';
-                  formStatus.style.backgroundColor = '#f8d7da';
-                  formStatus.style.color = '#721c24';
-                } finally {
-                  formStatus.style.display = 'block';
-                  submitBtn.disabled = false;
-                  submitBtn.textContent = 'Submit';
-                  
-                  // Scroll to show the status message
-                  formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-              });
-            </script>
+          <div class="testimonial-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(30,30,60,0.08); padding:28px 22px; max-width:340px; flex:1 1 280px; min-width:220px;">
+            <div style="font-size:2.2rem; color:#1a4b8c; margin-bottom:10px;"><i class="fas fa-quote-left"></i></div>
+            <p style="color:#444; font-size:1.08rem; margin-bottom:18px;">Excellent service for pet relocation. My dog was transported safely and comfortably. Thank you, Moveroo!</p>
+            <div style="font-weight:600; color:#1a4b8c;">— Rahul M., Mohali</div>
+          </div>
+          <div class="testimonial-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(30,30,60,0.08); padding:28px 22px; max-width:340px; flex:1 1 280px; min-width:220px;">
+            <div style="font-size:2.2rem; color:#e67e22; margin-bottom:10px;"><i class="fas fa-quote-left"></i></div>
+            <p style="color:#444; font-size:1.08rem; margin-bottom:18px;">Very professional and punctual. The packing was top-notch and all my items arrived safely. Will use again!</p>
+            <div style="font-weight:600; color:#e67e22;">— Simran K., Ludhiana</div>
           </div>
         </div>
       </div>
     </section>
 
+
+    
        <!-- Footer (Redesigned) -->
     <footer class="footer-modern">
       <style>
@@ -2059,8 +1859,9 @@ document.addEventListener('DOMContentLoaded', function() {
               <li><a href="#services">Services</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="process.html">Process</a></li>
+              <li><a href="contact.html">Contact</a></li>
               <li><a href="payment-option.html">Payment Option</a></li>
-              <li><a href="#contact">Contact</a></li>
+             
             </ul>
           </div>
           <div class="footer-col footer-newsletter">
@@ -2176,7 +1977,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <b>Branch:</b> Zirakpur
                 </div>
             </div>
-            <button id="simple-popup-button" style="margin-top: 5px; padding: 12px 30px; background: #FFC107; color: #333; border: none; border-radius: 50px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">Get a Quote</button>
+            <button id="simple-popup-button" style="margin-top: 5px; padding: 12px 30px; background: #FFC107; color: #333; border: none; border-radius: 50px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">Get a free Quote today</button>
         </div>
     </div>
 
@@ -2212,7 +2013,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Create icon with circle background
             popupMessage.innerHTML = `
-                <div style="width: 70px; height: 70px; border-radius: 50%; background: ${isAvailable ? '#e8f5e9' : '#e3f2fd'}; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px; color: ${isAvailable ? '#43a047' : '#1976d2'}; font-weight: bold;">
+                <div style="width: 70px; height: 70px; border-radius: 50%; background: ${isAvailable ? '#e3f2fd' : '#e3f2fd'}; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px; color: ${isAvailable ? '#1976d2' : '#1976d2'}; font-weight: bold;">
                     ${icon}
                 </div>
                 <h3 style="color: #2c3e50; margin: 0 0 10px; font-size: 22px; font-weight: 600;">${title}</h3>
@@ -2330,7 +2131,6 @@ document.addEventListener('DOMContentLoaded', function() {
         background: #FFD54F;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
-    }
         border-radius: 5px;
         cursor: pointer;
     }
@@ -2359,10 +2159,78 @@ document.addEventListener('DOMContentLoaded', function() {
         background-color: #b71c1c;
     }
     </style>
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
-</a>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918872998866" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px;">
+    </a>
+    <style>
+    #whatsapp-float {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 99999;
+        background: #25d366;
+        border-radius: 50%;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    #whatsapp-float:hover {
+        box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+        transform: scale(1.08);
+        background: #1ebe57;
+    }
+    #whatsapp-float img {
+        display: block;
+    }
+    </style>
+
+<!-- Quote Modal (copied from header3.html) -->
+<div id="quote-modal" class="quote-modal-overlay" style="display:none;">
+    <div class="quote-modal-content">
+        <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">&times;</button>
+        <div class="quote-header">
+            <h2>Get a free Quote today</h2>
+            <p>Fill the form and our team will contact you soon.</p>
+        </div>
+        <form id="quoteForm" class="quote-form" action="https://formsubmit.co/jhravindra@gmail.com" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile No" required pattern="[0-9]{10,15}">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="packing-moving">Packing & Moving</option>
+                    <option value="vehicle-relocation">Vehicle Relocation</option>
+                    <option value="pet-relocation">Pet Relocation</option>
+                    <option value="packing-labour">Packing Labour</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-red btn-block">Submit</button>
+        </form>
+        <div id="success-popup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:99999;justify-content:center;align-items:center;">
+            <div style="background:#fff;padding:32px 28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:350px;">
+                <h2 style="color:#888;margin-bottom:12px;">Thank you!</h2>
+                <p style="color:#333;">Thank you! Your request has been accepted. Our expert team will get in touch with you shortly.</p>
+                <button onclick="document.getElementById('success-popup').style.display='none'" style="margin-top:18px;padding:10px 28px;background:#888;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/quote-popup.js"></script>
+
+<script src="Header2.js"></script>
+<script src="js/quote-modal.js"></script>
+
 <style>
 #whatsapp-float {
     position: fixed;
@@ -2388,31 +2256,5 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
 <script src="js/quote-popup.js"></script>
-<script>
-// Open the quote modal on any .quote-btn click
-function openQuoteModal(e) {
-  e.preventDefault();
-  var modal = document.getElementById('quote-modal');
-  if (modal) {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-}
-function closeQuoteModal() {
-  var modal = document.getElementById('quote-modal');
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-}
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.quote-btn').forEach(function(btn) {
-    btn.addEventListener('click', openQuoteModal);
-  });
-  var closeBtn = document.getElementById('quote-modal-close');
-  if (closeBtn) closeBtn.onclick = closeQuoteModal;
-  var modal = document.getElementById('quote-modal');
-  if (modal) {
-    modal.onclick = function(e) {
-      if (e.target === modal) closeQuoteModal();
-    };
+</body>
+</html>

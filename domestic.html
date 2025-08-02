@@ -444,14 +444,14 @@
         top: 24px;
         left: 24px;
         z-index: 2000;
-        background: #1a237e;
+        background: #e84393;
         color: #fff;
         border: none;
         border-radius: 50px;
         padding: 12px 28px 12px 20px;
         font-size: 1.1rem;
         font-weight: 700;
-        box-shadow: 0 4px 16px rgba(26,35,126,0.13);
+        box-shadow: 0 4px 16px rgba(232,67,147,0.13);
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -459,8 +459,8 @@
         transition: background 0.2s, box-shadow 0.2s;
     }
     .fixed-back-btn:hover {
-        background: #0d1333;
-        box-shadow: 0 8px 24px rgba(26,35,126,0.18);
+        background: #ad1457;
+        box-shadow: 0 8px 24px rgba(232,67,147,0.18);
     }
     .fixed-back-btn .fa-arrow-left {
         font-size: 1.2rem;
@@ -485,19 +485,10 @@
         </button>
         <ul>
             <li><a href="index.html#home">Home</a></li>
-            <li class="dropdown mobile-dropdown">
-                <a href="#services" class="dropdown-toggle" id="mobileServicesToggle">
-                    Services <i class="fas fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu" id="mobileServicesMenu" style="display: none;">
-                    <li><a href="packing-moving.html">Packing & Moving</a></li>
-                    <li><a href="vehicle.html">Vehicle Relocation</a></li>
-                    <li><a href="pet.html">Pet Relocation</a></li>
-                    <li><a href="packing-labour.html">Packing Labour</a></li>
-                </ul>
+            <li><a href="#services">Services</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="process.html">Process</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
             <li><a href="#" class="quote-btn">Get a Quote</a></li>
         </ul>
     </nav>
@@ -530,7 +521,7 @@
         closeMobileMenu.addEventListener('click', toggleMobileMenu);
         
         // Close menu when clicking on nav links
-        document.querySelectorAll('.mobile-nav a:not(.dropdown-toggle)').forEach(link => {
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', toggleMobileMenu);
         });
     });
@@ -538,35 +529,168 @@
         
         </section>
 
-    <!-- International Pet Relocation Service Section -->
+    <!-- Domestic Pet Relocation Hero Section (Center Aligned) -->
     <style>
-    .pet-hero-section {
+    .center-hero-section {
+        background: linear-gradient(135deg, #fffbe6 0%, #ffe3f0 100%);
+        padding: 80px 0 60px 0;
+        margin-top: 120px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .center-hero-title {
+        font-size: 2.6rem;
+        color: #e84393;
+        font-weight: 800;
+        margin-bottom: 28px;
+        letter-spacing: 0.5px;
+    }
+    .center-hero-desc {
+        color: #333;
+        font-size: 1.18rem;
+        max-width: 700px;
+        margin: 0 auto 18px auto;
+        line-height: 1.7;
+    }
+    @media (max-width: 700px) {
+        .center-hero-title { font-size: 2rem; }
+        .center-hero-desc { font-size: 1.02rem; }
+    }
+    </style>
+    <style>
+    .hero-flex-section {
+        background: linear-gradient(135deg, #fffbe6 0%, #ffe3f0 100%);
+        padding: 80px 0 60px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 48px;
+        flex-wrap: wrap;
+    }
+    .hero-flex-img {
+        flex: 1 1 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 260px;
+        max-width: 520px;
+    }
+    .hero-flex-img img {
+        width: 100%;
+        max-width: 420px;
+        min-width: 220px;
+        height: auto;
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(232,67,147,0.13);
+        background: #fff;
+    }
+    .hero-flex-content {
+        flex: 1 1 380px;
+        min-width: 260px;
+        max-width: 600px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .hero-flex-title {
+        font-size: 2.6rem;
+        color: #e84393;
+        font-weight: 800;
+        margin-bottom: 28px;
+        letter-spacing: 0.5px;
+    }
+    .hero-flex-desc {
+        color: #333;
+        font-size: 1.18rem;
+        max-width: 700px;
+        margin-bottom: 18px;
+        line-height: 1.7;
+    }
+    @media (max-width: 900px) {
+        .hero-flex-section {
+            flex-direction: column;
+            gap: 28px;
+            padding: 40px 0 30px 0;
+        }
+        .hero-flex-img img {
+            max-width: 90vw;
+        }
+        .hero-flex-content {
+            align-items: center;
+            text-align: center;
+        }
+    }
+    </style>
+    <section class="hero-flex-section">
+        <div class="hero-flex-img">
+            <img src="assets/domestic.png" alt="Domestic Pet Relocation" />
+        </div>
+        <div class="hero-flex-content">
+            <h1 class="hero-flex-title">Domestic Pet Relocation Services In India</h1>
+            <p class="hero-flex-desc">
+                At Moveroo, we believe no family member should ever be left behind — especially your pets. We specialize in both domestic and international pet relocation, offering comprehensive import and export services to ensure your furry companions travel safely and comfortably across borders. Whether you're moving within India or overseas, Moveroo is committed to keeping you and your pet connected, no matter the distance.
+            </p>
+        </div>
+    </section>
+    <!-- Domestic Pet Relocation Hero Section -->
+    <style>
+    :root {
+        --magenta: #d72660;
+        --yellow: #ffd166;
+        --orange: #ffb347;
+        --light-bg: #fff6fa;
+        --card-bg: #fff;
+        --icon-size: 3.2rem;
+    }
+    .domestic-hero-section {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 40px;
-        background: #f8f9fa;
+        gap: 6px;
+        background: var(--light-bg);
         padding: 60px 0 30px 0;
         flex-wrap: wrap;
     }
-    .pet-hero-text {
+    .domestic-hero-text {
         flex: 1 1 350px;
         min-width: 270px;
         max-width: 600px;
+        text-align: left;
     }
-    .pet-hero-title {
+    .domestic-hero-subtitle {
+        font-size:1.1rem;
+        color: var(--magenta);
+        font-weight:700;
+        letter-spacing:1px;
+        margin-bottom:10px;
+        text-align: left;
+    }
+    .domestic-hero-title {
         font-size: 2.5rem;
-        color: #333;
-        margin-bottom: 22px;
+        color: var(--orange);
+        margin-bottom: 10px;
         font-weight: 700;
+        text-align: left;
     }
-    .pet-hero-desc {
+    .domestic-hero-separator {
+        height:4px;
+        width:60px;
+        background: var(--magenta);
+        margin:0 0 22px 0;
+    }
+    .domestic-hero-desc {
         color: #444;
         font-size: 1.15rem;
         margin-bottom: 0;
         max-width: 520px;
+        text-align: left;
     }
-    .pet-hero-img {
+    .domestic-hero-img {
         flex: 1 1 320px;
         min-width: 220px;
         max-width: 420px;
@@ -574,171 +698,508 @@
         align-items: center;
         justify-content: center;
     }
-    .pet-hero-img img {
+    .domestic-hero-img img {
         width: 100%;
-        max-width: 380px;
+        max-width: 700px;
+        min-width: 320px;
         height: auto;
-        border-radius: 18px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(215,38,96,0.13);
         background: #fff;
+        margin-left: 0;
     }
-    .pet-relocation-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-        justify-content: center;
-        margin-top: 30px;
+    /* 2nd Section Styles */
+    .domestic-features-section {
+        background: #fffbe6;
+        padding: 4px 0 40px 0;
+        margin-top: 180px;
     }
-    .pet-card {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-        padding: 36px 28px 28px 28px;
-        max-width: 350px;
-        flex: 1 1 320px;
-        text-align: center;
-        position: relative;
-        transition: transform 0.2s, box-shadow 0.2s;
-        overflow: hidden;
-    }
-    .pet-card:hover {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow: 0 12px 32px rgba(0,0,0,0.16);
-    }
-    .pet-card h3 {
-        font-size: 1.45rem;
-        margin-bottom: 14px;
-        font-weight: 600;
-    }
-    .pet-card p {
-        color: #555;
-        margin-bottom: 26px;
-        font-size: 1.05rem;
-    }
-    .next-step-btn {
-        background: linear-gradient(90deg, #28a745 60%, #007bff 100%);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        padding: 13px 36px;
-        font-size: 1.08rem;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(40,167,69,0.08);
-        transition: background 0.2s, transform 0.2s;
-        text-decoration: none;
-        display: inline-block;
-    }
-    .next-step-btn:hover {
-        background: linear-gradient(90deg, #007bff 60%, #28a745 100%);
-        transform: scale(1.06);
-    }
-    @media (max-width: 992px) {
-        .pet-hero-section {
-            flex-direction: column;
-            text-align: center;
-            gap: 24px;
-        }
-        .pet-hero-img {
-            max-width: 90vw;
-            margin: 0 auto;
-        }
-        .pet-hero-text {
-            max-width: 98vw;
-            margin: 0 auto;
-        }
-    }
-    @media (max-width: 768px) {
-        .pet-relocation-cards {
-            flex-direction: column;
-            gap: 22px;
-        }
-        .pet-card {
-            max-width: 98vw;
-        }
-    }
-    </style>
-    <section class="pet-relocation-intl" style="background: #f8f9fa; padding: 0 0 40px 0;">
-        <div class="process-container">
-            <div class="pet-hero-section">
-                <div class="pet-hero-text">
-                    <div style="font-size:1.1rem; color:#28a745; font-weight:700; letter-spacing:1px; margin-bottom:10px;">INTERNATIONAL PET TRAVEL MADE EASY</div>
-                    <h2 class="pet-hero-title" style="margin-bottom:10px;">BEST INTERNATIONAL PET RELOCATION SERVICES</h2>
-                    <div style="height:4px; width:60px; background:#28a745; margin:0 0 22px 0;"></div>
-                    <p class="pet-hero-desc" style="margin-bottom:0;">
-                        The requirements and the process for international pet travel are time-consuming and can be a hassle, especially when you are sorting out your own paperwork. Bearing this in mind, Carry My Pet offers the best international pet shipping services, with door-to-door and airport-to-airport pet relocations, so you and your best friend are never apart.
-                    </p>
-                </div>
-                <div class="pet-hero-img">
-                    <img src="assets/International.png" alt="International Pet Relocation">
-                </div>
-            </div>
-            <div style="text-align:center; margin-top:40px;">
-                <div style="font-size:1.2rem; color:#007bff; font-weight:600; margin-bottom:8px; letter-spacing:0.5px;">Facilitating your journey</div>
-                <div style="font-size:1.5rem; color:#222; font-weight:700; margin-bottom:8px; letter-spacing:1px;">TYPES OF INTERNATIONAL PET RELOCATION SERVICES</div>
-                <div style="height:4px; width:80px; background:#28a745; margin:0 auto 32px auto;"></div>
-            </div>
-            <div class="pet-relocation-cards">
-                <div style="display:flex; flex-direction:column; align-items:center; flex:1 1 320px; max-width:350px;">
-                    <div style="font-size:1.15rem; color:#28a745; font-weight:700; margin-bottom:10px; letter-spacing:0.5px;">Import</div>
-                    <div class="pet-card">
-                        <p>Bringing your pet into a new country? We manage all import regulations, quarantine, and safe arrival for your pet.</p>
-                        <a class="next-step-btn" href="import.html" title="Start Import Process">Next Steps</a>
-                    </div>
-                </div>
-                <div style="display:flex; flex-direction:column; align-items:center; flex:1 1 320px; max-width:350px;">
-                    <div style="font-size:1.15rem; color:#007bff; font-weight:700; margin-bottom:10px; letter-spacing:0.5px;">Export</div>
-                    <div class="pet-card">
-                        <p>Relocating your pet abroad? We handle export permits, health checks, and all travel arrangements for a smooth departure.</p>
-                        <a class="next-step-btn" href="export.html" title="Start Export Process">Next Steps</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <style>
-    .faq-section {
-        background: #f8f9fa;
-        padding: 50px 0 40px 0;
-    }
-    .faq-container {
+    .domestic-features-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0 20px;
     }
-    .faq-title {
-        font-size: 2.1rem;
-        color: #222;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 8px;
-    }
-    .faq-subtitle {
+    .domestic-features-title {
         font-size: 1.2rem;
-        color: #007bff;
+        color: var(--magenta);
         font-weight: 600;
         text-align: center;
         margin-bottom: 8px;
         letter-spacing: 0.5px;
     }
-    .faq-separator {
+    .domestic-features-subtitle {
+        font-size: 1.5rem;
+        color: var(--orange);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .domestic-features-separator {
         height: 4px;
         width: 80px;
-        background: #28a745;
+        background: var(--magenta);
         margin: 0 auto 32px auto;
     }
-    .faq-cards {
+    .domestic-features-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+    }
+    .domestic-feature-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(215,38,96,0.07);
+        padding: 32px 22px 22px 22px;
+        max-width: 300px;
+        flex: 1 1 260px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+        border-top: 5px solid var(--yellow);
+    }
+    .domestic-feature-card:hover {
+        box-shadow: 0 8px 28px rgba(215,38,96,0.13);
+        transform: translateY(-6px) scale(1.03);
+    }
+    .domestic-feature-title {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: var(--magenta);
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-feature-desc {
+        color: #444;
+        font-size: 1.01rem;
+        margin-bottom: 0;
+        flex: 1 1 auto;
+    }
+    .domestic-feature-icon {
+        font-size: var(--icon-size);
+        margin-bottom: 12px;
+        color: var(--orange);
+        display: block;
+    }
+    @media (max-width: 900px) {
+        .domestic-features-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        .domestic-feature-card {
+            max-width: 98vw;
+            width: 100%;
+        }
+    }
+    
+    <!-- 2nd Section: Facilitating your journey -->
+    <section class="domestic-features-section">
+        <div class="domestic-features-container">
+            <div class="domestic-features-title">Facilitating your journey</div>
+            <div class="domestic-features-subtitle">End-to-end domestic pet relocation services</div>
+            <div class="domestic-features-separator"></div>
+            <div class="domestic-features-cards">
+                <div class="domestic-feature-card">
+                    <div class="domestic-feature-title">Door To <br> Door</div>
+                    <div class="domestic-feature-desc">Door-to-door domestic pet relocation services via pet-friendly airports and railway stations.</div>
+                </div>
+                <div class="domestic-feature-card">
+                    <div class="domestic-feature-title">Pan India <br> Network</div>
+                    <div class="domestic-feature-desc">Carry My Pet has the biggest network pan India, providing easy and safe pet relocation services across the country.</div>
+                </div>
+                <div class="domestic-feature-card">
+                    <div class="domestic-feature-title">Live Photos <br> & Videos</div>
+                    <div class="domestic-feature-desc">Track your pet on their domestic pet relocation with live photos and videos shared by our pet relocation executives.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modes Of Transportation & Costing Section -->
+    <style>
+    .domestic-modes-section {
+        background: #fff8f2;
+        padding: 50px 0 40px 0;
+    }
+    .domestic-modes-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .domestic-modes-title {
+        font-size: 1.5rem;
+        color: #ff8800;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .domestic-modes-subtitle {
+        font-size: 1.2rem;
+        color: #008080;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-modes-separator {
+        height: 4px;
+        width: 80px;
+        background: #ff8800;
+        margin: 0 auto 32px auto;
+    }
+    .domestic-modes-desc {
+        color: #444;
+        font-size: 1.08rem;
+        text-align: center;
+        margin-bottom: 28px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .domestic-modes-list {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+    }
+    .domestic-mode-item {
+        background: #f2fcfc;
+        border-radius: 12px;
+        padding: 22px 32px;
+        color: #008080;
+        font-weight: 700;
+        font-size: 1.13rem;
+        box-shadow: 0 2px 8px rgba(0,128,128,0.07);
+        min-width: 120px;
+        text-align: center;
+        border-top: 4px solid #ff8800;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .domestic-mode-item:hover {
+        box-shadow: 0 8px 28px rgba(0,128,128,0.13);
+        transform: translateY(-4px) scale(1.04);
+    }
+    .domestic-modes-cost {
+        color: #222;
+        font-size: 1.05rem;
+        text-align: center;
+        margin-top: 10px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 18px 20px 14px 20px;
+        box-shadow: 0 2px 8px rgba(255,136,0,0.07);
+    }
+    @media (max-width: 900px) {
+        .domestic-modes-list {
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+        .domestic-mode-item {
+            min-width: 180px;
+            width: 100%;
+        }
+    }
+    </style>
+    <section class="domestic-modes-section">
+        <div class="domestic-modes-container">
+            <div class="domestic-modes-title">Modes Of Transportation & Costing</div>
+            <div class="domestic-modes-subtitle">Interstate Pet Relocation Services India</div>
+            <div class="domestic-modes-separator"></div>
+            <div class="domestic-modes-desc">
+                We offer the best pet relocation services to reunite you with your pet, no matter where you are. Thus, we use three modes of transportation for a domestic pet relocation - Flights, Trains, and Road Shipping. While all modes are viable throughout the country, you should choose the mode with the shortest travel times for your pet’s safety and comfort.
+            </div>
+            <div class="domestic-modes-list">
+                <div class="domestic-mode-item">By Air</div>
+                <div class="domestic-mode-item">By Rail</div>
+                <div class="domestic-mode-item">By Road</div>
+            </div>
+            <div class="domestic-modes-cost">
+                The cost of pet relocation services by air depends on the size and weight of the crate with the pet, the destination you are travelling to, flight boarding/clearing charges, and the freight charges, which typically range from ₹20-30K on the basis of volumetric weight.
+            </div>
+        </div>
+    </section>
+
+    <!-- TYPES OF SERVICES Section -->
+    <style>
+    .domestic-types-section {
+        background: #f2fcfc;
+        padding: 50px 0 40px 0;
+    }
+    .domestic-types-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .domestic-types-title {
+        font-size: 1.2rem;
+        color: #ff8800;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-types-subtitle {
+        font-size: 1.5rem;
+        color: #008080;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .domestic-types-separator {
+        height: 4px;
+        width: 80px;
+        background: #ff8800;
+        margin: 0 auto 32px auto;
+    }
+    .domestic-types-desc {
+        color: #444;
+        font-size: 1.08rem;
+        text-align: center;
+        margin-bottom: 32px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .domestic-types-services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+    }
+    .domestic-type-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0,128,128,0.07);
+        padding: 32px 22px 22px 22px;
+        max-width: 400px;
+        flex: 1 1 320px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: box-shadow 0.2s, transform 0.2s;
+        border-top: 5px solid #ff8800;
+    }
+    .domestic-type-card:hover {
+        box-shadow: 0 8px 28px rgba(0,128,128,0.13);
+        transform: translateY(-6px) scale(1.03);
+    }
+    .domestic-type-title {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: #008080;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-type-desc {
+        color: #444;
+        font-size: 1.01rem;
+        margin-bottom: 0;
+        flex: 1 1 auto;
+    }
+    @media (max-width: 900px) {
+        .domestic-types-services {
+            flex-direction: column;
+            align-items: center;
+        }
+        .domestic-type-card {
+            max-width: 98vw;
+            width: 100%;
+        }
+    }
+    </style>
+    <section class="domestic-types-section">
+        <div class="domestic-types-container">
+            <div class="domestic-types-title">TYPES OF SERVICES</div>
+            <div class="domestic-types-subtitle">DOMESTIC PET RELOCATION SERVICES</div>
+            <div class="domestic-types-separator"></div>
+            <div class="domestic-types-desc">
+                If you’re relocating with your pet, there is a lot you will have to plan for. With so much to plan and prepare, it can quickly pile up and become overwhelming. We believe famiy never stays apart, and offer the best domestic pet relocation services to make sure you and your pet are never too far away.
+            </div>
+            <div class="domestic-types-services">
+                <div class="domestic-type-card">
+                    <div class="domestic-type-title">DOOR-TO-DOOR</div>
+                    <div class="domestic-type-desc">We collect your pet from your given address in our pet taxi and take them to the airport, before helping them board the flight. At the receiving airport, we collect your pet from the cargo and relocate them safely to your designated doorstep.</div>
+                </div>
+                <div class="domestic-type-card">
+                    <div class="domestic-type-title">DOOR-TO-AIRPORT</div>
+                    <div class="domestic-type-desc">We collect your pet from your given address in the pet taxi and take them to the airport, helping them board the flight. At the receiving airport, we collect your pet from the cargo and hand them over to you at the airport itself.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REQUIREMENTS Section -->
+    <style>
+    .domestic-reqs-section {
+        background: #fff8f2;
+        padding: 50px 0 40px 0;
+    }
+    .domestic-reqs-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .domestic-reqs-title {
+        font-size: 1.2rem;
+        color: #ff8800;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-reqs-subtitle {
+        font-size: 1.5rem;
+        color: #008080;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .domestic-reqs-separator {
+        height: 4px;
+        width: 80px;
+        background: #ff8800;
+        margin: 0 auto 32px auto;
+    }
+    .domestic-reqs-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+    }
+    .domestic-req-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0,128,128,0.07);
+        padding: 32px 22px 22px 22px;
+        max-width: 300px;
+        flex: 1 1 260px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+        border-top: 5px solid #ff8800;
+    }
+    .domestic-req-card:hover {
+        box-shadow: 0 8px 28px rgba(0,128,128,0.13);
+        transform: translateY(-6px) scale(1.03);
+    }
+    .domestic-req-icon {
+        font-size: 2.5rem;
+        margin-bottom: 14px;
+    }
+    .domestic-req-title {
+        font-size: 1.13rem;
+        font-weight: 700;
+        color: #008080;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    .domestic-req-desc {
+        color: #444;
+        font-size: 1.01rem;
+        margin-bottom: 0;
+        flex: 1 1 auto;
+    }
+    @media (max-width: 900px) {
+        .domestic-reqs-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        .domestic-req-card {
+            max-width: 98vw;
+            width: 100%;
+        }
+    }
+    </style>
+    <section class="domestic-reqs-section">
+        <div class="domestic-reqs-container">
+            <div class="domestic-reqs-title">REQUIREMENTS</div>
+            <div class="domestic-reqs-subtitle">ESSENTIALS OF DOMESTIC PET RELOCATION SERVICES</div>
+            <div class="domestic-reqs-separator"></div>
+            <div class="domestic-reqs-cards">
+                <div class="domestic-req-card">
+                    <div class="domestic-req-icon">💉</div>
+                    <div class="domestic-req-title">vaccination record</div>
+                    <div class="domestic-req-desc">An up-to-date vaccination record is essential for domestic pet relocation services.</div>
+                </div>
+                <div class="domestic-req-card">
+                    <div class="domestic-req-icon">🩺</div>
+                    <div class="domestic-req-title">HEALTH CERTIFICATE</div>
+                    <div class="domestic-req-desc">A veterinary health certificate is essential for domestic pet relocation services. It can be obtained from a veterinarian authorized by the Government of India. The vet will fill and stamp the certificate once it is filled.</div>
+                </div>
+                <div class="domestic-req-card">
+                    <div class="domestic-req-icon">🧳</div>
+                    <div class="domestic-req-title">pet Export <br> Crate</div>
+                    <div class="domestic-req-desc">IATA accredited fiber crates come equipped with steel doors & wheels, which are essentia for a safe and convenient domestic pet relocation service.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domestic FAQ Section -->
+    <style>
+    .domestic-faq-section {
+        background: #f2fcfc;
+        padding: 50px 0 40px 0;
+    }
+    .domestic-faq-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .domestic-faq-prompt {
+        font-size: 1.15rem;
+        color: #ff8800;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-faq-title {
+        font-size: 2.1rem;
+        color: #008080;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    .domestic-faq-subtitle {
+        font-size: 1.2rem;
+        color: #ff8800;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .domestic-faq-separator {
+        height: 4px;
+        width: 80px;
+        background: #ff8800;
+        margin: 0 auto 32px auto;
+    }
+    .domestic-faq-cards {
         display: flex;
         flex-wrap: wrap;
         gap: 28px;
         justify-content: center;
     }
-    .faq-card {
+    .domestic-faq-card {
         background: #fff;
         border-radius: 14px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        box-shadow: 0 4px 16px rgba(0,128,128,0.07);
         padding: 28px 22px 22px 22px;
         max-width: 300px;
         flex: 1 1 260px;
@@ -748,113 +1209,135 @@
         align-items: flex-start;
         transition: box-shadow 0.2s, transform 0.2s;
     }
-    .faq-card:hover {
-        box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+    .domestic-faq-card:hover {
+        box-shadow: 0 8px 28px rgba(0,128,128,0.13);
         transform: translateY(-6px) scale(1.03);
     }
-    .faq-card-title {
+    .domestic-faq-card-title {
         font-size: 1.18rem;
         font-weight: 700;
-        color: #28a745;
+        color: #ff8800;
         margin-bottom: 10px;
     }
-    .faq-card-desc {
+    .domestic-faq-card-desc {
         color: #444;
         font-size: 1.01rem;
         margin-bottom: 18px;
         flex: 1 1 auto;
     }
-    .faq-readmore {
-        color: #007bff;
+    .domestic-faq-readmore {
+        color: #008080;
         font-weight: 600;
         text-decoration: none;
         font-size: 1.01rem;
         transition: color 0.2s;
         cursor: pointer;
     }
-    .faq-readmore:hover {
+    .domestic-faq-readmore:hover {
         color: #0056b3;
         text-decoration: underline;
     }
+    .domestic-faq-answer {
+        display: none;
+        margin-top: 10px;
+        color: #333;
+        font-size: 0.98rem;
+    }
     @media (max-width: 900px) {
-        .faq-cards {
+        .domestic-faq-cards {
             flex-direction: column;
             align-items: center;
         }
-        .faq-card {
+        .domestic-faq-card {
             max-width: 98vw;
             width: 100%;
         }
     }
     </style>
-    <section class="faq-section">
-        <div class="faq-container">
-            <div class="faq-title">Faq's</div>
-            <div class="faq-subtitle">CATEGORIES OF QUERIES</div>
-            <div class="faq-separator"></div>
-            <div class="faq-cards">
-                <div class="faq-card">
-                    <div class="faq-card-title">Payment</div>
-                    <div class="faq-card-desc">Explore payment related queries and specific costs.</div>
-                    <a class="faq-readmore" href="#" onclick="toggleFaqAnswer(event, 0)">Read More</a>
-                    <div class="faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
-                        <strong>How do I pay for pet relocation?</strong><br>
-                        We accept various payment methods including credit/debit cards, bank transfers, and secure online payment gateways. A detailed cost breakdown is provided before you confirm your booking. For international relocations, a deposit may be required to secure your pet’s travel arrangements.
+    <section class="domestic-faq-section">
+        <div class="domestic-faq-container">
+            <div class="domestic-faq-prompt">What are you looking for?</div>
+            <div class="domestic-faq-title">Faq's</div>
+            <div class="domestic-faq-subtitle">CATEGORIES OF QUERIES</div>
+            <div class="domestic-faq-separator"></div>
+            <div class="domestic-faq-cards">
+                <div class="domestic-faq-card">
+                    <div class="domestic-faq-card-title">Payment</div>
+                    <div class="domestic-faq-card-desc">Explore payment related queries and specific costs.</div>
+                    <a class="domestic-faq-readmore" href="#" onclick="toggleDomesticFaqAnswer(event, 0)">Read More</a>
+                    <div class="domestic-faq-answer">
+                        <strong>How do I pay for domestic pet relocation?</strong><br>
+                        We accept credit/debit cards, UPI, net banking, and secure online payment gateways. All payments are processed securely and you will receive an official invoice for your records. If you need to cancel or reschedule, our refund policy is transparent and customer-friendly. For large moves, installment options may be available. Please ask our team for details about payment plans, receipts, and GST invoicing.
                     </div>
                 </div>
-                <div class="faq-card">
-                    <div class="faq-card-title">Documentation</div>
-                    <div class="faq-card-desc">Queries related to the documentation required for a relocation.</div>
-                    <a class="faq-readmore" href="#" onclick="toggleFaqAnswer(event, 1)">Read More</a>
-                    <div class="faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
-                        <strong>What documents are needed for international pet relocation?</strong><br>
-                        You will typically need your pet’s vaccination records, a valid health certificate from a licensed vet, import/export permits, and sometimes a microchip certificate. Our team will guide you through the specific requirements for your destination country.
+                <div class="domestic-faq-card">
+                    <div class="domestic-faq-card-title">Documentation</div>
+                    <div class="domestic-faq-card-desc">Queries related to the documentation required for a relocation.</div>
+                    <a class="domestic-faq-readmore" href="#" onclick="toggleDomesticFaqAnswer(event, 1)">Read More</a>
+                    <div class="domestic-faq-answer">
+                        <strong>What documents are needed for domestic pet relocation?</strong><br>
+                        You will need:<br>
+                        <ul style='margin:8px 0 0 18px;padding:0;list-style:disc;'>
+                        <li>Up-to-date vaccination records (including rabies and core vaccines)</li>
+                        <li>A valid health certificate from a government-authorized veterinarian (issued within 7 days of travel)</li>
+                        <li>Pet owner’s ID proof and address proof</li>
+                        <li>Microchip certificate (if applicable)</li>
+                        </ul>
+                        Our team will help you with templates, checklists, and guidance for each step. If you face any issues with documentation, we can coordinate with your vet or local authorities.
                     </div>
                 </div>
-                <div class="faq-card">
-                    <div class="faq-card-title">Travel Process</div>
-                    <div class="faq-card-desc">Clear any doubts you may have about our process.</div>
-                    <a class="faq-readmore" href="#" onclick="toggleFaqAnswer(event, 2)">Read More</a>
-                    <div class="faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
-                        <strong>How does the pet travel process work?</strong><br>
-                        We handle everything from pre-travel vet checks and crate training to flight bookings and customs clearance. Your pet’s comfort and safety are our top priorities, and we provide regular updates throughout the journey.
+                <div class="domestic-faq-card">
+                    <div class="domestic-faq-card-title">Travel Process</div>
+                    <div class="domestic-faq-card-desc">Clear any doubts you may have about our process.</div>
+                    <a class="domestic-faq-readmore" href="#" onclick="toggleDomesticFaqAnswer(event, 2)">Read More</a>
+                    <div class="domestic-faq-answer">
+                        <strong>How does the domestic pet travel process work?</strong><br>
+                        After booking, we confirm your pet’s details and travel preferences. Our team arranges a pet taxi for pickup, assists with check-in at the airport or station, and ensures your pet is comfortable in an IATA-approved crate. During transit, we provide live updates, photos, and videos. On arrival, your pet is either delivered to your doorstep or handed over at the airport, as per your chosen service. We are available 24/7 for updates and support throughout the journey.
                     </div>
                 </div>
-                <div class="faq-card">
-                    <div class="faq-card-title">Medical</div>
-                    <div class="faq-card-desc">Queries pertaining to health and safety while travelling.</div>
-                    <a class="faq-readmore" href="#" onclick="toggleFaqAnswer(event, 3)">Read More</a>
-                    <div class="faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                <div class="domestic-faq-card">
+                    <div class="domestic-faq-card-title">Medical</div>
+                    <div class="domestic-faq-card-desc">Queries pertaining to health and safety while travelling.</div>
+                    <a class="domestic-faq-readmore" href="#" onclick="toggleDomesticFaqAnswer(event, 3)">Read More</a>
+                    <div class="domestic-faq-answer">
                         <strong>What medical precautions should I take for my pet?</strong><br>
-                        Ensure your pet is up-to-date on all vaccinations and has a recent health check. Some countries require specific tests or treatments before entry. We’ll inform you of all medical requirements and can recommend trusted veterinarians if needed.
+                        Ensure your pet is fully vaccinated and has a recent health check. Carry any regular medications and inform us of allergies or special needs. We recommend a light meal before travel and plenty of water. In case of emergencies, our team is trained to respond and will coordinate with local vets if needed. For anxious pets, discuss calming options with your vet in advance.
                     </div>
                 </div>
-                <div class="faq-card">
-                    <div class="faq-card-title">Suggestions</div>
-                    <div class="faq-card-desc">A place for us to communicate. We’re taking all suggestions!</div>
-                    <a class="faq-readmore" href="#" onclick="toggleFaqAnswer(event, 4)">Read More</a>
-                    <div class="faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                <div class="domestic-faq-card">
+                    <div class="domestic-faq-card-title">Suggestions</div>
+                    <div class="domestic-faq-card-desc">A place for us to communicate. We’re taking all suggestions!</div>
+                    <a class="domestic-faq-readmore" href="#" onclick="toggleDomesticFaqAnswer(event, 4)">Read More</a>
+                    <div class="domestic-faq-answer">
                         <strong>How can I share my suggestions or feedback?</strong><br>
-                        We value your input! Please use our contact form or email us directly with your suggestions. Your feedback helps us improve our services and provide the best experience for you and your pet.
+                        We welcome your feedback! You can share suggestions via our website contact form, email, or by speaking directly with our relocation team. All suggestions are reviewed by our management and help us improve our services. We may contact you for more details or to thank you for your input.
                     </div>
                 </div>
-                <div class="faq-card">
-                    <div class="faq-card-title">Miscelleneous</div>
-                    <div class="faq-card-desc">Queries that are not often asked but are equally important.</div>
-                    <a class="faq-readmore" href="#" onclick="toggleFaqAnswer(event, 5)">Read More</a>
-                    <div class="faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                <div class="domestic-faq-card">
+                    <div class="domestic-faq-card-title">Miscelleneous</div>
+                    <div class="domestic-faq-card-desc">Queries that are not often asked but are equally important.</div>
+                    <a class="domestic-faq-readmore" href="#" onclick="toggleDomesticFaqAnswer(event, 5)">Read More</a>
+                    <div class="domestic-faq-answer">
                         <strong>What if my question isn’t listed here?</strong><br>
-                        No problem! Reach out to us directly and our team will be happy to assist you with any unique or uncommon queries regarding your pet’s relocation.
+                        We’re here to help! Some less common queries include:<br>
+                        <ul style='margin:8px 0 0 18px;padding:0;list-style:disc;'>
+                        <li>Relocating multiple pets together</li>
+                        <li>Special needs or senior pets</li>
+                        <li>Breed-specific travel restrictions</li>
+                        <li>Travel during extreme weather</li>
+                        <li>Pet insurance options</li>
+                        </ul>
+                        If you have a unique question, contact us directly for personalized assistance.
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <script>
-    function toggleFaqAnswer(event, idx) {
+    function toggleDomesticFaqAnswer(event, idx) {
         event.preventDefault();
-        var answers = document.querySelectorAll('.faq-answer');
-        var links = document.querySelectorAll('.faq-readmore');
+        var answers = document.querySelectorAll('.domestic-faq-answer');
+        var links = document.querySelectorAll('.domestic-faq-readmore');
         if (answers[idx].style.display === 'none') {
             answers.forEach(function(ans, i) { ans.style.display = 'none'; });
             answers[idx].style.display = 'block';
@@ -867,7 +1350,33 @@
     }
     </script>
 
-    <!-- Footer (Redesigned) -->
+    
+    <script src="script.js"></script>
+        <script>
+        // Sticky header functionality
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                // Scrolling up
+                header.classList.remove('hidden');
+                header.classList.add('visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+	<!-- Footer (Redesigned) -->
     <footer class="footer-modern">
       <style>
         .footer-modern {
@@ -1130,5 +1639,8 @@ C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur
         </div>
       </div>
     </footer>
-<body>
- <script>
+
+    </body>
+    </script>
+
+    

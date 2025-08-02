@@ -465,7 +465,7 @@
                     </li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <!-- Get Quote Button -->
                     <li>
                         <a href="#quote" class="quote-btn">
@@ -482,17 +482,41 @@
         </div>
     </header>
     
-    <!-- Mobile Navigation Menu -->
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var servicesToggle = document.getElementById('mobileServicesToggle');
+    var servicesMenu = document.getElementById('mobileServicesMenu');
+    if (servicesToggle && servicesMenu) {
+        servicesToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (servicesMenu.style.display === 'block') {
+                servicesMenu.style.display = 'none';
+            } else {
+                servicesMenu.style.display = 'block';
+            }
+        });
+    }
+});
+</script>
     <nav class="mobile-nav" id="mobileNav">
         <button class="close-btn" id="closeMobileMenu">
             <i class="fas fa-times"></i>
         </button>
         <ul>
             <li><a href="index.html#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
+            <li class="dropdown mobile-dropdown">
+                <a href="#services" class="dropdown-toggle" id="mobileServicesToggle">
+                    Services <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu" id="mobileServicesMenu" style="display: none;">
+                    <li><a href="packing-moving.html">Packing & Moving</a></li>
+                    <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                    <li><a href="pet.html">Pet Relocation</a></li>
+                    <li><a href="packing-labour.html">Packing Labour</a></li>
+                </ul>
             <li><a href="about.html">About Us</a></li>
             <li><a href="process.html">Process</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="#" class="quote-btn">Get a Quote</a></li>
         </ul>
     </nav>
@@ -525,7 +549,7 @@
         closeMobileMenu.addEventListener('click', toggleMobileMenu);
         
         // Close menu when clicking on nav links
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
+        document.querySelectorAll('.mobile-nav a:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', toggleMobileMenu);
         });
     });
@@ -1925,7 +1949,269 @@ window.addEventListener('DOMContentLoaded', function() {
     <script src="script.js"></script>
 </body>
 </html>
-
+<!-- Footer (Redesigned) -->
+    <footer class="footer-modern">
+      <style>
+        .footer-modern {
+          background: #0c172e;
+          border-top: 1.5px solid #232946;
+          color: #e0e0e0;
+          font-family: 'Montserrat', Arial, sans-serif;
+          min-height: 120px;
+          padding-top: 20px;
+          padding-bottom: 45px;
+        }
+        .footer-modern .footer-main {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 36px;
+          justify-content: space-between;
+          align-items: flex-start;
+          padding: 44px 0 18px 0;
+        }
+        .footer-modern .footer-col {
+          flex: 1 1 220px;
+          min-width: 220px;
+          max-width: 340px;
+        }
+        .footer-modern .footer-about h3 {
+          color: #7be495;
+          font-size: 1.3em;
+          margin-bottom: 8px;
+          font-weight: 700;
+        }
+        .footer-modern .footer-about p {
+          color: #e0e0e0;
+          font-size: 1.05em;
+          margin-bottom: 14px;
+        }
+        .footer-modern .social-links {
+          display: flex;
+          gap: 12px;
+          margin-top: 8px;
+        }
+        .footer-modern .social-links a {
+          color: #b0b8c1;
+          font-size: 1.2em;
+          transition: color 0.2s;
+        }
+        .footer-modern .social-links a:hover {
+          color: #7be495;
+        }
+        .footer-modern .footer-links h4,
+        .footer-modern .footer-newsletter h4 {
+          color: #fff;
+          font-size: 1.13em;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+        .footer-modern .footer-links ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .footer-modern .footer-links li {
+          margin-bottom: 7px;
+        }
+        .footer-modern .footer-links a {
+          color: #b0b8c1;
+          text-decoration: none;
+          font-size: 1.04em;
+          transition: color 0.2s;
+        }
+        .footer-modern .footer-links a:hover {
+          color: #7be495;
+        }
+        .footer-modern .footer-newsletter p {
+          color: #e0e0e0;
+          font-size: 1.01em;
+          margin-bottom: 10px;
+        }
+        .footer-modern .newsletter-form {
+          display: flex;
+          gap: 6px;
+        }
+        .footer-modern .newsletter-form input[type="email"] {
+          padding: 8px 12px;
+          border: 1px solid #444;
+          background: #232946;
+          color: #fff;
+          border-radius: 5px;
+          font-size: 1em;
+          flex: 1;
+        }
+        .footer-modern .newsletter-form button {
+          background: #7be495;
+          color: #181c24;
+          border: none;
+          border-radius: 5px;
+          padding: 8px 14px;
+          font-size: 1.1em;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .footer-modern .newsletter-form button:hover {
+          background: #5fd68b;
+        }
+        .footer-modern .footer-pay-legal {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 24px;
+          border-top: 1px solid #232946;
+          padding-top: 18px;
+          margin-top: 10px;
+        }
+        .footer-modern .footer-legal {
+          font-size: 0.99em;
+          color: #b0b8c1;
+          margin-bottom: 8px;
+        }
+        .footer-modern .footer-legal a {
+          color: #b0b8c1;
+          text-decoration: none;
+          margin-right: 8px;
+        }
+        .footer-modern .footer-legal a:hover {
+          color: #7be495;
+        }
+        .footer-modern .legal-info {
+          font-size: 0.97em;
+          color: #fff;
+          margin-bottom: 12px;
+          margin-top: 18px;
+          letter-spacing: 0.01em;
+        }
+        .footer-modern .footer-payment {
+          min-width: 200px;
+          text-align: right;
+        }
+        .footer-modern .footer-payment-title {
+          font-size: 1.05em;
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+        .footer-modern .footer-payment-icons {
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+          align-items: center;
+        }
+        .footer-modern .footer-payment-icons img {
+          height: 28px;
+          filter: brightness(0.95) contrast(1.1);
+        }
+        .footer-modern .footer-payment-note {
+          font-size: 0.97em;
+          color: #b0b8c1;
+          margin-top: 4px;
+        }
+        .footer-modern .footer-copyright {
+          text-align: center;
+          color: #b0b8c1;
+          font-size: 1em;
+          margin: 22px 0 8px 0;
+          border-top: 1px solid #232946;
+          padding-top: 12px;
+          background: none !important;
+        }
+        @media (max-width: 900px) {
+          .footer-modern .footer-main,
+          .footer-modern .footer-pay-legal {
+            flex-direction: column;
+            gap: 18px;
+          }
+          .footer-modern .footer-payment {
+            text-align: left;
+          }
+        }
+        @media (max-width: 600px) {
+          .footer-modern {
+            padding-top: 18px;
+            padding-bottom: 18px;
+          }
+          .footer-modern .footer-main {
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px 0 8px 0;
+          }
+          .footer-modern .footer-col {
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            margin-bottom: 18px;
+          }
+          .footer-modern .footer-pay-legal {
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 10px;
+            margin-top: 0;
+          }
+          .footer-modern .legal-info {
+            padding: 8px 8px 8px 8px;
+            font-size: 0.95em;
+            border-radius: 6px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+            word-break: break-word;
+          }
+          .footer-modern .footer-copyright {
+            font-size: 0.95em;
+            margin: 12px 0 4px 0;
+            padding-top: 8px;
+          }
+        }
+      </style>
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-col footer-about">
+            <h3>Moveroo</h3>
+            <p>Making your move easy and stress-free with professional moving services you can trust.</p>
+            Address
+C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur            
+          </div>
+          <div class="footer-col footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="process.html">Process</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="payment-option.html">Payment Option</a></li>
+             
+            </ul>
+          </div>
+          <div class="footer-col footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter for moving tips and special offers.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your Email">
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+            <div class="social-links">
+              <a href="https://www.facebook.com/share/1ETK5wQwfT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/teammoveroo?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/moveroo.in?igsh=Y3VxNmx0aTUyYXho" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/moveroo-in/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-pay-legal">
+          <div style="flex: 10; min-width: 220px;">
+         
+            <div class="legal-info" id="legal-info">
+              <strong>Legal Information:</strong> Moveroo is a division of Saranity Solutions Private Limited. All services are subject to applicable laws and regulations. For legal queries, contact <a href="mailto:managingdirector@saranitysolutions.com" style="color:#bfa100; font-weight:600;">managingdirector@saranitysolutions.com</a>.
+            </div>
+          </div>
+                  </div>
+        <div class="footer-copyright">
+          &copy; 2025 Moveroo. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
 
 <style>
 #whatsapp-float {

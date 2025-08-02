@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Great News!</h3>
                 <p>We're available in <span id="searched-city">${city}</span>!</p>
                 <p>Our team is ready to assist you with your moving needs.</p>
-                <a href="#contact" class="btn btn-primary">Get Quote</a>
+                <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
             `;
         } else {
             popupBody.innerHTML = `

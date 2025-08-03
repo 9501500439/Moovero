@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Pet Import | Moveroo Pet</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #f8f9fa; margin: 0; }
+        .import-hero-section {
+            background: linear-gradient(135deg, #e6f0ff 0%, #e6f5ff 100%);
+            padding: 90px 0 60px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .import-hero-main {
+            font-size: 2.1rem;
+            color: #1a237e;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+        .import-hero-title {
+            font-size: 2.5rem;
+            color: #1a73e8;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .import-hero-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #4682b4;
+            margin: 18px auto 0 auto;
+            border-radius: 2px;
+        }
+        .import-hero-desc {
+            color: #333;
+            font-size: 1.18rem;
+            max-width: 800px;
+            margin: 0 auto 18px auto;
+            line-height: 1.7;
+        }
+        .import-hero-img {
+            max-width: 600px;
+            width: 95%;
+            height: auto;
+            border-radius: 28px;
+            box-shadow: 0 12px 40px rgba(26,35,126,0.13);
+            margin: 0 auto 36px auto;
+            display: block;
+        }
+        @media (max-width: 700px) {
+            .import-hero-title { font-size: 1.5rem; }
+            .import-hero-main { font-size: 1.2rem; }
+            .import-hero-desc { font-size: 1.02rem; }
+        }
+    </style>
+</head>
+<body>
+    <button class="fixed-back-btn" onclick="window.history.back()" style="position: fixed; top: 24px; left: 24px; z-index: 2000; background: #4682b4; color: #fff; border: none; border-radius: 50px; padding: 12px 28px 12px 20px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 16px rgba(26,35,126,0.13); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: background 0.2s, box-shadow 0.2s;"><i class="fa fa-arrow-left"></i> Back</button>
+    <section class="import-hero-section">
+        <img src="assets/import.png" alt="International Pet Import" class="import-hero-img" />
+        <div class="import-hero-main">BEST INTERNATIONAL PET IMPORT SERVICES</div>
+        <h1 class="import-hero-title">Pet Import Services in India By Moveroo Pet</h1>
+        <p class="import-hero-desc">
+            Transporting a pet internationally is a complex task. Involving strict paperwork and customs checks at every step of the way, an international pet import process is challenging, especially if you are operating alone.
+        </p>
+        <p class="import-hero-desc">
+            We at Moveroo Pet offer pet import services in India for your pet, doing the hard work so you don’t have to. To save our pet parents the hassle of coordinating with several different government agencies, we provide exclusive pet import services in India, managing the pet import permit, pet import certificate, and NOC for the pet import process.
+        </p>
+    </section>
+    <!-- Documents for Pet Import Section -->
+    <style>
+    .import-docs-section {
+        background: #add8e6;
+        padding: 60px 0 50px 0;
+    }
+    .import-docs-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .import-docs-title {
+        font-size: 2rem;
+        color: #4682b4;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .import-docs-subtitle {
+        font-size: 1.3rem;
+        color: #4682b4;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .import-docs-separator {
+        height: 4px;
+        width: 80px;
+        background: #4682b4;
+        margin: 0 auto 36px auto;
+        border-radius: 2px;
+    }
+    .import-docs-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .import-doc-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(26,35,126,0.09);
+        padding: 38px 28px 28px 28px;
+        max-width: 320px;
+        min-width: 240px;
+        flex: 1 1 260px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+        border-top: 6px solid #4682b4;
+    }
+    .import-doc-card:hover {
+        box-shadow: 0 8px 28px rgba(26,35,126,0.15);
+        transform: translateY(-6px) scale(1.03);
+    }
+    .import-doc-icon {
+        font-size: 3.2rem;
+        margin-bottom: 18px;
+        color: #4682b4;
+    }
+    .import-doc-title {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: #4682b4;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+    }
+    .import-doc-desc {
+        color: #444;
+        font-size: 1.05rem;
+        margin-bottom: 0;
+        flex: 1 1 auto;
+    }
+    @media (max-width: 900px) {
+        .import-docs-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        .import-doc-card {
+            max-width: 98vw;
+            width: 100%;
+        }
+    }
+    </style>
+    <section class="import-docs-section">
+        <div class="import-docs-container">
+            <div class="import-docs-title">DOCUMENTS FOR PET import</div>
+            <div class="import-docs-subtitle">ESSENTIALS OF INTERNATIONAL <br> PET TRAVEL</div>
+            <div class="import-docs-separator"></div>
+            <div class="import-docs-cards">
+                <div class="import-doc-card">
+                    <div class="import-doc-icon">📑</div>
+                    <div class="import-doc-title">NOC</div>
+                    <div class="import-doc-desc">Also known as a No Objection Certificate, it is a permit which is mandatory for any pet import or export. An NOC for pet import is one of the most important documents in the process.</div>
+                </div>
+                <div class="import-doc-card">
+                    <div class="import-doc-icon">📋</div>
+                    <div class="import-doc-title">Quarantine Certificate</div>
+                    <div class="import-doc-desc">A pet import certificate stating your animal has received the mandatory vaccinations is required before any movement.</div>
+                </div>
+                <div class="import-doc-card">
+                    <div class="import-doc-icon">🩺</div>
+                    <div class="import-doc-title">HEALTH CERTIFICATE</div>
+                    <div class="import-doc-desc">A pet import certificate, which is obtained from a registered vet. The vet signs and stamps this certificate after a health check-up.</div>
+                </div>
+                <div class="import-doc-card">
+                    <div class="import-doc-icon">🔎</div>
+                    <div class="import-doc-title">Microchip</div>
+                    <div class="import-doc-desc">All pets being imported to or exported from India must be Microchipped. India uses the standard ISO 11784/ISO 11785 microchip.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Immunizations Section -->
+    <style>
+    .import-vax-section {
+        background: #4682b4;
+        padding: 60px 0 50px 0;
+    }
+    .import-vax-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .import-vax-title {
+        font-size: 2rem;
+        color: #fff;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .import-vax-subtitle {
+        font-size: 1.3rem;
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .import-vax-separator {
+        height: 4px;
+        width: 80px;
+        background: #fff;
+        margin: 0 auto 32px auto;
+        border-radius: 2px;
+    }
+    .import-vax-desc {
+        color: #fff;
+        font-size: 1.08rem;
+        max-width: 800px;
+        margin: 0 auto 18px auto;
+        line-height: 1.7;
+        text-align: center;
+    }
+    .import-vax-list {
+        color: #fff;
+        font-size: 1.05rem;
+        margin: 24px auto 0 24px;
+        padding: 0;
+        max-width: 700px;
+        line-height: 1.7;
+    }
+    .import-vax-list li {
+        margin-bottom: 8px;
+        list-style: disc;
+    }
+    .import-vax-list strong {
+        color: #fff;
+    }
+    @media (max-width: 700px) {
+        .import-vax-title { font-size: 1.3rem; }
+        .import-vax-subtitle { font-size: 1.05rem; }
+    }
+    </style>
+    <section class="import-vax-section">
+        <div class="import-vax-container">
+            <div class="import-vax-title">Immunizations</div>
+            <div class="import-vax-subtitle">Basic and Mandatory Vaccinations</div>
+            <div class="import-vax-separator"></div>
+            <div class="import-vax-desc">
+                Before entering India, your pet must be vaccinated against certain diseases. This is done to prevent the transmission of potentially infectious zoonotic diseases from animal to animal/animal to person. Remember to get your pet vaccinated according to the timeline of your journey, as some vaccinations may require to be tested for (Ex: some countries have a cool off period of 30 days at animal quarantine, which can affect your itinerary).
+            </div>
+            <ul class="import-vax-list">
+                <li><strong>Vaccinations for Dogs</strong></li>
+                <li><strong>Vaccinations for Cats</strong></li>
+                <li><strong>Rabies</strong>, a valid vaccination applied according to instruction of vaccine manufacturer, initial dose should not be applied before 12 weeks of animal age.</li>
+                <li>Canine Distemper Virus (CDV)</li>
+                <li>Canine Parvo Virus</li>
+                <li>Infectious Canine Hepatitis</li>
+                <li>Leptospirosis (Can be dispensed with and replaced by lab test in case that the exporting country does not apply vaccination)</li>
+            </ul>
+        </div>
+    </section>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- More FAQs Section -->
+    <style>
+    .more-faq-section {
+        background: #add8e6;
+        padding: 80px 0 70px 0;
+        margin-bottom: 0;
+    }
+    .more-faq-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .more-faq-title {
+        font-size: 2.1rem;
+        color: #4682b4;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    .more-faq-subtitle {
+        font-size: 1.2rem;
+        color: #4682b4;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    .more-faq-separator {
+        height: 4px;
+        width: 80px;
+        background: #4682b4;
+        margin: 0 auto 32px auto;
+        border-radius: 2px;
+    }
+    .more-faq-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        justify-content: center;
+    }
+    .more-faq-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(26,35,126,0.09);
+        padding: 28px 22px 22px 22px;
+        max-width: 300px;
+        flex: 1 1 260px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .more-faq-card:hover {
+        box-shadow: 0 8px 28px rgba(26,35,126,0.13);
+        transform: translateY(-6px) scale(1.03);
+    }
+    .more-faq-card-title {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: #4682b4;
+        margin-bottom: 10px;
+    }
+    .more-faq-card-desc {
+        color: #444;
+        font-size: 1.01rem;
+        margin-bottom: 18px;
+        flex: 1 1 auto;
+    }
+    .more-faq-readmore {
+        color: #4682b4;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.01rem;
+        transition: color 0.2s;
+        cursor: pointer;
+    }
+    .more-faq-readmore:hover {
+        color: #4682b4;
+        text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+        .more-faq-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        .more-faq-card {
+            max-width: 98vw;
+            width: 100%;
+        }
+    }
+    </style>
+    <section class="more-faq-section">
+        <div class="more-faq-container">
+            <div class="more-faq-title">Faq's</div>
+            <div class="more-faq-subtitle">CATEGORIES OF QUERIES</div>
+            <div class="more-faq-separator"></div>
+            <div class="more-faq-cards">
+                <div class="more-faq-card">
+                    <div class="more-faq-card-title">Payment</div>
+                    <div class="more-faq-card-desc">Explore payment related queries and specific costs.</div>
+                    <a class="more-faq-readmore" href="#" onclick="toggleMoreFaqAnswer(event, 0)">Read More</a>
+                    <div class="more-faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                        <strong>How do I pay for pet import services?</strong><br>
+                        We accept credit/debit cards, UPI, net banking, and secure online payment gateways. All payments are processed securely and you will receive an official invoice. For large moves, installment options may be available. Please ask our team for details about payment plans, receipts, and GST invoicing.
+                    </div>
+                </div>
+                <div class="more-faq-card">
+                    <div class="more-faq-card-title">Documentation</div>
+                    <div class="more-faq-card-desc">Queries related to the documentation required for a relocation.</div>
+                    <a class="more-faq-readmore" href="#" onclick="toggleMoreFaqAnswer(event, 1)">Read More</a>
+                    <div class="more-faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                        <strong>What documents are needed for pet import?</strong><br>
+                        You will need:<br>
+                        <ul style='margin:8px 0 0 18px;padding:0;list-style:disc;'>
+                        <li>Import permit/NOC from AQCS</li>
+                        <li>Vaccination record</li>
+                        <li>Microchip certificate</li>
+                        <li>Health certificate from a registered vet</li>
+                        <li>Owner’s passport and travel documents</li>
+                        </ul>
+                        Our team will guide you through the process and help you prepare all required paperwork.
+                    </div>
+                </div>
+                <div class="more-faq-card">
+                    <div class="more-faq-card-title">Travel Process</div>
+                    <div class="more-faq-card-desc">Clear any doubts you may have about our process.</div>
+                    <a class="more-faq-readmore" href="#" onclick="toggleMoreFaqAnswer(event, 2)">Read More</a>
+                    <div class="more-faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                        <strong>How does the pet import process work?</strong><br>
+                        We coordinate with airlines, AQCS, and customs to ensure a smooth import. Your pet will be checked for compliance, and we provide updates at every step. On arrival, we assist with customs clearance and safe handover to you.
+                    </div>
+                </div>
+                <div class="more-faq-card">
+                    <div class="more-faq-card-title">Medical</div>
+                    <div class="more-faq-card-desc">Queries pertaining to health and safety while travelling.</div>
+                    <a class="more-faq-readmore" href="#" onclick="toggleMoreFaqAnswer(event, 3)">Read More</a>
+                    <div class="more-faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                        <strong>What medical precautions should I take for my pet?</strong><br>
+                        Ensure your pet is fully vaccinated and has a recent health check. Carry any regular medications and inform us of allergies or special needs. We recommend a light meal before travel and plenty of water. For anxious pets, discuss calming options with your vet in advance.
+                    </div>
+                </div>
+                <div class="more-faq-card">
+                    <div class="more-faq-card-title">Suggestions</div>
+                    <div class="more-faq-card-desc">A place for us to communicate. We’re taking all suggestions!</div>
+                    <a class="more-faq-readmore" href="#" onclick="toggleMoreFaqAnswer(event, 4)">Read More</a>
+                    <div class="more-faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                        <strong>How can I share my suggestions or feedback?</strong><br>
+                        We welcome your feedback! You can share suggestions via our website contact form, email, or by speaking directly with our relocation team. All suggestions are reviewed by our management and help us improve our services.
+                    </div>
+                </div>
+                <div class="more-faq-card">
+                    <div class="more-faq-card-title">Miscelleneous</div>
+                    <div class="more-faq-card-desc">Queries that are not often asked but are equally important.</div>
+                    <a class="more-faq-readmore" href="#" onclick="toggleMoreFaqAnswer(event, 5)">Read More</a>
+                    <div class="more-faq-answer" style="display:none; margin-top:10px; color:#333; font-size:0.98rem;">
+                        <strong>What if my question isn’t listed here?</strong><br>
+                        We’re here to help! Some less common queries include:<br>
+                        <ul style='margin:8px 0 0 18px;padding:0;list-style:disc;'>
+                        <li>Importing multiple pets</li>
+                        <li>Special needs or senior pets</li>
+                        <li>Breed-specific import restrictions</li>
+                        <li>Travel during extreme weather</li>
+                        <li>Pet insurance options</li>
+                        </ul>
+                        If you have a unique question, contact us directly for personalized assistance.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><section>
+    </section>
+    <footer class="footer-modern">
+      <style>
+        .footer-modern {
+          background: #0a192f;
+          border-top: 1.5px solid #232946;
+          color: #e0e0e0;
+          font-family: 'Montserrat', Arial, sans-serif;
+          min-height: 120px;
+          padding: 60px 0 45px 0;
+          margin-top: 0;
+        }
+        .footer-modern .footer-main {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 36px;
+          justify-content: space-between;
+          align-items: flex-start;
+          padding: 20px 0 30px 0;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        .footer-modern .footer-col {
+          flex: 1 1 220px;
+          min-width: 220px;
+          max-width: 340px;
+        }
+        .footer-modern .footer-about h3 {
+          color: #7be495;
+          font-size: 1.3em;
+          margin-bottom: 8px;
+          font-weight: 700;
+        }
+        .footer-modern .footer-about p {
+          color: #e0e0e0;
+          font-size: 1.05em;
+          margin-bottom: 14px;
+        }
+        .footer-modern .social-links {
+          display: flex;
+          gap: 12px;
+          margin-top: 8px;
+        }
+        .footer-modern .social-links a {
+          color: #b0b8c1;
+          font-size: 1.2em;
+          transition: color 0.2s;
+        }
+        .footer-modern .social-links a:hover {
+          color: #7be495;
+        }
+        .footer-modern .footer-links h4,
+        .footer-modern .footer-newsletter h4 {
+          color: #fff;
+          font-size: 1.13em;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+        .footer-modern .footer-links ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .footer-modern .footer-links li {
+          margin-bottom: 7px;
+        }
+        .footer-modern .footer-links a {
+          color: #b0b8c1;
+          text-decoration: none;
+          font-size: 1.04em;
+          transition: color 0.2s;
+        }
+        .footer-modern .footer-links a:hover {
+          color: #7be495;
+        }
+        .footer-modern .footer-newsletter p {
+          color: #e0e0e0;
+          font-size: 1.01em;
+          margin-bottom: 10px;
+        }
+        .footer-modern .newsletter-form {
+          display: flex;
+          gap: 6px;
+        }
+        .footer-modern .newsletter-form input[type="email"] {
+          padding: 8px 12px;
+          border: 1px solid #444;
+          background: #232946;
+          color: #fff;
+          border-radius: 5px;
+          font-size: 1em;
+          flex: 1;
+        }
+        .footer-modern .newsletter-form button {
+          background: #7be495;
+          color: #181c24;
+          border: none;
+          border-radius: 5px;
+          padding: 8px 14px;
+          font-size: 1.1em;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .footer-modern .newsletter-form button:hover {
+          background: #5fd68b;
+        }
+        .footer-modern .footer-pay-legal {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 24px;
+          border-top: 1px solid #232946;
+          padding-top: 18px;
+          margin-top: 10px;
+        }
+        .footer-modern .footer-legal {
+          font-size: 0.99em;
+          color: #b0b8c1;
+          margin-bottom: 8px;
+        }
+        .footer-modern .footer-legal a {
+          color: #b0b8c1;
+          text-decoration: none;
+          margin-right: 8px;
+        }
+        .footer-modern .footer-legal a:hover {
+          color: #7be495;
+        }
+        .footer-modern .legal-info {
+          font-size: 0.97em;
+          color: #fff;
+          margin-bottom: 12px;
+          margin-top: 18px;
+          letter-spacing: 0.01em;
+        }
+        .footer-modern .footer-payment {
+          min-width: 200px;
+          text-align: right;
+        }
+        .footer-modern .footer-payment-title {
+          font-size: 1.05em;
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+        .footer-modern .footer-payment-icons {
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+          align-items: center;
+        }
+        .footer-modern .footer-payment-icons img {
+          height: 28px;
+          filter: brightness(0.95) contrast(1.1);
+        }
+        .footer-modern .footer-payment-note {
+          font-size: 0.97em;
+          color: #b0b8c1;
+          margin-top: 4px;
+        }
+        .footer-modern .footer-copyright {
+          text-align: center;
+          color: #b0b8c1;
+          font-size: 1em;
+          margin: 22px 0 8px 0;
+          border-top: 1px solid #232946;
+          padding-top: 12px;
+          background: none !important;
+        }
+        @media (max-width: 900px) {
+          .footer-modern .footer-main,
+          .footer-modern .footer-pay-legal {
+            flex-direction: column;
+            gap: 18px;
+          }
+          .footer-modern .footer-payment {
+            text-align: left;
+          }
+        }
+        @media (max-width: 600px) {
+          .footer-modern {
+            padding-top: 18px;
+            padding-bottom: 18px;
+          }
+          .footer-modern .footer-main {
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px 0 8px 0;
+          }
+          .footer-modern .footer-col {
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            margin-bottom: 18px;
+          }
+          .footer-modern .footer-pay-legal {
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 10px;
+            margin-top: 0;
+          }
+          .footer-modern .legal-info {
+            padding: 8px 8px 8px 8px;
+            font-size: 0.95em;
+            border-radius: 6px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+            word-break: break-word;
+          }
+          .footer-modern .footer-copyright {
+            font-size: 0.95em;
+            margin: 12px 0 4px 0;
+            padding-top: 8px;
+          }
+        }
+      </style>
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-col footer-about">
+            <h3>Moveroo</h3>
+            <p>Making your move easy and stress-free with professional moving services you can trust.</p>
+            Address
+C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur            
+          </div>
+          <div class="footer-col footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="process.html">Process</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="payment-option.html">Payment Option</a></li>
+             
+            </ul>
+          </div>
+          <div class="footer-col footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter for moving tips and special offers.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your Email">
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+            <div class="social-links">
+              <a href="https://www.facebook.com/share/1ETK5wQwfT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/teammoveroo?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/moveroo.in?igsh=Y3VxNmx0aTUyYXho" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/moveroo-in/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-pay-legal">
+          <div style="flex: 10; min-width: 220px;">
+         
+            <div class="legal-info" id="legal-info">
+              <strong>Legal Information:</strong> Moveroo is a division of Saranity Solutions Private Limited. All services are subject to applicable laws and regulations. For legal queries, contact <a href="mailto:managingdirector@saranitysolutions.com" style="color:#bfa100; font-weight:600;">managingdirector@saranitysolutions.com</a>.
+            </div>
+          </div>
+                  </div>
+        <div class="footer-copyright">
+          &copy; 2025 Moveroo. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

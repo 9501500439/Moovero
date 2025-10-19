@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Moveroo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* Base */
+        :root {
+            --brand-dark: #0c172e;
+            --brand-primary: #1a4b8c;
+            --brand-accent: #C71585;
+            --brand-green: #28a745;
+            --text-dark: #232946;
+            --text-mid: #444;
+            --text-light: #666;
+            --border: #e9edf3;
+            --chip-bg: #f4f6fb;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--text-dark); background: #fff; }
+
+        /* Header and Navbar (kept consistent with site) */
+        .logo img { max-height: 70px; min-height: 50px; width: auto; transition: all 0.3s ease; padding: 6px 0; }
+        .logo { min-height: 40px; display: flex; align-items: center; }
+        .header, .navbar { min-height: 10px !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+        .header { min-height: 120px !important; padding: 32px 0 !important; position: fixed; width: 100%; top: 0; left: 0; background: #000 !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .navbar { display: flex; align-items: center; justify-content: space-between; }
+        .nav-links { display: flex; list-style: none; gap: 18px; margin: 0; padding: 0; }
+        .nav-links a { color: #000; text-decoration: none; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 28px; color: #fff; cursor: pointer; padding: 8px; margin-left: auto; z-index: 1002; transition: color 0.3s ease; }
+        .mobile-menu-btn:hover { color: #cccccc; }
+        .mobile-nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh; background: #d3d0d0; box-shadow: -5px 0 15px rgba(0,0,0,0.1); z-index: 1001; padding: 70px 20px 30px; transition: right 0.3s ease; overflow-y: auto; }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav .close-btn { position: absolute; top: 15px; right: 15px; font-size: 24px; background: none; border: none; cursor: pointer; color: #333; }
+        .mobile-nav ul { list-style: none; padding: 0; margin: 0; }
+        .mobile-nav ul li { margin: 10px 0; }
+        .mobile-nav ul li a { display: block; padding: 12px 15px; color: #333; text-decoration: none; border-radius: 6px; transition: all 0.3s ease; }
+        .mobile-nav ul li a:hover { background: #f5f5f5; }
+        @media (max-width: 992px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .logo { margin-right: auto !important; } }
+        @media (min-width: 993px) { .mobile-menu-btn, .mobile-nav { display: none; } .nav-links { display: flex; } }
+        @media (max-width: 600px) { .navbar { justify-content: flex-end !important; } .logo { margin-right: auto !important; } }
+        .header, .navbar { min-height: 10px !important; padding-top: 6px !important; padding-bottom: 6px !important; }
+
+        /* Page offset for fixed header */
+        main.blog-page { padding-top: 110px; }
+
+        /* Blog hero */
+        .blog-hero { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 12px 0 10px; border-bottom: 1px solid var(--border); }
+        .blog-hero h1 { margin: 0 0 4px; font-size: 2rem; color: var(--text-dark); }
+        .blog-hero p { margin: 0; color: var(--text-light); }
+
+        /* Controls */
+        .blog-controls { padding: 18px 0 12px; border-bottom: 1px solid var(--border); }
+        .controls-wrap { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        .filters-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .filter-title { font-weight: 600; color: var(--text-dark); margin-right: 6px; }
+        .chip, .pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 16px; border: 1px solid var(--border); background: var(--chip-bg); color: var(--text-dark); font-size: 0.92rem; cursor: pointer; transition: all 0.2s ease; }
+        .pill { border-radius: 18px; }
+        .chip:hover, .pill:hover { border-color: var(--brand-primary); box-shadow: 0 2px 10px rgba(0,0,0,0.06); transform: translateY(-1px); }
+        .chip.active, .pill.active { background: #eaf3ff; border-color: var(--brand-primary); color: var(--brand-primary); }
+        .search-wrap { display: flex; gap: 8px; align-items: center; }
+        .search-wrap input[type="search"] { flex: 1; min-width: 220px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 0.98rem; }
+        .search-wrap button { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--brand-primary); background: var(--brand-primary); color: #fff; font-weight: 600; cursor: pointer; }
+        .search-wrap button.clear { border-color: #bbb; background: #fff; color: #333; }
+        @media (min-width: 900px) { .controls-wrap { grid-template-columns: 1.2fr 0.8fr; align-items: center; } }
+
+        /* Posts grid */
+        .posts-wrap { padding: 18px 0 50px; }
+        .posts-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+        @media (max-width: 1024px) { .posts-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+        @media (max-width: 640px) { .posts-grid { grid-template-columns: 1fr; } }
+
+        .post-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s ease, transform 0.2s ease; }
+        .post-card:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .post-thumb { position: relative; aspect-ratio: 16 / 9; background: #f2f4f7; overflow: hidden; }
+        .post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .post-body { padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 10px; }
+        .post-title { margin: 0; font-size: 1.15rem; color: var(--text-dark); }
+        .post-meta { font-size: 0.85rem; color: var(--text-light); display: flex; gap: 10px; align-items: center; }
+        .post-excerpt { margin: 0; color: var(--text-mid); font-size: 0.96rem; line-height: 1.5; }
+        .post-tax { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .post-tax .tag { background: #fff7fb; color: var(--brand-accent); border: 1px solid #ffd9ef; }
+        .post-tax .cat { background: #f1f7ff; color: var(--brand-primary); border: 1px solid #d4e7ff; }
+
+        .empty-state { display: none; text-align: center; padding: 35px 10px; color: var(--text-light); border: 1px dashed var(--border); border-radius: 12px; }
+
+        /* Utility */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    </style>
+</head>
+<body>
+    <!-- Header Section (kept) -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/1.png" alt="Moveroo Logo" class="logo-img" />
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#services" class="dropdown-toggle" onclick="event.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="packing-moving.html">Packing &amp; Moving</a></li>
+                            <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                            <li><a href="pet.html">Pet Relocation</a></li>
+                            <li><a href="packing-labour.html">Packing Labour</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#quote" class="quote-btn">Get a Quote</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-btn" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li class="dropdown mobile-dropdown">
+                <a href="#services" class="dropdown-toggle" id="mobileServicesToggle">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu" id="mobileServicesMenu" style="display: none;">
+                    <li><a href="packing-moving.html">Packing &amp; Moving</a></li>
+                    <li><a href="vehicle.html">Vehicle Relocation</a></li>
+                    <li><a href="pet.html">Pet Relocation</a></li>
+                    <li><a href="packing-labour.html">Packing Labour</a></li>
+                </ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" class="quote-btn">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <main class="blog-page">
+        <!-- Hero -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1>Blog</h1>
+                <p>Insights, guides, and updates from Moveroo.</p>
+            </div>
+        </section>
+
+        <!-- Controls: Categories, Tags, Search -->
+        <section class="blog-controls">
+            <div class="container">
+                <div class="controls-wrap">
+                    <div>
+                        <div class="filters-row" id="categoryFilters" aria-label="Categories">
+                            <span class="filter-title">Categories:</span>
+                            <button class="pill active" data-type="category" data-value="all">All</button>
+                            <button class="pill" data-type="category" data-value="packing-moving">Packing &amp; Moving</button>
+                            <button class="pill" data-type="category" data-value="vehicle-relocation">Vehicle Relocation</button>
+                            <button class="pill" data-type="category" data-value="pet-relocation">Pet Care</button>
+                            <button class="pill" data-type="category" data-value="packing-labour">Packing Labour</button>
+                            <button class="pill" data-type="category" data-value="tips">Tips &amp; Guides</button>
+                            <button class="pill" data-type="category" data-value="news">Company News</button>
+                        </div>
+                        <div class="filters-row" id="tagFilters" aria-label="Tags" style="margin-top:10px;">
+                            <span class="filter-title">Tags:</span>
+                            <button class="chip" data-type="tag" data-value="checklist">checklist</button>
+                            <button class="chip" data-type="tag" data-value="pet-travel">pet-travel</button>
+                            <button class="chip" data-type="tag" data-value="storage">storage</button>
+                            <button class="chip" data-type="tag" data-value="insurance">insurance</button>
+                            <button class="chip" data-type="tag" data-value="packing-materials">packing-materials</button>
+                            <button class="chip" data-type="tag" data-value="moving-day">moving-day</button>
+                            <button class="chip" data-type="tag" data-value="route-planning">route-planning</button>
+                            <button class="chip" data-type="tag" data-value="gps-tracking">gps-tracking</button>
+                        </div>
+                    </div>
+                    <div class="search-wrap">
+                        <label for="blog-search" class="sr-only">Search posts</label>
+                        <input type="search" id="blog-search" placeholder="Search posts..." />
+                        <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+                        <button id="clear-filters" class="clear" aria-label="Clear filters">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Posts -->
+        <section class="posts-wrap">
+            <div class="container">
+                <div id="postsGrid" class="posts-grid">
+                    <!-- Post 1 -->
+                    <article class="post-card" data-categories="packing-moving,tips" data-tags="checklist,packing-materials,moving-day">
+                        <div class="post-thumb"><img src="assets/packing.jpg" alt="Room with boxes packed for moving" /></div>
+                        <div class="post-body">
+                            <h3 class="post-title">Ultimate Moving Day Checklist</h3>
+                            <div class="post-meta"><span>Feb 2025</span><span>•</span><span>5 min read</span></div>
+                            <p class="post-excerpt">Avoid last‑minute chaos with a step‑by‑step checklist from packing to final inspection.</p>
+                            <div class="post-tax">
+                                <span class="pill cat" data-type="category" data-value="packing-moving">Packing &amp; Moving</span>
+                                <span class="chip tag" data-type="tag" data-value="checklist">checklist</span>
+                                <span class="chip tag" data-type="tag" data-value="moving-day">moving-day</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 2 -->
+                    <article class="post-card" data-categories="vehicle-relocation,tips" data-tags="route-planning,gps-tracking,insurance">
+                        <div class="post-thumb"><img src="assets/vehicle.jpg" alt="Vehicle being transported on a carrier" /></div>
+                        <div class="post-body">
+                            <h3 class="post-title">How to Choose the Right Vehicle Transport</h3>
+                            <div class="post-meta"><span>Jan 2025</span><span>•</span><span>6 min read</span></div>
+                            <p class="post-excerpt">Open vs enclosed carriers, rail, or chauffeur‑driven: compare options by budget and timeline.</p>
+                            <div class="post-tax">
+                                <span class="pill cat" data-type="category" data-value="vehicle-relocation">Vehicle Relocation</span>
+                                <span class="chip tag" data-type="tag" data-value="route-planning">route-planning</span>
+                                <span class="chip tag" data-type="tag" data-value="gps-tracking">gps-tracking</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 3 -->
+                    <article class="post-card" data-categories="pet-relocation,tips" data-tags="pet-travel,checklist">
+                        <div class="post-thumb"><img src="assets/pet.jpg" alt="Happy dog ready for travel" /></div>
+                        <div class="post-body">
+                            <h3 class="post-title">Pet Relocation: What to Prepare</h3>
+                            <div class="post-meta"><span>Dec 2024</span><span>•</span><span>4 min read</span></div>
+                            <p class="post-excerpt">From vet approvals to IATA crates, make travel calm and safe for your furry friend.</p>
+                            <div class="post-tax">
+                                <span class="pill cat" data-type="category" data-value="pet-relocation">Pet Care</span>
+                                <span class="chip tag" data-type="tag" data-value="pet-travel">pet-travel</span>
+                                <span class="chip tag" data-type="tag" data-value="checklist">checklist</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 4 -->
+                    <article class="post-card" data-categories="packing-labour,packing-moving" data-tags="packing-materials,storage">
+                        <div class="post-thumb"><img src="assets/packing-labour.jpg" alt="Team packing household items" onerror="this.src='assets/packing.jpg'" /></div>
+                        <div class="post-body">
+                            <h3 class="post-title">Packing Materials You Actually Need</h3>
+                            <div class="post-meta"><span>Nov 2024</span><span>•</span><span>7 min read</span></div>
+                            <p class="post-excerpt">Bubble wrap, crates, labels, wardrobe boxes: a practical breakdown for every room.</p>
+                            <div class="post-tax">
+                                <span class="pill cat" data-type="category" data-value="packing-labour">Packing Labour</span>
+                                <span class="chip tag" data-type="tag" data-value="packing-materials">packing-materials</span>
+                                <span class="chip tag" data-type="tag" data-value="storage">storage</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 5 -->
+                    <article class="post-card" data-categories="news" data-tags="company">
+                        <div class="post-thumb"><img src="assets/office1.jpg" alt="Moveroo team working" /></div>
+                        <div class="post-body">
+                            <h3 class="post-title">Moveroo Expands City Coverage</h3>
+                            <div class="post-meta"><span>Oct 2024</span><span>•</span><span>2 min read</span></div>
+                            <p class="post-excerpt">We are now serving more cities with improved micro‑delivery options for relocation.</p>
+                            <div class="post-tax">
+                                <span class="pill cat" data-type="category" data-value="news">Company News</span>
+                                <span class="chip tag" data-type="tag" data-value="company">company</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 6 -->
+                    <article class="post-card" data-categories="packing-moving,tips" data-tags="insurance,checklist">
+                        <div class="post-thumb"><img src="assets/house.jpg" alt="Packed living room" /></div>
+                        <div class="post-body">
+                            <h3 class="post-title">Do You Need Moving Insurance?</h3>
+                            <div class="post-meta"><span>Sep 2024</span><span>•</span><span>4 min read</span></div>
+                            <p class="post-excerpt">When it makes sense, what it covers, and how to document your items the smart way.</p>
+                            <div class="post-tax">
+                                <span class="pill cat" data-type="category" data-value="packing-moving">Packing &amp; Moving</span>
+                                <span class="chip tag" data-type="tag" data-value="insurance">insurance</span>
+                                <span class="chip tag" data-type="tag" data-value="checklist">checklist</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div id="emptyState" class="empty-state">No posts match your filters. Try clearing filters or searching different terms.</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Services submenu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var servicesToggle = document.getElementById('mobileServicesToggle');
+            var servicesMenu = document.getElementById('mobileServicesMenu');
+            if (servicesToggle && servicesMenu) {
+                servicesToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    servicesMenu.style.display = servicesMenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+        });
+    </script>
+
+    <!-- Mobile nav toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileNav = document.getElementById('mobileNav');
+            const body = document.body;
+            function toggleMobileMenu() {
+                mobileNav.classList.toggle('active');
+                body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileNav.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+                else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            }
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            closeMobileMenu.addEventListener('click', toggleMobileMenu);
+            document.querySelectorAll('.mobile-nav a:not(.dropdown-toggle)').forEach(link => link.addEventListener('click', toggleMobileMenu));
+        });
+    </script>
+
+    <!-- Blog filtering logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const postsGrid = document.getElementById('postsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const categoryContainer = document.getElementById('categoryFilters');
+            const tagContainer = document.getElementById('tagFilters');
+            const searchInput = document.getElementById('blog-search');
+            const searchBtn = document.getElementById('search-btn');
+            const clearBtn = document.getElementById('clear-filters');
+
+            let activeCategory = 'all';
+            let activeTags = new Set();
+            let query = '';
+
+            function getDataList(attr) {
+                return (attr || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+            }
+
+            function matchesFilters(card) {
+                const categories = getDataList(card.getAttribute('data-categories'));
+                const tags = getDataList(card.getAttribute('data-tags'));
+                const title = card.querySelector('.post-title')?.textContent?.toLowerCase() || '';
+                const excerpt = card.querySelector('.post-excerpt')?.textContent?.toLowerCase() || '';
+
+                // Category check
+                const categoryOk = (activeCategory === 'all') || categories.includes(activeCategory);
+                if (!categoryOk) return false;
+
+                // Tags check (all selected tags must be present)
+                for (const t of activeTags) { if (!tags.includes(t)) return false; }
+
+                // Text search check
+                if (query) {
+                    const q = query.toLowerCase();
+                    return title.includes(q) || excerpt.includes(q) || categories.join(' ').includes(q) || tags.join(' ').includes(q);
+                }
+                return true;
+            }
+
+            function applyFilters() {
+                const cards = Array.from(postsGrid.querySelectorAll('.post-card'));
+                let visibleCount = 0;
+                cards.forEach(card => {
+                    const show = matchesFilters(card);
+                    card.style.display = show ? '' : 'none';
+                    if (show) visibleCount++;
+                });
+                emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+
+            // Category filter toggle (single select)
+            categoryContainer.addEventListener('click', function(e) {
+                const btn = e.target.closest('[data-type="category"]');
+                if (!btn) return;
+                const value = (btn.getAttribute('data-value') || '').toLowerCase();
+                if (!value) return;
+                activeCategory = value;
+                // Update active state
+                Array.from(categoryContainer.querySelectorAll('.pill')).forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilters();
+            });
+
+            // Tag filter toggle (multi-select). Also capture clicks from tags inside cards.
+            function toggleTag(tagValue) {
+                if (activeTags.has(tagValue)) activeTags.delete(tagValue); else activeTags.add(tagValue);
+                // Update tag buttons state in the tag bar
+                Array.from(tagContainer.querySelectorAll('.chip')).forEach(ch => {
+                    const v = (ch.getAttribute('data-value') || '').toLowerCase();
+                    ch.classList.toggle('active', activeTags.has(v));
+                });
+                applyFilters();
+            }
+
+            tagContainer.addEventListener('click', function(e) {
+                const btn = e.target.closest('[data-type="tag"]');
+                if (!btn) return;
+                const value = (btn.getAttribute('data-value') || '').toLowerCase();
+                if (!value) return;
+                toggleTag(value);
+            });
+
+            // Delegate tag clicks inside cards
+            postsGrid.addEventListener('click', function(e) {
+                const tagEl = e.target.closest('.chip.tag');
+                if (!tagEl) return;
+                const value = (tagEl.getAttribute('data-value') || '').toLowerCase();
+                if (!value) return;
+                toggleTag(value);
+                // Scroll to top of controls on mobile for clarity
+                document.querySelector('.blog-controls')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            // Search
+            function submitSearch() { query = (searchInput.value || '').trim(); applyFilters(); }
+            searchBtn.addEventListener('click', function(e) { e.preventDefault(); submitSearch(); });
+            searchInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); submitSearch(); } });
+
+            // Clear all filters
+            clearBtn.addEventListener('click', function() {
+                // Reset category
+                activeCategory = 'all';
+                Array.from(categoryContainer.querySelectorAll('.pill')).forEach((p, idx) => p.classList.toggle('active', idx === 1 || p.getAttribute('data-value') === 'all'));
+                // Reset tags
+                activeTags.clear();
+                Array.from(tagContainer.querySelectorAll('.chip')).forEach(ch => ch.classList.remove('active'));
+                // Reset search
+                query = '';
+                searchInput.value = '';
+                applyFilters();
+            });
+
+            // Initial filter
+            applyFilters();
+        });
+    </script>
+
+    <!-- Footer placeholder -->
+    <div id="footer" style="margin-top: 20px;"></div>
+    <script src="js/footer.js"></script>
+    <script src="js/quote-popup.js"></script>
+    <script src="js/quote-modal.js"></script>
+</body>
+</html>

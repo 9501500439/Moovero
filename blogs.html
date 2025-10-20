@@ -199,89 +199,7 @@
         <section class="posts-wrap">
             <div class="container">
                 <div id="postsGrid" class="posts-grid">
-                    <!-- Post 1 -->
-                    <article class="post-card" data-categories="packing-moving,tips" data-tags="checklist,packing-materials,moving-day">
-                        <div class="post-thumb"><img src="assets/packing.jpg" alt="Room with boxes packed for moving" /></div>
-                        <div class="post-body">
-                            <h3 class="post-title">Ultimate Moving Day Checklist</h3>
-                            <div class="post-meta"><span>Feb 2025</span><span>•</span><span>5 min read</span></div>
-                            <p class="post-excerpt">Avoid last‑minute chaos with a step‑by‑step checklist from packing to final inspection.</p>
-                            <div class="post-tax">
-                                <span class="pill cat" data-type="category" data-value="packing-moving">Packing &amp; Moving</span>
-                                <span class="chip tag" data-type="tag" data-value="checklist">checklist</span>
-                                <span class="chip tag" data-type="tag" data-value="moving-day">moving-day</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Post 2 -->
-                    <article class="post-card" data-categories="vehicle-relocation,tips" data-tags="route-planning,gps-tracking,insurance">
-                        <div class="post-thumb"><img src="assets/vehicle.jpg" alt="Vehicle being transported on a carrier" /></div>
-                        <div class="post-body">
-                            <h3 class="post-title">How to Choose the Right Vehicle Transport</h3>
-                            <div class="post-meta"><span>Jan 2025</span><span>•</span><span>6 min read</span></div>
-                            <p class="post-excerpt">Open vs enclosed carriers, rail, or chauffeur‑driven: compare options by budget and timeline.</p>
-                            <div class="post-tax">
-                                <span class="pill cat" data-type="category" data-value="vehicle-relocation">Vehicle Relocation</span>
-                                <span class="chip tag" data-type="tag" data-value="route-planning">route-planning</span>
-                                <span class="chip tag" data-type="tag" data-value="gps-tracking">gps-tracking</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Post 3 -->
-                    <article class="post-card" data-categories="pet-relocation,tips" data-tags="pet-travel,checklist">
-                        <div class="post-thumb"><img src="assets/pet.jpg" alt="Happy dog ready for travel" /></div>
-                        <div class="post-body">
-                            <h3 class="post-title">Pet Relocation: What to Prepare</h3>
-                            <div class="post-meta"><span>Dec 2024</span><span>•</span><span>4 min read</span></div>
-                            <p class="post-excerpt">From vet approvals to IATA crates, make travel calm and safe for your furry friend.</p>
-                            <div class="post-tax">
-                                <span class="pill cat" data-type="category" data-value="pet-relocation">Pet Care</span>
-                                <span class="chip tag" data-type="tag" data-value="pet-travel">pet-travel</span>
-                                <span class="chip tag" data-type="tag" data-value="checklist">checklist</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Post 4 -->
-                    <article class="post-card" data-categories="packing-labour,packing-moving" data-tags="packing-materials,storage">
-                        <div class="post-thumb"><img src="assets/packing-labour.jpg" alt="Team packing household items" onerror="this.src='assets/packing.jpg'" /></div>
-                        <div class="post-body">
-                            <h3 class="post-title">Packing Materials You Actually Need</h3>
-                            <div class="post-meta"><span>Nov 2024</span><span>•</span><span>7 min read</span></div>
-                            <p class="post-excerpt">Bubble wrap, crates, labels, wardrobe boxes: a practical breakdown for every room.</p>
-                            <div class="post-tax">
-                                <span class="pill cat" data-type="category" data-value="packing-labour">Packing Labour</span>
-                                <span class="chip tag" data-type="tag" data-value="packing-materials">packing-materials</span>
-                                <span class="chip tag" data-type="tag" data-value="storage">storage</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Post 5 -->
-                    <article class="post-card" data-categories="news" data-tags="company">
-                        <div class="post-thumb"><img src="assets/office1.jpg" alt="Moveroo team working" /></div>
-                        <div class="post-body">
-                            <h3 class="post-title">Moveroo Expands City Coverage</h3>
-                            <div class="post-meta"><span>Oct 2024</span><span>•</span><span>2 min read</span></div>
-                            <p class="post-excerpt">We are now serving more cities with improved micro‑delivery options for relocation.</p>
-                            <div class="post-tax">
-                                <span class="pill cat" data-type="category" data-value="news">Company News</span>
-                                <span class="chip tag" data-type="tag" data-value="company">company</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Post 6 -->
-                    <article class="post-card" data-categories="packing-moving,tips" data-tags="insurance,checklist">
-                        <div class="post-thumb"><img src="assets/house.jpg" alt="Packed living room" /></div>
-                        <div class="post-body">
-                            <h3 class="post-title">Do You Need Moving Insurance?</h3>
-                            <div class="post-meta"><span>Sep 2024</span><span>•</span><span>4 min read</span></div>
-                            <p class="post-excerpt">When it makes sense, what it covers, and how to document your items the smart way.</p>
-                            <div class="post-tax">
-                                <span class="pill cat" data-type="category" data-value="packing-moving">Packing &amp; Moving</span>
-                                <span class="chip tag" data-type="tag" data-value="insurance">insurance</span>
-                                <span class="chip tag" data-type="tag" data-value="checklist">checklist</span>
-                            </div>
-                        </div>
-                    </article>
+                    <!-- Dynamic blog posts will be loaded here -->
                 </div>
                 <div id="emptyState" class="empty-state">No posts match your filters. Try clearing filters or searching different terms.</div>
             </div>
@@ -336,6 +254,158 @@
             let activeCategory = 'all';
             let activeTags = new Set();
             let query = '';
+            
+            // Load blog posts from localStorage
+            function loadBlogPosts() {
+                // Get posts from localStorage or use default posts if none exist
+                let posts = [];
+                try {
+                    const storedPosts = localStorage.getItem('blogPosts');
+                    if (storedPosts) {
+                        posts = JSON.parse(storedPosts);
+                    } else {
+                        // Default posts if no posts in localStorage
+                        posts = [
+                            {
+                                id: "1",
+                                title: "Ultimate Moving Day Checklist",
+                                content: "Avoid last‑minute chaos with a step‑by‑step checklist from packing to final inspection.",
+                                excerpt: "Avoid last‑minute chaos with a step‑by‑step checklist from packing to final inspection.",
+                                date: "Feb 2025",
+                                readTime: "5 min read",
+                                image: "assets/packing.jpg",
+                                imageAlt: "Room with boxes packed for moving",
+                                categories: "packing-moving,tips",
+                                tags: "checklist,packing-materials,moving-day"
+                            },
+                            {
+                                id: "2",
+                                title: "How to Choose the Right Vehicle Transport",
+                                content: "Open vs enclosed carriers, rail, or chauffeur‑driven: compare options by budget and timeline.",
+                                excerpt: "Open vs enclosed carriers, rail, or chauffeur‑driven: compare options by budget and timeline.",
+                                date: "Jan 2025",
+                                readTime: "6 min read",
+                                image: "assets/vehicle.jpg",
+                                imageAlt: "Vehicle being transported on a carrier",
+                                categories: "vehicle-relocation,tips",
+                                tags: "route-planning,gps-tracking,insurance"
+                            },
+                            {
+                                id: "3",
+                                title: "Pet Relocation: What to Prepare",
+                                content: "From vet approvals to IATA crates, make travel calm and safe for your furry friend.",
+                                excerpt: "From vet approvals to IATA crates, make travel calm and safe for your furry friend.",
+                                date: "Dec 2024",
+                                readTime: "4 min read",
+                                image: "assets/pet.jpg",
+                                imageAlt: "Happy dog ready for travel",
+                                categories: "pet-relocation,tips",
+                                tags: "pet-travel,checklist"
+                            },
+                            {
+                                id: "4",
+                                title: "Packing Materials You Actually Need",
+                                content: "Bubble wrap, crates, labels, wardrobe boxes: a practical breakdown for every room.",
+                                excerpt: "Bubble wrap, crates, labels, wardrobe boxes: a practical breakdown for every room.",
+                                date: "Nov 2024",
+                                readTime: "7 min read",
+                                image: "assets/packing-labour.jpg",
+                                imageAlt: "Team packing household items",
+                                categories: "packing-labour,packing-moving",
+                                tags: "packing-materials,storage"
+                            },
+                            {
+                                id: "5",
+                                title: "Moveroo Expands City Coverage",
+                                content: "We are now serving more cities with improved micro‑delivery options for relocation.",
+                                excerpt: "We are now serving more cities with improved micro‑delivery options for relocation.",
+                                date: "Oct 2024",
+                                readTime: "2 min read",
+                                image: "assets/office1.jpg",
+                                imageAlt: "Moveroo team working",
+                                categories: "news",
+                                tags: "company"
+                            },
+                            {
+                                id: "6",
+                                title: "Do You Need Moving Insurance?",
+                                content: "When it makes sense, what it covers, and how to document your items the smart way.",
+                                excerpt: "When it makes sense, what it covers, and how to document your items the smart way.",
+                                date: "Sep 2024",
+                                readTime: "4 min read",
+                                image: "assets/house.jpg",
+                                imageAlt: "Packed living room",
+                                categories: "packing-moving,tips",
+                                tags: "insurance,checklist"
+                            }
+                        ];
+                        // Save default posts to localStorage
+                        localStorage.setItem('blogPosts', JSON.stringify(posts));
+                    }
+                } catch (error) {
+                    console.error("Error loading blog posts:", error);
+                    posts = [];
+                }
+                
+                return posts;
+            }
+            
+            // Render blog posts to the page
+            function renderBlogPosts(posts) {
+                postsGrid.innerHTML = ''; // Clear existing posts
+                
+                posts.forEach(post => {
+                    // Create category and tag elements
+                    const categories = post.categories.split(',');
+                    const tags = post.tags.split(',');
+                    
+                    let categoryElements = '';
+                    categories.forEach(category => {
+                        const categoryName = getCategoryDisplayName(category);
+                        categoryElements += `<span class="pill cat" data-type="category" data-value="${category}">${categoryName}</span>`;
+                    });
+                    
+                    let tagElements = '';
+                    tags.forEach(tag => {
+                        tagElements += `<span class="chip tag" data-type="tag" data-value="${tag}">${tag}</span>`;
+                    });
+                    
+                    // Create post HTML
+                    const postHTML = `
+                        <article class="post-card" data-categories="${post.categories}" data-tags="${post.tags}">
+                            <div class="post-thumb"><img src="${post.image}" alt="${post.imageAlt}" onerror="this.src='assets/packing.jpg'" /></div>
+                            <div class="post-body">
+                                <h3 class="post-title">${post.title}</h3>
+                                <div class="post-meta"><span>${post.date}</span><span>•</span><span>${post.readTime}</span></div>
+                                <p class="post-excerpt">${post.excerpt}</p>
+                                <div class="post-tax">
+                                    ${categoryElements}
+                                    ${tagElements}
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                    
+                    postsGrid.innerHTML += postHTML;
+                });
+            }
+            
+            // Helper function to get display name for categories
+            function getCategoryDisplayName(category) {
+                const categoryMap = {
+                    'packing-moving': 'Packing & Moving',
+                    'vehicle-relocation': 'Vehicle Relocation',
+                    'pet-relocation': 'Pet Care',
+                    'packing-labour': 'Packing Labour',
+                    'tips': 'Tips & Guides',
+                    'news': 'Company News'
+                };
+                
+                return categoryMap[category] || category;
+            }
+            
+            // Load and render posts
+            renderBlogPosts(loadBlogPosts());
 
             function getDataList(attr) {
                 return (attr || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);

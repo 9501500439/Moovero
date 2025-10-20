@@ -135,9 +135,16 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // Wait for the DOM to be fully loaded before executing any JavaScript
+        window.addEventListener('DOMContentLoaded', function() {
+            // Check if elements exist before trying to use them
             const loginForm = document.getElementById('loginForm');
             const errorMessage = document.getElementById('errorMessage');
+            
+            if (!loginForm || !errorMessage) {
+                console.error('Required elements not found');
+                return;
+            }
             
             // Default admin credentials (in a real app, this would be stored securely)
             // For demo purposes only - you should change these credentials
@@ -149,8 +156,16 @@
             loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
+                const usernameInput = document.getElementById('username');
+                const passwordInput = document.getElementById('password');
+                
+                if (!usernameInput || !passwordInput) {
+                    console.error('Form inputs not found');
+                    return;
+                }
+                
+                const username = usernameInput.value;
+                const password = passwordInput.value;
                 
                 // Simple authentication
                 if (username === adminUser.username && password === adminUser.password) {
@@ -167,7 +182,9 @@
                     errorMessage.style.display = 'block';
                     
                     // Clear password field
-                    document.getElementById('password').value = '';
+                    if (passwordInput) {
+                        passwordInput.value = '';
+                    }
                 }
             });
         });

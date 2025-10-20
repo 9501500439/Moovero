@@ -440,309 +440,308 @@
     </div>
 
     <script>
-        // ===== CONFIGURATION =====
-        // !!! IMPORTANT: Never commit this file with real credentials !!!
-        const CONFIG = {
-            GITHUB_TOKEN: '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',  // Replace with your GitHub token
-            REPO: 'faisalansari-01/newmoovero',      // Format: username/repository-name
-            ADMIN_PASSWORD: 'admin123',              // Set a strong password
-            BLOG_FILE: 'data/blogs.json'             // Path to your blogs.json
-        };
+       // ===== CONFIGURATION =====
+const CONFIG = {
+    GITHUB_TOKEN: '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',
+    REPO: 'faisalansari-01/newmoovero',
+    ADMIN_PASSWORD: 'admin123',
+    BLOG_FILE: 'data/blogs.json'
+};
 
-        // ===== AUTHENTICATION =====
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is already logged in
-            if (localStorage.getItem('admin_authenticated') === 'true') {
-                showAdminDashboard();
+// ===== GLOBAL VARIABLES =====
+let blogs = [];
+let blogToDelete = null;
+
+// ===== AUTHENTICATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is already logged in
+    if (localStorage.getItem('admin_authenticated') === 'true') {
+        showAdminDashboard();
+    }
+
+    // Login form submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const password = document.getElementById('password').value;
+        if (password === CONFIG.ADMIN_PASSWORD) {
+            localStorage.setItem('admin_authenticated', 'true');
+            showAdminDashboard();
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+        }
+    });
+
+    // Logout button
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('admin_authenticated');
+        window.location.reload();
+    });
+});
+
+function showAdminDashboard() {
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'flex';
+    initializeBlogManagement();
+}
+
+// ===== BLOG MANAGEMENT =====
+function initializeBlogManagement() {
+    // DOM Elements
+    const addBlogBtn = document.getElementById('addBlogBtn');
+    const blogModal = document.getElementById('blogModal');
+    const closeModal = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const saveBlogBtn = document.getElementById('saveBlogBtn');
+    const blogForm = document.getElementById('blogForm');
+    const deleteModal = document.getElementById('deleteModal');
+    const closeDeleteModal = document.getElementById('closeDeleteModal');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const blogList = document.getElementById('blogList');
+
+    // Event Listeners
+    addBlogBtn.addEventListener('click', () => openBlogModal());
+    closeModal.addEventListener('click', () => blogModal.style.display = 'none');
+    cancelBtn.addEventListener('click', () => blogModal.style.display = 'none');
+    closeDeleteModal.addEventListener('click', () => deleteModal.style.display = 'none');
+    cancelDeleteBtn.addEventListener('click', () => deleteModal.style.display = 'none');
+    
+    saveBlogBtn.addEventListener('click', saveBlog);
+    confirmDeleteBtn.addEventListener('click', confirmDelete);
+    blogForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        saveBlog();
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === blogModal) blogModal.style.display = 'none';
+        if (e.target === deleteModal) deleteModal.style.display = 'none';
+    });
+
+    // Initialize
+    loadBlogs();
+}
+
+// Make these functions available globally
+window.openBlogModal = function(blog = null) {
+    const modalTitle = document.getElementById('modalTitle');
+    const form = document.getElementById('blogForm');
+    const blogModal = document.getElementById('blogModal');
+    
+    if (blog) {
+        modalTitle.textContent = 'Edit Blog Post';
+        document.getElementById('editId').value = blog.id;
+        document.getElementById('blogTitle').value = blog.title;
+        document.getElementById('blogExcerpt').value = blog.excerpt;
+        document.getElementById('blogContent').value = blog.content;
+        document.getElementById('blogImage').value = blog.image || '';
+        document.getElementById('blogCategory').value = blog.category || '';
+        document.getElementById('blogDate').value = blog.date ? blog.date.split('T')[0] : new Date().toISOString().split('T')[0];
+    } else {
+        modalTitle.textContent = 'Add New Blog Post';
+        form.reset();
+        document.getElementById('blogDate').value = new Date().toISOString().split('T')[0];
+    }
+    
+    blogModal.style.display = 'flex';
+};
+
+window.editBlog = function(index) {
+    openBlogModal(blogs[index]);
+};
+
+window.showDeleteConfirmation = function(index) {
+    blogToDelete = index;
+    document.getElementById('deleteModal').style.display = 'flex';
+};
+
+// ===== HELPER FUNCTIONS =====
+function loadBlogs() {
+    // First try to load from localStorage
+    const savedBlogs = localStorage.getItem('mooveroo_blogs');
+    if (savedBlogs) {
+        try {
+            blogs = JSON.parse(savedBlogs);
+            renderBlogs();
+        } catch (e) {
+            console.error('Error parsing saved blogs:', e);
+        }
+    }
+
+    // Then try to load from GitHub
+    loadBlogsFromGitHub();
+}
+
+async function loadBlogsFromGitHub() {
+    try {
+        const { GITHUB_TOKEN, REPO, BLOG_FILE } = CONFIG;
+        const apiUrl = `https://api.github.com/repos/${REPO}/contents/${BLOG_FILE}`;
+        
+        const response = await fetch(apiUrl, {
+            headers: {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Accept': 'application/vnd.github.v3+json'
             }
-
-            // Login form submission
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const password = document.getElementById('password').value;
-                if (password === CONFIG.ADMIN_PASSWORD) {
-                    localStorage.setItem('admin_authenticated', 'true');
-                    showAdminDashboard();
-                } else {
-                    document.getElementById('loginError').style.display = 'block';
-                }
-            });
-
-            // Logout button
-            document.getElementById('logoutBtn').addEventListener('click', function() {
-                localStorage.removeItem('admin_authenticated');
-                window.location.reload();
-            });
         });
 
-        function showAdminDashboard() {
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('adminDashboard').style.display = 'flex';
-            initializeBlogManagement();
-        }
-
-        // ===== BLOG MANAGEMENT =====
-        function initializeBlogManagement() {
-            // DOM Elements
-            const addBlogBtn = document.getElementById('addBlogBtn');
-            const blogModal = document.getElementById('blogModal');
-            const closeModal = document.getElementById('closeModal');
-            const cancelBtn = document.getElementById('cancelBtn');
-            const saveBlogBtn = document.getElementById('saveBlogBtn');
-            const blogForm = document.getElementById('blogForm');
-            const deleteModal = document.getElementById('deleteModal');
-            const closeDeleteModal = document.getElementById('closeDeleteModal');
-            const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-            const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-            const blogList = document.getElementById('blogList');
-
-            let blogs = [];
-            let blogToDelete = null;
-
-            // Event Listeners
-            addBlogBtn.addEventListener('click', () => openBlogModal());
-            closeModal.addEventListener('click', () => blogModal.style.display = 'none');
-            cancelBtn.addEventListener('click', () => blogModal.style.display = 'none');
-            closeDeleteModal.addEventListener('click', () => deleteModal.style.display = 'none');
-            cancelDeleteBtn.addEventListener('click', () => deleteModal.style.display = 'none');
-            
-            saveBlogBtn.addEventListener('click', saveBlog);
-            confirmDeleteBtn.addEventListener('click', confirmDelete);
-            blogForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                saveBlog();
-            });
-
-            // Close modals when clicking outside
-            window.addEventListener('click', (e) => {
-                if (e.target === blogModal) blogModal.style.display = 'none';
-                if (e.target === deleteModal) deleteModal.style.display = 'none';
-            });
-
-            // Initialize
-            loadBlogs();
-
-            // ===== FUNCTIONS =====
-            function loadBlogs() {
-                // First try to load from localStorage
-                const savedBlogs = localStorage.getItem('mooveroo_blogs');
-                if (savedBlogs) {
-                    try {
-                        blogs = JSON.parse(savedBlogs);
-                        renderBlogs();
-                    } catch (e) {
-                        console.error('Error parsing saved blogs:', e);
-                    }
-                }
-
-                // Then try to load from GitHub
-                loadBlogsFromGitHub();
-            }
-
-            async function loadBlogsFromGitHub() {
-                try {
-                    const { GITHUB_TOKEN, REPO, BLOG_FILE } = CONFIG;
-                    const apiUrl = `https://api.github.com/repos/${REPO}/contents/${BLOG_FILE}`;
-                    
-                    const response = await fetch(apiUrl, {
-                        headers: {
-                            'Authorization': `token ${GITHUB_TOKEN}`,
-                            'Accept': 'application/vnd.github.v3+json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        const content = JSON.parse(atob(data.content));
-                        if (content && Array.isArray(content.posts)) {
-                            blogs = content.posts;
-                            localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
-                            renderBlogs();
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error loading blogs from GitHub:', error);
-                }
-            }
-
-            function renderBlogs() {
-                if (!blogs.length) {
-                    blogList.innerHTML = '<p>No blog posts found. Click "Add New Post" to get started.</p>';
-                    return;
-                }
-
-                blogList.innerHTML = blogs.map((blog, index) => `
-                    <div class="blog-card" data-id="${blog.id}">
-                        <div class="blog-image" style="background-image: url('${blog.image || 'https://via.placeholder.com/400x200?text=No+Image'}')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">${blog.title}</h3>
-                            <p class="blog-excerpt">${blog.excerpt}</p>
-                            <div class="blog-meta">
-                                <span>${new Date(blog.date).toLocaleDateString()}</span>
-                                <span>${blog.category || 'Uncategorized'}</span>
-                            </div>
-                            <div class="blog-actions">
-                                <button class="action-btn edit-btn" onclick="editBlog(${index})">
-                                    <i class="fas fa-edit"></i> Edit
-                                </button>
-                                <button class="action-btn delete-btn" onclick="showDeleteConfirmation(${index})">
-                                    <i class="fas fa-trash"></i> Delete
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            function openBlogModal(blog = null) {
-                const modalTitle = document.getElementById('modalTitle');
-                const form = document.getElementById('blogForm');
-                
-                if (blog) {
-                    modalTitle.textContent = 'Edit Blog Post';
-                    document.getElementById('editId').value = blog.id;
-                    document.getElementById('blogTitle').value = blog.title;
-                    document.getElementById('blogExcerpt').value = blog.excerpt;
-                    document.getElementById('blogContent').value = blog.content;
-                    document.getElementById('blogImage').value = blog.image || '';
-                    document.getElementById('blogCategory').value = blog.category || '';
-                    document.getElementById('blogDate').value = blog.date ? blog.date.split('T')[0] : new Date().toISOString().split('T')[0];
-                } else {
-                    modalTitle.textContent = 'Add New Blog Post';
-                    form.reset();
-                    document.getElementById('blogDate').value = new Date().toISOString().split('T')[0];
-                }
-                
-                blogModal.style.display = 'flex';
-            }
-
-            function saveBlog() {
-                const id = document.getElementById('editId').value || Date.now().toString();
-                const title = document.getElementById('blogTitle').value;
-                const excerpt = document.getElementById('blogExcerpt').value;
-                const content = document.getElementById('blogContent').value;
-                const image = document.getElementById('blogImage').value;
-                const category = document.getElementById('blogCategory').value;
-                const date = document.getElementById('blogDate').value;
-
-                const blogPost = {
-                    id,
-                    title,
-                    excerpt,
-                    content,
-                    image,
-                    category,
-                    date,
-                    timestamp: new Date().toISOString()
-                };
-
-                const blogIndex = blogs.findIndex(blog => blog.id === id);
-                if (blogIndex > -1) {
-                    blogs[blogIndex] = blogPost;
-                } else {
-                    blogs.unshift(blogPost);
-                }
-
-                // Save to localStorage
+        if (response.ok) {
+            const data = await response.json();
+            const content = JSON.parse(atob(data.content));
+            if (content && Array.isArray(content.posts)) {
+                blogs = content.posts;
                 localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
-                
-                // Save to GitHub
-                saveToGitHub(blogs)
-                    .then(() => {
-                        blogModal.style.display = 'none';
-                        renderBlogs();
-                    })
-                    .catch(error => {
-                        console.error('Error saving to GitHub:', error);
-                        alert('Blog saved locally but failed to update GitHub: ' + error.message);
-                    });
-            }
-
-            function showDeleteConfirmation(index) {
-                blogToDelete = index;
-                deleteModal.style.display = 'flex';
-            }
-
-            function confirmDelete() {
-                if (blogToDelete !== null) {
-                    blogs.splice(blogToDelete, 1);
-                    
-                    // Save to localStorage
-                    localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
-                    
-                    // Save to GitHub
-                    saveToGitHub(blogs)
-                        .then(() => {
-                            deleteModal.style.display = 'none';
-                            renderBlogs();
-                        })
-                        .catch(error => {
-                            console.error('Error deleting from GitHub:', error);
-                            alert('Blog deleted locally but failed to update GitHub: ' + error.message);
-                        });
-                    
-                    blogToDelete = null;
-                }
-            }
-
-            // Make these functions available globally for inline event handlers
-            window.editBlog = function(index) {
-                openBlogModal(blogs[index]);
-            };
-
-            window.showDeleteConfirmation = function(index) {
-                blogToDelete = index;
-                deleteModal.style.display = 'flex';
-            };
-        }
-
-        // ===== GITHUB INTEGRATION =====
-        async function saveToGitHub(blogs) {
-            const { GITHUB_TOKEN, REPO, BLOG_FILE } = CONFIG;
-            const apiUrl = `https://api.github.com/repos/${REPO}/contents/${BLOG_FILE}`;
-            
-            try {
-                // 1. Get the current file to get its SHA (required for updates)
-                const getResponse = await fetch(apiUrl, {
-                    headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                let sha = '';
-                if (getResponse.ok) {
-                    const data = await getResponse.json();
-                    sha = data.sha;
-                }
-
-                // 2. Create or update the file
-                const response = await fetch(apiUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Update blog posts via admin panel',
-                        content: btoa(JSON.stringify({ posts: blogs }, null, 2)),
-                        sha: sha,
-                        branch: 'main'
-                    })
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.message || 'Failed to save to GitHub');
-                }
-
-                return await response.json();
-            } catch (error) {
-                console.error('GitHub API Error:', error);
-                throw error;
+                renderBlogs();
             }
         }
+    } catch (error) {
+        console.error('Error loading blogs from GitHub:', error);
+    }
+}
+
+function renderBlogs() {
+    const blogList = document.getElementById('blogList');
+    if (!blogList) return;
+
+    if (!blogs.length) {
+        blogList.innerHTML = '<p>No blog posts found. Click "Add New Post" to get started.</p>';
+        return;
+    }
+
+    blogList.innerHTML = blogs.map((blog, index) => `
+        <div class="blog-card" data-id="${blog.id}">
+            <div class="blog-image" style="background-image: url('${blog.image || 'https://via.placeholder.com/400x200?text=No+Image'}')"></div>
+            <div class="blog-content">
+                <h3 class="blog-title">${blog.title}</h3>
+                <p class="blog-excerpt">${blog.excerpt}</p>
+                <div class="blog-meta">
+                    <span>${new Date(blog.date).toLocaleDateString()}</span>
+                    <span>${blog.category || 'Uncategorized'}</span>
+                </div>
+                <div class="blog-actions">
+                    <button class="action-btn edit-btn" onclick="editBlog(${index})">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="action-btn delete-btn" onclick="showDeleteConfirmation(${index})">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function saveBlog() {
+    const id = document.getElementById('editId').value || Date.now().toString();
+    const title = document.getElementById('blogTitle').value;
+    const excerpt = document.getElementById('blogExcerpt').value;
+    const content = document.getElementById('blogContent').value;
+    const image = document.getElementById('blogImage').value;
+    const category = document.getElementById('blogCategory').value;
+    const date = document.getElementById('blogDate').value;
+
+    const blogPost = {
+        id,
+        title,
+        excerpt,
+        content,
+        image,
+        category,
+        date,
+        timestamp: new Date().toISOString()
+    };
+
+    const blogIndex = blogs.findIndex(blog => blog.id === id);
+    if (blogIndex > -1) {
+        blogs[blogIndex] = blogPost;
+    } else {
+        blogs.unshift(blogPost);
+    }
+
+    // Save to localStorage
+    localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
+    
+    // Save to GitHub
+    saveToGitHub(blogs)
+        .then(() => {
+            document.getElementById('blogModal').style.display = 'none';
+            renderBlogs();
+        })
+        .catch(error => {
+            console.error('Error saving to GitHub:', error);
+            alert('Blog saved locally but failed to update GitHub: ' + error.message);
+        });
+}
+
+function confirmDelete() {
+    if (blogToDelete !== null) {
+        blogs.splice(blogToDelete, 1);
+        
+        // Save to localStorage
+        localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
+        
+        // Save to GitHub
+        saveToGitHub(blogs)
+            .then(() => {
+                document.getElementById('deleteModal').style.display = 'none';
+                renderBlogs();
+            })
+            .catch(error => {
+                console.error('Error deleting from GitHub:', error);
+                alert('Blog deleted locally but failed to update GitHub: ' + error.message);
+            });
+        
+        blogToDelete = null;
+    }
+}
+
+// ===== GITHUB INTEGRATION =====
+async function saveToGitHub(blogs) {
+    const { GITHUB_TOKEN, REPO, BLOG_FILE } = CONFIG;
+    const apiUrl = `https://api.github.com/repos/${REPO}/contents/${BLOG_FILE}`;
+    
+    try {
+        // 1. Get the current file to get its SHA (required for updates)
+        const getResponse = await fetch(apiUrl, {
+            headers: {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+        
+        let sha = '';
+        if (getResponse.ok) {
+            const data = await getResponse.json();
+            sha = data.sha;
+        }
+
+        // 2. Create or update the file
+        const response = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            body: JSON.stringify({
+                message: 'Update blog posts via admin panel',
+                content: btoa(JSON.stringify({ posts: blogs }, null, 2)),
+                sha: sha,
+                branch: 'main'
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Failed to save to GitHub');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('GitHub API Error:', error);
+        throw error;
+    }
+}
     </script>
 </body>
 </html>

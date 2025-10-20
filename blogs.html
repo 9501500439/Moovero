@@ -260,9 +260,14 @@
                 // Get posts from localStorage or use default posts if none exist
                 let posts = [];
                 try {
-                    const storedPosts = localStorage.getItem('blogPosts');
+                    // Try to get posts from either key
+                    const storedPosts = localStorage.getItem('mooveroo_blogs') || localStorage.getItem('blogPosts');
                     if (storedPosts) {
                         posts = JSON.parse(storedPosts);
+                        // If we got posts from 'blogPosts' but not 'mooveroo_blogs', sync them
+                        if (localStorage.getItem('blogPosts') && !localStorage.getItem('mooveroo_blogs')) {
+                            localStorage.setItem('mooveroo_blogs', storedPosts);
+                        }
                     } else {
                         // Default posts if no posts in localStorage
                         posts = [

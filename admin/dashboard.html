@@ -440,7 +440,7 @@
     </div>
 
     <script>
-     <script>
+
     // ===== CONFIGURATION =====
     const CONFIG = {
         GITHUB_TOKEN: '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',
@@ -730,7 +730,7 @@
             for (let i = 0; i < len; i++) {
                 binary += String.fromCharCode(bytes[i]);
             }
-            const base64Content = window.btoa(binary);
+            const base64Content = btoa(unescape(encodeURIComponent(binary)));
 
             // 3. Create or update the file
             const response = await fetch(apiUrl, {
@@ -759,6 +759,7 @@
             throw error;
         }
     }
+
 </script>
 </body>
 </html>

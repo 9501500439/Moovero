@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "title": "Ultimate Moving Day Checklist",
+    "content": "Avoid last‑minute chaos with a step‑by‑step checklist from packing to final inspection.",
+    "excerpt": "Avoid last‑minute chaos with a step‑by‑step checklist from packing to final inspection.",
+    "date": "Feb 2025",
+    "readTime": "5 min read",
+    "image": "assets/packing.jpg",
+    "imageAlt": "Room with boxes packed for moving",
+    "categories": "packing-moving,tips",
+    "tags": "checklist,packing-materials,moving-day"
+  },
+  {
+    "id": "2",
+    "title": "How to Choose the Right Vehicle Transport",
+    "content": "Open vs enclosed carriers, rail, or chauffeur‑driven: compare options by budget and timeline.",
+    "excerpt": "Open vs enclosed carriers, rail, or chauffeur‑driven: compare options by budget and timeline.",
+    "date": "Jan 2025",
+    "readTime": "6 min read",
+    "image": "assets/vehicle.jpg",
+    "imageAlt": "Vehicle being transported on a carrier",
+    "categories": "vehicle-relocation,tips",
+    "tags": "route-planning,gps-tracking,insurance"
+  },
+  {
+    "id": "3",
+    "title": "Pet Relocation: What to Prepare",
+    "content": "From vet approvals to IATA crates, make travel calm and safe for your furry friend.",
+    "excerpt": "From vet approvals to IATA crates, make travel calm and safe for your furry friend.",
+    "date": "Dec 2024",
+    "readTime": "4 min read",
+    "image": "assets/pet.jpg",
+    "imageAlt": "Happy dog ready for travel",
+    "categories": "pet-relocation,tips",
+    "tags": "pet-travel,checklist"
+  },
+  {
+    "id": "4",
+    "title": "Packing Materials You Actually Need",
+    "content": "Bubble wrap, crates, labels, wardrobe boxes: a practical breakdown for every room.",
+    "excerpt": "Bubble wrap, crates, labels, wardrobe boxes: a practical breakdown for every room.",
+    "date": "Nov 2024",
+    "readTime": "7 min read",
+    "image": "assets/packing-labour.jpg",
+    "imageAlt": "Team packing household items",
+    "categories": "packing-labour,packing-moving",
+    "tags": "packing-materials,storage"
+  },
+  {
+    "id": "5",
+    "title": "Moveroo Expands City Coverage",
+    "content": "We are now serving more cities with improved micro‑delivery options for relocation.",
+    "excerpt": "We are now serving more cities with improved micro‑delivery options for relocation.",
+    "date": "Oct 2024",
+    "readTime": "2 min read",
+    "image": "assets/office1.jpg",
+    "imageAlt": "Moveroo team working",
+    "categories": "news",
+    "tags": "company"
+  },
+  {
+    "id": "6",
+    "title": "Do You Need Moving Insurance?",
+    "content": "When it makes sense, what it covers, and how to document your items the smart way.",
+    "excerpt": "When it makes sense, what it covers, and how to document your items the smart way.",
+    "date": "Sep 2024",
+    "readTime": "4 min read",
+    "image": "assets/house.jpg",
+    "imageAlt": "Packed living room",
+    "categories": "packing-moving,tips",
+    "tags": "insurance,checklist"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "name": "moveroo-blog",
+  "version": "1.0.0",
+  "description": "Moveroo blog with admin panel",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "cms": "npx decap-server"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.0",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "decap-cms": "^3.0.0",
+    "decap-cms-app": "^3.0.0",
+    "netlify-cms": "^2.10.0",
+    "netlify-cms-app": "^2.15.0"
+  }
+}

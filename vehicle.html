@@ -559,18 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         </section>
 
-    <!-- Footer Section -->
-    <footer class="footer" style="padding-top: 8px; padding-bottom: 8px;">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 Moveroo. All Rights Reserved.</p>
-                <div class="footer-legal">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms and Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+   
 
     <script src="script.js"></script>
         <script>
@@ -800,47 +789,166 @@ document.addEventListener('DOMContentLoaded', function() {
     </style>
 </head>
 <body>
-    <div class="vehicle-hero">
-        <h1><i class="fas fa-car"></i> Vehicle Relocation</h1>
-        <p>Moveroo offers safe and reliable vehicle relocation services for cars and two-wheelers across cities and states. Our expert team ensures secure transportation, from doorstep pickup and documentation to safe loading, transit tracking, and on-time delivery. Move your wheels with confidence!</p>
-    </div>
-    <div class="container">
-        <div class="vehicle-section">
-            <div class="vehicle-card">
-                <img src="assets/twovheller.png" alt="Professional vehicle transport services">
-                <h2><i class="fas fa-motorcycle"></i> Two Wheeler Relocation</h2>
-                <p>End-to-end two wheeler relocation for bikes and scooters, ensuring safety, convenience, and peace of mind. Pickup, packing, and secure delivery tailored to your needs and budget.</p>
-                <ul>
-                    <li><i class="fas fa-train"></i> By Train: IRCTC-approved rail transport for cost-effective long-distance moves.</li>
-                    <li><i class="fas fa-truck"></i> By Road: Specialized bike carrier or mini-truck for city-to-city or interstate moves.</li>
-                </ul>
-                <ul class="features-list">
-                    <li>Doorstep pickup and delivery</li>
-                    <li>Professional packing and handling</li>
-                    <li>Choice of road or rail transport</li>
-                    <li>Insurance and tracking available</li>
-                    <li>Hassle-free documentation</li>
-                </ul>
-                <a href="#contact" class="cta-button">Get a Free Quote</a>
-            </div>
-            <div class="vehicle-card">
-                <img src="assets/vehicle.jpg" alt="Car relocation services">
-                <h2><i class="fas fa-car"></i> Four Wheeler Relocation</h2>
-                <p>Convenient and safe relocation for your car, SUV, or luxury vehicle. Choose between chauffeur-driven or carrier transport, with full insurance and real-time tracking.</p>
-                <ul>
-                    <li><i class="fas fa-user-tie"></i> Chauffeur Driven: Professional driver delivers your car to your new city/address.</li>
-                    <li><i class="fas fa-truck-loading"></i> Carrier: Open/closed car carrier for long-distance or multi-car moves.</li>
-                </ul>
-                <ul class="features-list">
-                    <li>Door-to-door service</li>
-                    <li>Choice of chauffeur or carrier</li>
-                    <li>Secure loading and transit</li>
-                    <li>Insurance and real-time tracking</li>
-                    <li>Experienced, trusted team</li>
-                </ul>
-                <a href="#contact" class="cta-button">Get a Free Quote</a>
+    <!-- Hero Section -->
+    <div class="vehicle-hero" style="margin-top: 80px; background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 4rem 1.5rem; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem; font-weight: 700;"><i class="fas fa-car" style="margin-right: 15px; color: #4299e1;"></i> Vehicle Relocation Services</h1>
+            <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 2rem; line-height: 1.6;">
+                Safe, secure, and hassle-free vehicle transportation across India. Whether you're moving your two-wheeler or four-wheeler, we ensure door-to-door service with complete peace of mind.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                <a href="#two-wheeler" class="cta-button" style="background: #4299e1; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center;">
+                    <i class="fas fa-motorcycle" style="margin-right: 10px;"></i> Two Wheeler
+                </a>
+                <a href="#four-wheeler" class="cta-button" style="background: #38b2ac; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center;">
+                    <i class="fas fa-car" style="margin-right: 10px;"></i> Four Wheeler
+                </a>
             </div>
         </div>
+    </div>
+
+    <!-- Vehicle Services Section -->
+    <div class="container" style="padding: 4rem 1.5rem;">
+        <!-- Two Wheeler Section -->
+        <div id="two-wheeler" class="vehicle-service-card" style="background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 3rem;">
+            <div style="display: flex; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px; padding: 2.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="background: #ebf8ff; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <i class="fas fa-motorcycle" style="font-size: 1.8rem; color: #3182ce;"></i>
+                        </div>
+                        <h2 style="font-size: 1.8rem; color: #2d3748; margin: 0;">Two Wheeler Relocation</h2>
+                    </div>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 2rem;">
+                        Professional two-wheeler transportation with end-to-end services including pickup, secure packing, and timely delivery. We handle everything from documentation to final delivery.
+                    </p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #2d3748; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-truck" style="margin-right: 10px; color: #3182ce;"></i> Transport Options
+                        </h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; flex: 1; min-width: 200px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-train" style="color: #3182ce; margin-right: 10px;"></i>
+                                    <h4 style="margin: 0; color: #2d3748;">By Train</h4>
+                                </div>
+                                <p style="color: #4a5568; font-size: 0.95rem; margin: 0;">IRCTC-approved rail transport for cost-effective long-distance moves.</p>
+                            </div>
+                            <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; flex: 1; min-width: 200px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-truck" style="color: #3182ce; margin-right: 10px;"></i>
+                                    <h4 style="margin: 0; color: #2d3748;">By Road</h4>
+                                </div>
+                                <p style="color: #4a5568; font-size: 0.95rem; margin: 0;">Specialized bike carrier or mini-truck for city-to-city or interstate moves.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #2d3748; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-star" style="margin-right: 10px; color: #3182ce;"></i> Key Features
+                        </h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>Doorstep Pickup & Delivery</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>Professional Packing</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>Insurance Coverage</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>Real-time Tracking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="cta-button" style="background: #3182ce; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: all 0.3s ease;">
+                        Get Free Quote <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    </a>
+                </div>
+                <div style="flex: 1; min-width: 300px; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+                    <img src="assets/twovheller.png" alt="Two wheeler relocation" style="max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Four Wheeler Section -->
+        <div id="four-wheeler" class="vehicle-service-card" style="background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 3rem;">
+            <div style="display: flex; flex-wrap: wrap-reverse;">
+                <div style="flex: 1; min-width: 300px; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+                    <img src="assets/vehicle.jpg" alt="Four wheeler relocation" style="max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+                </div>
+                <div style="flex: 1; min-width: 300px; padding: 2.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="background: #ebf8ff; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <i class="fas fa-car" style="font-size: 1.8rem; color: #3182ce;"></i>
+                        </div>
+                        <h2 style="font-size: 1.8rem; color: #2d3748; margin: 0;">Four Wheeler Relocation</h2>
+                    </div>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 2rem;">
+                        Premium car relocation services for all types of vehicles. Whether you're moving a hatchback, sedan, SUV, or luxury car, we provide safe and secure transportation with comprehensive insurance coverage.
+                    </p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #2d3748; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-truck" style="margin-right: 10px; color: #3182ce;"></i> Transport Options
+                        </h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; flex: 1; min-width: 200px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-user-tie" style="color: #3182ce; margin-right: 10px;"></i>
+                                    <h4 style="margin: 0; color: #2d3748;">Chauffeur Driven</h4>
+                                </div>
+                                <p style="color: #4a5568; font-size: 0.95rem; margin: 0;">Professional driver delivers your car to your new location safely and securely.</p>
+                            </div>
+                            <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; flex: 1; min-width: 200px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-truck-loading" style="color: #3182ce; margin-right: 10px;"></i>
+                                    <h4 style="margin: 0; color: #2d3748;">Car Carrier</h4>
+                                </div>
+                                <p style="color: #4a5568; font-size: 0.95rem; margin: 0;">Open or enclosed carriers for single or multiple vehicle transportation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #2d3748; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-star" style="margin-right: 10px; color: #3182ce;"></i> Key Features
+                        </h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>Door-to-Door Service</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>24/7 Vehicle Tracking</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>Full Insurance Coverage</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: #4a5568;">
+                                <i class="fas fa-check-circle" style="color: #38a169; margin-right: 8px;"></i>
+                                <span>No Hidden Charges</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="cta-button" style="background: #3182ce; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: all 0.3s ease;">
+                        Get Free Quote <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="vehicle-section">
             <div class="vehicle-card" style="flex:2;max-width:100%;">
                 <h2 style="color:var(--accent-blue-dark);"><i class="fas fa-info-circle"></i> Why Vehicle Relocation Needs a Specialist</h2>
@@ -969,272 +1077,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
     <script src="script.js"></script>
-</body>
-</html>
-<!-- Footer (Redesigned) -->
-    <footer class="footer-modern">
-      <style>
-        .footer-modern {
-          background: #0c172e;
-          border-top: 1.5px solid #232946;
-          color: #e0e0e0;
-          font-family: 'Montserrat', Arial, sans-serif;
-          min-height: 120px;
-          padding-top: 20px;
-          padding-bottom: 45px;
-        }
-        .footer-modern .footer-main {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 36px;
-          justify-content: space-between;
-          align-items: flex-start;
-          padding: 44px 0 18px 0;
-        }
-        .footer-modern .footer-col {
-          flex: 1 1 220px;
-          min-width: 220px;
-          max-width: 340px;
-        }
-        .footer-modern .footer-about h3 {
-          color: #7be495;
-          font-size: 1.3em;
-          margin-bottom: 8px;
-          font-weight: 700;
-        }
-        .footer-modern .footer-about p {
-          color: #e0e0e0;
-          font-size: 1.05em;
-          margin-bottom: 14px;
-        }
-        .footer-modern .social-links {
-          display: flex;
-          gap: 12px;
-          margin-top: 8px;
-        }
-        .footer-modern .social-links a {
-          color: #b0b8c1;
-          font-size: 1.2em;
-          transition: color 0.2s;
-        }
-        .footer-modern .social-links a:hover {
-          color: #7be495;
-        }
-        .footer-modern .footer-links h4,
-        .footer-modern .footer-newsletter h4 {
-          color: #fff;
-          font-size: 1.13em;
-          margin-bottom: 10px;
-          font-weight: 700;
-        }
-        .footer-modern .footer-links ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        .footer-modern .footer-links li {
-          margin-bottom: 7px;
-        }
-        .footer-modern .footer-links a {
-          color: #b0b8c1;
-          text-decoration: none;
-          font-size: 1.04em;
-          transition: color 0.2s;
-        }
-        .footer-modern .footer-links a:hover {
-          color: #7be495;
-        }
-        .footer-modern .footer-newsletter p {
-          color: #e0e0e0;
-          font-size: 1.01em;
-          margin-bottom: 10px;
-        }
-        .footer-modern .newsletter-form {
-          display: flex;
-          gap: 6px;
-        }
-        .footer-modern .newsletter-form input[type="email"] {
-          padding: 8px 12px;
-          border: 1px solid #444;
-          background: #232946;
-          color: #fff;
-          border-radius: 5px;
-          font-size: 1em;
-          flex: 1;
-        }
-        .footer-modern .newsletter-form button {
-          background: #7be495;
-          color: #181c24;
-          border: none;
-          border-radius: 5px;
-          padding: 8px 14px;
-          font-size: 1.1em;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-        .footer-modern .newsletter-form button:hover {
-          background: #5fd68b;
-        }
-        .footer-modern .footer-pay-legal {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 24px;
-          border-top: 1px solid #232946;
-          padding-top: 18px;
-          margin-top: 10px;
-        }
-        .footer-modern .footer-legal {
-          font-size: 0.99em;
-          color: #b0b8c1;
-          margin-bottom: 8px;
-        }
-        .footer-modern .footer-legal a {
-          color: #b0b8c1;
-          text-decoration: none;
-          margin-right: 8px;
-        }
-        .footer-modern .footer-legal a:hover {
-          color: #7be495;
-        }
-        .footer-modern .legal-info {
-          font-size: 0.97em;
-          color: #fff;
-          margin-bottom: 12px;
-          margin-top: 18px;
-          letter-spacing: 0.01em;
-        }
-        .footer-modern .footer-payment {
-          min-width: 200px;
-          text-align: right;
-        }
-        .footer-modern .footer-payment-title {
-          font-size: 1.05em;
-          color: #fff;
-          font-weight: 600;
-          margin-bottom: 6px;
-        }
-        .footer-modern .footer-payment-icons {
-          display: flex;
-          gap: 10px;
-          justify-content: flex-end;
-          align-items: center;
-        }
-        .footer-modern .footer-payment-icons img {
-          height: 28px;
-          filter: brightness(0.95) contrast(1.1);
-        }
-        .footer-modern .footer-payment-note {
-          font-size: 0.97em;
-          color: #b0b8c1;
-          margin-top: 4px;
-        }
-        .footer-modern .footer-copyright {
-          text-align: center;
-          color: #b0b8c1;
-          font-size: 1em;
-          margin: 22px 0 8px 0;
-          border-top: 1px solid #232946;
-          padding-top: 12px;
-          background: none !important;
-        }
-        @media (max-width: 900px) {
-          .footer-modern .footer-main,
-          .footer-modern .footer-pay-legal {
-            flex-direction: column;
-            gap: 18px;
-          }
-          .footer-modern .footer-payment {
-            text-align: left;
-          }
-        }
-        @media (max-width: 600px) {
-          .footer-modern {
-            padding-top: 18px;
-            padding-bottom: 18px;
-          }
-          .footer-modern .footer-main {
-            flex-direction: column;
-            gap: 12px;
-            padding: 18px 0 8px 0;
-          }
-          .footer-modern .footer-col {
-            min-width: 0;
-            max-width: 100%;
-            width: 100%;
-            margin-bottom: 18px;
-          }
-          .footer-modern .footer-pay-legal {
-            flex-direction: column;
-            gap: 10px;
-            padding-top: 10px;
-            margin-top: 0;
-          }
-          .footer-modern .legal-info {
-            padding: 8px 8px 8px 8px;
-            font-size: 0.95em;
-            border-radius: 6px;
-            margin-top: 10px;
-            margin-bottom: 8px;
-            word-break: break-word;
-          }
-          .footer-modern .footer-copyright {
-            font-size: 0.95em;
-            margin: 12px 0 4px 0;
-            padding-top: 8px;
-          }
-        }
-      </style>
-      <div class="container">
-        <div class="footer-main">
-          <div class="footer-col footer-about">
-            <h3>Moveroo</h3>
-            <p>Making your move easy and stress-free with professional moving services you can trust.</p>
-            Address
-C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur            
-          </div>
-          <div class="footer-col footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="process.html">Process</a></li>
-              <li><a href="blogs.html">Blogs</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="payment-option.html">Payment Option</a></li>
-             
-            </ul>
-          </div>
-          <div class="footer-col footer-newsletter">
-            <h4>Newsletter</h4>
-            <p>Subscribe to our newsletter for moving tips and special offers.</p>
-            <form class="newsletter-form">
-              <input type="email" placeholder="Your Email">
-              <button type="submit"><i class="fas fa-paper-plane"></i></button>
-            </form>
-            <div class="social-links">
-              <a href="https://www.facebook.com/share/1ETK5wQwfT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://x.com/teammoveroo?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="https://www.instagram.com/moveroo.in?igsh=Y3VxNmx0aTUyYXho" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/moveroo-in/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-pay-legal">
-          <div style="flex: 10; min-width: 220px;">
-         
-            <div class="legal-info" id="legal-info">
-              <strong>Legal Information:</strong> Moveroo is a division of Saranity Solutions Private Limited. All services are subject to applicable laws and regulations. For legal queries, contact <a href="mailto:managingdirector@saranitysolutions.com" style="color:#bfa100; font-weight:600;">managingdirector@saranitysolutions.com</a>.
-            </div>
-          </div>
-                  </div>
-        <div class="footer-copyright">
-          &copy; 2025 Moveroo. All Rights Reserved.
-        </div>
-      </div>
-    </footer>
 
 <style>
 #whatsapp-float {
@@ -1259,7 +1101,35 @@ C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur
 #whatsapp-float img {
     display: block;
 }
+
+/* Full width footer styles */
+#footer-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+#footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure no horizontal scrollbar appears */
+body {
+    overflow-x: hidden;
+}
 </style>
-<script src="js/quote-popup.js"></script>
-</body>
+<br>
+
+    <!-- Footer will be loaded here by footer.js -->
+    <div id="footer-wrapper">
+        <div id="footer"></div>
+    </div>
+    <script src="js/footer.js"></script>
+    </body>
 </html>

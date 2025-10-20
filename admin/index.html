@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+      }
+      #nc-root {
+        position: relative;
+        max-width: 100%;
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Initialize Decap CMS
+      CMS.init({
+        config: {
+          backend: {
+            name: 'git-gateway',
+            branch: 'main',
+          },
+          load_config_file: false,
+          media_folder: 'assets/uploads',
+          public_folder: '/assets/uploads',
+          collections: [
+            {
+              name: 'blog',
+              label: 'Blog',
+              folder: 'src/blog',
+              create: true,
+              slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+              fields: [
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Publish Date', name: 'date', widget: 'datetime' },
+                { label: 'Featured Image', name: 'image', widget: 'image' },
+                { label: 'Excerpt', name: 'excerpt', widget: 'text' },
+                { label: 'Categories', name: 'categories', widget: 'list', allow_add: true },
+                { label: 'Tags', name: 'tags', widget: 'list', allow_add: true },
+                { label: 'Body', name: 'body', widget: 'markdown' }
+              ]
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>

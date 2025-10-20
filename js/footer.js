@@ -258,7 +258,7 @@ class MoverooFooter {
           <div class="footer-col footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><a href="admin/index.html">Packing & Moving</a></li>
+             
               <li><a href="vehicle.html">Vehicle Relocation</a></li>
               <li><a href="pet.html">Pet Relocation</a></li>
               <li><a href="packing-labour.html">Packing Labour</a></li>

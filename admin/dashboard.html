@@ -148,8 +148,17 @@
     </div>
 
     <script>
+        // ===== CONFIGURATION =====
+// !!! IMPORTANT: Never commit this file with real credentials !!!
+const CONFIG = {
+    GITHUB_TOKEN: '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',  // Replace with your GitHub token
+    REPO: 'faisalansari-01/newmoovero',      // Format: username/repository-name
+    ADMIN_PASSWORD: 'moveroo123', // Set a strong password
+    BLOG_FILE: 'data/blogs.json'         // Path to your blogs.json
+};
+// ========================
         // Admin Password (In a real app, this should be handled server-side)
-        const ADMIN_PASSWORD = 'your-secure-password-123'; // CHANGE THIS TO A SECURE PASSWORD
+        const ADMIN_PASSWORD = 'moveroo123'; // CHANGE THIS TO A SECURE PASSWORD
 
         // Check authentication on page load
         document.addEventListener('DOMContentLoaded', function() {

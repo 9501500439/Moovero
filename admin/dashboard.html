@@ -579,11 +579,15 @@
             
             // Get blogs from localStorage
             const getBlogs = function() {
-                return JSON.parse(localStorage.getItem('blogPosts') || '[]');
+                // Check both keys for backward compatibility
+                const blogs = localStorage.getItem('mooveroo_blogs') || localStorage.getItem('blogPosts') || '[]';
+                return JSON.parse(blogs);
             };
             
             // Save blogs to localStorage
             const saveBlogs = function(blogs) {
+                // Save to both keys for backward compatibility
+                localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
                 localStorage.setItem('blogPosts', JSON.stringify(blogs));
             };
             
@@ -818,9 +822,11 @@
                 
                 document.body.appendChild(notification);
                 
-                // Update the blogs.html data by saving the blogs to a shared localStorage key
-                // This allows the public blog page to access the same data
-                localStorage.setItem('mooveroo_public_blogs', localStorage.getItem('mooveroo_blogs'));
+                // Update the blogs data in localStorage
+                // This ensures the public blog page can access the latest data
+                const blogs = getBlogs();
+                localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
+                localStorage.setItem('blogPosts', JSON.stringify(blogs));
                 
                 setTimeout(function() {
                     notification.style.opacity = '0';

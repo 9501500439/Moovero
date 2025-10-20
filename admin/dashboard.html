@@ -23,81 +23,725 @@
         body { 
             margin: 0; 
             font-family: 'Montserrat', sans-serif; 
-            color: var(--text-dark); 
+            color: var(--text-dark);
             background: #f8f9fa; 
+        }
+        .container {
             display: flex;
             min-height: 100vh;
         }
-        /* ... (other CSS styles remain the same) ... */
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--brand-dark);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .logo {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .logo h2 {
+            margin: 0;
+            color: white;
+        }
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.1);
+        }
+        .nav-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        .header h1 {
+            margin: 0;
+            color: var(--brand-primary);
+        }
+        .btn {
+            background: var(--brand-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn i {
+            margin-right: 8px;
+        }
+        .btn-danger {
+            background: #dc3545;
+        }
+        /* Blog List */
+        .blog-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .blog-image {
+            height: 180px;
+            background: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        .blog-content {
+            padding: 20px;
+        }
+        .blog-title {
+            margin: 0 0 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .blog-excerpt {
+            color: var(--text-mid);
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        .blog-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: white;
+            display: flex;
+            align-items: center;
+        }
+        .action-btn i {
+            margin-right: 5px;
+        }
+        .edit-btn {
+            color: var(--brand-primary);
+            border-color: var(--brand-primary);
+        }
+        .delete-btn {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h3 {
+            margin: 0;
+            color: var(--brand-primary);
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        /* Login Form */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+        .login-box {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+        .login-logo {
+            margin-bottom: 30px;
+        }
+        .login-logo h1 {
+            margin: 0;
+            color: var(--brand-primary);
+        }
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--brand-primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-error {
+            color: #dc3545;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .blog-list {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Login Form -->
-    <div id="loginForm" style="max-width: 400px; margin: 100px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); text-align: center;">
-        <h2>Admin Login</h2>
-        <div style="margin: 20px 0;">
-            <input type="password" id="adminPassword" placeholder="Enter Admin Password" style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
-            <button id="loginBtn" style="background: #1a4b8c; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%;">Login</button>
+    <div id="loginSection" class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <h1>Moveroo Admin</h1>
+                <p>Sign in to your account</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn">Sign In</button>
+                <div id="loginError" class="login-error">Incorrect password. Please try again.</div>
+            </form>
         </div>
-        <div id="loginError" style="color: red; margin-top: 10px; display: none;">Incorrect password. Please try again.</div>
     </div>
 
-    <!-- Admin Content (initially hidden) -->
-    <div id="adminContent" style="display: none; width: 100%;">
-        <!-- Sidebar and main content will be shown after login -->
+    <!-- Admin Dashboard (initially hidden) -->
+    <div id="adminDashboard" class="container" style="display: none;">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Moveroo</h2>
+                <p>Admin Panel</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </li>
+                <li class="nav-item" data-section="blogs">
+                    <i class="fas fa-newspaper"></i> Blog Posts
+                </li>
+                <li class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i> Settings
+                </li>
+                <li class="nav-item" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Blog Posts</h1>
+                <button id="addBlogBtn" class="btn">
+                    <i class="fas fa-plus"></i> Add New Post
+                </button>
+            </div>
+
+            <!-- Blog List -->
+            <div id="blogList" class="blog-list">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New Blog Post</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="blogForm">
+                    <input type="hidden" id="editId">
+                    <div class="form-group">
+                        <label for="blogTitle">Title</label>
+                        <input type="text" id="blogTitle" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogExcerpt">Excerpt</label>
+                        <textarea id="blogExcerpt" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogContent">Content</label>
+                        <textarea id="blogContent" class="form-control" rows="6" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogImage">Image URL</label>
+                        <input type="text" id="blogImage" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="blogCategory">Category</label>
+                        <input type="text" id="blogCategory" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="blogDate">Date</label>
+                        <input type="date" id="blogDate" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelBtn">Cancel</button>
+                <button class="btn" id="saveBlogBtn">Save Post</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3>Confirm Delete</h3>
+                <button class="close-modal" id="closeDeleteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this blog post? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelDeleteBtn">Cancel</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
     </div>
 
     <script>
         // ===== CONFIGURATION =====
+        // !!! IMPORTANT: Never commit this file with real credentials !!!
         const CONFIG = {
             GITHUB_TOKEN: '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',  // Replace with your GitHub token
-            REPO: 'faisalansari-01/newmoovero',      // Your GitHub username/repo
-            ADMIN_PASSWORD: 'admin123',              // Admin password
-            BLOG_FILE: 'data/blogs.json'             // Path to blogs.json
+            REPO: 'faisalansari-01/newmoovero',      // Format: username/repository-name
+            ADMIN_PASSWORD: 'admin123',              // Set a strong password
+            BLOG_FILE: 'data/blogs.json'             // Path to your blogs.json
         };
 
         // ===== AUTHENTICATION =====
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if already logged in
+            // Check if user is already logged in
             if (localStorage.getItem('admin_authenticated') === 'true') {
-                showAdminContent();
-            } else {
-                document.getElementById('loginForm').style.display = 'block';
+                showAdminDashboard();
             }
 
-            // Login button click handler
-            document.getElementById('loginBtn').addEventListener('click', function() {
-                const password = document.getElementById('adminPassword').value;
+            // Login form submission
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
                 if (password === CONFIG.ADMIN_PASSWORD) {
                     localStorage.setItem('admin_authenticated', 'true');
-                    showAdminContent();
+                    showAdminDashboard();
                 } else {
                     document.getElementById('loginError').style.display = 'block';
                 }
             });
+
+            // Logout button
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.removeItem('admin_authenticated');
+                window.location.reload();
+            });
         });
 
-        function showAdminContent() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('adminContent').style.display = 'block';
-            // Initialize the rest of the admin panel here
-            initializeAdminPanel();
+        function showAdminDashboard() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'flex';
+            initializeBlogManagement();
         }
 
-        function initializeAdminPanel() {
-            // This will be populated with the rest of your admin panel code
-            document.getElementById('adminContent').innerHTML = `
-                <div style="padding: 20px;">
-                    <h1>Welcome to Admin Panel</h1>
-                    <p>You are now logged in.</p>
-                    <button onclick="logout()" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Logout</button>
-                </div>
-            `;
+        // ===== BLOG MANAGEMENT =====
+        function initializeBlogManagement() {
+            // DOM Elements
+            const addBlogBtn = document.getElementById('addBlogBtn');
+            const blogModal = document.getElementById('blogModal');
+            const closeModal = document.getElementById('closeModal');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const saveBlogBtn = document.getElementById('saveBlogBtn');
+            const blogForm = document.getElementById('blogForm');
+            const deleteModal = document.getElementById('deleteModal');
+            const closeDeleteModal = document.getElementById('closeDeleteModal');
+            const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+            const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+            const blogList = document.getElementById('blogList');
+
+            let blogs = [];
+            let blogToDelete = null;
+
+            // Event Listeners
+            addBlogBtn.addEventListener('click', () => openBlogModal());
+            closeModal.addEventListener('click', () => blogModal.style.display = 'none');
+            cancelBtn.addEventListener('click', () => blogModal.style.display = 'none');
+            closeDeleteModal.addEventListener('click', () => deleteModal.style.display = 'none');
+            cancelDeleteBtn.addEventListener('click', () => deleteModal.style.display = 'none');
+            
+            saveBlogBtn.addEventListener('click', saveBlog);
+            confirmDeleteBtn.addEventListener('click', confirmDelete);
+            blogForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveBlog();
+            });
+
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === blogModal) blogModal.style.display = 'none';
+                if (e.target === deleteModal) deleteModal.style.display = 'none';
+            });
+
+            // Initialize
+            loadBlogs();
+
+            // ===== FUNCTIONS =====
+            function loadBlogs() {
+                // First try to load from localStorage
+                const savedBlogs = localStorage.getItem('mooveroo_blogs');
+                if (savedBlogs) {
+                    try {
+                        blogs = JSON.parse(savedBlogs);
+                        renderBlogs();
+                    } catch (e) {
+                        console.error('Error parsing saved blogs:', e);
+                    }
+                }
+
+                // Then try to load from GitHub
+                loadBlogsFromGitHub();
+            }
+
+            async function loadBlogsFromGitHub() {
+                try {
+                    const { GITHUB_TOKEN, REPO, BLOG_FILE } = CONFIG;
+                    const apiUrl = `https://api.github.com/repos/${REPO}/contents/${BLOG_FILE}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        headers: {
+                            'Authorization': `token ${GITHUB_TOKEN}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const content = JSON.parse(atob(data.content));
+                        if (content && Array.isArray(content.posts)) {
+                            blogs = content.posts;
+                            localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
+                            renderBlogs();
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading blogs from GitHub:', error);
+                }
+            }
+
+            function renderBlogs() {
+                if (!blogs.length) {
+                    blogList.innerHTML = '<p>No blog posts found. Click "Add New Post" to get started.</p>';
+                    return;
+                }
+
+                blogList.innerHTML = blogs.map((blog, index) => `
+                    <div class="blog-card" data-id="${blog.id}">
+                        <div class="blog-image" style="background-image: url('${blog.image || 'https://via.placeholder.com/400x200?text=No+Image'}')"></div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">${blog.title}</h3>
+                            <p class="blog-excerpt">${blog.excerpt}</p>
+                            <div class="blog-meta">
+                                <span>${new Date(blog.date).toLocaleDateString()}</span>
+                                <span>${blog.category || 'Uncategorized'}</span>
+                            </div>
+                            <div class="blog-actions">
+                                <button class="action-btn edit-btn" onclick="editBlog(${index})">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="action-btn delete-btn" onclick="showDeleteConfirmation(${index})">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function openBlogModal(blog = null) {
+                const modalTitle = document.getElementById('modalTitle');
+                const form = document.getElementById('blogForm');
+                
+                if (blog) {
+                    modalTitle.textContent = 'Edit Blog Post';
+                    document.getElementById('editId').value = blog.id;
+                    document.getElementById('blogTitle').value = blog.title;
+                    document.getElementById('blogExcerpt').value = blog.excerpt;
+                    document.getElementById('blogContent').value = blog.content;
+                    document.getElementById('blogImage').value = blog.image || '';
+                    document.getElementById('blogCategory').value = blog.category || '';
+                    document.getElementById('blogDate').value = blog.date ? blog.date.split('T')[0] : new Date().toISOString().split('T')[0];
+                } else {
+                    modalTitle.textContent = 'Add New Blog Post';
+                    form.reset();
+                    document.getElementById('blogDate').value = new Date().toISOString().split('T')[0];
+                }
+                
+                blogModal.style.display = 'flex';
+            }
+
+            function saveBlog() {
+                const id = document.getElementById('editId').value || Date.now().toString();
+                const title = document.getElementById('blogTitle').value;
+                const excerpt = document.getElementById('blogExcerpt').value;
+                const content = document.getElementById('blogContent').value;
+                const image = document.getElementById('blogImage').value;
+                const category = document.getElementById('blogCategory').value;
+                const date = document.getElementById('blogDate').value;
+
+                const blogPost = {
+                    id,
+                    title,
+                    excerpt,
+                    content,
+                    image,
+                    category,
+                    date,
+                    timestamp: new Date().toISOString()
+                };
+
+                const blogIndex = blogs.findIndex(blog => blog.id === id);
+                if (blogIndex > -1) {
+                    blogs[blogIndex] = blogPost;
+                } else {
+                    blogs.unshift(blogPost);
+                }
+
+                // Save to localStorage
+                localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
+                
+                // Save to GitHub
+                saveToGitHub(blogs)
+                    .then(() => {
+                        blogModal.style.display = 'none';
+                        renderBlogs();
+                    })
+                    .catch(error => {
+                        console.error('Error saving to GitHub:', error);
+                        alert('Blog saved locally but failed to update GitHub: ' + error.message);
+                    });
+            }
+
+            function showDeleteConfirmation(index) {
+                blogToDelete = index;
+                deleteModal.style.display = 'flex';
+            }
+
+            function confirmDelete() {
+                if (blogToDelete !== null) {
+                    blogs.splice(blogToDelete, 1);
+                    
+                    // Save to localStorage
+                    localStorage.setItem('mooveroo_blogs', JSON.stringify(blogs));
+                    
+                    // Save to GitHub
+                    saveToGitHub(blogs)
+                        .then(() => {
+                            deleteModal.style.display = 'none';
+                            renderBlogs();
+                        })
+                        .catch(error => {
+                            console.error('Error deleting from GitHub:', error);
+                            alert('Blog deleted locally but failed to update GitHub: ' + error.message);
+                        });
+                    
+                    blogToDelete = null;
+                }
+            }
+
+            // Make these functions available globally for inline event handlers
+            window.editBlog = function(index) {
+                openBlogModal(blogs[index]);
+            };
+
+            window.showDeleteConfirmation = function(index) {
+                blogToDelete = index;
+                deleteModal.style.display = 'flex';
+            };
         }
 
-        function logout() {
-            localStorage.removeItem('admin_authenticated');
-            window.location.reload();
+        // ===== GITHUB INTEGRATION =====
+        async function saveToGitHub(blogs) {
+            const { GITHUB_TOKEN, REPO, BLOG_FILE } = CONFIG;
+            const apiUrl = `https://api.github.com/repos/${REPO}/contents/${BLOG_FILE}`;
+            
+            try {
+                // 1. Get the current file to get its SHA (required for updates)
+                const getResponse = await fetch(apiUrl, {
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                let sha = '';
+                if (getResponse.ok) {
+                    const data = await getResponse.json();
+                    sha = data.sha;
+                }
+
+                // 2. Create or update the file
+                const response = await fetch(apiUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Update blog posts via admin panel',
+                        content: btoa(JSON.stringify({ posts: blogs }, null, 2)),
+                        sha: sha,
+                        branch: 'main'
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Failed to save to GitHub');
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error('GitHub API Error:', error);
+                throw error;
+            }
         }
     </script>
 </body>

@@ -231,12 +231,13 @@ class MoverooFooter {
         <div class="footer-main">
           <div class="footer-col footer-about">
             <h3>Moveroo</h3>
-            <p>Your trusted partner for seamless relocation services. We make moving easy, efficient, and stress-free.</p>
+            <p>Making your move easy and stress-free with professional moving services you can trust.</p>
+            <p>Address C-1113 GVT Orvis Grand, Old Ambala Road, Zirakpur</p>
             <div class="social-links">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/share/1ETK5wQwfT/?mibextid=wwXIfr" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/teammoveroo?s=21" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/moveroo.in?igsh=Y3VxNmx0aTUyYXho" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/moveroo-in/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
           
@@ -244,22 +245,25 @@ class MoverooFooter {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="#">Track Your Order</a></li>
+               <li><a href="about.html">About Us</a></li>
+              <li><a href="process.html">Process</a></li>
               <li><a href="blogs.html">Blogs</a></li>
               <li><a href="contact.html">Contact</a></li>
+               <li><a href="payment-option.html">Payment Option</a></li>
+               <li><a href="Work-with-us.html">Work With Us</a></li>
             </ul>
           </div>
           
           <div class="footer-col footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><a href="#">Local Moving</a></li>
-              <li><a href="#">Long Distance</a></li>
-              <li><a href="#">Packing Services</a></li>
-              <li><a href="#">Storage Solutions</a></li>
-              <li><a href="#">Commercial Moving</a></li>
+              <li><a href="packing-moving.html">Packing & Moving</a></li>
+              <li><a href="vehicle.html">Vehicle Relocation</a></li>
+              <li><a href="pet.html">Pet Relocation</a></li>
+              <li><a href="packing-labour.html">Packing Labour</a></li>
+              <li><a href="Domestic.html">Domestic Relocation</a></li>
+              <li><a href="international.html">International Service</a></li>
             </ul>
           </div>
           
@@ -276,10 +280,18 @@ class MoverooFooter {
             </form>
           </div>
         </div>
+        <br>
+        <div class="footer-pay-legal">
+          <div style="flex: 10; min-width: 220px;">
+         
+            <div class="legal-info" id="legal-info">
+              <strong>Legal Information:</strong> Moveroo is a division of Saranity Solutions Private Limited. All services are subject to applicable laws and regulations. For legal queries, contact <a href="mailto:managingdirector@saranitysolutions.com" style="color:#bfa100; font-weight:600;">managingdirector@saranitysolutions.com</a>.
+            </div>
+          </div>
+                  </div>
         <div class="footer-bottom">
-          <p>&copy; ${new Date().getFullYear()} Moveroo. All rights reserved. | <a href="privacy.html" style="color: #7be495; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #7be495; text-decoration: none;">Terms of Service</a></p>
-        </div>
-      </div>
+          <p><br>&copy; ${new Date().getFullYear()} Moveroo. All rights reserved. | <a href="privacy.html" style="color: #7be495; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #7be495; text-decoration: none;">Terms of Service</a></p>
+              
     </footer>`;
   }
 

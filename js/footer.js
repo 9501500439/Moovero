@@ -245,13 +245,13 @@ class MoverooFooter {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="#">Track Your Order</a></li>
+              <li><a href="admin/track_booking.php">Track Your Order</a></li>
                <li><a href="about.html">About Us</a></li>
               <li><a href="process.html">Process</a></li>
-              <li><a href="blogs.html">Blogs</a></li>
+              <li><a href="blogs_new.php">Blogs</a></li>
               <li><a href="contact.html">Contact</a></li>
                <li><a href="payment-option.html">Payment Option</a></li>
-               <li><a href="Work-with-us.html">Work With Us</a></li>
+               
             </ul>
           </div>
           
